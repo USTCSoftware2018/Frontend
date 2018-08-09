@@ -2,6 +2,20 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
 
+## Install
+
+First, you should install node.js and npm。The latest version is 10.8.0 and 6.2.0. Also, you should clone this git repository.
+
+Then run this command to install angular cli:
+```
+sudo npm install -g @angular/cli@6.1.2
+```
+
+Then install all local dependences using:
+```
+npm install
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
