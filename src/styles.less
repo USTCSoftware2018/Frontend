@@ -9,28 +9,47 @@
 
     .nav-link {
         font-size: 1.2rem;
-        line-height: 1.2;
+        font-weight: 400;
+        line-height: 1.5;
         font-family: Helvetica;
         color: #FFFFFF !important;
         margin: 0 1.5rem;
     }
+    .nav-item {
+        transition: left 0.5s;
+        -webkit-transition: left 0.5s;
+        -o-transition: left 0.5s;
+        -moz-transition: left 0.5s;
+    }
 
     .navbar-addon {
         .nav-link {
-            margin: 0
         }
         .nav-reverse {
             background-color: #FFFFFF;
             color: #000000 !important;
             border-radius: 8px;
             line-height: 1;
-            padding: 3px 5px;
-            margin-top: 6px;
+            padding: 5px 8px;
+            margin-top: 8px;
+        }
+        .form-control {
+            outline: none;
+            background-color: #000;
+            color: #FFF;
+            border-radius: 5px;
+            border: 1px solid transparent;
+            &:focus, &:active {
+                border:1px solid #666;
+                outline: none;
+                box-shadow: none;
+            }
         }
     }
 
     .navbar-brand {
         color: #FFFFFF !important;
         margin-right: 3.5rem;
+        font-size: 1.5rem;
     }
 }

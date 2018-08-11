@@ -1,4 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light navbar-biohub">
+    <img src='/assets/img/panda.png' height='25px' class="mr-3">
     <a class="navbar-brand" href="#">BioHub</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -18,12 +19,15 @@
                 <a class="nav-link" href="#">Register</a>
             </li>
         </ul>
-        <ul class="navbar-nav mr-auto navbar-addon">
+        <ul class="navbar-nav navbar-addon">
             <li class="nav-item">
                 <a class="nav-link nav-reverse" href="#">Editor</a>
             </li>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search" id='navbar-search'>
+            </form>
             <li class="nav-item">
-                <a class="nav-link" href="#">Search</a>
+                <a class="nav-link" href="#" (click)="toggleSearch()"><i class="fa fa-search" ></i></a>
             </li>
         </ul>
         <!--form class="form-inline my-2 my-lg-0">
