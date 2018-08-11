@@ -43,14 +43,20 @@ export class ExperimentStep {
     id: number;
     name: string;
     appendix: ExperimentAppendix;
-    parameter: ExperimentPara[];
+    parameter?: ExperimentPara[];
 }
 
-export class ExperimentProcess {
-    // 实验过程
-    id?: number;
-    name: string;
-    appendix: ExperimentAppendix;
-    parameter?: ExperimentPara[];
+export class ExperimentProcess extends ExperimentStep {
+    // 实验过程描述
     steps?: ExperimentStep[];
+}
+
+export class ExperimentArticle {
+    // 根数据结构：文章
+    id: number;
+    title: string;
+    author: number[]; // userid
+    keywords: string[];
+    quote?: string[];
+    steps: ExperimentStep;
 }
