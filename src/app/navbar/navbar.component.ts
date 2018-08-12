@@ -13,13 +13,26 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.httpService.get_user_name(1);
-	document.getElementById('navbar-search').style.display='none';
+    let selector: any = document.getElementById('navbar-search');
+	selector.style.width=0;
+    selector.style.paddingLeft='0em';
+    selector.style.paddingRight='0em';
+    console.log(selector.style);
   }
   toggleSearch () {
-  	console.log('click!')
-  	var selector = document.getElementById('navbar-search')
-  	if (selector.style.display == 'block') selector.style.display='none';
-  	else selector.style.display='block';
+  	let selector: any = document.getElementById('navbar-search');
+  	if (selector.style.width=='10em') {
+        selector.style.width=0;
+        selector.style.paddingLeft=0;
+        selector.style.paddingRight=0;
+        let i: number;
+    }
+  	else {
+        selector.style.width='10em';
+        selector.style.paddingLeft='0.375em';
+        selector.style.paddingRight='0.375em';
+        let i: number;
+    }
   }
 
 }

@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "assets/css/bootstrap.min.css";
+html {
+    font-size: 14px;
+}
 .navbar-biohub {
     padding-left: 16% !important;
     padding-right: 16% !important;
@@ -13,13 +16,13 @@
         line-height: 1.5;
         font-family: Helvetica;
         color: #FFFFFF !important;
-        margin: 0 2.5rem;
+        margin: 0 1rem;
     }
-    .nav-item {
-        transition: left 0.5s;
-        -webkit-transition: left 0.5s;
-        -o-transition: left 0.5s;
-        -moz-transition: left 0.5s;
+    .navbar-move {
+        transition: transform 0.5s ease-in-out;
+        -webkit-transition: transform 0.5s ease-in-out;
+        -o-transition: transform 0.5s ease-in-out;
+        -moz-transition: transform 0.5s ease-in-out;
     }
 
     .navbar-addon {
@@ -39,6 +42,10 @@
             color: #FFF;
             border-radius: 5px;
             border: 1px solid transparent;
+            transition: width 0.5s ease-in-out, padding-left 0.5s ease-in-out, padding-right 0.5s ease-in-out;
+            -webkit-transition: width 0.5s ease-in-out, padding-left 0.5s ease-in-out, padding-right 0.5s ease-in-out;
+            -o-transition: width 0.5s ease-in-out, padding-left 0.5s ease-in-out, padding-right 0.5s ease-in-out;
+            -moz-transition: width 0.5s ease-in-out, padding-left 0.5s ease-in-out, padding-right 0.5s ease-in-out;
             &:focus, &:active {
                 border:1px solid #666;
                 outline: none;
@@ -49,7 +56,7 @@
 
     .navbar-brand {
         color: #FFFFFF !important;
-        margin-right: 3rem;
-        font-size: 1.5rem;
+        margin-right: 2rem;
+        font-size: 1.2rem;
     }
 }
