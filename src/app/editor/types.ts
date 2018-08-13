@@ -27,7 +27,8 @@ export enum ParaType {
     TEXTAREA = 2,
     SINGLE = 3,
     MULTIPLE = 4,
-    BUTTON = 5
+    SELECT = 6,
+    BUTTON = 6
 }
 
 export class ExperimentPara {
