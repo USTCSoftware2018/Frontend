@@ -1,0 +1,28 @@
+.menu-item-reverse {
+    span {
+        color: black;
+        background-color: #FFF;
+        padding: 3px 5px;
+        border-radius: 4px;
+    } 
+}
+.ant-menu-item {
+    transition: transform 0.5s ease-in-out;
+}
+.navbar-input {
+    position: absolute;
+    width: 36%;
+    top: 7px;
+    background-color: #000000;
+    color: white;
+    border: 1px solid #333;
+    outline: none;
+    &:focus, &:active {
+        box-shadow: none;
+        border: 1px solid #999;
+    }
+    z-index: -1;
+    transition: transform 0.5s, z-index 0.5s, opacity 0.25s, border-color 0.5s;
+    transform: translate(0px, -50px);
+    opacity: 0;
+}
