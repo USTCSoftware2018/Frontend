@@ -1,1 +1,1 @@
-# Group1 branch
+# USTCSoftware Frontend
