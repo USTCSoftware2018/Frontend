@@ -43,6 +43,7 @@ export class EndecodeService {
     const headDOM: Element = XMLDOM.getElementsByTagName('head')[0];
     const bodyDOM: Element = XMLDOM.getElementsByTagName('body')[0];
 
+    console.log(headDOM);
     const nodes: any = headDOM.childNodes;
     let node: Node;
     for (let ii = 0; ii < nodes.length ; ii++) {
