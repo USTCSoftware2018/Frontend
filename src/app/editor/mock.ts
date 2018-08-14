@@ -1,13 +1,12 @@
-export const mockArticle = '\
- <?xml version="1.0" encoding="UTF-8"?>\
+export const mockArticle = '<?xml version="1.0" encoding="UTF-8"?>\
 <article id="1">\
 <head>\
     <title>标题名字</title>\
-    <date>提交时间<date>\
+    <date>提交时间</date>\
     <!-- 主要作者 -->\
-    <author type="primary">作者名字1</author>\
+    <author type="primary">1</author>\
     <!-- 其他作者 -->\
-    <author >作者名字2</author>\
+    <author>2</author>\
     <!-- ... -->\
     <!-- 关键词 -->\
     <key>关键词1</key>\

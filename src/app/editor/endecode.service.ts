@@ -6,7 +6,7 @@
 // ============================================================================
 
 import { Injectable } from '@angular/core';
-import {ExperimentArticle} from './types';
+import {ExperimentArticle, ExperimentStep} from './types';
 import {mockArticle} from './mock';
 
 
@@ -37,25 +37,45 @@ export class EndecodeService {
     // 从后端获取xml 并转化为 ORM
     const rawtext: string = mockArticle;
     const tmpArticle: ExperimentArticle = new ExperimentArticle();
+    tmpArticle.author = [];
+    tmpArticle.keywords = [];
+    tmpArticle.quote = [];
 
     const XMLDOM: Document = (new DOMParser()).parseFromString(rawtext, 'text/xml');
-    const articleDOM: Element = XMLDOM.getElementsByTagName('article')[0];
-    const headDOM: Element = XMLDOM.getElementsByTagName('head')[0];
-    const bodyDOM: Element = XMLDOM.getElementsByTagName('body')[0];
+    const articleDOM: Node = XMLDOM.getElementsByTagName('article')[0];
+    const headDOM: Node = XMLDOM.getElementsByTagName('head')[0];
+    const bodyDOM: Node = XMLDOM.getElementsByTagName('body')[0];
 
-    console.log(headDOM);
-    const nodes: any = headDOM.childNodes;
+    let nodes: any = headDOM.childNodes;
     let node: Node;
     for (let ii = 0; ii < nodes.length ; ii++) {
       node = nodes[ii];
+
       switch (node.nodeName) {
-        case 'title': tmpArticle.title = node.nodeValue; break;
-        case 'author': tmpArticle.author.push(parseInt(node.nodeValue, 2 )); break;
-        case 'key': tmpArticle.keywords.push(node.nodeValue); break;
-        case 'quote': tmpArticle.quote.push(node.nodeValue); break;
+        case 'title': tmpArticle.title = node.childNodes[0].nodeValue; break;
+        case 'author': tmpArticle.author.push(parseInt(node.childNodes[0].nodeValue, 10 )); break;
+        case 'key': tmpArticle.keywords.push(node.childNodes[0].nodeValue); break;
+        case 'quote': tmpArticle.quote.push(node.childNodes[0].nodeValue); break;
+      }
+    }
+
+    nodes = bodyDOM.childNodes;
+    for (let ii = 0; ii < nodes.length ; ii++) {
+      node = nodes[ii];
+
+      switch (node.nodeName) {
+        case 'title': tmpArticle.title = node.childNodes[0].nodeValue; break;
+        case 'author': tmpArticle.author.push(parseInt(node.childNodes[0].nodeValue, 10 )); break;
+        case 'key': tmpArticle.keywords.push(node.childNodes[0].nodeValue); break;
+        case 'quote': tmpArticle.quote.push(node.childNodes[0].nodeValue); break;
       }
     }
 
     this.currentArticle = tmpArticle;
+  }
+
+  decodestep(): ExperimentStep {
+
+    return null;
   }
 }

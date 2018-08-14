@@ -12,7 +12,7 @@ export class EditorMainComponent implements OnInit {
 
   ngOnInit() {
     this.endecodeService.decodeArticle(1);
-    this.debug = this.endecodeService.currentArticle.toString();
+    console.log(this.endecodeService.currentArticle);
   }
 
 }
