@@ -6,6 +6,6 @@ import { EditorMainComponent } from './editor-main/editor-main.component';
   imports: [
     CommonModule
   ],
-  declarations: [EditorMainComponent]
+  declarations: [EditorMainComponent],
 })
 export class EditorModule { }

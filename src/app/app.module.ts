@@ -10,6 +10,8 @@ import en from '@angular/common/locales/en';
 import zh from '@angular/common/locales/zh';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from './route/route.module';
+import {EditorModule} from './editor/editor.module';
+import {ErrorModule} from './error/error.module';
 import { Error404Component } from './error/error404/error404.component';
 
 registerLocaleData(zh);
@@ -18,7 +20,6 @@ registerLocaleData(zh);
   declarations: [
     AppComponent,
     NavbarComponent,
-    Error404Component
   ],
   imports: [
     BrowserModule,
@@ -26,7 +27,9 @@ registerLocaleData(zh);
     FormsModule,
     HttpClientModule,
     NgZorroAntdModule,
-    AppRoutingModule
+    AppRoutingModule,
+    EditorModule,
+    ErrorModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
