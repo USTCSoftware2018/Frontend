@@ -45,6 +45,7 @@ export class ExperimentStep {
     name: string;
     appendix: ExperimentAppendix;
     parameter?: ExperimentPara[];
+    info?: string;
 }
 
 export class ExperimentProcess extends ExperimentStep {
