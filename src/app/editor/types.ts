@@ -10,7 +10,11 @@ export class ExperimentPicture {
     id?: number;
     name?: string;
     url: string;
-
+    constructor() {
+        this.id = -1;
+        this.name = '';
+        this.url = '';
+    }
 }
 
 export class ExperimentAppendix {
@@ -19,6 +23,12 @@ export class ExperimentAppendix {
     remark: string;
     qoute: string[];
     picture: ExperimentPicture[];
+    constructor() {
+        this.desc = '';
+        this.remark = '';
+        this.qoute = new Array<string>();
+        this.picture = new Array<ExperimentPicture>();
+    }
 }
 
 export enum ParaType {
@@ -27,16 +37,30 @@ export enum ParaType {
     TEXTAREA = 2,
     SINGLE = 3,
     MULTIPLE = 4,
-    SELECT = 6,
-    BUTTON = 6
+    SELECT = 5
+}
+
+export class ExperimentKV {
+    key: string;
+    value; string;
+    constructor(key = '', value = '') {
+        this.key = key;
+        this.value = value;
+    }
 }
 
 export class ExperimentPara {
     // 定义了实验步骤中的参数
     label: string;
     type: ParaType;
-    value: string;
+    value: any;
     default?: any;
+    constructor() {
+        this.label = '';
+        this.type = ParaType.INPUT;
+        this.value = '';
+        this.default = '';
+    }
 }
 
 export class ExperimentStep {

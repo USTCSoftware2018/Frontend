@@ -94,25 +94,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <step id="stepid" name="原子操作名">
     <!-- input -->
-    <input label="名字" value="值" default?="默认值"/>
+    <input label="名字" value="值" default="默认值"/>
 
     <!-- textarea -->
-    <textarea label="名字" value="值" default?="默认值"/>
+    <textarea label="名字" value="值" default="默认值"/>
 
     <!-- select -->
-    <select label="名字">
-        <option value="选项1" type='default'>选项1</option>
+    <select label="名字" default='1'>
+        <option value="选项1">选项1</option>
         <option value="选项2">选项2</option>
         <option value="选项3">选项3</option>
         <option value="选项4">选项4</option>
     </select>
 
     <!-- radio -->
-    <radio label="名字" checked="checked" value="值"/>
+    <radio label="名字" default="checked" value="值"/>
 
     <!-- checkbox -->
-    <checkbox label="名字" checked="checked" value="值">
-        <option type="default">值1</option>
+    <checkbox label="名字" default='1'>
+        <option >值1</option>
         <option >值2</option>
         <option >值3</option>
         <!-- ... -->
@@ -121,7 +121,7 @@
     <!-- 剩下的部分是文字、图片、引用等补充部分 -->
     <remark>remark部分</remark>
     <description>description部分</description>
-    <pic id="id"  name?="name" src="url"/>
+    <pic id="id"  name="name" src="url"/>
     <quote type="...">引用</quote>
 
 </step>
