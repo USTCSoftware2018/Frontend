@@ -21,3 +21,9 @@ export const mockArticle = '<?xml version="1.0" encoding="UTF-8"?>\
 <body>\
 </body>\
 </article>';
+
+export const mockDefaultSteps = '\
+';
+
+export const mockUserSteps = '\
+';

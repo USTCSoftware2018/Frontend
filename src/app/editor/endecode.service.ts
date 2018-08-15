@@ -6,8 +6,8 @@
 // ============================================================================
 
 import { Injectable } from '@angular/core';
-import {ExperimentArticle, ExperimentStep} from './types';
-import {mockArticle} from './mock';
+import {ExperimentArticle, ExperimentStep, ExperimentAppendix, ExperimentPara} from './types';
+import {mockDefaultSteps, mockUserSteps} from './mock';
 
 
 @Injectable({
@@ -15,7 +15,15 @@ import {mockArticle} from './mock';
 })
 export class EndecodeService {
 
-  parser: any = new DOMParser(); // xml解析器
+  private _operate: ExperimentStep[];
+
+  public get operate(): ExperimentStep[] {
+    return this._operate;
+  }
+
+  public set operate(value: ExperimentStep[]) {
+    this._operate = value;
+  }
 
   private _currentArticle: ExperimentArticle;
 
@@ -29,53 +37,22 @@ export class EndecodeService {
   constructor() { }
 
 
-  encode(articleid: number): void {
-    // 将ORM转化为 xml 并发起保存
-  }
+  public getOperates(userid?: number): ExperimentStep[] {
 
-  decodeArticle(articleid: number): void {
-    // 从后端获取xml 并转化为 ORM
-    const rawtext: string = mockArticle;
-    const tmpArticle: ExperimentArticle = new ExperimentArticle();
-    tmpArticle.author = [];
-    tmpArticle.keywords = [];
-    tmpArticle.quote = [];
+    let _rawtxt = mockDefaultSteps;
+    if (userid) {
+      _rawtxt += mockUserSteps;
+    }
+    this.operate = [];
+    const XMLDOM: Document = (new DOMParser).parseFromString(_rawtxt, 'text/xml');
 
-    const XMLDOM: Document = (new DOMParser()).parseFromString(rawtext, 'text/xml');
-    const articleDOM: Node = XMLDOM.getElementsByTagName('article')[0];
-    const headDOM: Node = XMLDOM.getElementsByTagName('head')[0];
-    const bodyDOM: Node = XMLDOM.getElementsByTagName('body')[0];
-
-    let nodes: any = headDOM.childNodes;
+    const stepsDOM: NodeListOf<Node & ChildNode> = XMLDOM.getElementsByTagName('step-list')[0].childNodes;
     let node: Node;
-    for (let ii = 0; ii < nodes.length ; ii++) {
-      node = nodes[ii];
+    for (let ii = 0; ii < stepsDOM.length ; ii++) {
+      node = stepsDOM[ii];
+      let _tmpExperimentStep: ExperimentStep = new ExperimentStep();
 
-      switch (node.nodeName) {
-        case 'title': tmpArticle.title = node.childNodes[0].nodeValue; break;
-        case 'author': tmpArticle.author.push(parseInt(node.childNodes[0].nodeValue, 10 )); break;
-        case 'key': tmpArticle.keywords.push(node.childNodes[0].nodeValue); break;
-        case 'quote': tmpArticle.quote.push(node.childNodes[0].nodeValue); break;
-      }
-    }
-
-    nodes = bodyDOM.childNodes;
-    for (let ii = 0; ii < nodes.length ; ii++) {
-      node = nodes[ii];
-
-      switch (node.nodeName) {
-        case 'title': tmpArticle.title = node.childNodes[0].nodeValue; break;
-        case 'author': tmpArticle.author.push(parseInt(node.childNodes[0].nodeValue, 10 )); break;
-        case 'key': tmpArticle.keywords.push(node.childNodes[0].nodeValue); break;
-        case 'quote': tmpArticle.quote.push(node.childNodes[0].nodeValue); break;
-      }
-    }
-
-    this.currentArticle = tmpArticle;
+    return this.operate;
   }
 
-  decodestep(): ExperimentStep {
-
-    return null;
-  }
 }

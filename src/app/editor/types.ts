@@ -18,7 +18,7 @@ export class ExperimentAppendix {
     desc: string;
     remark: string;
     qoute: string[];
-    picture: ExperimentPicture;
+    picture: ExperimentPicture[];
 }
 
 export enum ParaType {
@@ -46,6 +46,18 @@ export class ExperimentStep {
     appendix: ExperimentAppendix;
     parameter?: ExperimentPara[];
     info?: string;
+
+    constructor() {
+        this.id = 0;
+        this.info = '';
+        this.name = '';
+        this.appendix = new ExperimentAppendix;
+        this.parameter = new Array<ExperimentPara>();
+        this.appendix.desc = '';
+        this.appendix.picture = new Array<ExperimentPicture>();
+        this.appendix.qoute = new Array<string>();
+        this.appendix.remark = '';
+    }
 }
 
 export class ExperimentProcess extends ExperimentStep {
