@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './Interface/User';
 import { HttpService } from './http.service';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,11 +9,16 @@ import { HttpService } from './http.service';
 })
 
 export class AppComponent {
-  user: User;
+  user: User = null;
   title = 'igem-frontend';
-  constructor(private httpService: HttpService) {
+  path: any = null;
+  constructor(private httpService: HttpService, location: Location) {
     this.show();
    }
+
+  ngOnInit() {
+    this.path = location.pathname;
+  }
 
   show() {
     this.httpService.getUser(1)

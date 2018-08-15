@@ -1,0 +1,15 @@
+<nz-card style="width: 300px" [nzActions]="[actionLike,actionComments, actionJump]">
+    <nz-card-meta [nzTitle]="card.title" [nzDescription]="card.description" [nzAvatar]="avatarTemplate"></nz-card-meta>
+</nz-card>
+<ng-template #avatarTemplate>
+    <nz-avatar nzSrc="{{card.avatar}}"></nz-avatar>
+</ng-template>
+<ng-template #actionLike>
+    <i class="anticon anticon-like-o"></i>
+</ng-template>
+<ng-template #actionComments>
+    <i class="anticon anticon-heart-o"></i>
+</ng-template>
+<ng-template #actionJump>
+    <i class="anticon anticon-arrow-right"></i>
+</ng-template>
