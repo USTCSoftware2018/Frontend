@@ -6,7 +6,8 @@
 // ============================================================================
 
 import { Injectable, Input } from '@angular/core';
-import {ExperimentArticle, ExperimentStep, ExperimentAppendix, ExperimentPara, ParaType, ExperimentKV, ExperimentPicture, ExperimentProcess} from './types';
+import {ExperimentArticle, ExperimentStep, ExperimentAppendix, ExperimentPara} from './types';
+import {ParaType, ExperimentKV, ExperimentPicture, ExperimentProcess} from './types';
 import {mockDefaultSteps, mockUserSteps} from './mock';
 
 
