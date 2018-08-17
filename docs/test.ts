@@ -1,10 +1,10 @@
-class Respo<T> {
+class Respon<T> {
     // 一个泛型响应类
-    data: T;
     meta: {
         success: boolean,
         message: string
     };
+    data: Array<T>;
 }
 
 class User {
@@ -33,7 +33,7 @@ class User {
     // 声明构造函数和公有属性，并在使用时初始化
 }
 
-let response = new Respo<User>();
+let response = new Respon<User>();
 let user = new User(1);
 // 进行一些操作之后
 let UserData = JSON.stringify([user]);
