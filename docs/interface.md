@@ -164,3 +164,4 @@ let CommentData = JSON.stringify([comment]);
 |./forget-passwd|POST|{"email":string}|{"status":boolean}|忘记密码
 |./signin|POST|{"username":string,"passwd":string}|{"status":boolean}|登录
 |./signup|POST|{“email”:string,"username":string,"passwd":string}|{"status":boolean}|注册
+|./search|POST|待定|{"meta":{"success":boolean,"message":string},"data":{"users":Array<number>,"reports":Array<number>,"thesis":待定,"protein":待定,'bio-brick':待定}}|搜索功能
