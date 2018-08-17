@@ -2,48 +2,65 @@
 **version:1.0.1**
 >为了方便后端使用更新资源请求，不区别PATCH和PUT,由后端判断后使用
 
+# 响应类
+**定义**
+```typescript
+class Respon<T> {
+    // 一个泛型响应类
+    meta: {
+        success: boolean,
+        message: string
+    };
+    data: T;
+}
+```
+
 # 用户类
 **定义**
 ```typescript
 class User {
-    id: number;
-    //主键
-    name: string;
-    actualname: string;
-    location: string;
-    organization: string;
-    email: string;
-    img: string;
-    //头像
-    exp: string;
-    //经验
-    info: {
-        followings: Array<number>;
-        // 本用户关注的主键列表
-        followers: Array<number>;
-        // 关注本用户的主键列表
-        likes: number;
-        //被点赞数
-        reports: number;
-    };
-    intro: string;
+    constructor (
+        public id: number,
+        public username?: string,
+        public actualname?: string,
+        public location?: string,
+        public organization?: string,
+        public email?: string,
+        public img?: string,
+        // 头像
+        public exp?: string,
+        // 经验
+        public info?: {
+            followings: Array<number>;
+            // 本用户关注的主键列表
+            followers: Array<number>;
+            // 关注本用户的主键列表
+            likes: number;
+            // 被点赞数
+            reports: number;
+        },
+        public intro?: string
+    ) { }
+    // 声明构造函数和公有属性，并在使用时初始化
 }
-
-let user = new User();
-// some operation ...
-let UserData = JSON.stringify([user]);
+let response = new Respon<User>();
+let user = new User(1);
+// 进行一些操作之后
+let UserData = JSON.stringify([user]); 
+// 使用数组封装
+let ResponseData = JSON.stringify(response);
 ```
 
 **请求方法**
 |URL|Method|Request|Response|Description|
 |:--:|:--:|:--:|:--:|:--:|
-|./users|GET|null|{"data":UserData,"status":boolean}|管理员查看所有用户
-|./users|POST|UserData|{"status": boolean}| 创建新用户
-|./users/{id}|GET|null|{"data":UserData,"status": boolean}| 主键查用户
-|./users/{id}|PUT|UserData|{“status”:boolean}| 修改信息 
-|./users/{id}|DELETE|null|{"status": boolean}| 删除用户
-|./users/followers|POST|{“user_id”:number}|{"status":boolean}|关注用户
-|./users/followers/{id}|DELETE|null|{"status":boolean}|通过想要取消的用户主键取消关注
+|./users|GET|null|ResponseData|管理员查看所有用户
+|./users|POST|UserData|ResponseData| 创建新用户
+|./users/{id}|GET|null|ResponseData| 主键查用户
+|./users/{id}|PUT|UserData|ResponseData| 修改信息 
+|./users/{id}|DELETE|null|ResponseData| 删除用户
+|./users/followers|POST|{“user_id”:number}|ResponseData|关注用户
+|./users/followers/{id}|DELETE|null|ResponseData|通过想要取消的用户主键取消关注
 
 
 # 通知类
@@ -135,4 +152,15 @@ let CommentData = JSON.stringify([comment]);
 |./comments/{id}|PUT|CommentData|{"status":boolean}|用主键更新评论
 |./comments/{id}|DELET|null|{"status":boolean}|删除评论
 
-# 
+# 动作类
+**定义**
+
+>待补充
+
+**请求方法**
+|URL|Method|Request|Response|Description
+|:--:|:--:|:--:|:--:|:--:|
+|./signin/comfirm/{token}|GET|null|{"status":boolean}|激活账号
+|./forget-passwd|POST|{"email":string}|{"status":boolean}|忘记密码
+|./signin|POST|{"username":string,"passwd":string}|{"status":boolean}|登录
+|./signup|POST|{“email”:string,"username":string,"passwd":string}|{"status":boolean}|注册
