@@ -1,15 +1,6 @@
-<nz-card style="width: 300px" [nzActions]="[actionLike,actionComments, actionJump]">
-    <nz-card-meta [nzTitle]="card.title" [nzDescription]="card.description" [nzAvatar]="avatarTemplate"></nz-card-meta>
+<nz-card>
+    <div><nz-avatar [nzShape]="circle" [nzSize]="default" [nzSrc]=""></nz-avatar><span style="margin-left: 10px">123</span></div>
+    <div class="card-head"><a>Plasmid Extraction</a></div>
+    <div class="card-content"><p>Card content</p></div>
+    <div class="card-extra"><p>Topic: A B C<span style="float:right"><i class="anticon anticon-like-o"></i>11</span></p></div>
 </nz-card>
-<ng-template #avatarTemplate>
-    <nz-avatar nzSrc="{{card.avatar}}"></nz-avatar>
-</ng-template>
-<ng-template #actionLike>
-    <i class="anticon anticon-like-o"></i>
-</ng-template>
-<ng-template #actionComments>
-    <i class="anticon anticon-heart-o"></i>
-</ng-template>
-<ng-template #actionJump>
-    <i class="anticon anticon-arrow-right"></i>
-</ng-template>
