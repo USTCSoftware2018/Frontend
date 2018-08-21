@@ -97,3 +97,6 @@ export const mockUserSteps = '<?xml version="1.0" encoding="UTF-8"?>\
 </step>\
 </step-set>\
 ';
+export const mockDefaultProcess = '';
+export const mockUserProcess = '';
+

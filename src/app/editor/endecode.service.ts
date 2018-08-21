@@ -8,7 +8,7 @@
 import { Injectable, Input } from '@angular/core';
 import {ExperimentArticle, ExperimentStep, ExperimentAppendix, ExperimentPara} from './types';
 import {ParaType, ExperimentKV, ExperimentPicture, ExperimentProcess} from './types';
-import {mockDefaultSteps, mockUserSteps} from './mock';
+import {mockDefaultSteps, mockUserSteps, mockDefaultProcess, mockUserProcess} from './mock';
 
 
 @Injectable({
@@ -47,8 +47,37 @@ export class EndecodeService {
 
   constructor() { }
 
+  public getProcessById(processid: number): void {
+    const _rawtxt = mockDefaultSteps; // need to change
+    const XMLDOM: Document = (new DOMParser).parseFromString(_rawtxt, 'text/xml');
+    const stepsDOM: NodeListOf<Element> = XMLDOM.getElementsByTagName('process');
+    let node: Element;
+    for (let ii = 0; ii < stepsDOM.length ; ii++) {
+      node = stepsDOM[ii];
+      this.operate.push(this._parse_process(node));
+    }
+  }
 
-  public getOperates(userid?: number): ExperimentStep[] {
+  public getOperatesById(stepid: number): void {
+    const _rawtxt = mockDefaultSteps; // need to change
+    const XMLDOM: Document = (new DOMParser).parseFromString(_rawtxt, 'text/xml');
+    const stepsDOM: NodeListOf<Element> = XMLDOM.getElementsByTagName('step');
+    let node: Element;
+    for (let ii = 0; ii < stepsDOM.length ; ii++) {
+      node = stepsDOM[ii];
+      this.operate.push(this._parse_step(node));
+    }
+  }
+
+  public getProcess(userid?: number): void {
+    this.process = [];
+    this._getProcessFromDefault();
+    if (userid) {
+      this._getProcessFromUser(userid);
+    }
+  }
+
+  public getOperates(userid?: number): void {
 
     this.operate = [];
 
@@ -56,7 +85,28 @@ export class EndecodeService {
     if (userid) {
       this._getOperatesFromUser(userid);
     }
-    return this.operate;
+  }
+
+  private _getProcessFromDefault() {
+    const _rawtxt = mockDefaultProcess; // need to change
+    const XMLDOM: Document = (new DOMParser).parseFromString(_rawtxt, 'text/xml');
+    const stepsDOM: NodeListOf<Element> = XMLDOM.getElementsByTagName('process');
+    let node: Element;
+    for (let ii = 0; ii < stepsDOM.length ; ii++) {
+      node = stepsDOM[ii];
+      this.operate.push(this._parse_process(node));
+    }
+  }
+
+  private _getProcessFromUser(userid: number) {
+    const _rawtxt = mockDefaultProcess; // need to change
+    const XMLDOM: Document = (new DOMParser).parseFromString(_rawtxt, 'text/xml');
+    const stepsDOM: NodeListOf<Element> = XMLDOM.getElementsByTagName('process');
+    let node: Element;
+    for (let ii = 0; ii < stepsDOM.length ; ii++) {
+      node = stepsDOM[ii];
+      this.operate.push(this._parse_process(node));
+    }
   }
 
   private _getOperatesFromDefault(): void {
@@ -79,6 +129,20 @@ export class EndecodeService {
       node = stepsDOM[ii];
       this.operate.push(this._parse_step(node));
     }
+  }
+
+  private _parse_process(node: Element): ExperimentProcess {
+    let _tmpExperimentProcess: ExperimentProcess;
+    _tmpExperimentProcess = new ExperimentProcess();
+    _tmpExperimentProcess.id = parseInt(node.attributes.getNamedItem('id').nodeValue, 10) || 0;
+    _tmpExperimentProcess.name = node.attributes.getNamedItem('name').nodeValue;
+    _tmpExperimentProcess.appendix = new ExperimentAppendix();
+    let childNode: Element = node.firstElementChild;
+    for (let jj = 0; jj < node.childElementCount; ++jj) {
+      this._addParaAndAddi(childNode, _tmpExperimentProcess);
+      childNode = childNode.nextElementSibling;
+    }
+    return _tmpExperimentProcess;
   }
 
   private _parse_step(node: Element): ExperimentStep {
@@ -106,6 +170,7 @@ export class EndecodeService {
       case 'remark': this._parse_remark(childNode, _tmp); break;
       case 'quote': this._parse_quote(childNode, _tmp); break;
       case 'pic': this._parse_picture(childNode, _tmp); break;
+      case 'step': this._parse_step_in_process(childNode, _tmp); break;
     }
   }
 
@@ -185,5 +250,9 @@ export class EndecodeService {
     _tmpPicture.name = (childNode.attributes.getNamedItem('name') || {nodeValue: ''}).nodeValue;
     _tmpPicture.url = (childNode.attributes.getNamedItem('src') || {nodeValue: ''}).nodeValue;
     _tmp.appendix.picture.push(_tmpPicture);
+  }
+
+  private _parse_step_in_process(childNode: Element, _tmp: ExperimentStep): void {
+    // Not implement
   }
 }
