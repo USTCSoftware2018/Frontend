@@ -96,5 +96,5 @@ export class ExperimentArticle {
     author: number[]; // userid
     keywords: string[];
     quote?: string[];
-    steps: ExperimentStep;
+    steps: ExperimentStep[];
 }
