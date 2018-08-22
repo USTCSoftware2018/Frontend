@@ -11,8 +11,8 @@ export class EditorMainComponent implements OnInit {
   constructor(public endecodeService: EndecodeService) { }
 
   ngOnInit() {
-    this.endecodeService.getOperates(1);
-    console.log(this.endecodeService.operate);
+    this.endecodeService.getProcess(1);
+    console.log(this.endecodeService.process);
   }
 
 }

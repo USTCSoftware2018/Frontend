@@ -1,3 +1,10 @@
+// ============================================================================
+// endecode.service.ts
+// ----------
+// ertuil 2018.8.10
+// 该文件编辑器相关的 文章和图片的获取和保存。
+// ============================================================================
+
 import { Injectable } from '@angular/core';
 import {ExperimentArticle} from './types';
 
@@ -19,6 +26,4 @@ export class ArticleService {
 
   public dumpArticle() {}
   public loadArticle() {}
-  public sentPicture() {}
-  public loadPicture() {}
 }

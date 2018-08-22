@@ -2,7 +2,7 @@
 // endecode.service.ts
 // ----------
 // ertuil 2018.8.10
-// 该文件定义了与后端的结构，获取操作、过程以及文章。并且将xml转化为对象映射关系
+// 该文件定义了与后端的结构，获取操作、过程。并且将xml转化为对象映射关系
 // ============================================================================
 
 import { Injectable, Input } from '@angular/core';
@@ -94,7 +94,7 @@ export class EndecodeService {
     let node: Element;
     for (let ii = 0; ii < stepsDOM.length ; ii++) {
       node = stepsDOM[ii];
-      this.operate.push(this._parse_process(node));
+      this.process.push(this._parse_process(node));
     }
   }
 
@@ -105,7 +105,7 @@ export class EndecodeService {
     let node: Element;
     for (let ii = 0; ii < stepsDOM.length ; ii++) {
       node = stepsDOM[ii];
-      this.operate.push(this._parse_process(node));
+      this.process.push(this._parse_process(node));
     }
   }
 
