@@ -26,4 +26,6 @@ export class ArticleService {
 
   public dumpArticle() {}
   public loadArticle() {}
+  public dumpStep() {}
+  public dumpProcess() {}
 }
