@@ -4,7 +4,7 @@ node_js:
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_2363e65e6314_key -iv $encrypted_2363e65e6314_iv
-    -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+    -in id_rsa.enc -out ~/.ssh/id_rsa -d
   - chmod 600 ~/.ssh/id_rsa
   - npm install @angular/cli -g
   - npm install
