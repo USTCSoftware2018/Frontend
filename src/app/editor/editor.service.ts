@@ -6,11 +6,15 @@
 // ============================================================================
 
 import { Injectable } from '@angular/core';
+import {ArticleService} from './article.service';
+import {EndecodeService} from './endecode.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EditorService {
 
-  constructor() { }
+  constructor(public anticleService: ArticleService, public endecodeService: EndecodeService) {
+
+  }
 }

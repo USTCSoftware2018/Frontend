@@ -25,7 +25,38 @@ export class ArticleService {
   constructor() { }
 
   public dumpArticle() {}
-  public loadArticle() {}
-  public dumpStep() {}
-  public dumpProcess() {}
+
+  public loadArticle() {
+    const _rawtxt = ''; // need to change
+    const XMLDOM: Document = (new DOMParser).parseFromString(_rawtxt, 'text/xml');
+    const stepsDOM: NodeListOf<Element> = XMLDOM.getElementsByTagName('article');
+    let node: Element;
+    this._currectArticle = new ExperimentArticle;
+
+    for (let ii = 0; ii < stepsDOM.length ; ii++) {
+      node = stepsDOM[ii];
+      this._parse_article(node);
+    }
+  }
+
+  private _parse_article(node: Element): void {
+    switch (node.nodeName) {
+      case 'title': this._currectArticle.title = (node.childNodes[0] || {nodeValue : ''}).nodeValue; break;
+      case 'date': this._currectArticle.date = (node.childNodes[0] || {nodeValue : ''}).nodeValue; break;
+      case 'author': this._currectArticle.author.push(parseInt(node.childNodes[0].nodeValue, 10) || 0 ); break;
+      case 'key' : this._currectArticle.keywords.push((node.childNodes[0] || {nodeValue : ''}).nodeValue); break;
+      case 'quote': this._currectArticle.quote.push((node.childNodes[0] || {nodeValue : ''}).nodeValue); break;
+      case 'step': this._parseStepValue(node) ; break;
+      case 'Process': this._parseProcessValue(node) ; break;
+    }
+  }
+
+  private _parseStepValue(node: Element): any {
+    return null;
+  }
+
+  private _parseProcessValue(node: Element): any {
+    return null;
+  }
+
 }

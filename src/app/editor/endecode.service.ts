@@ -136,7 +136,6 @@ export class EndecodeService {
     _tmpExperimentProcess = new ExperimentProcess();
     _tmpExperimentProcess.id = parseInt(node.attributes.getNamedItem('id').nodeValue, 10) || 0;
     _tmpExperimentProcess.name = node.attributes.getNamedItem('name').nodeValue;
-    _tmpExperimentProcess.appendix = new ExperimentAppendix();
     let childNode: Element = node.firstElementChild;
     for (let jj = 0; jj < node.childElementCount; ++jj) {
       this._addParaAndAddi(childNode, _tmpExperimentProcess);
@@ -150,7 +149,6 @@ export class EndecodeService {
     _tmpExperimentStep = new ExperimentStep();
     _tmpExperimentStep.id = parseInt(node.attributes.getNamedItem('id').nodeValue, 10) || 0;
     _tmpExperimentStep.name = node.attributes.getNamedItem('name').nodeValue;
-    _tmpExperimentStep.appendix = new ExperimentAppendix();
     let childNode: Element = node.firstElementChild;
     for (let jj = 0; jj < node.childElementCount; ++jj) {
       this._addParaAndAddi(childNode, _tmpExperimentStep);
@@ -166,10 +164,6 @@ export class EndecodeService {
       case 'select': this._parse_select(childNode, _tmp); break;
       case 'radio': this._parse_radio(childNode, _tmp); break;
       case 'checkbox': this._parse_checkbox(childNode, _tmp); break;
-      case 'description': this._parse_desc(childNode, _tmp); break;
-      case 'remark': this._parse_remark(childNode, _tmp); break;
-      case 'quote': this._parse_quote(childNode, _tmp); break;
-      case 'pic': this._parse_picture(childNode, _tmp); break;
       case 'step': this._parse_step_in_process(childNode, _tmp); break;
     }
   }
@@ -230,26 +224,6 @@ export class EndecodeService {
       grandNode = grandNode.nextElementSibling;
     }
     _tmp.parameter.push(_tmpPara);
-  }
-
-  private _parse_remark(childNode: Element, _tmp: ExperimentStep): void {
-    _tmp.appendix.remark = (childNode.childNodes[0] || {nodeValue: ''} ).nodeValue;
-  }
-
-  private _parse_desc(childNode: Element, _tmp: ExperimentStep): void {
-    _tmp.appendix.desc = (childNode.childNodes[0] || {nodeValue: ''} ).nodeValue;
-  }
-
-  private _parse_quote(childNode: Element, _tmp: ExperimentStep): void {
-    _tmp.appendix.qoute.push((childNode.childNodes[0] || {nodeValue: ''} ).nodeValue);
-  }
-
-  private _parse_picture(childNode: Element, _tmp: ExperimentStep): void {
-    const _tmpPicture = new ExperimentPicture();
-    _tmpPicture.id = parseInt((childNode.attributes.getNamedItem('id') || {nodeValue: ''}).nodeValue, 10);
-    _tmpPicture.name = (childNode.attributes.getNamedItem('name') || {nodeValue: ''}).nodeValue;
-    _tmpPicture.url = (childNode.attributes.getNamedItem('src') || {nodeValue: ''}).nodeValue;
-    _tmp.appendix.picture.push(_tmpPicture);
   }
 
   private _parse_step_in_process(childNode: Element, _tmp: ExperimentStep): void {

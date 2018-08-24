@@ -67,7 +67,6 @@ export class ExperimentStep {
     // 实验原子操作
     id: number;
     name: string;
-    appendix: ExperimentAppendix;
     parameter?: ExperimentPara[];
     info?: string;
 
@@ -75,26 +74,61 @@ export class ExperimentStep {
         this.id = 0;
         this.info = '';
         this.name = '';
-        this.appendix = new ExperimentAppendix;
         this.parameter = new Array<ExperimentPara>();
-        this.appendix.desc = '';
-        this.appendix.picture = new Array<ExperimentPicture>();
-        this.appendix.qoute = new Array<string>();
-        this.appendix.remark = '';
     }
 }
 
 export class ExperimentProcess extends ExperimentStep {
     // 实验过程描述
     steps?: ExperimentStep[];
+
+    constructor() {
+        super();
+        this.steps = new Array<ExperimentStep>();
+    }
 }
+
+// 下面是 文章中的 step-value 和 process-value
 
 export class ExperimentArticle {
     // 根数据结构：文章
     id: number;
     title: string;
+    date: string;
     author: number[]; // userid
     keywords: string[];
     quote?: string[];
     steps: ExperimentStep[];
+
+    constructor() {
+        this.id = 0;
+        this.title = '';
+        this.date = '';
+        this.author = [];
+        this.keywords = [];
+        this.quote = [];
+        this.steps = [];
+    }
 }
+
+export class StepValue {
+    stepId: number;
+    fields: ExperimentKV[];
+    appendix: ExperimentAppendix;
+
+    constructor() {
+        this.stepId = 0;
+        this.fields = [];
+        this.appendix = new ExperimentAppendix();
+    }
+}
+
+export class ProcessValue extends StepValue {
+    steps: StepValue[];
+
+    constructor() {
+        super();
+        this.steps = [];
+    }
+}
+
