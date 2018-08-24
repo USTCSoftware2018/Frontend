@@ -16,4 +16,4 @@ script:
   - ng build
   - tar -jcf a.tar.bz2 dist
   - scp a.tar.bz2 root@118.99.13.194:~/igem
-  - ssh root@118.99.13.194 'cd igem && rm -rf dist && tar -jxf a.tar.bz2 -C dist'
+  - ssh root@118.99.13.194 'cd igem && ./deploy.sh'
