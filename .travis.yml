@@ -11,8 +11,6 @@ before_install:
 
 script:
   - ng build
-
-after-success:
-  - tar -jcf a.tar.bz2 dist/*
+  - tar -jcf a.tar.bz2 dist
   - scp a.tar.bz2 root@118.99.13.194:~/igem
   - ssh root@118.99.13.194 'cd igem && rm -rf dist && tar -jxf a.tar.bz2 -C dist'
