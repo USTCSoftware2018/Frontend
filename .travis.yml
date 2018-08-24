@@ -3,7 +3,7 @@ node_js:
   - 10.6
 
 addons:
-  ssh_known_hosts: your-ip
+  ssh_known_hosts: 118.99.13.194
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_2363e65e6314_key -iv $encrypted_2363e65e6314_iv
