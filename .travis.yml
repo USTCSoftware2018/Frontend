@@ -12,6 +12,10 @@ before_install:
   - npm install @angular/cli -g
   - npm install
 
+branches:
+  only:
+    - dev
+
 script:
   - ng build
   - tar -jcf a.tar.bz2 dist
