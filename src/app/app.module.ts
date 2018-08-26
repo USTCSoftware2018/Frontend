@@ -13,6 +13,8 @@ import { AppRoutingModule } from './route/route.module';
 import {EditorModule} from './editor/editor.module';
 import {ErrorModule} from './error/error.module';
 import { Error404Component } from './error/error404/error404.component';
+import { ReportComponent } from './report/report.component';
+import { SiminfoComponent } from './report/siminfo/siminfo.component';
 
 registerLocaleData(zh);
 
@@ -20,6 +22,8 @@ registerLocaleData(zh);
   declarations: [
     AppComponent,
     NavbarComponent,
+    ReportComponent,
+    SiminfoComponent,
   ],
   imports: [
     BrowserModule,
