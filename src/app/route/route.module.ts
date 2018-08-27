@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { Error404Component } from '../error/error404/error404.component';
-import {EditorMainComponent} from '../editor/editor-main/editor-main.component';
 import {ReportComponent} from '../report/report.component';
 import {MainComponent as EditorMainComponent} from '../editor/views/main/main.component';
 
