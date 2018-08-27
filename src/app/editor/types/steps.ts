@@ -7,9 +7,9 @@ export class StepHeader {
 }
 
 export class ProcessHeader {
-    processId: string;
-    processInfo: string;
-    processFields: Array<string>;
+    processId: string;      // 过程的 id
+    processInfo: string;    // 过程的描述
+    processFields: Array<string>;   // 包含的原子操作的id号码
 }
 
 // 这是 step 中每一个表单的类型。
