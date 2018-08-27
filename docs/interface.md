@@ -35,9 +35,9 @@ class User {
             // 本用户关注的主键列表
             followers: Array<number>;
             // 关注本用户的主键列表
-            likes: number;
-            // 被点赞数
-            reports: number;
+            likes: Array<number>;
+            // 被点赞列表
+            reports: Array<number>;
         },
         public intro?: string
     ) { }
