@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EditorMainComponent } from './editor-main/editor-main.component';
+import { MainComponent } from './views/main/main.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [EditorMainComponent],
+  declarations: [
+    MainComponent,
+  ]
 })
 export class EditorModule { }

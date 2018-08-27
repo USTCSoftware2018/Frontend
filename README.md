@@ -1,5 +1,8 @@
 # IgemFrontend
 
+[![Build Status](https://www.travis-ci.org/USTCSoftware2018/Frontend.svg?branch=dev)](https://www.travis-ci.org/USTCSoftware2018/Frontend)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
 
 ## Install
