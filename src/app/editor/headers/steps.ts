@@ -56,7 +56,6 @@ export class SingleFieldHeader extends BaseFieldHeader {
 }
 
 // 下拉框类型
-
 export class SelectFieldHeader extends BaseFieldHeader {
     defaultValue: number;
     options: Array<string>;
