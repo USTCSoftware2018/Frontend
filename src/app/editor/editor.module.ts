@@ -4,7 +4,7 @@ import { MainComponent } from './views/main/main.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [
     MainComponent,
