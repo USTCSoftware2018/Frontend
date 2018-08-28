@@ -13,7 +13,7 @@ import { AppRoutingModule } from './route/route.module';
 import {EditorModule} from './editor/editor.module';
 import {ErrorModule} from './error/error.module';
 import { Error404Component } from './error/error404/error404.component';
-import { SiminfoComponent } from './report/siminfo/siminfo.component'
+import { SiminfoComponent } from './report/siminfo/siminfo.component';
 import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
 import { ReportComponent } from './profile/report/report.component';
 import { PersonalInformationComponent } from './profile/personal-information/personal-information.component';
