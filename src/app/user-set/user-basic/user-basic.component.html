@@ -1,0 +1,101 @@
+<div class="userset0" [formGroup]="usermes" >
+  <div class="cardtitle">Basic Information</div>
+  <div class="savebutton">
+    <button nz-button nzType="primary" style="
+font-family: AvenirNext-Regular;
+border-radius: 15px;
+font-size: 26px;
+color: #FFFFFF;
+text-align: center;" (click)="onSave()">Save</button>
+  </div>
+  <div class="backbutton">
+
+    <button nz-button nzType="default" style="background-color:#DCDCDC;
+     border-radius: 15px;
+     font-family: AvenirNext-Regular;
+     font-size: 26px;
+     color: #4A4A4A;
+     text-align: center;">Back</button>
+  </div>
+  <nz-divider></nz-divider>
+  <div nz-row nzType="flex" nzJustify="space-around" style="display:-webkit-flex;display:flex; align-items:center;">
+    <nz-upload
+      class="myavatar"
+      nzAction="https://jsonplaceholder.typicode.com/posts/"
+      nzName="avatar"
+      [nzShowUploadList]="false"
+      [nzBeforeUpload]="beforeUpload"
+      (nzChange)="handleChange($event)">
+      <nz-form-control class="myphoto" style="margin-bottom: 6vw;" >
+        <img [src]="viewImage" style="width:136.4px;border-radius: 68.2px;"/>
+      </nz-form-control>
+      <button nz-button  style=" background: #3288FF;
+             border-radius: 15px;
+             font-family: AvenirNext-Regular;
+            font-size: 26px;
+            color: #FFFFFF;
+            text-align: center;
+margin-left: 1vw;margin-right: 1vw;">Upload
+      </button>
+    </nz-upload>
+    <div class="fenge" nz-row nzType="flex" nzJustify="center">
+      <nz-divider nzType="vertical" style="height:35vw;"></nz-divider>
+    </div>
+    <div class="inputgroup">
+      <div nz-row nzType="flex" nzJustify="space-between">
+        <nz-form-item nz-col nzSpan="8">
+          <nz-form-control>
+            <p>Actualname</p>
+            <input nz-input id="actualname" name="actualname" formControlName="actualname" required>
+            <nz-form-explain *ngIf="usermes.get('actualname').dirty && usermes.get('actualname').errors&&issaved">
+              <ng-container *ngIf="usermes.get('actualname').hasError('required')">
+                Please input your username!
+              </ng-container>
+              <ng-container *ngIf="usermes.get('actualname').hasError('minlength')">
+                mingLength more than 4!
+              </ng-container>
+              <ng-container *ngIf="usermes.get('actualname').hasError('forbiddenName')">
+                forbiddenname!
+              </ng-container>
+            </nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <nz-form-item>
+        <nz-form-control>
+          <p>Location</p>
+          <input nz-input placeholder="Newark"  id="location" name="location" formControlName="location" required>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <p>Bio</p>
+            <textarea row="10" col="10" nz-input placeholder="Tell us a little bit about yourself" name="bio" formControlName="bio"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-control>
+          <p>School or Company</p>
+          <input nz-input placeholder="University of Science and Technology of China" id="school" name="school" formControlName="school" required>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item nz-col nzSpan="20">
+        <nz-form-control>
+          <p>Email Address</p>
+          <input nz-input placeholder="hustcw@ustc.edu.cn" id="email" name="email" formControlName="email" required>
+          <nz-form-explain *ngIf="usermes.get('email').dirty&&usermes.get('email').errors&&issaved">
+            <ng-container *ngIf="usermes.get('email').hasError('email')">
+              The input is not valid E-mail!
+            </ng-container>
+            <ng-container *ngIf="usermes.get('email').hasError('required')">
+              Please input your E-mail!
+            </ng-container>
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+  </div>
+
+</div>
+
