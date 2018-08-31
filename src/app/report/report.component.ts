@@ -5,7 +5,7 @@ import { Socialcomments } from './socialinfo';
 import { SOLICIALINFO , SOCIALCOMMENTS } from './mock-Socialinfo';
 import { User } from './user';
 import { USER} from './mock-user';
-import { SiminfoComponent } from './siminfo/siminfo.component';
+import { SiminfoComponent } from '../siminfo/siminfo.component';
 
 @Component({
   selector: 'app-report',
