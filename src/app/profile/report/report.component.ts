@@ -9,7 +9,7 @@ import {
   transition
 } from '@angular/animations';
 @Component({
-  selector: 'app-report',
+  selector: 'app-report1',
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.less'],
   animations: [
@@ -23,7 +23,7 @@ import {
   ]
 
 })
-export class ReportComponent implements OnInit {
+export class Report2Component implements OnInit {
   reports: Report[] = [];
   reports_onshow: Report[] = [];
   reports_unshow: Report[] = [];

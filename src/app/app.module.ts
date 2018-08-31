@@ -12,11 +12,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from './route/route.module';
 import {EditorModule} from './editor/editor.module';
 import {ErrorModule} from './error/error.module';
-import { UserSetModule } from './user-set/user-set.module';
-import { Error404Component } from './error/error404/error404.component';
-import { SiminfoComponent } from './report/siminfo/siminfo.component'
+// import { UserSetModule } from './user-set/user-set.module';
+// import { Error404Component } from './error/error404/error404.component';
+import { SiminfoComponent } from './report/siminfo/siminfo.component';
 import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
-import { ReportComponent } from './profile/report/report.component';
+import { Report2Component} from './profile/report/report.component';
+import { Report1Component} from './report/report.component';
 import { PersonalInformationComponent } from './profile/personal-information/personal-information.component';
 
 registerLocaleData(zh);
@@ -25,10 +26,11 @@ registerLocaleData(zh);
   declarations: [
     AppComponent,
     NavbarComponent,
-    Error404Component,
+    // Error404Component,
     SiminfoComponent,
     ProfilePageComponent,
-    ReportComponent,
+    Report1Component,
+    Report2Component,
     PersonalInformationComponent,
 
   ],
@@ -37,7 +39,7 @@ registerLocaleData(zh);
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    UserSetModule,
+    // UserSetModule,
     NgZorroAntdModule,
     AppRoutingModule,
     EditorModule,
