@@ -10,6 +10,7 @@ export class NavbarComponent implements OnInit {
   private hasShown = false;
   private input: any = null;
   private menu_lists: any = null;
+  toSearch: String;
   constructor(private el: ElementRef) {
   }
 
@@ -17,8 +18,12 @@ export class NavbarComponent implements OnInit {
     console.log(this.menu_lists);
   }
   toggleSearch() {
-    if (this.input == null) this.input = this.el.nativeElement.querySelector('.navbar-input');
-    if (this.menu_lists == null) this.menu_lists = this.el.nativeElement.querySelectorAll('.ant-menu-item');
+    if (this.input == null) {
+      this.input = this.el.nativeElement.querySelector('.navbar-input');
+    }
+    if (this.menu_lists == null) {
+      this.menu_lists = this.el.nativeElement.querySelectorAll('.ant-menu-item');
+    }
     let i: number;
     if (!this.hasShown) {
         this.hasShown = true;

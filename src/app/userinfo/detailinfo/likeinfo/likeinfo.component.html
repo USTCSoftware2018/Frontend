@@ -1,0 +1,22 @@
+<div class="dinfo" nz-row>
+  <!-- avatar -->
+  <div class="title" nz-col nzSpan="24">
+    <span class="titleb">{{like.ouser.name}}</span>
+    <span class="titlel">&nbsp;&nbsp;&nbsp;likes&nbsp;&nbsp;&nbsp;</span>
+    <span class="titleb">{{like.report.title}}</span>
+  </div>
+  <div class="content" nz-col nzSpan="24">
+    <pre>{{like.report.content}}</pre>
+  </div>
+  <div class="topic-title" nz-col nzSpan="6">
+    <span class="topic-title">topics:</span>
+    <span class="topic-content">&nbsp;&nbsp;{{like.report.topic[0]}}&nbsp;&nbsp;&nbsp;{{like.report.topic[1]}}&nbsp;&nbsp;&nbsp;{{like.report.topic[2]}}</span>
+  </div>
+  <div nz-col nzOffset="10" nzSpan="3">
+    <span class="info-num">{{like.report.likesnum}}&nbsp;likes</span>
+  </div>
+  <div nz-col nzSpan="3">
+    <span class="info-num">{{like.report.commentsnum}}&nbsp;comments</span>
+  </div>
+
+</div>
