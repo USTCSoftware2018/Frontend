@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpService } from '../http/http.service';
 import {StepHeader} from '../headers/steps';
 import {EditorModule} from '../editor.module';
 
@@ -7,9 +8,12 @@ import {EditorModule} from '../editor.module';
 })
 export class StepsService {
 
-  constructor() { }
+  constructor(public httpService: HttpService) {}
 
-  public getDefaultSteps() {}  // 获取默认的过程
+  public getDefaultSteps(): Array<StepHeader> {
+    const _steps: StepHeader[] = Array<StepHeader>();
+    return _steps;
+  }  // 获取默认的过程
 
   public getUserSteps() { // 获取用户自己的 steps
     throw Error('Never Implement Error');
