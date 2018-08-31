@@ -24,12 +24,10 @@ registerLocaleData(zh);
   declarations: [
     AppComponent,
     NavbarComponent,
-
     SiminfoComponent,
     ProfilePageComponent,
     ReportComponent,
     PersonalInformationComponent,
-
   ],
   imports: [
     BrowserModule,
