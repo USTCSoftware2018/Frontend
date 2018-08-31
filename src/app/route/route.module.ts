@@ -10,10 +10,10 @@ import {UserinfoComponent} from '../userinfo/userinfo.component';
 const appRoutes: Routes = [
   { path: 'editor', component: EditorMainComponent},
   { path: 'report', component: Report1Component},
+  { path: 'userinfo', component: UserinfoComponent},
   // { path: 'user-set',loadChildren: '../user-set/user-set.module#UserSetModule',data: { preload: true } },
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: Error404Component},
-  { path: 'userinfo', component: UserinfoComponent},
 ];
 
 @NgModule({
