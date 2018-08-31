@@ -12,7 +12,7 @@ import { SiminfoComponent } from './siminfo/siminfo.component';
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.less']
 })
-export class ReportComponent implements OnInit {
+export class Report1Component implements OnInit {
 
   reports = REPORTS;
   Report = REPORTS[1];

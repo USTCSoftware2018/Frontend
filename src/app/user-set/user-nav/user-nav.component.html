@@ -1,0 +1,39 @@
+<div nz-row nzType="flex" nzJustify="space-around" style="background-color:#F2F2F2;height:1000px;">
+  <div nz-col [nzXs]="{ span: 4, offset: 1 }" [nzLg]="{ span: 5, offset: 2 }">
+    <nz-affix>
+      <ul *ngIf="!isreport" id="navi0" >
+        <li class="navi1" >
+          <a  [class.navichild]="!rla.isActive" routerLink="./user-basic" routerLinkActive="active" (click)="changeisreport()"#rla="routerLinkActive">Basic Information</a>
+        </li>
+        <li class="navi1">
+          <a [class.navichild]="!rla1.isActive" routerLink="./user-account" routerLinkActive="active" (click)="changeisreport()" #rla1="routerLinkActive">Account</a>
+        </li>
+        <li class="navi1">
+          <a [class.navichild]="!rla2.isActive" routerLink="./user-report" routerLinkActive="active" (click)="okisreport()" #rla2="routerLinkActive">Report</a>
+        </li>
+      </ul>
+
+      <div *ngIf="isreport" class="collapsenav">
+        <div *ngIf="isCollapsed" class="righttrigger">
+          <img src="https://github.com/USTCSoftware2018/Art/blob/master/%E6%9B%B4%E6%96%B0%E8%87%AA%E5%B7%B1%E6%89%93%E5%BC%80%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE/%E5%9B%BE/%E5%8F%B3%E4%BE%A7%E5%B1%95%E5%BC%80.png?raw=true" (click)="toggleCollapsed()" style="width:1vw;margin:0 auto;">
+        </div>
+        <nz-sider [nzCollapsed]="isCollapsed" [nzCollapsedWidth]='0' >
+          <ul class="navi2">
+            <li class="navi1">
+              <a class="navichild1" routerLink="./user-basic" routerLinkActive="active" (click)="changeisreport()">Basic Information</a>
+            </li>
+            <li class="navi1">
+              <a class="navichild1" routerLink="./user-account" routerLinkActive="active" (click)="changeisreport()">Account</a>
+            </li>
+            <li class="navi1">
+            <a [class.navichild1]="!rla3.isActive" routerLink="./user-report" routerLinkActive="active" style="font-size:30px;" (click)="okisreport()" #rla3="routerLinkActive">Report</a>
+            </li>
+          </ul>
+        </nz-sider>
+      </div>
+   </nz-affix>
+  </div>
+  <div nz-col [nzXs]="{ span: 17, offset: 1 }" [nzLg]="{ span: 13, offset: 1 }">
+    <router-outlet></router-outlet>
+  </div>
+</div>

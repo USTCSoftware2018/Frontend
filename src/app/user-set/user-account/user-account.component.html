@@ -1,0 +1,62 @@
+<div class="userset0" [formGroup]="useraccount">
+  <div class="cardtitle">CHANGE USERNAME</div>
+  <nz-divider></nz-divider>
+<div class="username">
+  <nz-form-item style="width:400px;">
+    <p>Change Username</p>
+    <nz-form-control nz-col nzSpan="20">
+      <input nz-input id="name" formControlName="name" required>
+    </nz-form-control>
+  </nz-form-item>
+  <div nz-row nzType="flex" nzJustify="flex-start" >
+    <nz-form-control nz-col nzSpan="8">
+      <button nz-button nzType="primary" style="
+font-family: AvenirNext-Regular;
+font-size: 26px;
+color: #FFFFFF;
+text-align: center;
+margin:0 auto;">Save</button>
+    </nz-form-control>
+  </div>
+</div>
+  <div class="cardtitle">CHANGE PASSWORD</div>
+
+  <nz-divider></nz-divider>
+
+  <div class="changepassword">
+
+    <div class="inputpass" >
+      <nz-form-item>
+        <p>Old password</p>
+        <nz-form-control nz-col nzSpan="20">
+          <input nz-input type="password" id="oldpassword" formControlName="oldpassword" required>
+          <nz-form-explain *ngIf="useraccount.get('oldpassword').dirty&&useraccount.get('oldpassword').hasError('required')">Please input your password!</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <p>New password</p>
+        <nz-form-control nz-col nzSpan="20">
+          <input nz-input type="password" id="newpassword" formControlName="newpassword" >
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <p>Confirm new password</p>
+        <nz-form-control nz-col nzSpan="20">
+          <input nz-input type="password" id="confirmpassword" formControlName="confirmpassword">
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div class="submitpass" nz-row nzType="flex" nzJustify="flex-start" >
+      <div class="updatepassword" nz-col nzSpan="8">
+        <button nz-button nzType="primary" style="
+font-family: AvenirNext-Regular;
+font-size: 26px;
+color: #FFFFFF;
+text-align: center;">Update password</button>
+      </div>
+      <div class="forget" nz-col nzSpan="10">
+        I forgot my password
+      </div>
+    </div>
+  </div>
+</div>
