@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from './route/route.module';
 import {EditorModule} from './editor/editor.module';
 import {ErrorModule} from './error/error.module';
+import { UserSetModule } from './user-set/user-set.module';
 import { Error404Component } from './error/error404/error404.component';
 import { SiminfoComponent } from './report/siminfo/siminfo.component'
 import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
@@ -36,6 +37,7 @@ registerLocaleData(zh);
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    UserSetModule,
     NgZorroAntdModule,
     AppRoutingModule,
     EditorModule,
