@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import {EditorModule} from '../editor.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: EditorModule,
 })
 export class HttpService {
 
   constructor() { }
+
+
 }

@@ -1,8 +1,12 @@
-<div class="main-bk" nz-row nzGutter="30">
-  <div nz-col nzSpan="7" >
-    <app-siminfo [user]="user"></app-siminfo>
-  </div>
-  <div nz-col nzSpan="17" >
-    <app-detailinfo [user]="user"></app-detailinfo>
+<div style= "background-color: #F2F2F2" nz-row >
+  <div nz-col nzSm="24" nzXs="24" [nzMd]="{span:24}" [nzLg]="{span:22, offset:1}" [nzXl]="{span:20, offset:2}" [nzXXl]="{span:18, offset:3}">
+     <div class="main-bk" nz-row nzGutter="30">
+       <div nz-col nzSpan="7" >
+         <app-siminfo [user]="user"></app-siminfo>
+       </div>
+       <div nz-col nzSpan="17" >
+         <app-detailinfo [user]="user"></app-detailinfo>
+       </div>
+     </div>
   </div>
 </div>
