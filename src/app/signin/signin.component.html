@@ -1,3 +1,18 @@
-<div style="background-color: #F2F2F2 ">
-  signin works!
+<div >
+ <form  nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+   <nz-form-item nz-row>
+     <nz-form-control nz-col nzOffset="8" nzSpan="8">
+       <nz-input-group nzPrefixIcon="anticon anticon-user">
+         <input type="text" nz-input formControlName="userName" placeholder="Username">
+       </nz-input-group>
+     </nz-form-control>
+   </nz-form-item>
+   <nz-form-item nz-row>
+     <nz-form-control nz-col nzOffset="8" nzSpan="8">
+       <nz-input-group nzPrefixIcon="anticon anticon-lock">
+         <input type="text" nz-input formControlName="Password" placeholder="Password">
+       </nz-input-group>
+     </nz-form-control>
+   </nz-form-item>
+ </form>
 </div>

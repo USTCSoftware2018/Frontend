@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from './route/route.module';
 import {EditorModule} from './editor/editor.module';
 import {ErrorModule} from './error/error.module';
+import {ReactiveFormsModule} from '@angular/forms';
 // import { UserSetModule } from './user-set/user-set.module';
 // import { Error404Component } from './error/error404/error404.component';
 import { SiminfoComponent } from './siminfo/siminfo.component';
@@ -57,7 +58,8 @@ registerLocaleData(zh);
     NgZorroAntdModule,
     AppRoutingModule,
     EditorModule,
-    ErrorModule
+    ErrorModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
