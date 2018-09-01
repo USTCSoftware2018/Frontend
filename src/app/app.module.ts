@@ -26,7 +26,7 @@ import { Eachinfo1Component } from './userinfo/detailinfo/eachinfo1/eachinfo1.co
 import { Eachinfo2Component } from './userinfo/detailinfo/eachinfo2/eachinfo2.component';
 import { LikeinfoComponent } from './userinfo/detailinfo/likeinfo/likeinfo.component';
 
-registerLocaleData(zh);
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
