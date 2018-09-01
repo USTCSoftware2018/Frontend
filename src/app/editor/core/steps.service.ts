@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpService } from '../http/http.service';
 import {StepHeader} from '../headers/steps';
 import {EditorModule} from '../editor.module';
 
@@ -8,7 +7,7 @@ import {EditorModule} from '../editor.module';
 })
 export class StepsService {
 
-  constructor(public httpService: HttpService) {}
+  constructor() {}
 
   public getDefaultSteps(): Array<StepHeader> {
     const _steps: StepHeader[] = Array<StepHeader>();

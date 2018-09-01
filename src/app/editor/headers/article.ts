@@ -1,5 +1,4 @@
 import {AppendixHeader} from './appendix';
-import { ArgumentOutOfRangeError } from 'rxjs';
 // 这里是文章的定义
 
 export class ArticleHeader {
