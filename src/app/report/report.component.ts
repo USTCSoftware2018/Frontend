@@ -5,14 +5,13 @@ import { Socialcomments } from './socialinfo';
 import { SOLICIALINFO , SOCIALCOMMENTS } from './mock-Socialinfo';
 import { User } from './user';
 import { USER} from './mock-user';
-import { SiminfoComponent } from './siminfo/siminfo.component';
 
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.less']
 })
-export class ReportComponent implements OnInit {
+export class Report1Component implements OnInit {
 
   reports = REPORTS;
   Report = REPORTS[1];
