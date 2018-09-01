@@ -21,7 +21,7 @@ export class UserNavComponent implements OnInit {
   }
   ngOnInit() {
     this.thisurl=location.pathname;
-    this.isreport=this.thisurl==='/user-set/user-report/report-all'||this.thisurl==='/user-set/user-report/report-draft';
+    this.isreport=this.thisurl==='/userset/user-report/report-all'||this.thisurl==='/userset/user-report/report-draft';
     this.isCollapsed=this.isreport;
   }
   okisreport(){

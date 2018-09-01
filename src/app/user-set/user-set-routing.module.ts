@@ -9,7 +9,7 @@ import { ReportDraftComponent } from './report-draft/report-draft.component';
 
 const UserRouter:Routes =[
   {
-    path:'user-set',
+    path:'userset',
     component:UserNavComponent,
     children:[{
       path:'',
