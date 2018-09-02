@@ -1,18 +1,52 @@
-<div >
- <form  nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
-   <nz-form-item nz-row>
-     <nz-form-control nz-col nzOffset="8" nzSpan="8">
-       <nz-input-group nzPrefixIcon="anticon anticon-user">
-         <input type="text" nz-input formControlName="userName" placeholder="Username">
-       </nz-input-group>
-     </nz-form-control>
-   </nz-form-item>
-   <nz-form-item nz-row>
-     <nz-form-control nz-col nzOffset="8" nzSpan="8">
-       <nz-input-group nzPrefixIcon="anticon anticon-lock">
-         <input type="text" nz-input formControlName="Password" placeholder="Password">
-       </nz-input-group>
-     </nz-form-control>
-   </nz-form-item>
- </form>
+
+<div nz-row>
+  <!-- panda -->
+
+    <!-- input form -->
+  <div nz-col nzOffset="9" nzSpan="6">
+    <div nz-row>
+      <div class="panda" nz-col nzOffset="5" nzSpan="14">
+        <img class="img-response" src="../../assets/img/panda/body.png">
+      </div>
+    </div>
+
+    <div nz-row class="sign-in-form">
+      <div nz-col nzOffset="4" nzSpan="16" align="center">
+        <p class="sign-in-title" >Sign In to BioHub</p>
+      </div>
+
+      <form  nz-form nzLayout="vertical" [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+        <nz-form-item >
+          <nz-form-control  nzOffset="1" nzSpan="22">
+            <nz-input-group nzPrefixIcon="anticon anticon-user">
+              <input type="text" nz-input formControlName="userName" placeholder="Username">
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control nzOffset="1" nzSpan="22">
+            <nz-input-group nzPrefixIcon="anticon anticon-lock">
+              <input type="text" nz-input formControlName="Password" placeholder="Password">
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control nzOffset="1" nzSpan="22">
+            <label nz-checkbox formControlName="remember">
+              <span>Remember me</span>
+            </label>
+            <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
+            <button nz-button class="login-form-button" [nzType]="'primary'">Log in</button>
+            <div class="form-bottom">
+              <span style="font-size: 13px">New to Hub?</span>
+              <a href="" class="create-new-account">Create an account!</a>
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+
+  </div>
 </div>

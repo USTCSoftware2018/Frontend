@@ -18,13 +18,16 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {
     this.validateForm = this.fb.group({
     userName: [null, [Validators.required]],
-    password: [null, [Validators.required]]
+    password: [null, [Validators.required]],
+      remember: [true],
     });
   }
   submitForm(): void {
     for (const i in this.validateForm.controls) {
-      this.validateForm.controls[ i ].markAsDirty();
-      this.validateForm.controls[ i ].updateValueAndValidity();
+      if (this.validateForm.controls.hasOwnProperty(i)) {
+        this.validateForm.controls[ i ].markAsDirty();
+        this.validateForm.controls[ i ].updateValueAndValidity();
+      }
     }
   }
 }
