@@ -13,23 +13,45 @@ import { AppRoutingModule } from './route/route.module';
 import {EditorModule} from './editor/editor.module';
 import {ErrorModule} from './error/error.module';
 import { Error404Component } from './error/error404/error404.component';
-import { ReportComponent } from './reportshow/reportshow.component';
-import { SiminfoComponent } from './reportshow/siminfo/siminfo.component';
+import { ReportshowComponent } from './reportshow/reportshow.component';
+import { UserSetModule } from './user-set/user-set.module';
+import { SiminfoComponent } from './siminfo/siminfo.component';
+import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
+import { Report2Component} from './profile/report/report.component';
+import { PersonalInformationComponent } from './profile/personal-information/personal-information.component';
+import {TesthttpComponent} from './testhttp/testhttp.component';
+import { UserinfoComponent } from './userinfo/userinfo.component';
+import { DetailinfoComponent } from './userinfo/detailinfo/detailinfo.component';
+import { Eachinfo1Component } from './userinfo/detailinfo/eachinfo1/eachinfo1.component';
+import { Eachinfo2Component } from './userinfo/detailinfo/eachinfo2/eachinfo2.component';
+import { LikeinfoComponent } from './userinfo/detailinfo/likeinfo/likeinfo.component';
 
-registerLocaleData(zh);
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ReportComponent,
     SiminfoComponent,
+    ProfilePageComponent,
+    ReportshowComponent,
+    Report2Component,
+    PersonalInformationComponent,
+    TesthttpComponent,
+    UserinfoComponent,
+    SiminfoComponent,
+    DetailinfoComponent,
+    Eachinfo1Component,
+    Eachinfo2Component,
+    LikeinfoComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    UserSetModule,
     NgZorroAntdModule,
     AppRoutingModule,
     EditorModule,
