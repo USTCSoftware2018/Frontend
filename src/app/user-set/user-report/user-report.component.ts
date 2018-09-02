@@ -7,6 +7,8 @@ import { Location } from '@angular/common';
   styleUrls: ['./user-report.component.less']
 })
 export class UserReportComponent implements OnInit {
+  allnum:number=23;
+  draftnum:number=23;
   constructor() { }
 
   ngOnInit() {

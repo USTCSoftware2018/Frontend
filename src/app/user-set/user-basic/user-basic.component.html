@@ -3,46 +3,50 @@
   <div class="savebutton">
     <button nz-button nzType="primary" style="
 font-family: AvenirNext-Regular;
-border-radius: 15px;
-font-size: 26px;
+width:6vw;
+border-radius: 0.5vw;
+font-size: 1.2vw;
 color: #FFFFFF;
 text-align: center;" (click)="onSave()">Save</button>
   </div>
   <div class="backbutton">
-
     <button nz-button nzType="default" style="background-color:#DCDCDC;
-     border-radius: 15px;
+     border-radius: 0.5vw;
+     width:6vw;
      font-family: AvenirNext-Regular;
-     font-size: 26px;
+     font-size: 1.2vw;
      color: #4A4A4A;
      text-align: center;">Back</button>
   </div>
-  <nz-divider></nz-divider>
-  <div nz-row nzType="flex" nzJustify="space-around" style="display:-webkit-flex;display:flex; align-items:center;">
+  <nz-divider style="margin: 1vw 0;"></nz-divider>
+  <div nz-row nzType="flex" nzJustify="space-around" style="display:-webkit-flex;display:flex; align-items:flex-start;">
     <nz-upload
+      nz-row
+      nzType="flex"
+      nzJustify="center"
       class="myavatar"
       nzAction="https://jsonplaceholder.typicode.com/posts/"
       nzName="avatar"
       [nzShowUploadList]="false"
       [nzBeforeUpload]="beforeUpload"
       (nzChange)="handleChange($event)">
-      <nz-form-control class="myphoto" style="margin-bottom: 6vw;" >
-        <img [src]="viewImage" style="width:136.4px;border-radius: 68.2px;"/>
+      <nz-form-control class="myphoto" style="margin-left:0.5vw;" >
+        <img [src]="viewImage" style="width:8vw;border-radius: 4vw;"/>
       </nz-form-control>
       <button nz-button  style=" background: #3288FF;
-             border-radius: 15px;
+             border-radius: 0.5vw;
              font-family: AvenirNext-Regular;
-            font-size: 26px;
+            font-size: 1.2vw;
             color: #FFFFFF;
             text-align: center;
-margin-left: 1vw;margin-right: 1vw;">Upload
+            margin:2vw 0 0 1.6vw;">Upload
       </button>
     </nz-upload>
     <div class="fenge" nz-row nzType="flex" nzJustify="center">
-      <nz-divider nzType="vertical" style="height:35vw;"></nz-divider>
+      <nz-divider nzType="vertical" style="height:32vw;"></nz-divider>
     </div>
     <div class="inputgroup">
-      <div nz-row nzType="flex" nzJustify="space-between">
+      <div nz-row nzType="flex" nzJustify="flex-start">
         <nz-form-item nz-col nzSpan="8">
           <nz-form-control>
             <p>Actualname</p>

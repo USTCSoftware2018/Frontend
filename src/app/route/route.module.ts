@@ -9,7 +9,7 @@ import {UserinfoComponent} from '../userinfo/userinfo.component';
 
 const appRoutes: Routes = [
   { path: 'editor', component: EditorMainComponent},
-  { path: 'user-set', loadChildren: '../user-set/user-set.module#UserSetModule',data: { preload: true } },
+  { path: 'userset', loadChildren: '../user-set/user-set.module#UserSetModule',data: { preload: true } },
   { path: 'report', component: Report1Component},
   { path: 'profile', component: ProfilePageComponent},
   { path: 'user-set', loadChildren: '../user-set/user-set.module#UserSetModule', data: { preload: true } },
