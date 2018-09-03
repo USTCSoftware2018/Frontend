@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntdModule, NZ_I18N, en_US, zh_CN } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
@@ -25,6 +25,9 @@ import { DetailinfoComponent } from './userinfo/detailinfo/detailinfo.component'
 import { Eachinfo1Component } from './userinfo/detailinfo/eachinfo1/eachinfo1.component';
 import { Eachinfo2Component } from './userinfo/detailinfo/eachinfo2/eachinfo2.component';
 import { LikeinfoComponent } from './userinfo/detailinfo/likeinfo/likeinfo.component';
+import { SigninComponent } from './signin/signin.component';
+import { PandaComponent } from './panda/panda.component';
+
 
 
 registerLocaleData(en);
@@ -45,6 +48,8 @@ registerLocaleData(en);
     Eachinfo1Component,
     Eachinfo2Component,
     LikeinfoComponent,
+    SigninComponent,
+    PandaComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,8 @@ registerLocaleData(en);
     NgZorroAntdModule,
     AppRoutingModule,
     EditorModule,
-    ErrorModule
+    ErrorModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
