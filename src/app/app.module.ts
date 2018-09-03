@@ -28,6 +28,7 @@ import { LikeinfoComponent } from './userinfo/detailinfo/likeinfo/likeinfo.compo
 import { SigninComponent } from './signin/signin.component';
 import { PandaComponent } from './panda/panda.component';
 import { StartResetComponent } from './start-reset/start-reset.component';
+import { CpltResetComponent } from './cplt-reset/cplt-reset.component';
 
 
 
@@ -52,6 +53,7 @@ registerLocaleData(en);
     SigninComponent,
     PandaComponent,
     StartResetComponent,
+    CpltResetComponent,
   ],
   imports: [
     BrowserModule,
