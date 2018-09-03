@@ -23,20 +23,20 @@
             <nz-input-group nzPrefixIcon="anticon anticon-user">
               <input type="text" nzSize="small" nz-input formControlName="userName" placeholder="Username or e-mail">
             </nz-input-group>
-            <nz-form-explain *ngIf="validateForm.get('userName').dirty && validateForm.get('userName').errors || validateForm.get('userName').pending ">
-              <ng-container *ngIf="validateForm.get('userName').hasError('required')">
+            <nz-form-explain *ngIf="username.dirty && username.errors || username.pending ">
+              <ng-container *ngIf="username.hasError('required')">
                 Please enter your username or e-mail!
               </ng-container>
-              <ng-container *ngIf="validateForm.get('userName').hasError('minlength')">
+              <ng-container *ngIf="username.hasError('minlength')">
                 too short (minimum is 4 characters)!
               </ng-container>
-              <ng-container *ngIf="validateForm.get('userName').hasError('maxlength')">
+              <ng-container *ngIf="username.hasError('maxlength')">
                 too long (maximum is 20 characters)!
               </ng-container>
-              <ng-container *ngIf="validateForm.get('userName').hasError('forbiddenName')">
+              <ng-container *ngIf="username.hasError('forbiddenName')">
                 Username is invalid!
               </ng-container>
-              <ng-container *ngIf="validateForm.get('userName').hasError('forbiddenEmail')">
+              <ng-container *ngIf="username.hasError('forbiddenEmail')">
                 Email is invalid!
               </ng-container>
             </nz-form-explain>
@@ -44,10 +44,15 @@
         </nz-form-item>
 
         <nz-form-item>
-          <nz-form-control nzOffset="1" nzSpan="22">
+          <nz-form-control nzOffset="1" nzSpan="22" nzHasFeedback>
             <nz-input-group nzPrefixIcon="anticon anticon-lock">
               <input type="password" nzSize="small" nz-input formControlName="password" placeholder="Password">
             </nz-input-group>
+            <nz-form-explain *ngIf="password.dirty && password.errors || password.pending ">
+              <ng-container *ngIf="password.hasError('required')">
+                Please enter password!
+              </ng-container>
+            </nz-form-explain>
           </nz-form-control>
         </nz-form-item>
 
@@ -57,7 +62,7 @@
               <span>Remember me</span>
             </label>
             <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
-            <button nz-button class="login-form-button" [nzType]="'primary'">Log in</button>
+            <button nz-button class="login-form-button" [nzType]="'primary'" [disabled]="!validateForm.valid">Log in</button>
             <div class="form-bottom">
               <span style="font-size: 13px">New to Hub?</span>
               <a href="" class="create-new-account">Create an account!</a>

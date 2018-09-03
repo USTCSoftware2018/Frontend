@@ -27,8 +27,8 @@ export class SigninComponent implements OnInit {
   }
   submitForm(): void {
     for (const i in this.validateForm.controls) {
-        this.validateForm.controls[ i ].markAsDirty();
-        this.validateForm.controls[ i ].updateValueAndValidity();
+      this.validateForm.controls[ i ].markAsDirty();
+      this.validateForm.controls[ i ].updateValueAndValidity();
     }
   }
   get username() { return this.validateForm.get('userName'); }
