@@ -103,6 +103,26 @@ export class EditorReportService {
     delete step.fields;
   }
 
+  public reportAddStep(stepid: string) {
+    // not implement error
+  }
+
+  public reportAddSubroutine(subid: string) {
+    // not implement error
+  }
+
+  public reportDeleteStep(stepid: string) {
+    // not implement error
+  }
+
+  public reportDeleteSubroutine(subid: string) {
+    // not implement error
+  }
+
+  public reportSwap() {
+    // not implement error
+  }
+
   public mockReport() {
     // 模拟文章数据
     const newSub = new ReportSubroutineHeader;
