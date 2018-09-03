@@ -97,7 +97,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <step id="stepid" name="原子操作名">
     <!-- input -->
-    <input label="名字"default="默认值"/>
+    <input label="名字" default="默认值"/>
 
     <!-- textarea -->
     <textarea label="名字" default="默认值"/>
