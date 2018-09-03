@@ -1,26 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpService } from '../http/http.service';
-import {StepHeader} from '../headers/steps';
-import {EditorModule} from '../editor.module';
 
-@Injectable({
-  providedIn: EditorModule,
-})
+import {EditorStepHeader, EditorSubroutineHeader} from '../headers/steps';
+import {GetDataService} from '../getData/getData.service';
+
+@Injectable()
 export class StepsService {
 
-  constructor(public httpService: HttpService) {}
+  _steps: EditorStepHeader[];
+  _subs: EditorSubroutineHeader[];
 
-  public getDefaultSteps(): Array<StepHeader> {
-    const _steps: StepHeader[] = Array<StepHeader>();
-    return _steps;
-  }  // 获取默认的过程
-
-  public getUserSteps() { // 获取用户自己的 steps
-    throw Error('Never Implement Error');
+  public get steps() {
+    return this._steps;
   }
 
-  public getDefaultProcess() {} // 获取默认小实验
+  public get subs() {
+    return this._subs;
+  }
 
-  public getUserProcess() {} // 获取用户定义的小实验
+  constructor(public getDataService: GetDataService) {}
+
+  public mockData() {
+    this._steps = this.getDataService.getSteps();
+    this._subs = this.getDataService.getProcess();
+  }
 
 }
