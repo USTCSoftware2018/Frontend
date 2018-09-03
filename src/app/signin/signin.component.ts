@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { forbiddenUsernameValidator, forbiddenEmailValidator} from './forbidden-signin';
 import {
   AbstractControl,
-  FormBuilder,
   FormGroup,
-  Validators
+  FormControl,
+  Validators,
 } from '@angular/forms';
 
 @Component({
@@ -13,21 +14,23 @@ import {
 })
 export class SigninComponent implements OnInit {
   validateForm: FormGroup;
-  constructor(private fb: FormBuilder) { }
-
+  constructor() { }
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
-    userName: [null, [Validators.required]],
-    password: [null, [Validators.required]],
-      remember: [true],
+    this.validateForm = new FormGroup({
+      'userName': new FormControl(null,
+        [Validators.required, Validators.minLength(4), Validators.maxLength(20),
+          forbiddenUsernameValidator(), forbiddenEmailValidator()]),
+      'password': new FormControl(null,
+        [Validators.required]),
+      'remember': new FormControl(true)
     });
   }
   submitForm(): void {
     for (const i in this.validateForm.controls) {
-      if (this.validateForm.controls.hasOwnProperty(i)) {
         this.validateForm.controls[ i ].markAsDirty();
         this.validateForm.controls[ i ].updateValueAndValidity();
-      }
     }
   }
+  get username() { return this.validateForm.get('userName'); }
+  get password() { return this.validateForm.get('password'); }
 }

@@ -26,7 +26,8 @@ import { Eachinfo1Component } from './userinfo/detailinfo/eachinfo1/eachinfo1.co
 import { Eachinfo2Component } from './userinfo/detailinfo/eachinfo2/eachinfo2.component';
 import { LikeinfoComponent } from './userinfo/detailinfo/likeinfo/likeinfo.component';
 import { SigninComponent } from './signin/signin.component';
-import { ForbiddenSigninDirective } from './signin/forbidden-signin.directive';
+import { PandaComponent } from './panda/panda.component';
+
 
 registerLocaleData(zh);
 
@@ -48,7 +49,7 @@ registerLocaleData(zh);
     Eachinfo2Component,
     LikeinfoComponent,
     SigninComponent,
-    ForbiddenSigninDirective,
+    PandaComponent,
   ],
   imports: [
     BrowserModule,
