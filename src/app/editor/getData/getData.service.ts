@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
-import { EditorModule } from '../editor.module';
-
 import { HttpService } from '../../http.service';
 
-@Injectable({
-  providedIn: EditorModule,
-})
+import { mockStep } from '../mock/mock-steps'; // MockStep
+import { mockSub } from '../mock/mock-sub'; // MockStep
+
+@Injectable()
 export class GetDataService {
 
   constructor(public httpService: HttpService) { }
 
-  public getSteps(content: object) {}
+  public getSteps() {
+    return mockStep;
+  }
 
-  public getProcess() {}
+  public getProcess() {
+    return mockSub;
+  }
 
   public getReport() {}
 

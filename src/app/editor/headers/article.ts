@@ -1,7 +1,28 @@
-import {AppendixHeader} from './appendix';
 // 这里是文章的定义
 
-export class ArticleHeader {
+export class ReportStepsHeader {
+    idx: number;
+    type: string;
+    data: any;
+
+    temp?: string | string[];
+    desc: string;
+    remark: string;
+    pic: Array<ReportGraphHeader>;
+    table: string;
+}
+
+export class ReportSubroutineHeader {
+    type: string; // 类型
+    idx: number; // 位置
+    steps: Array<ReportStepsHeader>; // 包含的step
+    desc: string;
+    remark: string;
+    pic: Array<ReportGraphHeader>;
+    table: string;
+}
+
+export class ReportHeader {
 
     // 元数据部分
     title: string;  // 标题
@@ -9,37 +30,21 @@ export class ArticleHeader {
     mdate: string;  // 修改时间
     ndate: string;  // 创建时间
     introduction: string;   // 介绍
-    result: AppendixHeader; // 结果部分
+    result: string; // 结果部分
     label: string[];    // 标签部分
-
-    // 节点部分
+    subroutines: Array<ReportSubroutineHeader>;
 
     constructor () {}
 }
 
-// 节点父亲元素
-export class NodeHeader {
-    stepId: string; // 对应节点id
-    stepAppendix: AppendixHeader;
+// 图片
 
-    constructor (id?: string) {
-        this.stepId = id;
-        this.stepAppendix = new AppendixHeader();
-    }
-}
+export class ReportGraphHeader {
+    name: string;
+    url: string;
 
-export class StepNodeHeader extends NodeHeader {
-    fields: object;
-    constructor (id?: string) {
-        super(id);
-        this.fields = {};
-    }
-}
-
-export class ProcessNodeHeader extends NodeHeader {
-    fields: StepNodeHeader[];
-    constructor (id?: string) {
-        super(id);
-        this.fields = Array<StepNodeHeader>();
+    constructor(url: string, name?: string) {
+        this.name = name ? name : '';
+        this.url = url;
     }
 }
