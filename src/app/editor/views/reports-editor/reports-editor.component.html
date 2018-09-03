@@ -1,7 +1,14 @@
 <ul>
     <li *ngFor="let sub of currentReport.subroutines">
         <h3>{{sub.type}}</h3>
-        <p>{{sub.steps[0].type}}</p>
-        <div ></div>
+        <p>steps:</p>
+         
+        <ul>
+            <li *ngFor="let step of sub.steps">
+                <p>{{step.type}}</p>
+                <app-editor-field [step]="step"></app-editor-field>
+            </li>
+        </ul>
+        <hr/>
     </li>
 </ul>

@@ -16,7 +16,7 @@ export class ReportsEditorComponent implements OnInit {
   ngOnInit() {
     this.editorReportService.initReport();
     this.currentReport = this.editorReportService.report;
-    this.editorReportService.parser(' - input fan 30 rpm - textarea speed 20 @big @fancy -', {});
+    this.editorReportService.parseAll(); // 编译
     console.log(this.currentReport);
   }
 

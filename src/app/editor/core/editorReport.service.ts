@@ -35,41 +35,72 @@ export class EditorReportService {
 
 
 
-  public parser (temp: string, data: any): string[] {
+  public parser (step: ReportStepsHeader ) {
     // 解析简单模版
+    let temp = step.temp;
+    const data = step.data;
 
     temp += ' - ';
     const tokens = temp.split(' ').filter((elem) => elem !== '');
-    let _ret = [];
-    let _sentense: any = {};
+    let _fields = [];
+    let _field: any = {};
     let states = 0;
     for (const token of tokens) {
       console.log(token);
       if (token === '-') {
-        _ret.push(_sentense);
-        _sentense = new Object();
-        _sentense.attr = [];
+        _fields.push(_field);
+        _field = new Object();
+        _field.attr = [];
         states = 0;
       } else if (states === 0) {
         states += 1;
-        _sentense.type = token;
+        _field.type = token;
       } else if (states === 1) {
         states += 1;
-        _sentense.label = token;
+        _field.label = token;
       } else if (states === 2) {
         states += 1;
-        _sentense.default = token;
+        _field.default = token;
       } else {
         if (token[0] === '@') {
-          _sentense.attr.push(token);
+          _field.attr.push(token);
         } else {
-          _sentense.unit = token;
+          _field.unit = token;
         }
       }
     }
-    _ret = _ret.filter( (elem) => Object.keys(elem).length > 1 );
-    console.log(_ret);
-    return _ret;
+    _fields = _fields.filter( (elem) => Object.keys(elem).length > 1 );
+    for (const fld of _fields) {
+      if (data[fld.label]) {
+        fld.value = data[fld.label];
+      } else {
+        fld.value = fld.default;
+      }
+    }
+    step.fields = _fields;
+  }
+
+  public parseAll() {
+    for (const sub of this.report.subroutines ) {
+      for (const step of sub.steps) {
+        this.parser(step);
+      }
+    }
+  }
+
+  public reportSaveAll() {
+    for (const sub of this.report.subroutines ) {
+      for (const step of sub.steps) {
+        this.reportSave(step);
+      }
+    }
+  }
+
+  public reportSave(step: ReportStepsHeader) {
+    for (const name of step.fields.name) {
+      step.data[name] = step.fields[name];
+    }
+    delete step.fields;
   }
 
   public mockReport() {
@@ -82,8 +113,8 @@ export class EditorReportService {
     const newStep = new ReportStepsHeader;
     newStep.type = 'add';
     newStep.idx = 1;
-    newStep.data = {};
-    newStep.temp = '';
+    newStep.data = {speed: '4000'};
+    newStep.temp = '- input speed 3000 rpm @small - input temp 20 @big';
     newSub.steps.push(newStep);
     this.report.subroutines.push(newSub);
   }
