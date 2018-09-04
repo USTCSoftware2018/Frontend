@@ -94,7 +94,6 @@ let ResponseData = JSON.stringify(response);
 |URL|Method|Request|Response|Description|
 |:--:|:--:|:--:|:--:|:--:|
 |./notifications|GET|null|ResponseData| 拿到用户的所有通知消息
-|./notifications/new|GET|null|ResponseData| 拿到用户的新的通知消息
 |./notifications|POST|NotificationData|ResponseData|创建一个新的消息
 |./notifications/{id}|DELETE|null|ResponseData|通过消息主键删除一条消息
 
@@ -112,7 +111,7 @@ class Report {
         // 标题
         public abstract?: string,
         // 摘要
-        public lable?: number,
+        public lable?: Array<number>,
         // 所属标签
         public comment？: Array<number>
         // 评论主键
@@ -129,12 +128,7 @@ let ResponseData = JSON.stringify(response);
 **请求方法**
 |URL|Method|Request|Response|Description
 |:--:|:--:|:--:|:--:|:--:|
-|./reports|GET|null|ResponseData|所有文章内容
-|./{user_id}/reports|GET|null|ResponseData|用户主键拿到所有文章|
 |./reports/{id}|GET|null|ResponseData|文章主键拿到文章
-|./reports|POST|ReportData|ResponseData|新建文章
-|./reports/{id}|PUT|ReportData|ResponseData|修改文章
-|./reports/{id}|DELETE|null|ResponseData|删除文章
 |./reports/likes|POST|{"report_id": number}|ResponseData|为文章点赞
 |./reports/likes/{id}|DELETE|null|ResponseData|通过文章主键取消点赞
 
@@ -163,10 +157,10 @@ let ResponseData = JSON.stringify(response);
 **请求方法**
 |URL|Method|Request|Response|Description
 |:--:|:--:|:--:|:--:|:--:|
-|./{user_id}/comments|GET|null|ResponseData|从用户主键拿用户所有评论
-|./{report_id}/comments|GET|null|ResponseData|从文章主键拿到文章下的所有评论
+|.reports/{report_id}/comments|GET|null|ResponseData|从文章主键拿到文章下的所有评论
+|./comments|POST|CommentData|ResponseData|创建评论
 |./comments/{id}|PUT|CommentData|ResponseData|用主键更新评论
-|./comments/{id}|DELET|null|ResponseData|删除评论
+|./comments/{id}|DELETE|null|ResponseData|删除评论
 
 # 动作类
 **定义**
