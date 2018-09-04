@@ -103,8 +103,31 @@ export class EditorReportService {
     delete step.fields;
   }
 
+  public reportSort(arrayAny: any) {
+    arrayAny.sort( (a, b) => a.idx - b.idx );
+  }
+
   public reportAddStep(stepid: string) {
     // not implement error
+    const _step_temp = this.stepsService.findStep(stepid);
+    const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
+    _new_sub.id = '';
+    _new_sub.desc = '';
+    _new_sub.name = _step_temp.name;
+    _new_sub.idx =  this.report.subroutines[this.report.subroutines.length - 1].idx + 1;
+    _new_sub.steps = [];
+
+    const _new_step = new ReportStepsHeader();  // 新建 step
+    _new_step.name = _step_temp.id;
+    _new_step.data = {};
+    _new_step.idx = 1;
+    _new_step.temp = _step_temp.template;
+    _new_step.id = _step_temp.id;
+    _new_step.name = _step_temp.name;
+    this.parser(_new_step);
+    _new_sub.steps.push(_new_step);
+
+    this.report.subroutines.push(_new_sub);
   }
 
   public reportAddSubroutine(subid: string) {
@@ -126,12 +149,12 @@ export class EditorReportService {
   public mockReport() {
     // 模拟文章数据
     const newSub = new ReportSubroutineHeader;
-    newSub.type = 'add';
+    newSub.id = 'add';
     newSub.idx = 1;
     newSub.steps = [];
 
     const newStep = new ReportStepsHeader;
-    newStep.type = 'add';
+    newStep.name = 'add';
     newStep.idx = 1;
     newStep.data = {speed: '4000'};
     newStep.temp = '- input speed 3000 rpm @small - input temp 20 @big';

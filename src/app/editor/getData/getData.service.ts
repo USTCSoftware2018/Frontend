@@ -4,8 +4,11 @@ import { HttpService } from '../../http.service';
 import { mockStep } from '../mock/mock-steps'; // MockStep
 import { mockSub } from '../mock/mock-sub'; // MockStep
 
+import { User } from '../../Interface/User';
+
 @Injectable()
 export class GetDataService {
+  user: any;
 
   constructor(public httpService: HttpService) { }
 
@@ -20,13 +23,19 @@ export class GetDataService {
   // Data from backend
 
   public getUser() {
-    let user: any;
-    this.httpService.get_all_users().subscribe({
-      next: cont => {console.log(cont); user = cont; },
-      error: err => user = err
-    });
-    console.log(user);
-    return user;
+    this.httpService.get_all_users().subscribe(
+      cont => { console.log(cont); this.user = cont; },
+      err => this.user = err
+    );
+  }
+
+  public setUser() {
+    const user = new User(1);
+    user.about_me = 'ertuil';
+    this.httpService.create_user(user).subscribe(
+      cont => { console.log(cont); this.user = cont; },
+      err => this.user = err
+    );
   }
 
   public getSteps() {

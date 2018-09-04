@@ -12,12 +12,10 @@ export class ReportsEditorComponent implements OnInit {
 
   currentReport: ReportHeader;
   test: string;
-  user: any;
 
   constructor(public editorReportService: EditorReportService, public getss: GetDataService) { }
 
   ngOnInit() {
-    this.user = this.getss.getUser();
     this.editorReportService.initReport();
     this.currentReport = this.editorReportService.report;
     this.editorReportService.parseAll(); // 编译

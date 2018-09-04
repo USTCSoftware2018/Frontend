@@ -4,8 +4,10 @@
             <nz-list-item-meta
                 [nzTitle]="nzTitle">
                 <ng-template #nzTitle>
-                    <h4>{{item.name}}</h4>
-                    <p>{{item.desc}}</p>
+                    <div (click)="addSteps(item.id)">
+                        <h4>{{item.name}}</h4>
+                        <p>{{item.desc}}</p>
+                    </div>
                 </ng-template>
             </nz-list-item-meta>
         </nz-list-item>
