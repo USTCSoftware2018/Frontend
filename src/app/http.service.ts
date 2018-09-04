@@ -58,8 +58,7 @@ export class HttpService {
     const url = `${this.global_url}/users`;
     return this.http.put<User>(url, user, this.httpOptions)
       .pipe(
-        retry(3),
-        tap(() => console.log(`update user with ${id}`))
+        retry(3)
       );
   }
 
@@ -240,15 +239,63 @@ export class HttpService {
       );
   }
 
-  // create new reports
-  create_reports<Reports>(data: Reports) {
-    const url = `${this.global_url}/users`;
+// --------------- ******************** Comment ******************** ------------------//
+
+
+  // create_comment
+  create_comment(data: Comment) {
+    const url = `${this.global_url}/comments`;
     return this.http.post(url, data, this.httpOptions)
       .pipe(
         retry(3)
       );
   }
 
+  // update_comment
+  update_comment(data: Comment, id: number) {
+    const url = `${this.global_url}/comments/${id}`;
+    return this.http.put<User>(url, data, this.httpOptions)
+      .pipe(
+        retry(3)
+      );
+  }
+
+  // delete_comment
+  delete_comment(id: number) {
+    const url = `${this.global_url}/coments/${id}`;
+    return this.http.delete(url, this.httpOptions)
+      .pipe(
+        retry(3),
+        tap(() => console.log(`delete comment with ${id}`))
+      );
+  }
+
+
+
+  // create new reports
+  create_reports<Reports>(data: Reports) {
+    const url = `${this.global_url}/reports`;
+    return this.http.post(url, data, this.httpOptions)
+      .pipe(
+        retry(3)
+      );
+  }
+
+
+// --------------- ******************** Editor ******************** ------------------//
+
+
+  // get step for report
+  get_step() {
+    const url = `${this.global_url}/editor/step`;
+    return this.http.get(url)
+      .pipe(
+        retry(3),
+        tap(() => console.log(`fetch all steps for you`))
+    );
+  }
+
+  // get
 }
 
 
