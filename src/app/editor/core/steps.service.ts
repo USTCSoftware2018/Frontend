@@ -20,8 +20,8 @@ export class StepsService {
   constructor(public getDataService: GetDataService) {}
 
   public mockData() {
-    this._steps = this.getDataService.getSteps();
-    this._subs = this.getDataService.getProcess();
+    this._steps = this.getDataService.getStepsMock();
+    this._subs = this.getDataService.getProcessMock();
   }
 
 }

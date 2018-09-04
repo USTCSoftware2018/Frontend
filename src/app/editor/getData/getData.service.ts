@@ -9,19 +9,28 @@ export class GetDataService {
 
   constructor(public httpService: HttpService) { }
 
-  public getSteps() {
+  public getStepsMock() {
     return mockStep;
   }
 
-  public getProcess() {
+  public getProcessMock() {
     return mockSub;
+  }
+
+  // Data from backend
+
+  public getSteps() {
+  }
+
+  public getSubroutine() {
+
   }
 
   public getReport() {}
 
   public setSteps() {}
 
-  public setProcess() {}
+  public setSubroutine() {}
 
   public setReport() {}
 

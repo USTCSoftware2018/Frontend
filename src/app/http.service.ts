@@ -208,7 +208,7 @@ export class HttpService {
 
   // --------------- ******************** Reports ******************** ------------------//
 
-  
+
 
   //  get reports by id for reading
   get_reports_by_id(id: number) {
@@ -249,8 +249,6 @@ export class HttpService {
       );
   }
 
-
-  // 
 }
 
 
