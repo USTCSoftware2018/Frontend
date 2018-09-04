@@ -1,0 +1,29 @@
+<div class="s-bk">
+  <div nz-row class="down">
+    <div nz-col nzOffset="6" nzSpan="10">
+      <img class="avatar" src="{{user.avatar_url}}">
+    </div>
+    <div class="username" nz-col nzOffser="8" nzSpan="24" align="center">
+      <span>{{user.name}}</span>
+    </div>
+  </div>
+  <div nz-row nzType="flex" nzJustify="space-around" class="down">
+    <div class="sim-info" nz-col nzSpan="6" >
+      <p>{{user.following.inum}}</p>
+      <p>following</p>
+    </div>
+    <div class="sim-info" nz-col nzSpan="6" >
+      <p>{{user.followers.inum}}</p>
+      <p>followers</p>
+    </div>
+    <div class="sim-info" nz-col nzSpan="6" >
+      <p>{{user.likes.inum}}</p>
+      <p>likes</p>
+    </div>
+    <div class="sim-info" nz-col nzSpan="6" >
+      <p>{{user.reports.inum}}</p>
+      <p>reports</p>
+    </div>
+  </div>
+</div>
+

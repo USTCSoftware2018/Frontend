@@ -1,0 +1,40 @@
+<div nz-row nzType="flex" nzJustify="space-around" style="background-color:#F2F2F2;height:1000px;">
+  <div nz-col [nzXs]="{ span: 4 }" [nzLg]="{ span: 4 }"  >
+    <nz-affix>
+      <!--<ul *ngIf="!isreport" id="navi0" >
+        <li class="navi1" >
+          <a  [class.navichild]="!rla.isActive" routerLink="./user-basic" routerLinkActive="active" (click)="changeisreport()"#rla="routerLinkActive">Basic Information</a>
+        </li>
+        <li class="navi1">
+          <a [class.navichild]="!rla1.isActive" routerLink="./user-account" routerLinkActive="active" (click)="changeisreport()" #rla1="routerLinkActive">Account</a>
+        </li>
+        <li class="navi1">
+          <a [class.navichild]="!rla2.isActive" routerLink="./user-report" routerLinkActive="active" (click)="okisreport()" #rla2="routerLinkActive">Report</a>
+        </li>
+      </ul>-->
+
+      <div class="collapsenav">
+        <nz-sider [nzCollapsed]="isCollapsed" [nzCollapsedWidth]='0' [nzWidth]="0" >
+          <ul class="navi2">
+            <li class="navi1">
+              <a [class.navichild]="!rla.isActive" routerLink="./user-basic" routerLinkActive="active" #rla="routerLinkActive">Basic Information</a>
+            </li>
+            <li class="navi1">
+              <a [class.navichild]="!rla1.isActive" routerLink="./user-account" routerLinkActive="active" #rla1="routerLinkActive">Account</a>
+            </li>
+            <li class="navi1">
+            <a [class.navichild]="!rla2.isActive" routerLink="./user-report" routerLinkActive="active" #rla2="routerLinkActive">Report</a>
+            </li>
+          </ul>
+        </nz-sider>
+        <div class="sidertrigger">
+          <img  *ngIf="isCollapsed" src="https://github.com/USTCSoftware2018/Art/blob/e2d7505b69e6c031c648fe770527eda6deb3718c/%E8%A1%A5%E5%85%85.png?raw=true" (click)="toggleCollapsed()" style="width:5vw;">
+          <img *ngIf="!isCollapsed" src="https://github.com/USTCSoftware2018/Art/blob/master/%E8%A1%A5%E5%85%852.png?raw=true" (click)="toggleCollapsed()" style="width: 5vw;margin-top:0.65vw;">
+        </div>
+      </div>
+   </nz-affix>
+  </div>
+  <div nz-col [nzXs]="{ span: 15 }" [nzLg]="{ span: 15 }">
+    <router-outlet></router-outlet>
+  </div>
+</div>
