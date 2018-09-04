@@ -19,6 +19,16 @@ export class GetDataService {
 
   // Data from backend
 
+  public getUser() {
+    let user: any;
+    this.httpService.get_all_users().subscribe({
+      next: cont => {console.log(cont); user = cont; },
+      error: err => user = err
+    });
+    console.log(user);
+    return user;
+  }
+
   public getSteps() {
   }
 

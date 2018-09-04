@@ -11,7 +11,8 @@ import { MyNotification } from './Interface/myNotification';
 })
 export class HttpService {
 
-  private global_url = 'https://api.biohub.tech';
+  // private global_url = 'https://api.biohub.tech';
+  private global_url = 'http://127.0.0.1:5000';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',

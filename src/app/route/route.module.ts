@@ -15,9 +15,9 @@ const appRoutes: Routes = [
   { path: 'userset', loadChildren: '../user-set/user-set.module#UserSetModule', data: { preload: true } },
   { path: 'profile', component: ProfilePageComponent},
   { path: 'userinfo', component: UserinfoComponent},
-  { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: 'signin', component: SigninComponent},
   { path: 'startreset', component: StartResetComponent},
+  { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: Error404Component},
 ];
 

@@ -8,15 +8,7 @@ import { HttpService } from './http.service';
 })
 
 export class AppComponent {
-  user: User;
-  title = 'igem-frontend';
-  constructor(private httpService: HttpService) {
-    this.show();
-   }
 
-  show() {
-    this.httpService.getUser(1)
-      .subscribe((user: User) => this.user = user);
-  }
+  constructor() {}
 
 }
