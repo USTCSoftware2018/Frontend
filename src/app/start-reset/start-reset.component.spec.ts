@@ -1,23 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SigninComponent } from './signin.component';
+import { StartResetComponent } from './start-reset.component';
 
-describe('SigninComponent', () => {
-  let component: SigninComponent;
-  let fixture: ComponentFixture<SigninComponent>;
+describe('StartResetComponent', () => {
+  let component: StartResetComponent;
+  let fixture: ComponentFixture<StartResetComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SigninComponent ]
+      declarations: [ StartResetComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SigninComponent);
+    fixture = TestBed.createComponent(StartResetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });

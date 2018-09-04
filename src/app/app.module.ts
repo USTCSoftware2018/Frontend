@@ -27,6 +27,8 @@ import { Eachinfo2Component } from './userinfo/detailinfo/eachinfo2/eachinfo2.co
 import { LikeinfoComponent } from './userinfo/detailinfo/likeinfo/likeinfo.component';
 import { SigninComponent } from './signin/signin.component';
 import { PandaComponent } from './panda/panda.component';
+import { StartResetComponent } from './start-reset/start-reset.component';
+import { CpltResetComponent } from './cplt-reset/cplt-reset.component';
 
 
 
@@ -50,6 +52,8 @@ registerLocaleData(en);
     LikeinfoComponent,
     SigninComponent,
     PandaComponent,
+    StartResetComponent,
+    CpltResetComponent,
   ],
   imports: [
     BrowserModule,

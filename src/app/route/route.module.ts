@@ -7,6 +7,7 @@ import {MainComponent as EditorMainComponent} from '../editor/views/main/main.co
 import { ProfilePageComponent } from '../profile/profile-page/profile-page.component';
 import {UserinfoComponent} from '../userinfo/userinfo.component';
 import {SigninComponent} from '../signin/signin.component';
+import {StartResetComponent} from '../start-reset/start-reset.component';
 
 const appRoutes: Routes = [
   { path: 'editor', component: EditorMainComponent},
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
   { path: 'userinfo', component: UserinfoComponent},
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: 'signin', component: SigninComponent},
+  { path: 'startreset', component: StartResetComponent},
   { path: '**', component: Error404Component},
 ];
 
