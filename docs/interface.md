@@ -5,7 +5,7 @@
 # 响应类
 **定义**
 ```typescript
-class Respon<T> {
+class MyResponse<T> {
     meta: {
         success: boolean,
         message: string
@@ -28,22 +28,26 @@ class User {
         public email?: string,
         public img?: string,
         // 头像
-        public exp?: string,
-        // 经验
+        public about_me?: string,
+        // 关于我
         public info?: {
             followings: Array<number>;
             // 本用户关注的主键列表
             followers: Array<number>;
             // 关注本用户的主键列表
-            likes: number;
-            // 被点赞数
-            reports: number;
+            praises: Array<number>;
+            // 被点赞列表
+            reports: Ａrray<number>;
+            // 报告列表
         },
-        public intro?: string
+        public collections: Array<number>;
+        // 收藏列表
+        public favourites: Array<number>;
+        // 自己点赞列表
     ) { }
     // 声明构造函数和公有属性，并在使用时初始化
 }
-let response = new Respon<User>();
+let response = new MyResponse<User>();
 let user = new User(1);
 // 进行一些操作之后
 let UserData = JSON.stringify([user]); 
@@ -56,7 +60,7 @@ let ResponseData = JSON.stringify(response);
 |./users|GET|null|ResponseData|管理员查看所有用户
 |./users|POST|UserData|ResponseData| 创建新用户
 |./users/{id}|GET|null|ResponseData| 主键查用户
-|./users/{id}|PUT|UserData|ResponseData| 修改信息 
+|./users|PUT|UserData|ResponseData| 修改信息 
 |./users/{id}|DELETE|null|ResponseData| 删除用户
 |./users/followers|POST|{“user_id”:number}|ResponseData|关注用户
 |./users/followers/{id}|DELETE|null|ResponseData|通过想要取消的用户主键取消关注
@@ -65,7 +69,7 @@ let ResponseData = JSON.stringify(response);
 # 通知类
 **定义**
 ```typescript
-class Notifi {
+class MyNotification {
     constructor (
         public id: number,
         // 通知主键
@@ -89,9 +93,10 @@ let ResponseData = JSON.stringify(response);
 **请求方法**
 |URL|Method|Request|Response|Description|
 |:--:|:--:|:--:|:--:|:--:|
-|./{user_id}/notifications|GET|null|ResponseData| 通过user_id拿到用户的所有通知消息
+|./notifications|GET|null|ResponseData| 拿到用户的所有通知消息
+|./notifications/new|GET|null|ResponseData| 拿到用户的新的通知消息
 |./notifications|POST|NotificationData|ResponseData|创建一个新的消息
-|./notifications/id|DELETE|null|ResponseData|通过消息主键删除一条消息
+|./notifications/{id}|DELETE|null|ResponseData|通过消息主键删除一条消息
 
 
 # 报告类
@@ -176,8 +181,19 @@ let ResponseData = JSON.stringify(response);
 |./signin|POST|{"username":string,"passwd":string}|{"status":boolean}|登录
 |./signup|POST|{“email”:string,"username":string,"passwd":string}|{"status":boolean}|注册
 |./search|POST|待定|{"meta":{"success":boolean,"message":string},"data":{"users":Array<number>,"reports":Array<number>,"thesis":待定,"protein":待定,'bio-brick':待定}}|搜索功能
-|./get-popular|GET|null|{"meta":{"success":boolean,"message":string},"data":{"reports":Array<number>}}|热门文章
+|./get-feeds|GET|null|{"meta":{"success":boolean,"message":string},"data":{"reports":Array<number>}}|热门文章
 
 
 # 编辑器类
->待补充
+
+|URL|Method|Request|Response|Description
+|:--:|:--:|:--:|:--:|:--:|
+|./editor/picture|POST|.png、.jpg|{"meta":{"success":boolean,"message":string},"data":{"url":string}}|上传图片
+|./editor/step|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<step>}}|获取step
+|./editor/subroutine|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<subroutine>}}|获取subroutine
+|./editor/report/{id}|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<report>}}|获取report
+|./editor/step|POST|JSON[step]|{"meta":{"success":boolean,"message":string},"data":{"id":number}}|获取step
+|./editor/subroutine|POST|JSON[subroutine]|{"meta":{"success":boolean,"message":string},"data":{"id":number}}|获取subroutine
+|./editor/report/|POST|JSON[report]|{"meta":{"success":boolean,"message":string},"data":[]}|获取report
+|./editor/report/|PUT|JSON[report]|{"meta":{"success":boolean,"message":string},"data":[]}|更新report
+
