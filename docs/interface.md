@@ -192,6 +192,7 @@ let ResponseData = JSON.stringify(response);
 |./editor/step|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<step>}}|获取step
 |./editor/subroutine|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<subroutine>}}|获取subroutine
 |./editor/report/{id}|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<report>}}|获取report
+|./editor/report|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<report>}}|获取report
 |./editor/step|POST|JSON[step]|{"meta":{"success":boolean,"message":string},"data":{"id":number}}|获取step
 |./editor/subroutine|POST|JSON[subroutine]|{"meta":{"success":boolean,"message":string},"data":{"id":number}}|获取subroutine
 |./editor/report/|POST|JSON[report]|{"meta":{"success":boolean,"message":string},"data":[]}|获取report
