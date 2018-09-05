@@ -34,9 +34,9 @@ export class HttpService {
 
 
   // get all users
-  get_all_users() {
+  get_all_users(): Observable<MyResponse<User[]>> {
     const url = `${this.global_url}/users`;
-    return this.http.get(url)
+    return this.http.get<MyResponse<User[]>>(url)
       .pipe(
         retry(3),
         tap(() => console.log(`fetch all users`))
@@ -90,8 +90,25 @@ export class HttpService {
       );
   }
 
+  // get all my followers
+  get_all_my_followers() {
+    const url = `${this.global_url}/users/my/followers`;
+    return this.http.get(url)
+      .pipe(
+        retry(3),
+        tap(() => console.log(`fetch all my followers`))
+    );
+  }
 
-
+  // get all my followings
+  get_all_my_followings() {
+    const url = `${this.global_url}/users/my/followings`;
+    return this.http.get(url)
+      .pipe(
+        retry(3),
+        tap(() => console.log(`fetch all my followings`))
+    );
+  }
 
 
 // --------------- ******************** Action ******************** ------------------//
