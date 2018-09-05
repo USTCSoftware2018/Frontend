@@ -105,6 +105,7 @@ export class EditorReportService {
 
   public reportAddStep(stepid: string) {
     // not implement error
+
   }
 
   public reportAddSubroutine(subid: string) {
