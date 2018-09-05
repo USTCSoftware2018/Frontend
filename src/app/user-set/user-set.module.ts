@@ -25,7 +25,15 @@ registerLocaleData(zh);
     HttpClientModule,
     NgZorroAntdModule,
   ],
-  declarations: [UserBasicComponent, UserNavComponent, UserAccountComponent, UserReportComponent, ReportAllComponent, ReportDraftComponent,ForbiddenNameDirective],
+  declarations: [
+    UserBasicComponent,
+    UserNavComponent,
+    UserAccountComponent,
+    UserReportComponent,
+    ReportAllComponent,
+    ReportDraftComponent,
+    ForbiddenNameDirective
+  ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
 })
 export class UserSetModule { }
