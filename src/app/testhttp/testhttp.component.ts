@@ -7,7 +7,11 @@ import { HttpService } from '../http.service';
   styleUrls: ['./testhttp.component.less']
 })
 export class TesthttpComponent implements OnInit {
+<<<<<<< HEAD
   constructor() { }
+=======
+  constructor(private httpService: HttpService) { }
+>>>>>>> http-service
 
   ngOnInit() {
   }
