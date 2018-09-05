@@ -161,12 +161,46 @@ export class EditorReportService {
 
   public reportDeleteSubroutine(subIdx: number) {
     // not implement error
-    const getIdx = (subs) => {};
-
+    function getId(): number {
+      let _id = 0;
+      while ( _id < this.report.subroutines.length) {
+        if (this.report.subroutines[_id] !== subIdx) {
+          _id ++;
+        } else {
+          return _id;
+        }
+      }
+    }
+    this.report.subroutines.splice(getId(), 1);
   }
 
-  public reportSwap() {
+  public reportSwap(subIdx_1: number, subIdx_2: number) {
     // not implement error
+
+    function getId_1(): number {
+      let _id = 0;
+      while ( _id < this.report.subroutines.length) {
+        if (this.report.subroutines[_id] !== subIdx_1) {
+          _id ++;
+        } else {
+          return _id;
+        }
+      }
+    }
+
+    function getId_2(): number {
+      let _id = 0;
+      while ( _id < this.report.subroutines.length) {
+        if (this.report.subroutines[_id] !== subIdx_2) {
+          _id ++;
+        } else {
+          return _id;
+        }
+      }
+    }
+
+    this.report.subroutines[getId_1()].idx = subIdx_2;
+    this.report.subroutines[getId_2()].idx = subIdx_1;
   }
 
   public mockReport() {
