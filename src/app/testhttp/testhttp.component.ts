@@ -7,16 +7,13 @@ import { HttpService } from '../http.service';
   styleUrls: ['./testhttp.component.less']
 })
 export class TesthttpComponent implements OnInit {
-  user: User;
-  title = 'igem-frontend';
+<<<<<<< HEAD
+  constructor() { }
+=======
   constructor(private httpService: HttpService) { }
+>>>>>>> http-service
 
-  show() {
-    this.httpService.getUser(1)
-      .subscribe((user: User) => this.user = user);
-  }
   ngOnInit() {
-    this.show();
   }
 
 }
