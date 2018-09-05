@@ -29,7 +29,7 @@ export class EditorReportService {
     this.report.ndate = '';
     this.report.result = '';
     this.report.subroutines = [];
-    this.mockReport();
+    // this.mockReport();
   }
 
 
@@ -108,13 +108,12 @@ export class EditorReportService {
   }
 
   public reportAddStep(stepid: string) {
-    // not implement error
     const _step_temp = this.stepsService.findStep(stepid);
     const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
     _new_sub.id = '';
     _new_sub.desc = '';
     _new_sub.name = _step_temp.name;
-    _new_sub.idx =  this.report.subroutines[this.report.subroutines.length - 1].idx + 1;
+    _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
     _new_sub.steps = [];
 
     const _new_step = new ReportStepsHeader();  // 新建 step
@@ -131,15 +130,39 @@ export class EditorReportService {
   }
 
   public reportAddSubroutine(subid: string) {
-    // not implement error
+    const _sub_temp = this.stepsService.findSubroutine(subid);
+
+    const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
+    _new_sub.id = _sub_temp.id;
+    _new_sub.desc = _sub_temp.desc;
+    _new_sub.name = _sub_temp.name;
+    _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
+    _new_sub.steps = [];
+
+    for (const step_id of _sub_temp.steps) { // 建立每一个 steps
+      const _step_temp = this.stepsService.findStep(step_id);
+      const _new_step = new ReportStepsHeader();
+      _new_step.name = _step_temp.id;
+      _new_step.data = {};
+      _new_step.idx = 1;
+      _new_step.temp = _step_temp.template;
+      _new_step.id = _step_temp.id;
+      _new_step.name = _step_temp.name;
+      this.parser(_new_step);
+      _new_sub.steps.push(_new_step);
+    }
+    this.report.subroutines.push(_new_sub);
   }
 
   public reportDeleteStep(stepid: string) {
     // not implement error
+    // It will never be completed.
   }
 
-  public reportDeleteSubroutine(subid: string) {
+  public reportDeleteSubroutine(subIdx: number) {
     // not implement error
+    const getIdx = (subs) => {};
+
   }
 
   public reportSwap() {

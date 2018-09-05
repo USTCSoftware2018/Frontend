@@ -32,7 +32,8 @@ export class GetDataService {
   public setUser() {
     const user = new User(1);
     user.about_me = 'ertuil';
-    this.httpService.create_user(user).subscribe(
+    console.log(user);
+    this.httpService.delete_user_by_id(3).subscribe(
       cont => { console.log(cont); this.user = cont; },
       err => this.user = err
     );
