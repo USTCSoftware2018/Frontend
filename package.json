@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "mock": "json-server --watch -port 3000 database.js"
+    "mock": "json-server --port 3000 database.js"
   },
   "private": true,
   "dependencies": {

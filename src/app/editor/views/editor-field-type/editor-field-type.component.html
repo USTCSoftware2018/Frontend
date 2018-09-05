@@ -1,0 +1,12 @@
+<ng-container [ngSwitch]="fld.type">
+  <div *ngSwitchCase="'input'">
+    <label>{{fld.label}}: </label>
+    <input [(ngModel)]='fld.value' name={{fld.label}} />
+    <label *ngIf="fld.unit"> {{fld.unit}} </label>
+  </div>
+  <div *ngSwitchCase="'textarea'">
+      <label>{{fld.label}}: </label>
+      <textarea [(ngModel)]='fld.value' name={{fld.label}}></textarea>
+      <label *ngIf="fld.unit"> {{fld.unit}} </label>
+  </div>
+</ng-container>
