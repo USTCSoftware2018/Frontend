@@ -1,11 +1,14 @@
 <ul nz-row nzType="flex" nzJustify="space-around" nz-menu [nzMode]="'horizontal'" [nzTheme]="'dark'" [nzSelectable]="False">
-    <div nz-col nzSpan="4"></div>
-    <li nz-menu-item><i class="anticon anticon-mail"></i> BioHub</li>
+  <div nz-col nzSpan="4">
+    <a><img src=""></a>
+  </div>
     <li nz-menu-item>Explore</li>
     <li nz-menu-item>Sign In</li>
     <li nz-menu-item>Register</li>
     <li nz-menu-item class="menu-item-reverse"><span>Editor</span></li>
     <input nz-input placeholder="Search" [(ngModel)]="toSearch" nzSize="'small'" class="navbar-input">
     <li nz-menu-item (click)="toggleSearch()"><i class="anticon anticon-search"></i></li>
-    <div nz-col nzSpan="4"></div>
+  <div nz-col nzSpan="4">
+
+  </div>
 </ul>
