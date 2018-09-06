@@ -1,12 +1,11 @@
 import { User } from './user';
+import { Simuser } from './user';
 
 export const USER: User = {
   id: 1,
   name: 'Thomas Romero',
   about_me: 'a student in ustc',
-  avatar_url: '../../../assets/img/test/images.jpg',
   following: {
-    inum: 42,
     content: [{
       id: 2,
       name: 'Sindy',
@@ -20,7 +19,7 @@ export const USER: User = {
       id: 3,
       name: 'Cindy',
       about_me: 'about me',
-      avatar_url: '../../../assets/img/test/img.jpg',
+      avatar_url: '../../../assets/img/test/images.jpg',
       flingnum: 67,
       flednum: 89,
       likenum: 321,
@@ -28,7 +27,6 @@ export const USER: User = {
      }],
   },
   followers: {
-    inum: 233,
     content: [{
       id: 4,
       name: 'Sindi',
@@ -61,7 +59,6 @@ export const USER: User = {
     }],
   },
   likes: {
-    inum: 1,
     content: [{
     ouser: {
       id: 2,
@@ -78,21 +75,30 @@ export const USER: User = {
       topic: ['A', 'B', 'C'],
       content: '1. Centifuge 1.5 mL bacterium solution at 11000 rpm, few sediment getted. Remove the supernatant. Repeat twice.\n' +
       '2. Add 250 μL Buﬀer P1, resuspend cells.\n' +
-      '…',
+      '1. Centifuge 1.5 mL bacterium solution at 11000 rpm, few sediment getted. Remove the supernatant. Repeat twice.\n' +
+      '2. Add 250 μL Buﬀer P1, resuspend cells.\n',
       commentsnum: 190,
       likesnum: 12
     }
   }]},
   reports: {
-    inum: 1,
     content: [{
     title: 'research',
     topic: ['A', 'B', 'C'],
     content:  '1. Centifuge 1.5 mL bacterium solution at 11000 rpm, few sediment getted. Remove the supernatant. Repeat twice.\n' +
-    '2. Add 250 μL Buﬀer P1, resuspend cells.\n' +
-    '…',
+'2. Add 250 μL Buﬀer P1, resuspend cells.\n' +
+'1. Centifuge 1.5 mL bacterium solution at 11000 rpm, few sediment getted. Remove the supernatant. Repeat twice.\n' +
+'2. Add 250 μL Buﬀer P1, resuspend cells.\n',
     commentsnum: 190,
     likesnum: 12
   }]
   }
-};
+}
+export const SIMUSER: Simuser = {
+  name: 'Thomas Romero',
+  avatar_url: '//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+  followingnum: 42,
+  followednum: 233,
+  likenum: 1,
+  reportsnum: 1,
+}

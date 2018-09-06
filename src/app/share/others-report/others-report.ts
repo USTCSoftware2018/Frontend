@@ -1,7 +1,7 @@
 export class Report {
-  title: string;
-  overview: string;
-  comments: any;
-  likes: any;
-  topics: any;
+  title: String;
+  topic: String[];
+  content: String;
+  commentsnum: Number;
+  likesnum: Number;
 }

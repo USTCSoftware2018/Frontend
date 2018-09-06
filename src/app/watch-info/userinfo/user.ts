@@ -1,6 +1,6 @@
 
 export class Otheruser {
-  id: Number;
+  id: number;
   name: String;
   about_me: String;
   avatar_url: String;
@@ -10,7 +10,6 @@ export class Otheruser {
   reportsnum: Number;
 }
 export class Info {
-  inum: Number;
   content: Otheruser[];
 }
 export class Report {
@@ -25,20 +24,25 @@ export class Like {
   report: Report;
 }
 export class Likes {
-  inum: Number;
   content: Like[];
 }
 export class Reports {
-  inum: Number;
   content: Report[];
 }
 export class User {
   id: Number;
   name: String;
   about_me: String;
-  avatar_url: String;
   following: Info;
   followers: Info;
   likes: Likes;
   reports: Reports;
+}
+export class Simuser {
+  avatar_url: string
+  name: string;
+  followingnum: number;
+  followednum: number;
+  likenum: number;
+  reportsnum: number;
 }
