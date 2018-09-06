@@ -7,8 +7,8 @@ export class User {
         public organization?: string,
         public email?: string,
         public img?: string,
-        public about_me?: string,
-        // 关于我
+        // 头像
+
         public info?: {
             followings: Array<number>;
             // 本用户关注的主键列表
