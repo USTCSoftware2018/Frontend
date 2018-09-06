@@ -6,7 +6,7 @@ import en from '@angular/common/locales/en';
 
 import { AuthenticRoutingModule } from './authentic-routing.module';
 import { SigninComponent } from './signin/signin.component';
-import { PandaComponent } from './panda/panda.component';
+import { ShareModule } from '../share/share.module';
 import { StartResetComponent } from './start-reset/start-reset.component';
 import { CpltResetComponent } from './cplt-reset/cplt-reset.component';
 
@@ -18,16 +18,15 @@ registerLocaleData(en);
     AuthenticRoutingModule,
     NgZorroAntdModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ShareModule
   ],
   declarations: [
     SigninComponent,
-    PandaComponent,
     StartResetComponent,
     CpltResetComponent,
   ],
   exports: [
-    PandaComponent,
     NgZorroAntdModule,
   ]
 })
