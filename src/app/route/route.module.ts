@@ -11,6 +11,7 @@ const appRoutes: Routes = [
   { path: 'userset', loadChildren: '../user-set/user-set.module#UserSetModule', data: { preload: true } },
   { path: 'userinfo', loadChildren: '../watch-info/watch-info.module#WatchInfoModule', data: {preload: true}},
   { path: 'authentation', loadChildren: '../authentic/authentic.module#AuthenticModule', data: {preload: true}},
+  { path: 'search', loadChildren: '../search/search.module#SearchModule', data: {preload: true}},
   { path: 'profile', component: ProfilePageComponent},
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: Error404Component},
