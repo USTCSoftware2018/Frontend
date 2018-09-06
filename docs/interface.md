@@ -35,16 +35,10 @@ class User {
             // 本用户关注的主键列表
             followers: Array<number>;
             // 关注本用户的主键列表
-<<<<<<< HEAD
-            likes: Array<number>;
-            // 被点赞列表
-            reports: Array<number>;
-=======
             praises: Array<number>;
             // 被点赞列表
             reports: Ａrray<number>;
             // 报告列表
->>>>>>> http-service
         },
         public collections: Array<number>;
         // 收藏列表
