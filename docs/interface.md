@@ -55,6 +55,7 @@ let ResponseData = JSON.stringify(response);
 ```
 
 **请求方法**
+
 |URL|Method|Request|Response|Description|
 |:--:|:--:|:--:|:--:|:--:|
 |./users|GET|null|ResponseData|管理员查看所有用户
@@ -98,6 +99,7 @@ let NotificationData = JSON.stringify([notification]);
 let ResponseData = JSON.stringify(response);
 ```
 **请求方法**
+
 |URL|Method|Request|Response|Description|
 |:--:|:--:|:--:|:--:|:--:|
 |./notifications|GET|null|ResponseData| 拿到用户的所有通知消息
@@ -133,6 +135,7 @@ let ResponseData = JSON.stringify(response);
 ```
 
 **请求方法**
+
 |URL|Method|Request|Response|Description
 |:--:|:--:|:--:|:--:|:--:|
 |./reports/{id}|GET|null|ResponseData|文章主键拿到文章
@@ -162,6 +165,7 @@ let ResponseData = JSON.stringify(response);
 ```
 
 **请求方法**
+
 |URL|Method|Request|Response|Description
 |:--:|:--:|:--:|:--:|:--:|
 |.reports/{report_id}/comments|GET|null|ResponseData|从文章主键拿到文章下的所有评论
@@ -175,6 +179,7 @@ let ResponseData = JSON.stringify(response);
 >待补充
 
 **请求方法**
+
 |URL|Method|Request|Response|Description
 |:--:|:--:|:--:|:--:|:--:|
 |./signin/comfirm/{token}|GET|null|{"status":boolean}|激活账号
