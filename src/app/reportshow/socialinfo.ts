@@ -6,4 +6,5 @@ export class Socialcomments {
   comments: string;
   likenum: number;
   commentnum: number;
+  likeo: boolean;
 }

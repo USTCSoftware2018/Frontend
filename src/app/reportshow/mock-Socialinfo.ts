@@ -12,6 +12,7 @@ export const SOCIALCOMMENTS: Socialcomments[] = [
     comments: 'deep dark fantasty',
     likenum: 77,
     commentnum: 14,
+    likeo: true,
   },
   {
     username: 'van',
@@ -19,5 +20,6 @@ export const SOCIALCOMMENTS: Socialcomments[] = [
     comments: 'van ban wu nai',
     likenum: 33,
     commentnum: 14,
+    likeo: true,
   },
 ];

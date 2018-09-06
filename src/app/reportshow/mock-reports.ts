@@ -1,4 +1,4 @@
-import { Report } from './report';
+import { Report } from './reportshow';
 
 export const REPORTS: Report[] = [
   {

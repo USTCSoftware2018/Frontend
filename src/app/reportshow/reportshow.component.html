@@ -29,7 +29,7 @@
     <div class="box-position" style="height: 10px;color: #f2f2f2;background-color: #f2f2f2">
     </div>
 
-    <div class="box-bk box-position" style="height: 400px;">
+    <div class="box-bk box-position" style="height: 350px;">
       <div class="box-bk card-border fontsize-title box-position">
         <b>Related report</b>
       </div>
@@ -41,34 +41,34 @@
     </div>
   </div>
 
-  <div nz-col [nzSpan]="12" [nzOffset]="1" id="mainbox1" class="box-bk2 fontSize mainbox-position1 card-border" style="top: 3vw">
-    <div  style="width: 30%"><h3>{{Report.title}}</h3></div>
-    <div class="font-style">topics : {{Report.topics}}</div>
+  <div nz-col [nzSpan]="13" [nzOffset]="1" id="mainbox1" class="box-bk2 fontSize mainbox-position1 card-border" style="top: 3vw">
     <div class="ant-row-flex ant-row-flex-top ant-row-flex-center" style="float: right">
-      <button nz-button [nzType]="'primary'" class="ant-btn ant-btn-primary button-style1" style="float: right;">
+      <button nz-button [nzType]="'primary'" [nzSize]="'default'" class="ant-btn ant-btn-primary button-style1" style="float: right;">
+        <span> Edit </span>
+      </button>
+      <button nz-button [nzType]="'primary'" [nzSize]="'default'" class="ant-btn ant-btn-primary button-style1" style="float: right;">
         <i class="anticon anticon-down ng-star-inserted" style="display: inline-block;"></i><span>Download</span>
       </button>
-      <button nz-button [nzType]="'primary'" class="ant-btn ant-btn-primary button-style1" style="float: right;">
+      <button nz-button [nzType]="'primary'" [nzSize]="'default'" class="ant-btn ant-btn-primary button-style1" style="float: right;">
         <span> Delete </span>
       </button>
     </div>
-      <div class="time-style">{{Report.time}}</div>
   </div>
 
-  <div nz-col [nzSpan]="12" [nzOffset]="1" id="mainbox2" class="box-bk2 fontSize mainbox-position2 card-border" style="top: 3vw">
-    <button nz-button [nzType]="'primary'" class="ant-btn ant-btn-primary button-style2" >
-      <span> Edit </span>
-    </button>
+  <div nz-col [nzSpan]="13" [nzOffset]="1" id="mainbox2" class="box-bk2 fontSize mainbox-position2 card-border" style="top: 3vw">
+    <div  style="width: 30%"><h3>{{Report.title}}</h3></div>
+    <div class="font-style">topics : {{Report.topics}}</div>
+    <div class="time-style">{{Report.time}}</div>
     <div>
       <p class="article">{{Report.begin}}</p>
     </div>
   </div>
 
-  <div nz-col [nzSpan]="12" [nzOffset]="1" id="mainbox3" class="box-bk2 fontSize mainbox-position2 card-border" style="top: 3vw;padding-bottom: 30px">
+  <div nz-col [nzSpan]="13" [nzOffset]="1" id="mainbox3" class="box-bk2 fontSize mainbox-position2 card-border" style="top: 3vw;padding-bottom: 30px">
     <div class="box-bk1 box-position ant-col-12 ant-row-flex-top" style="width: 100%;margin-top: 10px">
       <p>
-        <span class="iconstyle ant-col-3">&nbsp;{{ socialinfo.likenum }}&nbsp;<i class="anticon anticon-like-o"></i></span>
-        <span class="iconstyle ant-col-3">&nbsp;{{ socialinfo.commentnum }}&nbsp;<i class="anticon anticon-message"></i></span>
+        <span class="iconstyle ant-col-3">&nbsp;{{ socialinfo.likenum }}&nbsp;<i id="change1" class="handpoint anticon anticon-like-o" (click)="changecolor()"></i></span>
+        <span class="iconstyle ant-col-3">&nbsp;{{ socialinfo.commentnum }}&nbsp;<i class="handpoint anticon anticon-message"></i></span>
       </p>
     </div>
     <br>
@@ -79,12 +79,19 @@
       <div style="padding-bottom: 1vw">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{comment.comments}}
         <p>
-          <span class="iconstyle2 ant-col-2">&nbsp;{{ comment.commentnum }}&nbsp;<i class="anticon anticon-message"></i></span>
-          <span class="iconstyle2 ant-col-2">&nbsp;{{ comment.likenum }}&nbsp;<i class="anticon anticon-like-o"></i></span>
+          <span class="iconstyle2 ant-col-2">&nbsp;{{ comment.commentnum }}&nbsp;<i class="handpoint anticon anticon-message"></i></span>
+          <span class="iconstyle2 ant-col-2">&nbsp;{{ comment.likenum }}&nbsp;
+            <i class="handpoint anticon"
+               [class.likeo]="comment.likeo"
+               [class.like]="!comment.likeo"
+               [class.anticon-like-o]="comment.likeo"
+               [class.anticon-like]="!comment.likeo"
+               (click)="changecolor2(comment)">
+            </i>
+          </span>
         </p>
       </div>
     </div>
   </div>
 </div>
-
 
