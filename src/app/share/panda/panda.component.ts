@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-panda',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./panda.component.less'],
 })
 export class PandaComponent implements OnInit {
-  shake: boolean;
+  @Input() shake: boolean;
   constructor() { }
 
   ngOnInit() {

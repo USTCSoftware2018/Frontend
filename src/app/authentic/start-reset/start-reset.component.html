@@ -7,7 +7,7 @@
 
     <div nz-row>
       <div class="panda" nz-col nzOffset="7" nzSpan="10">
-        <app-panda></app-panda>
+        <app-panda [shake]="shake"></app-panda>
       </div>
     </div>
 
@@ -23,7 +23,8 @@
             <p class="enter-content">Enter your email address and we will send you a link
               to reset your password.</p>
             <nz-input-group nzPrefixIcon="anticon anticon-mail">
-              <input type="text" nz-input formControlName="email" placeholder="E-mail">
+              <input (focus)="startShake()" (blur)="stopShake()"
+                     type="text" nz-input formControlName="email" placeholder="E-mail">
             </nz-input-group>
             <nz-form-explain *ngIf="email.dirty && email.errors || email.pending ">
               <ng-container *ngIf="email.hasError('required')">
