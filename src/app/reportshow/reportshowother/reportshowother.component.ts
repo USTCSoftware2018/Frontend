@@ -1,19 +1,19 @@
-import {Attribute, Component, Input, OnInit} from '@angular/core';
-import { Report } from './reportshow';
-import { REPORTS } from './mock-reports';
-import { Socialcomments } from './socialinfo';
-import { SOLICIALINFO , SOCIALCOMMENTS } from './mock-Socialinfo';
-import { User } from './user';
-import { USER } from './mock-user';
+import { Component, OnInit } from '@angular/core';
+import { Report } from '../reportshow';
+import { REPORTS } from '../mock-reports';
+import { Socialcomments } from '../socialinfo';
+import {SOLICIALINFO, SOCIALCOMMENTS, ME} from '../mock-Socialinfo';
+import { User } from '../user';
+import { USER } from '../mock-user';
 import {variable} from '@angular/compiler/src/output/output_ast';
 import {isLineBreak} from 'codelyzer/angular/sourceMappingVisitor';
 
 @Component({
-  selector: 'app-reportshow',
-  templateUrl: './reportshow.component.html',
-  styleUrls: ['./reportshow.component.less']
+  selector: 'app-reportshowother',
+  templateUrl: './reportshowother.component.html',
+  styleUrls: ['./reportshowother.component.less']
 })
-export class ReportshowComponent implements OnInit {
+export class ReportshowotherComponent implements OnInit {
 
   reports = REPORTS;
   Report = REPORTS[1];
@@ -21,6 +21,7 @@ export class ReportshowComponent implements OnInit {
   socialcomments = SOCIALCOMMENTS;
   selectedcomments: Socialcomments;
   user = USER;
+  me = ME;
 
   changecolor(): void {
     const Like = document.getElementById('change1');
@@ -48,4 +49,5 @@ export class ReportshowComponent implements OnInit {
 
   ngOnInit() {
   }
+
 }
