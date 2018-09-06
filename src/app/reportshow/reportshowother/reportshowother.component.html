@@ -1,12 +1,22 @@
 <div class="backgroundstyle" xmlns="http://www.w3.org/1999/html">
 
-  <div  nz-col [nzSpan]="6" [nzOffset]="2" class="box-position" style="top: 3vw">
+  <div  nz-col [nzSpan]="7" [nzOffset]="2" class="box-position" style="top: 3vw">
     <div nz-col  class="box-bk1 box-position" style="overflow: auto">
       <div nz-col [nzOffset]="6" [nzSpan]="10">
         <img class="avatar" src="{{user.avatar_url}}">
       </div>
       <div class="username" nz-col [nzOffset]="" [nzSpan]="24" align="center">
         <span>{{user.name}}</span>
+      </div>
+      <div nz-col [nzOffset]="" [nzSpan]="20" style="position: relative;left: 2vw">
+        <a class="infoicon"><i class="anticon anticon-environment-o" style="color: #3C7BB8"></i>&nbsp;&nbsp;&nbsp;&nbsp;China</a>
+        <p class="infoicon"><i class="anticon anticon-mail" style="color: #3C7BB8"></i>&nbsp;&nbsp;&nbsp;&nbsp;biohub@mail.ustc.edu.cn</p>
+        <p class="infoicon"><i class="anticon anticon-team" style="color: #3C7BB8"></i>&nbsp;&nbsp;&nbsp;&nbsp;USTC</p>
+      </div>
+      <div class="iconandname" nz-col [nzOffset]="" [nzSpan]="24" align="center">
+        <button nz-button [nzType]="'primary'" [nzSize]="'default'" class="ant-btn ant-btn-primary button-style1" style="align-self: center;margin-bottom: 1vw;margin-top: 1vw">
+          <span> Follow </span>
+        </button>
       </div>
       <div class="sim-info" nz-col [nzSpan]="6" >
         <p>{{user.following.inum}}</p>
