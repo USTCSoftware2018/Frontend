@@ -8,7 +8,8 @@ registerLocaleData(en);
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    NgZorroAntdModule
   ],
   declarations: [
     PandaComponent,
