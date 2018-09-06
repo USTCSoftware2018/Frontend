@@ -69,21 +69,28 @@ let ResponseData = JSON.stringify(response);
 # 通知类
 **定义**
 ```typescript
+enum NotificationAction {
+    praise,
+    follow,
+    compose
+}
+
 class MyNotification {
     constructor (
         public id: number,
         // 通知主键
         public isread?: boolean,
         // 已读？
-        public content?: string,
+        public content?: NotificationAction,
         public time?: Date,
         // 发送时间
         public to?: number
         // 发送对象主键
     ) { }
 }
-let response = new Respon<Notifi>();
-let notification = new Notifi();
+
+let response = new MyResponse<Notifi>();
+let notification = new MyNotification();
 // 进行一些操作之后
 
 let NotificationData = JSON.stringify([notification]);
@@ -118,7 +125,7 @@ class Report {
     ) { }
 }
 let report = new Report();
-let response = new Respon<Report>();
+let response = new MyResponse<Report>();
 
 // 进行一些操作之后
 let ReportData = JSON.stringify([report]);
@@ -148,7 +155,7 @@ class Comment {
     ) { }
 }
 let comment = new Comment(1);
-let response = new Respon<Comment>();
+let response = new MyResponse<Comment>();
 // 一些操作之后
 let CommentData = JSON.stringify([comment]);
 let ResponseData = JSON.stringify(response);
