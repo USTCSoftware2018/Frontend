@@ -1,4 +1,5 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Input } from '@angular/core';
+import { User } from '../Interface/User';
 
 @Component({
   selector: 'app-navbar',
@@ -43,4 +44,5 @@ export class NavbarComponent implements OnInit {
         this.input.style.opacity = 0;
     }
   }
+  @Input() user: number;
 }
