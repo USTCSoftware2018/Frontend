@@ -12,7 +12,7 @@ const appRoutes: Routes = [
   { path: 'userset', loadChildren: '../user-set/user-set.module#UserSetModule',data: { preload: true } },
   { path: 'report', component: Report1Component},
   { path: 'profile', component: ProfilePageComponent},
-  { path: 'user-set', loadChildren: '../user-set/user-set.module#UserSetModule', data: { preload: true } },
+  //{ path: 'user-set', loadChildren: '../user-set/user-set.module#UserSetModule', data: { preload: true } },
   { path: 'userinfo', component: UserinfoComponent},
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: Error404Component},
