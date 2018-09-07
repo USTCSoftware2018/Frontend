@@ -12,25 +12,25 @@
 
   <div *ngIf="router[0]">
     <div  *ngFor="let otheruser of user.following.content">
-      <app-eachinfo1 [otheruser]="otheruser" [isFollowing]="ifFollowing(otheruser)" ></app-eachinfo1>
+      <app-followuser [otheruser]="otheruser" [isFollowing]="ifFollowing(otheruser)" ></app-followuser>
     </div>
   </div>
 
   <div *ngIf="router[1]">
     <div  *ngFor="let otheruser of user.followers.content">
-      <app-eachinfo1 [otheruser]="otheruser" [isFollowing]="ifFollowing(otheruser)"></app-eachinfo1>
+      <app-followuser [otheruser]="otheruser" [isFollowing]="ifFollowing(otheruser)"></app-followuser>
     </div>
   </div>
 
   <div *ngIf="router[2]">
-    <div  *ngFor="let like of user.likes.content">
-      <app-likeinfo [like]="like"></app-likeinfo>
+    <div  *ngFor="let like of user.likes">
+      <app-likereport [like]="like"></app-likereport>
     </div>
   </div>
 
   <div *ngIf="router[3]">
-    <div  *ngFor="let report of user.reports.content">
-      <app-eachinfo2 [report]="report"></app-eachinfo2>
+    <div  *ngFor="let report of user.reports">
+      <app-others-report [report]="report"></app-others-report>
     </div>
   </div>
 </div>
