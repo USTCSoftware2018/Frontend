@@ -1,0 +1,49 @@
+<div>
+  <div nz-row nzType="flex" nzJustify="space-around" class="select-search">
+    <div nz-col nzSpan="6" class="Time">
+      <label>Time:</label>
+      <nz-select style="width: 4vw;" nzPlaceHolder="all" nzSize="small">
+      </nz-select>
+      <nz-select style="width: 4vw;" nzPlaceHolder="all" nzSize="small">
+      </nz-select>
+    </div>
+    <div nz-col nzSpan="7" class="Labels" >
+      <label>Labels:</label>
+      <nz-select style="width: 8vw;" nzPlaceHolder="all" nzSize="small">
+      </nz-select>
+    </div>
+    <div nz-col nzSpan="10" class="reportsearch">
+      <nz-input-group nzSearch nzSize="small" style="margin:0 1vw;" >
+        <input placeholder="Search by Keywords" nz-input [(ngModel)]="inputValue" (ngModelChange)="onChange($event)" [nzAutocomplete]="auto" style="border-radius: 0.4vw;">
+      </nz-input-group>
+      <div #suffixIconButton>
+        <button nz-button nzType="primary" nzSize="small" style="
+font-family: AvenirNext-Regular;
+border-radius: 0.5vw;
+color: #FFFFFF;
+text-align: center;
+padding-bottom: 0.1vw;"><span>Search</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="reportshow">
+    <div *ngFor="let myreport of myreports" class="myreportshow" >
+      <div class="reportTag" nz-row nzType="flex" nzJustify="space-between">
+        <div nz-col nzSpan="20" class="reportTitle">
+          <button *ngIf="myreport.isDraft" nz-button nzType="default" nzSize="small" style="margin-right: 1vw;">Draft</button>
+          <a>{{myreport.title}}</a>
+        </div>
+        <a>Delete</a>
+      </div>
+      <div class="extraInformation">
+        <p>{{myreport.Date}}</p>
+        <div *ngIf="!myreport.isDraft" class="read-comment">
+          <img src="https://github.com/USTCSoftware2018/Art/blob/master/%E6%9B%B4%E6%96%B0%E8%87%AA%E5%B7%B1%E6%89%93%E5%BC%80%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE/%E5%9B%BE/%E9%98%85%E8%AF%BB.png?raw=true"
+          ><p>{{myreport.readNum}}</p>
+          <img src="https://github.com/USTCSoftware2018/Art/blob/master/%E6%9B%B4%E6%96%B0%E8%87%AA%E5%B7%B1%E6%89%93%E5%BC%80%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE/%E5%9B%BE/%E8%AF%84%E8%AE%BA.png?raw=true"
+               style="margin-left: 2vw;"><p>{{myreport.commentNum}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
