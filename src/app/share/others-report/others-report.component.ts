@@ -13,6 +13,7 @@ import {Expandin} from '../report-list-animation';
 })
 export class OthersReportComponent implements OnInit {
   @Input() report: Report;
+  @Input() bkcolor: string;
   constructor() { }
 
   ngOnInit() {

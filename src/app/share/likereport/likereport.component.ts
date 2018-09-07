@@ -12,6 +12,7 @@ import {Expandin} from '../report-list-animation';
 })
 export class LikereportComponent implements OnInit {
   @Input() like: Like;
+  @Input() bkcolor: string;
   constructor() { }
 
   ngOnInit() {

@@ -13,6 +13,7 @@ import {Expandin} from '../report-list-animation';
 export class FollowuserComponent implements OnInit {
   @Input() otheruser: Otheruser;
   @Input() isFollowing: Boolean;
+  @Input() bkcolor: string;
   btncontent: String ;
   constructor() { }
 
