@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from './Interface/User';
-import { HttpService } from './http.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,7 +6,6 @@ import { HttpService } from './http.service';
 })
 
 export class AppComponent {
-
-  constructor() {}
-
+  title = 'igem-frontend';
+  constructor( ) { }
 }

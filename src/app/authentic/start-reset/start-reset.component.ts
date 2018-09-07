@@ -9,6 +9,7 @@ import {forbiddenEmailValidator } from './forbidden-email';
 })
 export class StartResetComponent implements OnInit {
   validateForm: FormGroup;
+  shake = false;
   constructor() { }
 
   ngOnInit() {
@@ -25,4 +26,10 @@ export class StartResetComponent implements OnInit {
     }
   }
   get email() { return this.validateForm.get('email'); }
+  startShake() {
+    this.shake = true;
+  }
+  stopShake() {
+    this.shake = false;
+  }
 }

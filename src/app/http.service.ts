@@ -36,9 +36,9 @@ export class HttpService {
 
 
   // get all users
-  get_all_users() {
+  get_all_users(): Observable<MyResponse<User[]>> {
     const url = `${this.global_url}/users`;
-    return this.http.get(url)
+    return this.http.get<MyResponse<User[]>>(url)
       .pipe(
         retry(3),
         tap(() => console.log(`fetch all users`))
@@ -92,8 +92,25 @@ export class HttpService {
       );
   }
 
+  // get all my followers
+  get_all_my_followers() {
+    const url = `${this.global_url}/users/my/followers`;
+    return this.http.get(url)
+      .pipe(
+        retry(3),
+        tap(() => console.log(`fetch all my followers`))
+    );
+  }
 
-
+  // get all my followings
+  get_all_my_followings() {
+    const url = `${this.global_url}/users/my/followings`;
+    return this.http.get(url)
+      .pipe(
+        retry(3),
+        tap(() => console.log(`fetch all my followings`))
+    );
+  }
 
 
 // --------------- ******************** Action ******************** ------------------//
@@ -273,7 +290,9 @@ export class HttpService {
   }
 
 
+// --------------- ******************** Editor ******************** ------------------//
 
+// ************ Reports ************ //
   // create new reports
   create_reports<Reports>(data: Reports) {
     const url = `${this.global_url}/reports`;
@@ -283,9 +302,37 @@ export class HttpService {
       );
   }
 
+  // update reports
+  update_reports<Reports>(data: Reports, id: number) {
+    const url = `${this.global_url}/editor/report/${id}`;
+    return this.http.put<User>(url, data, this.httpOptions)
+      .pipe(
+        retry(3),
+        tap(() => console.log(`update report with ${id}`))
+      );
+  }
 
-// --------------- ******************** Editor ******************** ------------------//
+  // get reports
+  get_report_by_id(id: number) {
+    const url = `${this.global_url}/editor/report/${id}`;
+    return this.http.get(url)
+      .pipe(
+        retry(3),
+        tap(() => console.log(`fetch the report with id ${id}`))
+    );
+  }
 
+  // get the users all reports
+  get_report_all() {
+    const url = `${this.global_url}/editor/report`;
+    return this.http.get(url)
+      .pipe(
+        retry(3),
+        tap(() => console.log(`fetch all this users reports`))
+    );
+  }
+
+// ************ Steps ************ //
 
   // get step for report
   get_step() {
@@ -297,7 +344,53 @@ export class HttpService {
     );
   }
 
-  // get
+  // create new step
+  create_step<step>(data: step) {
+    const url = `${this.global_url}/editor/step`;
+    return this.http.post(url, data, this.httpOptions)
+      .pipe(
+        retry(3)
+      );
+  }
+
+  // update step
+  update_step<step>(data: step, id: number) {
+    const url = `${this.global_url}/editor/step/${id}`;
+    return this.http.put(url, data, this.httpOptions)
+      .pipe(
+        retry(3)
+      );
+  }
+
+// ************ Steps ************ //
+  // get subroutine for report
+  get_subroutine() {
+    const url = `${this.global_url}/editor/subroutine`;
+    return this.http.get(url)
+      .pipe(
+        retry(3),
+        tap(() => console.log(`fetch all subroutines for you`))
+    );
+  }
+
+  // create new subroutine
+  create_subroutine<subroutine>(data: subroutine) {
+    const url = `${this.global_url}/editor/subroutine`;
+    return this.http.post(url, data, this.httpOptions)
+      .pipe(
+        retry(3)
+      );
+  }
+
+  // update subroutine
+  update_subroutine<subroutine>(data: subroutine, id: number) {
+    const url = `${this.global_url}/editor/subroutine/${id}`;
+    return this.http.put(url, data, this.httpOptions)
+      .pipe(
+        retry(3)
+      );
+  }
+
 }
 
 
