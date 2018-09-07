@@ -7,7 +7,7 @@ import { HttpService } from '../http.service';
   styleUrls: ['./testhttp.component.less']
 })
 
-export class TesthttpComponent implements OnInit {git
+export class TesthttpComponent implements OnInit {
   constructor(private httpService: HttpService) { }
   ngOnInit() {
   }
