@@ -19,7 +19,6 @@ import { Report2Component} from './profile/report/report.component';
 import { PersonalInformationComponent } from './profile/personal-information/personal-information.component';
 
 
-
 registerLocaleData(en);
 
 @NgModule({
