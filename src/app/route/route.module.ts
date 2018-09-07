@@ -13,6 +13,7 @@ const appRoutes: Routes = [
   { path: 'authentication', loadChildren: '../authentic/authentic.module#AuthenticModule', data: {preload: true}},
   { path: 'search', loadChildren: '../search/search.module#SearchModule', data: {preload: true}},
   { path: 'profile', component: ProfilePageComponent},
+  //{ path: 'user-set', loadChildren: '../user-set/user-set.module#UserSetModule', data: { preload: true } },
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: Error404Component},
 ];
