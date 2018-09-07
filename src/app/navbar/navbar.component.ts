@@ -8,17 +8,19 @@ import { User } from '../Interface/User';
 })
 export class NavbarComponent implements OnInit {
 
-  private hasShown = false;
+  private has_shown = false;
   private input: any = null;
   private menu_lists: any = null;
-  toSearch: String;
+  private user: User = null;
+  to_search: String;
   constructor(private el: ElementRef) {
+    this.user = new User(1,'WTWTWTWT9');
   }
 
   ngOnInit() {
-    console.log(this.menu_lists);
+    console.log(this.user)
   }
-  toggleSearch() {
+  toggle_search() {
     if (this.input == null) {
       this.input = this.el.nativeElement.querySelector('.navbar-input');
     }
@@ -26,8 +28,8 @@ export class NavbarComponent implements OnInit {
       this.menu_lists = this.el.nativeElement.querySelectorAll('.ant-menu-item');
     }
     let i: number;
-    if (!this.hasShown) {
-        this.hasShown = true;
+    if (!this.has_shown) {
+        this.has_shown = true;
         for (i = 1; i < this.menu_lists.length - 1; i++) {
             this.menu_lists[i].style.transform = 'translate(0, -50px)';
         }
@@ -35,7 +37,7 @@ export class NavbarComponent implements OnInit {
         this.input.style.zIndex = 1;
         this.input.style.opacity = 1;
     } else {
-        this.hasShown = false;
+        this.has_shown = false;
         for (i = 1; i < this.menu_lists.length - 1; i++) {
             this.menu_lists[i].style.transform = 'translate(0, 0px)';
         }
@@ -44,5 +46,4 @@ export class NavbarComponent implements OnInit {
         this.input.style.opacity = 0;
     }
   }
-  @Input() user: number;
 }
