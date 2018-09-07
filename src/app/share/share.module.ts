@@ -6,6 +6,8 @@ import en from '@angular/common/locales/en';
 import { PandaComponent } from './panda/panda.component';
 import { OthersReportComponent } from './others-report/others-report.component';
 import { SiminfoComponent } from './siminfo/siminfo.component';
+import { LikereportComponent } from './likereport/likereport.component';
+import { FollowuserComponent } from './followuser/followuser.component';
 
 registerLocaleData(en);
 
@@ -17,7 +19,9 @@ registerLocaleData(en);
   declarations: [
     PandaComponent,
     OthersReportComponent,
-    SiminfoComponent
+    SiminfoComponent,
+    LikereportComponent,
+    FollowuserComponent
   ],
   // 公用导出组件放在exports数组内
   providers: [{ provide: NZ_I18N, useValue: en_US }],
@@ -25,7 +29,9 @@ registerLocaleData(en);
     PandaComponent,
     NgZorroAntdModule,
     OthersReportComponent,
-    SiminfoComponent
+    SiminfoComponent,
+    LikereportComponent,
+    FollowuserComponent
   ]
 })
 export class ShareModule { }
