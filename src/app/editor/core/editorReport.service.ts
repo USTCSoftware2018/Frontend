@@ -1,5 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader } from '../headers/article';
+import { AppendixService } from './appendix.service';
 import {StepsService} from './steps.service';
 
 
@@ -17,7 +18,7 @@ export class EditorReportService {
   }
 
 
-  constructor(public stepsService: StepsService) { }
+  constructor(public stepsService: StepsService, public appendixService: AppendixService) { }
 
   public initReport() {
     // 初始化文章
@@ -32,9 +33,6 @@ export class EditorReportService {
     // this.mockReport();
   }
 
-
-
-
   public parser (step: ReportStepsHeader ) {
     // 解析简单模版
     let temp = step.temp;
@@ -46,7 +44,6 @@ export class EditorReportService {
     let _field: any = {};
     let states = 0;
     for (const token of tokens) {
-      console.log(token);
       if (token === '-') {
         _fields.push(_field);
         _field = new Object();
@@ -159,48 +156,24 @@ export class EditorReportService {
     // It will never be completed.
   }
 
+  private getId(subIdx: number): number {
+    let _id = 0;
+    while ( _id < this.report.subroutines.length && this.report.subroutines[_id].idx !== subIdx) {
+      _id ++;
+    }
+    return _id;
+  }
+
   public reportDeleteSubroutine(subIdx: number) {
     // not implement error
-    function getId(): number {
-      let _id = 0;
-      while ( _id < this.report.subroutines.length) {
-        if (this.report.subroutines[_id] !== subIdx) {
-          _id ++;
-        } else {
-          return _id;
-        }
-      }
-    }
-    this.report.subroutines.splice(getId(), 1);
+    this.report.subroutines.splice(this.getId(subIdx), 1);
   }
 
   public reportSwap(subIdx_1: number, subIdx_2: number) {
     // not implement error
 
-    function getId_1(): number {
-      let _id = 0;
-      while ( _id < this.report.subroutines.length) {
-        if (this.report.subroutines[_id] !== subIdx_1) {
-          _id ++;
-        } else {
-          return _id;
-        }
-      }
-    }
-
-    function getId_2(): number {
-      let _id = 0;
-      while ( _id < this.report.subroutines.length) {
-        if (this.report.subroutines[_id] !== subIdx_2) {
-          _id ++;
-        } else {
-          return _id;
-        }
-      }
-    }
-
-    this.report.subroutines[getId_1()].idx = subIdx_2;
-    this.report.subroutines[getId_2()].idx = subIdx_1;
+    this.report.subroutines[this.getId(subIdx_1)].idx = subIdx_2;
+    this.report.subroutines[this.getId(subIdx_2)].idx = subIdx_1;
   }
 
   public mockReport() {
@@ -218,5 +191,4 @@ export class EditorReportService {
     newSub.steps.push(newStep);
     this.report.subroutines.push(newSub);
   }
-
 }

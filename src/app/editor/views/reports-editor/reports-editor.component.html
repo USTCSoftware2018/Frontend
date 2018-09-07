@@ -3,6 +3,7 @@
     <!-- {{user['name']}} -->
     <li *ngFor="let sub of currentReport.subroutines">
         <h2>{{sub.name}}</h2>
+        <div (click)="deleteSubroutine(sub.idx)">删除</div>
         <p>steps:</p>
          
         <ul>

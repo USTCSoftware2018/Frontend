@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 import { StepsService } from './core/steps.service';
+import { AppendixService } from './core/appendix.service';
 import { EditorReportService } from './core/editorReport.service';
 import { GetDataService } from './getData/getData.service';
 
@@ -30,6 +31,7 @@ import { EditorFieldTypeComponent } from './views/editor-field-type/editor-field
     StepsService,
     EditorReportService,
     GetDataService,
+    AppendixService,
   ],
 })
 export class EditorModule { }

@@ -22,4 +22,8 @@ export class ReportsEditorComponent implements OnInit {
     console.log(this.currentReport);
   }
 
+  deleteSubroutine(subIdx: number) {
+    this.editorReportService.reportDeleteSubroutine(subIdx);
+  }
+
 }
