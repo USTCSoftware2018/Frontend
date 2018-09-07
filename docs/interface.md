@@ -35,16 +35,10 @@ class User {
             // 本用户关注的主键列表
             followers: Array<number>;
             // 关注本用户的主键列表
-<<<<<<< HEAD
-            likes: Array<number>;
-            // 被点赞列表
-            reports: Array<number>;
-=======
             praises: Array<number>;
             // 被点赞列表
             reports: Ａrray<number>;
             // 报告列表
->>>>>>> http-service
         },
         public collections: Array<number>;
         // 收藏列表
@@ -61,15 +55,16 @@ let ResponseData = JSON.stringify(response);
 ```
 
 **请求方法**
+
 |URL|Method|Request|Response|Description|
 |:--:|:--:|:--:|:--:|:--:|
-|./users|GET|null|ResponseData|管理员查看所有用户
-|./users|POST|UserData|ResponseData| 创建新用户
-|./users/{id}|GET|null|ResponseData| 主键查用户
-|./users|PUT|UserData|ResponseData| 修改信息 
-|./users/{id}|DELETE|null|ResponseData| 删除用户
-|./users/followers|POST|{“user_id”:number}|ResponseData|关注用户
-|./users/followers/{id}|DELETE|null|ResponseData|通过想要取消的用户主键取消关注
+|./users|GET|null|ResponseData|管理员查看所有用户|
+|./users|POST|UserData|ResponseData| 创建新用户|
+|./users/{id}|GET|null|ResponseData| 主键查用户|
+|./users|PUT|UserData|ResponseData| 修改信息 |
+|./users/{id}|DELETE|null|ResponseData| 删除用户|
+|./users/followers|POST|{“user_id”:number}|ResponseData|关注用户|
+|./users/followers/{id}|DELETE|null|ResponseData|通过想要取消的用户主键取消关注|
 
 
 # 通知类
@@ -99,9 +94,9 @@ let ResponseData = JSON.stringify(response);
 **请求方法**
 |URL|Method|Request|Response|Description|
 |:--:|:--:|:--:|:--:|:--:|
-|./notifications|GET|null|ResponseData| 拿到用户的所有通知消息
-|./notifications|POST|NotificationData|ResponseData|创建一个新的消息
-|./notifications/{id}|DELETE|null|ResponseData|通过消息主键删除一条消息
+|./notifications|GET|null|ResponseData| 拿到用户的所有通知消息|
+|./notifications|POST|NotificationData|ResponseData|创建一个新的消息|
+|./notifications/{id}|DELETE|null|ResponseData|通过消息主键删除一条消息|
 
 
 # 报告类
@@ -132,16 +127,16 @@ let ResponseData = JSON.stringify(response);
 ```
 
 **请求方法**
-|URL|Method|Request|Response|Description
+
+|URL|Method|Request|Response|Description|
 |:--:|:--:|:--:|:--:|:--:|
-|./reports/{id}|GET|null|ResponseData|文章主键拿到文章
-|./reports/likes|POST|{"report_id": number}|ResponseData|为文章点赞
-|./reports/likes/{id}|DELETE|null|ResponseData|通过文章主键取消点赞
-
-
+|./reports/{id}|GET|null|ResponseData|文章主键拿到文章|
+|./reports/likes|POST|{"report_id": number}|ResponseData|为文章点赞|
+|./reports/likes/{id}|DELETE|null|ResponseData|通过文章主键取消点赞|
 
 # 评论类
 **定义**
+
 ```typescript
 class Comment {
     constructor (
@@ -161,12 +156,13 @@ let ResponseData = JSON.stringify(response);
 ```
 
 **请求方法**
-|URL|Method|Request|Response|Description
+
+|URL|Method|Request|Response|Description|
 |:--:|:--:|:--:|:--:|:--:|
-|.reports/{report_id}/comments|GET|null|ResponseData|从文章主键拿到文章下的所有评论
-|./comments|POST|CommentData|ResponseData|创建评论
-|./comments/{id}|PUT|CommentData|ResponseData|用主键更新评论
-|./comments/{id}|DELETE|null|ResponseData|删除评论
+|.reports/{report_id}/comments|GET|null|ResponseData|从文章主键拿到文章下的所有评论|
+|./comments|POST|CommentData|ResponseData|创建评论|
+|./comments/{id}|PUT|CommentData|ResponseData|用主键更新评论|
+|./comments/{id}|DELETE|null|ResponseData|删除评论|
 
 # 动作类
 **定义**
@@ -174,27 +170,28 @@ let ResponseData = JSON.stringify(response);
 >待补充
 
 **请求方法**
-|URL|Method|Request|Response|Description
+
+|URL|Method|Request|Response|Description|
 |:--:|:--:|:--:|:--:|:--:|
-|./signin/comfirm/{token}|GET|null|{"status":boolean}|激活账号
-|./forget-passwd|POST|{"email":string}|{"status":boolean}|忘记密码
-|./signin|POST|{"username":string,"passwd":string}|{"status":boolean}|登录
-|./signup|POST|{“email”:string,"username":string,"passwd":string}|{"status":boolean}|注册
-|./search|POST|待定|{"meta":{"success":boolean,"message":string},"data":{"users":Array<number>,"reports":Array<number>,"thesis":待定,"protein":待定,'bio-brick':待定}}|搜索功能
-|./get-feeds|GET|null|{"meta":{"success":boolean,"message":string},"data":{"reports":Array<number>}}|热门文章
+|./signin/comfirm/{token}|GET|null|{"status":boolean}|激活账号|
+|./forget-passwd|POST|{"email":string}|{"status":boolean}|忘记密码|
+|./signin|POST|{"username":string,"passwd":string}|{"status":boolean}|登录|
+|./signup|POST|{“email”:string,"username":string,"passwd":string}|{"status":boolean}|注册|
+|./search|POST|待定|{"meta":{"success":boolean,"message":string},"data":{"users":Array<number>,"reports":Array<number>,"thesis":待定,"protein":待定,'bio-brick':待定}}|搜索功能|
+|./get-feeds|GET|null|{"meta":{"success":boolean,"message":string},"data":{"reports":Array<number>}}|热门文章|
 
 
 # 编辑器类
 
-|URL|Method|Request|Response|Description
+|URL|Method|Request|Response|Description|
 |:--:|:--:|:--:|:--:|:--:|
-|./editor/picture|POST|.png、.jpg|{"meta":{"success":boolean,"message":string},"data":{"url":string}}|上传图片
-|./editor/step|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<step>}}|获取step
-|./editor/subroutine|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<subroutine>}}|获取subroutine
-|./editor/report/{id}|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<report>}}|获取report
-|./editor/report|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<report>}}|获取report
-|./editor/step|POST|JSON[step]|{"meta":{"success":boolean,"message":string},"data":{"id":number}}|获取step
-|./editor/subroutine|POST|JSON[subroutine]|{"meta":{"success":boolean,"message":string},"data":{"id":number}}|获取subroutine
-|./editor/report/|POST|JSON[report]|{"meta":{"success":boolean,"message":string},"data":[]}|获取report
-|./editor/report/|PUT|JSON[report]|{"meta":{"success":boolean,"message":string},"data":[]}|更新report
+|./editor/picture|POST|.png、.jpg|{"meta":{"success":boolean,"message":string},"data":{"url":string}}|上传图片|
+|./editor/step|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<step>}}|获取step|
+|./editor/subroutine|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<subroutine>}}|获取subroutine|
+|./editor/report/{id}|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<report>}}|获取report|
+|./editor/report|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<report>}}|获取report|
+|./editor/step|POST|JSON[step]|{"meta":{"success":boolean,"message":string},"data":{"id":number}}|获取step|
+|./editor/subroutine|POST|JSON[subroutine]|{"meta":{"success":boolean,"message":string},"data":{"id":number}}|获取subroutine|
+|./editor/report/|POST|JSON[report]|{"meta":{"success":boolean,"message":string},"data":[]}|获取report|
+|./editor/report/|PUT|JSON[report]|{"meta":{"success":boolean,"message":string},"data":[]}|更新report|
 
