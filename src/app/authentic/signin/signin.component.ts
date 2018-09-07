@@ -14,6 +14,7 @@ import {
 })
 export class SigninComponent implements OnInit {
   validateForm: FormGroup;
+  shake = false;
   constructor() { }
   ngOnInit(): void {
     this.validateForm = new FormGroup({
@@ -33,4 +34,10 @@ export class SigninComponent implements OnInit {
   }
   get username() { return this.validateForm.get('userName'); }
   get password() { return this.validateForm.get('password'); }
+  startShake() {
+    this.shake = true;
+  }
+  stopShake() {
+    this.shake = false;
+  }
 }

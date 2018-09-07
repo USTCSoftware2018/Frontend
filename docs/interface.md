@@ -35,16 +35,10 @@ class User {
             // 本用户关注的主键列表
             followers: Array<number>;
             // 关注本用户的主键列表
-<<<<<<< HEAD
-            likes: Array<number>;
-            // 被点赞列表
-            reports: Array<number>;
-=======
             praises: Array<number>;
             // 被点赞列表
             reports: Ａrray<number>;
             // 报告列表
->>>>>>> http-service
         },
         public collections: Array<number>;
         // 收藏列表
@@ -61,6 +55,7 @@ let ResponseData = JSON.stringify(response);
 ```
 
 **请求方法**
+
 |URL|Method|Request|Response|Description|
 |:--:|:--:|:--:|:--:|:--:|
 |./users|GET|null|ResponseData|管理员查看所有用户
@@ -75,21 +70,28 @@ let ResponseData = JSON.stringify(response);
 # 通知类
 **定义**
 ```typescript
+enum NotificationAction {
+    praise,
+    follow,
+    compose
+}
+
 class MyNotification {
     constructor (
         public id: number,
         // 通知主键
         public isread?: boolean,
         // 已读？
-        public content?: string,
+        public content?: NotificationAction,
         public time?: Date,
         // 发送时间
         public to?: number
         // 发送对象主键
     ) { }
 }
-let response = new Respon<Notifi>();
-let notification = new Notifi();
+
+let response = new MyResponse<Notifi>();
+let notification = new MyNotification();
 // 进行一些操作之后
 
 let NotificationData = JSON.stringify([notification]);
@@ -97,6 +99,7 @@ let NotificationData = JSON.stringify([notification]);
 let ResponseData = JSON.stringify(response);
 ```
 **请求方法**
+
 |URL|Method|Request|Response|Description|
 |:--:|:--:|:--:|:--:|:--:|
 |./notifications|GET|null|ResponseData| 拿到用户的所有通知消息
@@ -124,7 +127,7 @@ class Report {
     ) { }
 }
 let report = new Report();
-let response = new Respon<Report>();
+let response = new MyResponse<Report>();
 
 // 进行一些操作之后
 let ReportData = JSON.stringify([report]);
@@ -132,6 +135,7 @@ let ResponseData = JSON.stringify(response);
 ```
 
 **请求方法**
+
 |URL|Method|Request|Response|Description
 |:--:|:--:|:--:|:--:|:--:|
 |./reports/{id}|GET|null|ResponseData|文章主键拿到文章
@@ -154,13 +158,14 @@ class Comment {
     ) { }
 }
 let comment = new Comment(1);
-let response = new Respon<Comment>();
+let response = new MyResponse<Comment>();
 // 一些操作之后
 let CommentData = JSON.stringify([comment]);
 let ResponseData = JSON.stringify(response);
 ```
 
 **请求方法**
+
 |URL|Method|Request|Response|Description
 |:--:|:--:|:--:|:--:|:--:|
 |.reports/{report_id}/comments|GET|null|ResponseData|从文章主键拿到文章下的所有评论
@@ -174,6 +179,7 @@ let ResponseData = JSON.stringify(response);
 >待补充
 
 **请求方法**
+
 |URL|Method|Request|Response|Description
 |:--:|:--:|:--:|:--:|:--:|
 |./signin/comfirm/{token}|GET|null|{"status":boolean}|激活账号
@@ -192,6 +198,7 @@ let ResponseData = JSON.stringify(response);
 |./editor/step|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<step>}}|获取step
 |./editor/subroutine|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<subroutine>}}|获取subroutine
 |./editor/report/{id}|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<report>}}|获取report
+|./editor/report|GET|null|{"meta":{"success":boolean,"message":string},"data":{"step":Array<report>}}|获取report
 |./editor/step|POST|JSON[step]|{"meta":{"success":boolean,"message":string},"data":{"id":number}}|获取step
 |./editor/subroutine|POST|JSON[subroutine]|{"meta":{"success":boolean,"message":string},"data":{"id":number}}|获取subroutine
 |./editor/report/|POST|JSON[report]|{"meta":{"success":boolean,"message":string},"data":[]}|获取report
