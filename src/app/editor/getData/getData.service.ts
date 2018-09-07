@@ -4,24 +4,53 @@ import { HttpService } from '../../http.service';
 import { mockStep } from '../mock/mock-steps'; // MockStep
 import { mockSub } from '../mock/mock-sub'; // MockStep
 
+import { User } from '../../Interface/User';
+
 @Injectable()
 export class GetDataService {
+  user: any;
 
   constructor(public httpService: HttpService) { }
 
-  public getSteps() {
+  public getStepsMock() {
     return mockStep;
   }
 
-  public getProcess() {
+  public getProcessMock() {
     return mockSub;
+  }
+
+  // Data from backend
+
+  public getUser() {
+    this.httpService.get_all_users().subscribe(
+      cont => { console.log(cont); this.user = cont; },
+      err => this.user = err
+    );
+  }
+
+  public setUser() {
+    const user = new User(1);
+    user.about_me = 'ertuil';
+    console.log(user);
+    this.httpService.delete_user_by_id(3).subscribe(
+      cont => { console.log(cont); this.user = cont; },
+      err => this.user = err
+    );
+  }
+
+  public getSteps() {
+  }
+
+  public getSubroutine() {
+
   }
 
   public getReport() {}
 
   public setSteps() {}
 
-  public setProcess() {}
+  public setSubroutine() {}
 
   public setReport() {}
 
