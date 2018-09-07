@@ -29,7 +29,6 @@ registerLocaleData(en);
     ReportshowComponent,
     Report2Component,
     PersonalInformationComponent,
-    TesthttpComponent,
   ],
   imports: [
     BrowserModule,
