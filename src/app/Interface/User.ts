@@ -8,13 +8,11 @@ export class User {
         public email?: string,
         public img?: string,
         // 头像
-
         public info?: {
             followings: Array<number>;
             // 本用户关注的主键列表
             followers: Array<number>;
             // 关注本用户的主键列表
-
             praises: Array<number>;
             // 被点赞列表
             reports: Array<number>;

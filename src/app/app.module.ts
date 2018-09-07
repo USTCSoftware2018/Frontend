@@ -14,11 +14,12 @@ import { ErrorModule } from './error/error.module';
 import { Error404Component } from './error/error404/error404.component';
 import { ReportshowComponent } from './reportshow/reportshow.component';
 import { UserSetModule } from './user-set/user-set.module';
+import { SearchModule } from './search/search.module';
 import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
 import { Report2Component} from './profile/report/report.component';
 import { PersonalInformationComponent } from './profile/personal-information/personal-information.component';
-import {TesthttpComponent} from './testhttp/testhttp.component';
 import {UserInfoProfileComponent} from './share/user-info-profile/user-info-profile.component';
+
 
 registerLocaleData(en);
 
@@ -30,8 +31,8 @@ registerLocaleData(en);
     ReportshowComponent,
     Report2Component,
     PersonalInformationComponent,
-    TesthttpComponent,
     UserInfoProfileComponent
+
   ],
   imports: [
     BrowserModule,
@@ -39,6 +40,7 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule,
     UserSetModule,
+    SearchModule,
     NgZorroAntdModule,
     AppRoutingModule,
     EditorModule,
