@@ -8,7 +8,6 @@ export class User {
         public email?: string,
         public img?: string,
         // 头像
-
         public info?: {
             followings: Array<number>;
             // 本用户关注的主键列表
