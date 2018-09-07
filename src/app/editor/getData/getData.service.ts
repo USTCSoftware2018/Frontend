@@ -22,23 +22,6 @@ export class GetDataService {
 
   // Data from backend
 
-  public getUser() {
-    this.httpService.get_all_users().subscribe(
-      cont => { console.log(cont); this.user = cont; },
-      err => this.user = err
-    );
-  }
-
-  public setUser() {
-    const user = new User(1);
-    user.about_me = 'ertuil';
-    console.log(user);
-    this.httpService.delete_user_by_id(3).subscribe(
-      cont => { console.log(cont); this.user = cont; },
-      err => this.user = err
-    );
-  }
-
   public getSteps() {
   }
 
