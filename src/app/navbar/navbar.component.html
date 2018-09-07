@@ -10,7 +10,7 @@
         <li nz-menu-item class="icon-item" [routerLink]="['/profile']"><i class="anticon anticon-smile-o"></i></li>
     </div>
     <li nz-menu-item *ngIf="user == null" nz-col nzSpan="3"></li>
-    <li nz-menu-item *ngIf="user == null" nz-col nzSpan="2">Sign In</li>
+    <li nz-menu-item *ngIf="user == null" nz-col nzSpan="2" [routerLink]="['/authentation/signin']">Sign In</li>
     <li nz-menu-item *ngIf="user == null" nz-col nzSpan="3">Register</li>
     <li nz-menu-item class="menu-item-reverse" nz-col nzSpan="2" [routerLink]="['/editor']"><span>Editor</span></li>
     <input nz-input placeholder="Search" [(ngModel)]="toSearch" nzSize="'small'" class="navbar-input">
