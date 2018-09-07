@@ -18,7 +18,7 @@ import { SearchModule } from './search/search.module';
 import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
 import { Report2Component} from './profile/report/report.component';
 import { PersonalInformationComponent } from './profile/personal-information/personal-information.component';
-
+import { ReportshowotherComponent } from './reportshow/reportshowother/reportshowother.component';
 
 registerLocaleData(en);
 
@@ -30,6 +30,7 @@ registerLocaleData(en);
     ReportshowComponent,
     Report2Component,
     PersonalInformationComponent,
+    ReportshowotherComponent,
   ],
   imports: [
     BrowserModule,
