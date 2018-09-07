@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  AbstractControl,
+  FormGroup,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-searchbox',
@@ -6,10 +12,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./searchbox.component.less']
 })
 export class SearchboxComponent implements OnInit {
-
+  shake = false;
   constructor() { }
 
   ngOnInit() {
   }
-
+  startShake() {
+    this.shake = true;
+  }
+  stopShake() {
+    this.shake = false;
+  }
 }

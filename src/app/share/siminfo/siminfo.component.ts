@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {User} from '../user';
+import {Simuser} from './siminfo';
 
 @Component({
   selector: 'app-siminfo',
@@ -7,7 +7,7 @@ import {User} from '../user';
   styleUrls: ['./siminfo.component.less']
 })
 export class SiminfoComponent implements OnInit {
-  @Input() user: User;
+  @Input() user: Simuser;
   constructor() { }
 
   ngOnInit() {

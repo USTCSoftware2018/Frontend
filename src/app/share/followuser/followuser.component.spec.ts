@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Eachinfo2Component } from './eachinfo2.component';
+import { FollowuserComponent } from './followuser.component';
 
-describe('Eachinfo2Component', () => {
-  let component: Eachinfo2Component;
-  let fixture: ComponentFixture<Eachinfo2Component>;
+describe('FollowuserComponent', () => {
+  let component: FollowuserComponent;
+  let fixture: ComponentFixture<FollowuserComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Eachinfo2Component ]
+      declarations: [ FollowuserComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Eachinfo2Component);
+    fixture = TestBed.createComponent(FollowuserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

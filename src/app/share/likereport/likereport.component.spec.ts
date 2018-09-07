@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Eachinfo1Component } from './eachinfo1.component';
+import { LikereportComponent } from './likereport.component';
 
-describe('Eachinfo1Component', () => {
-  let component: Eachinfo1Component;
-  let fixture: ComponentFixture<Eachinfo1Component>;
+describe('LikereportComponent', () => {
+  let component: LikereportComponent;
+  let fixture: ComponentFixture<LikereportComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Eachinfo1Component ]
+      declarations: [ LikereportComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Eachinfo1Component);
+    fixture = TestBed.createComponent(LikereportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
