@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Report } from './others-report';
-<<<<<<< HEAD
 import {
   trigger,
   state,
@@ -8,9 +7,7 @@ import {
   animate,
   transition
 } from '@angular/animations';
-=======
 import {Expandin} from '../report-list-animation';
->>>>>>> dev
 
 
 @Component({
@@ -18,7 +15,6 @@ import {Expandin} from '../report-list-animation';
   templateUrl: './others-report.component.html',
   styleUrls: ['./others-report.component.less'],
   animations: [
-<<<<<<< HEAD
     trigger('shrinkOut', [
       state('in', style({height: 0})),
       transition('void => *', [
@@ -26,9 +22,6 @@ import {Expandin} from '../report-list-animation';
         animate(250, style({height: '*'}))
       ])
     ])
-=======
-    Expandin
->>>>>>> dev
   ]
 })
 export class OthersReportComponent implements OnInit {
