@@ -1,6 +1,9 @@
-**UserInfoProfileComponent组件介绍
+## UserInfoProfileComponent组件介绍
+
 这个组件类似siminfo组件，但是展示了更多信息
+
 userinfoprofile: UserInfoProfile 需要以下的输入
+
 ```
 export class UserInfoProfile {
   reports_number:number;
