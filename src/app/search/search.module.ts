@@ -8,6 +8,9 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
 @NgModule({
   imports: [
     CommonModule,
+    SearchRoutingModule
+  ],
+  declarations: [SearchboxComponent]
     SearchRoutingModule,
     ShareModule,
     NgZorroAntdModule,
