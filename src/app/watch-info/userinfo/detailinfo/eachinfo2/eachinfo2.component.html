@@ -1,10 +1,8 @@
-<div class="dinfo" nz-row [@Expandin]>
+
+<div class="dinfo" nz-row>
   <!-- avatar -->
   <div class="title" nz-col nzSpan="24">
-    <nz-avatar nzIcon="anticon anticon-user"
-      nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png">
-    </nz-avatar>
-    <a>{{report.title|uppercase}}</a>
+    <pre>{{report.title|uppercase}}</pre>
   </div>
   <div class="content" nz-col nzSpan="24">
     <pre>{{report.content}}</pre>
@@ -19,4 +17,5 @@
   <div nz-col nzSpan="3">
     <span class="info-num">{{report.commentsnum}}&nbsp;comments</span>
   </div>
+
 </div>
