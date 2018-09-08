@@ -42,3 +42,4 @@ export class Simuser {
   likenum: number;
   reportsnum: number;
 }
+
