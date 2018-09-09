@@ -1,4 +1,4 @@
-import {Socialcomments} from './socialinfo';
+import {Me, Socialcomments} from './socialinfo';
 
 export const SOLICIALINFO = {
     likenum: 44,
@@ -23,3 +23,7 @@ export const SOCIALCOMMENTS: Socialcomments[] = [
     likeo: true,
   },
 ];
+
+export const ME: Me = {
+  myhead: '../../assets/imgtest/xj.jpg',
+};

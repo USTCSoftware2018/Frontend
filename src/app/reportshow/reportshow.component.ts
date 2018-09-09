@@ -21,7 +21,6 @@ export class ReportshowComponent implements OnInit {
   socialcomments = SOCIALCOMMENTS;
   selectedcomments: Socialcomments;
   user = USER;
-  likeClass: {};
 
   changecolor(): void {
     const Like = document.getElementById('change1');
