@@ -3,22 +3,23 @@
 <div #editorMain nz-row [ngStyle]="{'height': editorHeight}">
   <!-- This is the main page of editor-->
 
-  <div nz-col nzSpan="2">
+  <div nz-col nzSm="0" nzMd="0" nzLg="2" nzXl="2">
     <!-- 左侧空格 -->
   </div >
 
-  <div nz-col nzSpan="4" class="stepBar">
+  <div nz-col nzSm="5" nzMd="5" nzLg="4" nzXl="4" class="stepBar">
     <!-- 工具栏 -->
     <app-step-bar></app-step-bar>
   </div>
 
-  <div nz-col nzSpan="16">
+  <div nz-col nzSm="16" nzMd="16" nzLg="16" nzXl="16">
     <!-- 编辑页面 -->
     <app-edit-area></app-edit-area>
   </div>
 
-  <div nz-col nzSpan="2">
+  <div nz-col nzSm="3" nzMd="3" nzLg="2" nzXl="2">
       <!-- 小按钮们 -->
+      <app-button-area></app-button-area>
   </div>
 
 

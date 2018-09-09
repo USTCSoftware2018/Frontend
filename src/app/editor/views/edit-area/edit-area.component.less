@@ -55,7 +55,6 @@
 .buttonMixin {
     height: 23px;
     font-family: Arial-BoldMT;
-    font-size: 18px;
     color: #FFFFFF;
     border-radius: 10px;
     text-align: center;
@@ -65,7 +64,14 @@
 
     span {
         top: 50%;
+    }
 
+    @media (min-width: @screen-lg-min) {
+        font-size: 18px;
+    }
+    
+    @media (max-width: @screen-lg-min) {
+        font-size: 15px;
     }
 }
 
