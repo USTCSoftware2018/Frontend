@@ -18,15 +18,14 @@ export class ReportSubroutineHeader {
     id: string; // 类型 对应 EditorStep 中的id
     name: string;
     idx: number; // 位置
-    steps: Array<ReportStepsHeader>; // 包含的step
-    desc: string;
-    remark: string;
-    pic: Array<ReportGraphHeader>;
-    table: string;
+    steps?: Array<ReportStepsHeader>; // 包含的step
+    desc?: string;
+    remark?: string;
+    pic?: Array<ReportGraphHeader>;
+    table?: string;
 }
 
 export class ReportHeader {
-
     // 元数据部分
     title: string;  // 标题
     author: string[];   // 作者

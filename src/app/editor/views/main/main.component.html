@@ -1,8 +1,25 @@
-<div nz-row>
-  <div nz-col nzSpan="6">
-    <app-tools></app-tools>
+<nz-alert nzType="warning" nzMessage="For your experience, please use a bigger screan." nzCloseText="Close Now" *ngIf="innerWidth < 700"></nz-alert>
+
+<div #editorMain nz-row [ngStyle]="{'height': editorHeight}">
+  <!-- This is the main page of editor-->
+
+  <div nz-col nzSpan="2">
+    <!-- 左侧空格 -->
+  </div >
+
+  <div nz-col nzSpan="4" class="stepBar">
+    <!-- 工具栏 -->
+    <app-step-bar></app-step-bar>
   </div>
-  <div nz-col nzSpan="18">
-    <app-reports-editor></app-reports-editor>
+
+  <div nz-col nzSpan="16">
+      <!-- 编辑页面 -->
   </div>
+
+  <div nz-col nzSpan="2">
+      <!-- 小按钮们 -->
+  </div>
+
+
+
 </div>
