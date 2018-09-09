@@ -19,7 +19,8 @@ import { ShareModule } from "../share/share.module";
     ProfilePageComponent,
     Report2Component
   ],
-  providers: [
+  exports: [
+    NgZorroAntdModule,
   ]
 })
 export class ProfileModule { }
