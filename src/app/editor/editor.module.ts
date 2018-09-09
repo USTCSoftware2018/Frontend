@@ -10,6 +10,8 @@ import { GetDataService } from './getData/getData.service';
 
 import { MainComponent } from './views/main/main.component';
 import { StepBarComponent } from './views/step-bar/step-bar.component';
+import { EditAreaComponent } from './views/edit-area/edit-area.component';
+import { ButtonAreaComponent } from './views/button-area/button-area.component';
 
 @NgModule({
   imports: [
@@ -20,6 +22,8 @@ import { StepBarComponent } from './views/step-bar/step-bar.component';
   declarations: [
     MainComponent,
     StepBarComponent,
+    EditAreaComponent,
+    ButtonAreaComponent,
   ],
   providers: [
     StepsService,
