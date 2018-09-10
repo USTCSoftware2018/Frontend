@@ -17,6 +17,7 @@ import { UserSetModule } from './user-set/user-set.module';
 import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
 import { Report2Component} from './profile/report/report.component';
 import { PersonalInformationComponent } from './profile/personal-information/personal-information.component';
+import { SearchresultComponent } from './biosearch/searchresult/searchresult.component';
 
 
 registerLocaleData(en);
@@ -29,6 +30,7 @@ registerLocaleData(en);
     ReportshowComponent,
     Report2Component,
     PersonalInformationComponent,
+    SearchresultComponent,
   ],
   imports: [
     BrowserModule,
