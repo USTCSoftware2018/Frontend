@@ -6,6 +6,7 @@ import { PersonalInformationComponent } from './personal-information/personal-in
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { Report2Component } from './report/report.component';
 import { ShareModule } from "../share/share.module";
+import { UserInfoComponent } from './user-info/user-info.component';
 
 @NgModule({
   imports: [
@@ -17,9 +18,11 @@ import { ShareModule } from "../share/share.module";
   declarations: [
     PersonalInformationComponent,
     ProfilePageComponent,
-    Report2Component
+    Report2Component,
+    UserInfoComponent
   ],
-  providers: [
+  exports: [
+    NgZorroAntdModule,
   ]
 })
 export class ProfileModule { }
