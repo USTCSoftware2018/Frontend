@@ -14,15 +14,32 @@ export class ReportStepsHeader {
     table: string;
 }
 
+// subroutine 类型
+
+export enum subType {
+    steps = 'subroutine',
+    info = 'Info',
+    result = 'Result',
+    pictures = 'Pictures',
+    quote = 'Quote',
+    text = 'Text',
+    table = 'Table',
+}
+
 export class ReportSubroutineHeader {
     id: string; // 类型 对应 EditorStep 中的id
     name: string;
+    subType: subType;
     idx: number; // 位置
     steps?: Array<ReportStepsHeader>; // 包含的step
     desc?: string;
     remark?: string;
     pic?: Array<ReportGraphHeader>;
     table?: string;
+
+    constructor() {
+        this.subType = subType.steps;
+    }
 }
 
 export class ReportHeader {

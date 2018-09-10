@@ -12,6 +12,9 @@ import { MainComponent } from './views/main/main.component';
 import { StepBarComponent } from './views/step-bar/step-bar.component';
 import { EditAreaComponent } from './views/edit-area/edit-area.component';
 import { ButtonAreaComponent } from './views/button-area/button-area.component';
+import { EditReportComponent } from './views/edit-report/edit-report.component';
+import { SubroutineComponent } from './views/subroutine/subroutine.component';
+import { EditorFieldTypeComponent } from './views/editor-field-type/editor-field-type.component';
 
 @NgModule({
   imports: [
@@ -24,6 +27,9 @@ import { ButtonAreaComponent } from './views/button-area/button-area.component';
     StepBarComponent,
     EditAreaComponent,
     ButtonAreaComponent,
+    EditReportComponent,
+    SubroutineComponent,
+    EditorFieldTypeComponent,
   ],
   providers: [
     StepsService,

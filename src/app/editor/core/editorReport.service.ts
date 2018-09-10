@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader } from '../headers/article';
+import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, subType } from '../headers/article';
 import { AppendixService } from './appendix.service';
 import {StepsService} from './steps.service';
 
@@ -30,7 +30,7 @@ export class EditorReportService {
     this.report.ndate = '';
     this.report.result = '';
     this.report.subroutines = [];
-    // this.mockReport();
+    this.mockReport();
   }
 
   public parser (step: ReportStepsHeader ) {
@@ -79,8 +79,13 @@ export class EditorReportService {
 
   public parseAll() {
     for (const sub of this.report.subroutines ) {
-      for (const step of sub.steps) {
-        this.parser(step);
+      if (sub.subType === subType.steps) {
+        for (const step of sub.steps) {
+          this.parser(step);
+          sub.name = 'Steps';
+        }
+      } else {
+        sub.name = sub.subType;
       }
     }
   }
@@ -109,7 +114,7 @@ export class EditorReportService {
     const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
     _new_sub.id = '';
     _new_sub.desc = '';
-    _new_sub.name = _step_temp.name;
+    _new_sub.name = 'Step';
     _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
     _new_sub.steps = [];
 

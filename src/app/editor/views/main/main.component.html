@@ -1,18 +1,14 @@
-<nz-alert nzType="warning" nzMessage="For your experience, please use a bigger screan." nzCloseText="Close Now" *ngIf="innerWidth < 700"></nz-alert>
+<nz-alert nzType="warning" nzMessage="Please use a bigger screen to achieve a better experience." nzCloseText="Close Now" *ngIf="innerWidth < 600"></nz-alert>
 
-<div #editorMain nz-row [ngStyle]="{'height': editorHeight}">
+<div #editorMain nz-row [ngStyle]="{'height': editorHeight}" (window:resize)="onResize()">
   <!-- This is the main page of editor-->
 
-  <div nz-col nzSm="0" nzMd="0" nzLg="2" nzXl="2">
-    <!-- 左侧空格 -->
-  </div >
-
-  <div nz-col nzSm="5" nzMd="5" nzLg="4" nzXl="4" class="stepBar">
+  <div nz-col [nzSm]="{span:5,offset:0}" [nzMd]="{span:5,offset:0}" [nzLg]="{span:5,offset:0}" [nzXl]="{span:4,offset:1}" class="stepBar">
     <!-- 工具栏 -->
     <app-step-bar></app-step-bar>
   </div>
 
-  <div nz-col nzSm="16" nzMd="16" nzLg="16" nzXl="16">
+  <div nz-col nzSm="16" nzMd="16" nzLg="17" nzXl="16">
     <!-- 编辑页面 -->
     <app-edit-area></app-edit-area>
   </div>

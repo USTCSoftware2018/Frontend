@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EditorReportService } from '../../core/editorReport.service';
 
 @Component({
   selector: 'app-main',
@@ -10,9 +11,13 @@ export class MainComponent implements OnInit {
   editorHeight: string; // 判断高度
   innerWidth: number; // 屏幕宽度；
 
-  constructor() { }
+  constructor(public editorReportService: EditorReportService) { }
 
   ngOnInit() {
+    this.onResize();
+  }
+
+  public onResize() {
     this.editorHeight = (window.innerHeight - 46) + 'px';
     this.innerWidth = window.innerWidth;
   }
