@@ -1,0 +1,92 @@
+
+@screen-lg-min: 1000px; // 屏幕宽度
+@size-lg: 55px;
+@size-md: 50px;
+
+#FixedButton {
+    position:fixed;
+    top:80%;
+    margin-left: 20px;
+
+    @media (min-width: @screen-lg-min) {
+        img {
+            height: 70px;
+        }
+    }
+
+    @media (max-width: @screen-lg-min) {
+        img {
+            height: 60px;
+        }
+    }
+}
+
+// buttons
+
+#LuckyButton_1 {
+    position:fixed;
+    top:71%;
+    .LuckButton();
+    .getSize();
+}
+
+#LuckyButton_2 {
+    position:fixed;
+    .getSize();
+    top:62%;
+    .LuckButton();
+}
+
+#LuckyButton_3 {
+    position:fixed;
+    .getSize();
+    top:53%;
+    .LuckButton();
+}
+
+#LuckyButton_4 {
+    position:fixed;
+    .getSize();
+    top:44%;
+    .LuckButton();
+}
+
+#LuckyButton_5 {
+    position:fixed;
+    .getSize();
+    top:35%;
+    .LuckButton();
+}
+
+#LuckyButton_6 {
+    position:fixed;
+    .getSize();
+    top:26%;
+    .LuckButton();
+}
+
+
+.LuckButton {
+    background: #FFFFFF;
+    border-radius: 100px;
+    margin-left: 20px;
+
+    img {
+        position: relative;
+        margin: 0 0 0 0;
+        .getSize();
+
+    }
+}
+
+.getSize {
+    @media (min-width: @screen-lg-min) {
+        width: @size-lg;
+        height: @size-lg;
+    }
+
+    @media (max-width: @screen-lg-min) {
+        width: @size-md;
+        height: @size-md;
+    }
+}
