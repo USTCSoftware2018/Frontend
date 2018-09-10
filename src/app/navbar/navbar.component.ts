@@ -11,14 +11,14 @@ export class NavbarComponent implements OnInit {
   private has_shown = false;
   private input: any = null;
   private menu_lists: any = null;
-  private user: User = null;
+  public user: User = null;
   to_search: String;
   constructor(private el: ElementRef) {
-    this.user = new User(1,'WTWTWTWT9');
+    this.user = new User(1, 'WTWTWTWT9');
   }
 
   ngOnInit() {
-    console.log(this.user)
+    console.log(this.user);
   }
   toggle_search() {
     if (this.input == null) {
