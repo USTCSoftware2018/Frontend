@@ -14,7 +14,7 @@ import { ErrorModule } from './error/error.module';
 import { Error404Component } from './error/error404/error404.component';
 import { ReportshowComponent } from './reportshow/reportshow.component';
 import { UserSetModule } from './user-set/user-set.module';
-import {ProfileModule} from "./profile/profile.module";
+import {ProfileModule} from './profile/profile.module';
 import { ReportshowotherComponent } from './reportshow/reportshowother/reportshowother.component';
 
 registerLocaleData(en);

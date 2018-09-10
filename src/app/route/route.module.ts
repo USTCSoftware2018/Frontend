@@ -14,7 +14,7 @@ const appRoutes: Routes = [
   { path: 'userinfo', loadChildren: '../watch-info/watch-info.module#WatchInfoModule', data: {preload: true}},
   { path: 'authentication', loadChildren: '../authentic/authentic.module#AuthenticModule', data: {preload: true}},
   { path: 'search', loadChildren: '../biosearch/biosearch.module#BiosearchModule', data: {preload: true}},
-  { path: 'profile', component: ProfilePageComponent},
+  { path: 'profile', loadChildren: '../profile/profile.module#ProfileModule', data: {preload: true}},
   // { path: 'user-set', loadChildren: '../user-set/user-set.module#UserSetModule', data: { preload: true } },
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: Error404Component},
