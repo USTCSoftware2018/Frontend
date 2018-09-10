@@ -5,7 +5,9 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { PersonalInformationComponent } from './personal-information/personal-information.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { Report2Component } from './report/report.component';
-import { ShareModule } from "../share/share.module";
+import { ShareModule } from '../share/share.module';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { ProfileRoutingModule } from './profile-routing.module';
 
 @NgModule({
   imports: [
@@ -13,13 +15,16 @@ import { ShareModule } from "../share/share.module";
     NgZorroAntdModule,
     FormsModule,
     ShareModule,
+    ProfileRoutingModule
   ],
   declarations: [
     PersonalInformationComponent,
     ProfilePageComponent,
-    Report2Component
+    Report2Component,
+    UserInfoComponent
   ],
-  providers: [
+  exports: [
+    NgZorroAntdModule,
   ]
 })
 export class ProfileModule { }
