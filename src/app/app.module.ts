@@ -19,6 +19,7 @@ import { ProfilePageComponent } from './profile/profile-page/profile-page.compon
 import { Report2Component} from './profile/report/report.component';
 import { PersonalInformationComponent } from './profile/personal-information/personal-information.component';
 import { ReportshowotherComponent } from './reportshow/reportshowother/reportshowother.component';
+import { FeedComponent } from './feed/feed.component';
 
 registerLocaleData(en);
 
@@ -31,6 +32,7 @@ registerLocaleData(en);
     Report2Component,
     PersonalInformationComponent,
     ReportshowotherComponent,
+    FeedComponent,
   ],
   imports: [
     BrowserModule,
