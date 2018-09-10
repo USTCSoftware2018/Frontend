@@ -9,10 +9,9 @@ import { EditorReportService } from './core/editorReport.service';
 import { GetDataService } from './getData/getData.service';
 
 import { MainComponent } from './views/main/main.component';
-import { ToolsComponent } from './views/tools/tools.component';
-import { ReportsEditorComponent } from './views/reports-editor/reports-editor.component';
-import { EditorFieldComponent } from './views/editor-field/editor-field.component';
-import { EditorFieldTypeComponent } from './views/editor-field-type/editor-field-type.component';
+import { StepBarComponent } from './views/step-bar/step-bar.component';
+import { EditAreaComponent } from './views/edit-area/edit-area.component';
+import { ButtonAreaComponent } from './views/button-area/button-area.component';
 
 @NgModule({
   imports: [
@@ -22,10 +21,9 @@ import { EditorFieldTypeComponent } from './views/editor-field-type/editor-field
   ],
   declarations: [
     MainComponent,
-    ToolsComponent,
-    ReportsEditorComponent,
-    EditorFieldComponent,
-    EditorFieldTypeComponent,
+    StepBarComponent,
+    EditAreaComponent,
+    ButtonAreaComponent,
   ],
   providers: [
     StepsService,

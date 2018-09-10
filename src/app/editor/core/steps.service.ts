@@ -34,4 +34,12 @@ export class StepsService {
     return this.subs.filter ( sub => sub.id === subId)[0];
   }
 
+  public addSteps() {
+    // 没有定义
+  }
+
+  public addSubroutine() {
+    // 没有定义
+  }
+
 }

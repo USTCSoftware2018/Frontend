@@ -1,3 +1,19 @@
-<p>
-  searchresult works!
-</p>
+<div nz-row>
+  <div nz-col >
+    <div nz-row>
+      <div nz-col>
+        <nz-input-group nzSuffixIcon="anticon anticon-search">
+          <input class="search-input" type="text" nz-input placeholder="input search text">
+        </nz-input-group>
+      </div>
+
+      <div nz-col>
+        <ul nz-menu [nzMode]="'horizontal'">
+          <li nz-submenu>
+            <span title>All</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
