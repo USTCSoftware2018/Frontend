@@ -2,9 +2,20 @@
     <!-- 这里是 subroutine 的头部-->
     <br style="height: 5px;"/>
     <div nz-row>
-        <div nz-col nzSpan="1" id="LuckBox"></div> 
+        <div nz-col [nzXl]="1" [nzLg]="1" [nzMd]="2" [nzSm]="2" id="LuckBox"></div> 
         <div nz-col class="subTitle">{{sub.name}}</div>
     </div>
+    <!-- <br style="height: 5px;"/> -->
 
+    <div [ngSwitch]="sub.subType" style="margin: 0">
+      <div *ngSwitchCase="'Steps'" class="ABlockOfSub" >
+        <div *ngFor="let step of sub.steps">
+          <app-step-panel [step]="step"></app-step-panel>
+        </div>
+      </div>
+    </div>
+
+    
+    <br style="height: 15px;"/>
     <!-- 下面是各个部分 -->
 </div>
