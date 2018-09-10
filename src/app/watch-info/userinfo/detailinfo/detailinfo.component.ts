@@ -9,7 +9,7 @@ import {Otheruser, User} from '../user';
 export class DetailinfoComponent implements OnInit {
   @Input() user: User;
   // store the status of following followers likes anf reports
-  router = [false, false, false, true];
+  router = [false, false, true, false];
   constructor() { }
 
   ngOnInit() {

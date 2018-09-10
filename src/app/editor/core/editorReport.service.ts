@@ -1,5 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
-import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader } from '../headers/article';
+import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, subType } from '../headers/article';
+import { AppendixService } from './appendix.service';
 import {StepsService} from './steps.service';
 
 
@@ -17,7 +18,7 @@ export class EditorReportService {
   }
 
 
-  constructor(public stepsService: StepsService) { }
+  constructor(public stepsService: StepsService, public appendixService: AppendixService) { }
 
   public initReport() {
     // 初始化文章
@@ -32,9 +33,6 @@ export class EditorReportService {
     this.mockReport();
   }
 
-
-
-
   public parser (step: ReportStepsHeader ) {
     // 解析简单模版
     let temp = step.temp;
@@ -46,7 +44,6 @@ export class EditorReportService {
     let _field: any = {};
     let states = 0;
     for (const token of tokens) {
-      console.log(token);
       if (token === '-') {
         _fields.push(_field);
         _field = new Object();
@@ -82,8 +79,13 @@ export class EditorReportService {
 
   public parseAll() {
     for (const sub of this.report.subroutines ) {
-      for (const step of sub.steps) {
-        this.parser(step);
+      if (sub.subType === subType.steps) {
+        for (const step of sub.steps) {
+          this.parser(step);
+          sub.name = 'Steps';
+        }
+      } else {
+        sub.name = sub.subType;
       }
     }
   }
@@ -103,41 +105,95 @@ export class EditorReportService {
     delete step.fields;
   }
 
-  public reportAddStep(stepid: string) {
-    // not implement error
+  public reportSort(arrayAny: any) {
+    arrayAny.sort( (a, b) => a.idx - b.idx );
+  }
 
+  public reportAddStep(stepid: string) {
+    const _step_temp = this.stepsService.findStep(stepid);
+    const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
+    _new_sub.id = '';
+    _new_sub.desc = '';
+    _new_sub.name = 'Step';
+    _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
+    _new_sub.steps = [];
+
+    const _new_step = new ReportStepsHeader();  // 新建 step
+    _new_step.name = _step_temp.id;
+    _new_step.data = {};
+    _new_step.idx = 1;
+    _new_step.temp = _step_temp.template;
+    _new_step.id = _step_temp.id;
+    _new_step.name = _step_temp.name;
+    this.parser(_new_step);
+    _new_sub.steps.push(_new_step);
+
+    this.report.subroutines.push(_new_sub);
   }
 
   public reportAddSubroutine(subid: string) {
-    // not implement error
+    const _sub_temp = this.stepsService.findSubroutine(subid);
+
+    const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
+    _new_sub.id = _sub_temp.id;
+    _new_sub.desc = _sub_temp.desc;
+    _new_sub.name = _sub_temp.name;
+    _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
+    _new_sub.steps = [];
+
+    for (const step_id of _sub_temp.steps) { // 建立每一个 steps
+      const _step_temp = this.stepsService.findStep(step_id);
+      const _new_step = new ReportStepsHeader();
+      _new_step.name = _step_temp.id;
+      _new_step.data = {};
+      _new_step.idx = 1;
+      _new_step.temp = _step_temp.template;
+      _new_step.id = _step_temp.id;
+      _new_step.name = _step_temp.name;
+      this.parser(_new_step);
+      _new_sub.steps.push(_new_step);
+    }
+    this.report.subroutines.push(_new_sub);
   }
 
   public reportDeleteStep(stepid: string) {
     // not implement error
+    // It will never be completed.
   }
 
-  public reportDeleteSubroutine(subid: string) {
-    // not implement error
+  private getId(subIdx: number): number {
+    let _id = 0;
+    while ( _id < this.report.subroutines.length && this.report.subroutines[_id].idx !== subIdx) {
+      _id ++;
+    }
+    return _id;
   }
 
-  public reportSwap() {
+  public reportDeleteSubroutine(subIdx: number) {
     // not implement error
+    this.report.subroutines.splice(this.getId(subIdx), 1);
+  }
+
+  public reportSwap(subIdx_1: number, subIdx_2: number) {
+    // not implement error
+
+    this.report.subroutines[this.getId(subIdx_1)].idx = subIdx_2;
+    this.report.subroutines[this.getId(subIdx_2)].idx = subIdx_1;
   }
 
   public mockReport() {
     // 模拟文章数据
     const newSub = new ReportSubroutineHeader;
-    newSub.type = 'add';
+    newSub.id = 'add';
     newSub.idx = 1;
     newSub.steps = [];
 
     const newStep = new ReportStepsHeader;
-    newStep.type = 'add';
+    newStep.name = 'add';
     newStep.idx = 1;
     newStep.data = {speed: '4000'};
     newStep.temp = '- input speed 3000 rpm @small - input temp 20 @big';
     newSub.steps.push(newStep);
     this.report.subroutines.push(newSub);
   }
-
 }
