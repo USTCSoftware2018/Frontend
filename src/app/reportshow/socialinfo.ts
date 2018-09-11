@@ -8,3 +8,7 @@ export class Socialcomments {
   commentnum: number;
   likeo: boolean;
 }
+
+export class Me {
+  myhead: string;
+}

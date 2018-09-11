@@ -1,0 +1,52 @@
+<div class="stepBarMain">
+
+  <nz-tabset [nzSize]="'large'" [nzTabBarGutter]="5">
+    <nz-tab nzTitle="&nbsp;&nbsp;&nbsp;&nbsp;Step&nbsp;&nbsp;&nbsp;&nbsp;">
+        <div class="stepBarList">
+            <!-- 这里是 step 和 process 的列表部分 -->
+            <nz-list [nzDataSource]="steps" [nzItemLayout]="'horizontal'" nzSize="small" [nzRenderItem]="item">
+              <ng-template #item let-item>
+                <nz-list-item>
+                  <img class="stepBarListIco" [src]="item.ico"/>
+                  <span class="stepBarListName">{{item.name}}</span>
+                </nz-list-item>
+              </ng-template>
+            </nz-list>
+          </div>
+    </nz-tab>
+    <nz-tab nzTitle="Process">
+      <div class="stepBarList">
+      <!-- 这里是 step 和 process 的列表部分 -->
+      <nz-list [nzDataSource]="subs" [nzItemLayout]="'horizontal'" nzSize="small" [nzRenderItem]="item1">
+          <ng-template #item1 let-item>
+            <nz-list-item>
+              <img class="stepBarListIco" [src]="item.ico"/>
+              <span class="stepBarListName">{{item.name}}</span>
+            </nz-list-item>
+          </ng-template>
+        </nz-list>
+      </div>
+    </nz-tab>
+  </nz-tabset>
+
+  <!-- <div class="stepBarTop" nz-row> -->
+    <!-- 头部 -->
+      <!-- <p nz-col nzSpan="12">Step</p> -->
+      <!-- <p nz-col nzSpan="12">Process</p> -->
+  <!-- </div> -->
+<!--  -->
+  <!-- <hr /> -->
+<!--  -->
+  <!-- <div class="stepBarList"> -->
+    <!-- 这里是 step 和 process 的列表部分 -->
+    <!-- <nz-list [nzDataSource]="steps" [nzItemLayout]="'horizontal'" nzSize="small" [nzRenderItem]="item"> -->
+      <!-- <ng-template #item let-item> -->
+        <!-- <nz-list-item> -->
+          <!-- <img class="stepBarListIco" [src]="item.ico"/> -->
+          <!-- <span class="stepBarListName">{{item.name}}</span> -->
+        <!-- </nz-list-item> -->
+      <!-- </ng-template> -->
+    <!-- </nz-list> -->
+  <!-- </div> -->
+
+</div>

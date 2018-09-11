@@ -32,7 +32,7 @@ export class AppendixService {
   }
 
   appendixDeletePicture(sub: ReportSubroutineHeader, idx: number) {
-    if (idx < 0 || !sub.pic ||idx > sub.pic.length) {
+    if (idx < 0 || !sub.pic || idx > sub.pic.length) {
       return;
     }
     sub.pic.splice(idx, 1);

@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class EditorFieldTypeComponent implements OnInit {
 
   @Input() fld: any;
+  @Input() size: string;
   constructor() { }
 
   ngOnInit() {

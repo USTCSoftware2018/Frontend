@@ -1,28 +1,29 @@
 <div class="s-bk">
   <div nz-row class="down">
-    <div nz-col nzOffset="6" nzSpan="10">
+    <div nz-col nzOffset="7" nzSpan="10">
       <img class="avatar" src="{{user.avatar_url}}">
     </div>
-    <div class="username" nz-col nzOffser="8" nzSpan="24" align="center">
+    <div nz-col nzSpan="7"></div>
+    <div class="username" nz-col nzSpan="24" align="center">
       <span>{{user.name}}</span>
     </div>
   </div>
   <div nz-row nzType="flex" nzJustify="space-around" class="down">
     <div class="sim-info" nz-col nzSpan="6" >
-      <p>{{user.followingnum}}</p>
-      <p>following</p>
+      <p class="sim-info-num">{{user.followingnum}}</p>
+      <p class="sim-info-name">following</p>
     </div>
     <div class="sim-info" nz-col nzSpan="6" >
-      <p>{{user.followednum}}</p>
-      <p>followers</p>
+      <p class="sim-info-num">{{user.followednum}}</p>
+      <p class="sim-info-name">followers</p>
     </div>
     <div class="sim-info" nz-col nzSpan="6" >
-      <p>{{user.likenum}}</p>
-      <p>likes</p>
+      <p class="sim-info-num">{{user.likenum}}</p>
+      <p class="sim-info-name">likes</p>
     </div>
     <div class="sim-info" nz-col nzSpan="6" >
-      <p>{{user.reportsnum}}</p>
-      <p>reports</p>
+      <p class="sim-info-num">{{user.reportsnum}}</p>
+      <p class="sim-info-name">reports</p>
     </div>
   </div>
 </div>

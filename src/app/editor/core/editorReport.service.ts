@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader } from '../headers/article';
+import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, subType } from '../headers/article';
 import { AppendixService } from './appendix.service';
 import {StepsService} from './steps.service';
 
@@ -30,7 +30,7 @@ export class EditorReportService {
     this.report.ndate = '';
     this.report.result = '';
     this.report.subroutines = [];
-    // this.mockReport();
+    this.mockReport();
   }
 
   public parser (step: ReportStepsHeader ) {
@@ -67,6 +67,8 @@ export class EditorReportService {
       }
     }
     _fields = _fields.filter( (elem) => Object.keys(elem).length > 1 );
+
+    // 绑定数据
     for (const fld of _fields) {
       if (data[fld.label]) {
         fld.value = data[fld.label];
@@ -74,13 +76,28 @@ export class EditorReportService {
         fld.value = fld.default;
       }
     }
+
+    // Remark 部分
+
+    const fld_remark: any = new Object();
+    fld_remark.type = 'input';
+    fld_remark.label = 'Remark';
+    fld_remark.default = '';
+    fld_remark.attr = ['@big'];
+    fld_remark.value = step.remark;
+    _fields.push(fld_remark);
     step.fields = _fields;
   }
 
   public parseAll() {
     for (const sub of this.report.subroutines ) {
-      for (const step of sub.steps) {
-        this.parser(step);
+      if (sub.subType === subType.steps) {
+        for (const step of sub.steps) {
+          this.parser(step);
+          sub.name = 'Steps';
+        }
+      } else {
+        sub.name = sub.subType;
       }
     }
   }
@@ -109,7 +126,7 @@ export class EditorReportService {
     const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
     _new_sub.id = '';
     _new_sub.desc = '';
-    _new_sub.name = _step_temp.name;
+    _new_sub.name = 'Step';
     _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
     _new_sub.steps = [];
 
@@ -187,7 +204,7 @@ export class EditorReportService {
     newStep.name = 'add';
     newStep.idx = 1;
     newStep.data = {speed: '4000'};
-    newStep.temp = '- input speed 3000 rpm @small - input temp 20 @big';
+    newStep.temp = '- input speed 3000 rpm @small - input temp 20 @small - input xxx 55555 @mid - input yy 666 @big';
     newSub.steps.push(newStep);
     this.report.subroutines.push(newSub);
   }

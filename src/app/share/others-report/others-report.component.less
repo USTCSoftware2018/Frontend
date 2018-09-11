@@ -3,9 +3,9 @@ pre{
   word-wrap: break-word;
 }
 .dinfo{
-  background-color: #F2F2F2;
+  text-align: justify;
+  padding:20px;
   margin:20px;
-  padding:10px 0px 10px 10px;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -30,6 +30,9 @@ pre{
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4; /* 控制显示的行数 */
+  ::-webkit-scrollbar {
+    width:0px;
+  }
 }
 .content pre{
   font-family: Helvetica;
