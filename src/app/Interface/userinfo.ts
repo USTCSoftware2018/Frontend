@@ -1,5 +1,5 @@
 
-export class Otheruser {
+export class Simuser {
   id: number;
   name: string;
   avatar_url: string;
@@ -10,17 +10,18 @@ export class Otheruser {
   reportsnum: number;
 }
 export class Info {
-  content: Otheruser[];
+  content: Simuser[];
 }
 export class Report {
   title: String;
+  auther: Simuser;
   topic: String[];
   content: String;
   commentsnum: Number;
   likesnum: Number;
 }
 export class Like {
-  ouser: Otheruser;
+  ouser: Simuser;
   report: Report;
 }
 export class User {
@@ -32,14 +33,5 @@ export class User {
   likes: Like[];
   reports: Report[];
 }
-export class Simuser {
-  id: number;
-  avatar_url: string;
-  about_me: string;
-  name: string;
-  followingnum: number;
-  followednum: number;
-  likenum: number;
-  reportsnum: number;
-}
+
 

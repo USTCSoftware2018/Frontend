@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Report } from './others-report';
+import { Report } from '../../Interface/userinfo';
 
 
 @Component({

@@ -16,6 +16,8 @@ import { ReportshowComponent } from './reportshow/reportshow.component';
 import { UserSetModule } from './user-set/user-set.module';
 import { ProfileModule } from './profile/profile.module';
 import { ReportshowotherComponent } from './reportshow/reportshowother/reportshowother.component';
+import { FeedsComponent } from './core/feeds/feeds.component';
+import { ShareModule } from './share/share.module';
 
 registerLocaleData(en);
 
@@ -25,6 +27,7 @@ registerLocaleData(en);
     NavbarComponent,
     ReportshowComponent,
     ReportshowotherComponent,
+    FeedsComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ registerLocaleData(en);
     EditorModule,
     ErrorModule,
     ReactiveFormsModule,
-    ProfileModule
+    ProfileModule,
+    ShareModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

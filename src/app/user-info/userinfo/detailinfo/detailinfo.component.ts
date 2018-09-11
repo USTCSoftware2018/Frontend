@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Otheruser, User} from '../../../Interface/userinfo';
+import {Simuser, User} from '../../../Interface/userinfo';
 
 @Component({
   selector: 'app-detailinfo',
@@ -13,7 +13,7 @@ export class DetailinfoComponent implements OnInit {
 
   ngOnInit() {
   }
-  ifFollowing(otheruser: Otheruser) {
+  ifFollowing(otheruser: Simuser) {
     const ii = this.user.following.content.findIndex(function(value) {
       return value.id === otheruser.id;
     });
