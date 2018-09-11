@@ -59,7 +59,7 @@ let ResponseData = JSON.stringify(response);
 |URL|Method|Request|Response|Description|
 |:--:|:--:|:--:|:--:|:--:|
 |./users|GET|null|ResponseData|管理员查看所有用户|
-|./users|POST|UserData|ResponseData| 创建新用户|
+|./users|POST|idUserData|ResponseData| 创建新用户|
 |./users/{id}|GET|null|ResponseData| 主键查用户|
 |./users|PUT|UserData|ResponseData| 修改信息 |
 |./users/{id}|DELETE|null|ResponseData| 删除用户|
@@ -70,21 +70,38 @@ let ResponseData = JSON.stringify(response);
 # 通知类
 **定义**
 ```typescript
+enum NotificationAction {
+    praise,
+    follow,
+    compose
+}
+
 class MyNotification {
     constructor (
         public id: number,
         // 通知主键
         public isread?: boolean,
-        // 已读？
-        public content?: string,
+        // 已读？|URL|Method|Request|Response|Description|
+
+|:--:|:--:|:--:|:--:|:--:|
+|./reports/{id}|GET|null|ResponseData|文章主键拿到文章
+|./reports/likes|POST|{"report_id": number}|ResponseData|为文章点赞
+|./reports/likes/{id}|DELETE|null|ResponseData|通过文章主键取消点赞|URL|Method|Request|Response|Description|
+
+|:--:|:--:|:--:|:--:|:--:|
+|./reports/{id}|GET|null|ResponseData|文章主键拿到文章
+|./reports/likes|POST|{"report_id": number}|ResponseData|为文章点赞
+|./reports/likes/{id}|DELETE|null|ResponseData|通过文章主键取消点赞
+        public content?: NotificationAction,
         public time?: Date,
         // 发送时间
         public to?: number
         // 发送对象主键
     ) { }
 }
-let response = new Respon<Notifi>();
-let notification = new Notifi();
+
+let response = new MyResponse<Notifi>();
+let notification = new MyNotification();
 // 进行一些操作之后
 
 let NotificationData = JSON.stringify([notification]);
@@ -92,6 +109,7 @@ let NotificationData = JSON.stringify([notification]);
 let ResponseData = JSON.stringify(response);
 ```
 **请求方法**
+
 |URL|Method|Request|Response|Description|
 |:--:|:--:|:--:|:--:|:--:|
 |./notifications|GET|null|ResponseData| 拿到用户的所有通知消息|
@@ -112,14 +130,14 @@ class Report {
         // 标题
         public abstract?: string,
         // 摘要
-        public lable?: Array<number>,
+        public label?: Array<number>,
         // 所属标签
         public comment？: Array<number>
         // 评论主键
     ) { }
 }
 let report = new Report();
-let response = new Respon<Report>();
+let response = new MyResponse<Report>();
 
 // 进行一些操作之后
 let ReportData = JSON.stringify([report]);
@@ -127,6 +145,7 @@ let ResponseData = JSON.stringify(response);
 ```
 
 **请求方法**
+
 
 |URL|Method|Request|Response|Description|
 |:--:|:--:|:--:|:--:|:--:|
@@ -149,8 +168,8 @@ class Comment {
     ) { }
 }
 let comment = new Comment(1);
-let response = new Respon<Comment>();
-// 一些操作之后
+let response = new MyResponse<Comment>();
+// 一些操作之后>>>>>>>
 let CommentData = JSON.stringify([comment]);
 let ResponseData = JSON.stringify(response);
 ```

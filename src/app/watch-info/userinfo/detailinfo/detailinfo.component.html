@@ -1,0 +1,36 @@
+
+<div class="s-bk">
+  <!-- navbar -->
+  <div>
+    <ul nz-menu nzMode="horizontal">
+      <li nz-menu-item (click)="chshow('Following')">Following</li>
+      <li nz-menu-item (click)="chshow('Followers')">Followers</li>
+      <li nz-menu-item (click)="chshow('Likes')">Likes</li>
+      <li nz-menu-item (click)="chshow('Reports')">Reports</li>
+    </ul>
+  </div>
+
+  <div *ngIf="router[0]">
+    <div  *ngFor="let otheruser of user.following.content">
+      <app-followuser [otheruser]="otheruser" [isFollowing]="ifFollowing(otheruser)" ></app-followuser>
+    </div>
+  </div>
+
+  <div *ngIf="router[1]">
+    <div  *ngFor="let otheruser of user.followers.content">
+      <app-followuser [otheruser]="otheruser" [isFollowing]="ifFollowing(otheruser)"></app-followuser>
+    </div>
+  </div>
+
+  <div *ngIf="router[2]">
+    <div  *ngFor="let like of user.likes">
+      <app-likereport [like]="like"></app-likereport>
+    </div>
+  </div>
+
+  <div *ngIf="router[3]">
+    <div  *ngFor="let report of user.reports">
+      <app-others-report [report]="report"></app-others-report>
+    </div>
+  </div>
+</div>

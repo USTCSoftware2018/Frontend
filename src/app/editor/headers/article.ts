@@ -2,7 +2,8 @@
 
 export class ReportStepsHeader {
     idx: number;
-    type: string;// 类型 对应 EditorSubroutine 中的id
+    id: string;
+    name: string; // 类型 对应 EditorSubroutine 中的id
     data: any;
 
     temp?: string;
@@ -14,7 +15,8 @@ export class ReportStepsHeader {
 }
 
 export class ReportSubroutineHeader {
-    type: string; // 类型 对应 EditorStep 中的id
+    id: string; // 类型 对应 EditorStep 中的id
+    name: string;
     idx: number; // 位置
     steps: Array<ReportStepsHeader>; // 包含的step
     desc: string;
