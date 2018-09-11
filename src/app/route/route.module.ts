@@ -11,7 +11,7 @@ const appRoutes: Routes = [
   { path: 'reportshow', component: ReportshowComponent},
   { path: 'reportshowother', component: ReportshowotherComponent},
   { path: 'userset', loadChildren: '../user-set/user-set.module#UserSetModule', data: { preload: true } },
-  { path: 'userinfo', loadChildren: '../watch-info/watch-info.module#WatchInfoModule', data: {preload: true}},
+  { path: 'userinfo', loadChildren: '../user-info/watch-info.module#WatchInfoModule', data: {preload: true}},
   { path: 'authentication', loadChildren: '../authentic/authentic.module#AuthenticModule', data: {preload: true}},
   { path: 'search', loadChildren: '../biosearch/biosearch.module#BiosearchModule', data: {preload: true}},
   { path: 'profile', loadChildren: '../profile/profile.module#ProfileModule', data: {preload: true}},

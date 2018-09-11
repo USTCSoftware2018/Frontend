@@ -1,6 +1,6 @@
-import { User } from './user';
-import { Simuser } from './user';
-import { Otheruser } from './user';
+import { User } from './userinfo';
+import { Simuser } from './userinfo';
+import { Otheruser } from './userinfo';
 
 const user1: Otheruser = {
   id: 2,

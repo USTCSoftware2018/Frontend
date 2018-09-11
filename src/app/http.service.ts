@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, retry, map, tap } from 'rxjs/operators';
-import { User } from './Interface/User';
+import { User } from './Interface/userinfo';
 import { MyResponse } from './Interface/MyResponse';
 import { MyNotification } from './Interface/myNotification';
 

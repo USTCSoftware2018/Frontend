@@ -20,6 +20,9 @@ import { SearchresultComponent} from './searchresult/searchresult.component';
     SearchboxComponent,
     SearchresultComponent
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }]
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  exports: [
+    NgZorroAntdModule
+  ]
 })
 export class BiosearchModule { }
