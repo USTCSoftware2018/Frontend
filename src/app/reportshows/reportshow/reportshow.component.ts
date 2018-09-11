@@ -7,6 +7,7 @@ import { User } from './user';
 import { USER } from './mock-user';
 import {variable} from '@angular/compiler/src/output/output_ast';
 import {isLineBreak} from 'codelyzer/angular/sourceMappingVisitor';
+import { ShareModule } from '../../share/share.module';
 
 @Component({
   selector: 'app-reportshow',

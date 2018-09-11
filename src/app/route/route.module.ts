@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from '../error/error404/error404.component';
-import { ReportshowComponent} from '../reportshow/reportshow.component';
+import { ReportshowComponent} from '../reportshows/reportshow/reportshow.component';
 import { MainComponent as EditorMainComponent} from '../editor/views/main/main.component';
 import { ProfilePageComponent } from '../profile/profile-page/profile-page.component';
-import { ReportshowotherComponent } from '../reportshow/reportshowother/reportshowother.component';
+import { ReportshowotherComponent } from '../reportshows/reportshow/reportshowother/reportshowother.component';
 import { FeedsComponent } from '../core/feeds/feeds.component';
 
 const appRoutes: Routes = [
@@ -17,6 +17,7 @@ const appRoutes: Routes = [
   { path: 'authentication', loadChildren: '../authentic/authentic.module#AuthenticModule', data: {preload: true}},
   { path: 'search', loadChildren: '../biosearch/biosearch.module#BiosearchModule', data: {preload: true}},
   { path: 'profile', loadChildren: '../profile/profile.module#ProfileModule', data: {preload: true}},
+  { path: 'reportshows', loadChildren: '../reportshows/reportshows.module#ReportshowsModule'},
   // { path: 'user-set', loadChildren: '../user-set/user-set.module#UserSetModule', data: { preload: true } },
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: Error404Component},
