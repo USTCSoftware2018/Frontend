@@ -1,3 +1,59 @@
-<p>
-  feeds works!
-</p>
+<div class="d-bk" nz-row >
+  <div nz-col nzXS="24" [nzSm]="{span:22,offset:1}" [nzMd]="{span:22,offset:1}" [nzLg]="{span:20, offset:2}"
+       [nzXl]="{span:18, offset:3}" [nzXXl]="{span:16, offset:4}">
+    <div nz-row nzGutter="10">
+      <div nz-col nzSpan="24">
+        <div *ngFor="let feed of feeds">
+
+          <div nz-row *ngIf="feed.kind === 'follow'">
+            <div nz-col nzSpan="1" class="title-avatar">
+              <nz-avatar nzIcon="anticon anticon-user" nzSize="large"
+                         nzSrc="{{feed.friend.avatar_url}}"></nz-avatar>
+            </div>
+            <div nz-col nzSpan="23" >
+              <div class="title-content">
+                <span class="title-bold">&nbsp;&nbsp;&nbsp;&nbsp;{{feed.friend.name}}</span>
+                <span class="title-light">&nbsp;&nbsp;started&nbsp;followed&nbsp;</span>
+                <span class="title-bold">&nbsp;{{feed.otheruser.name}}&nbsp;&nbsp;</span>
+                <span class="title-time">{{feed.date}}</span>
+              </div>
+              <app-followuser [bkcolor]="'#FFFFFF'" [isFollowing]="isFollowing" [otheruser]="feed.otheruser"></app-followuser>
+            </div>
+          </div>
+
+          <div nz-row *ngIf="feed.kind === 'like'">
+            <div nz-col nzSpan="1" class="title-avatar">
+              <nz-avatar nzIcon="anticon anticon-user" nzSize="large"
+                         nzSrc="{{feed.friend.avatar_url}}"></nz-avatar>
+            </div>
+            <div nz-col nzSpan="23">
+              <div class="title-content">
+                <span class="title-bold">&nbsp;&nbsp;&nbsp;&nbsp;{{feed.friend.name}}</span>
+                <span class="title-light">&nbsp;&nbsp;liked&nbsp;</span>
+                <span class="title-bold">&nbsp;{{feed.report.title}}&nbsp;</span>
+                <span class="title-light">&nbsp;by&nbsp;</span>
+                <span class="title-bold">&nbsp;{{ feed.report.author.name }}&nbsp;&nbsp;</span>
+                <span class="title-time">{{feed.date}}</span>
+              </div>
+              <app-others-report [bkcolor]="'#FFFFFF'" [report]="feed.report"></app-others-report>
+            </div>
+          </div>
+
+          <div nz-row *ngIf="feed.kind === 'upload'">
+            <div nz-col nzSpan="1" class="title-avatar">
+              <nz-avatar nzIcon="anticon anticon-user" nzSize="large"
+                         nzSrc="{{feed.report.auther.avatar_url}}"></nz-avatar>
+            </div>
+            <div nz-col nzSpan="23">
+              <div class="title-content">
+                <p>dbquwdoiwq</p>
+              </div>
+              <app-others-report [bkcolor]="'#FFFFFF'" [report]="feed.report"></app-others-report>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

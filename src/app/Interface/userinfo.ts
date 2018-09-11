@@ -16,7 +16,7 @@ export class Report {
   title: String;
   auther: Simuser;
   topic: String[];
-  content: String;
+  abstract: String;
   commentsnum: Number;
   likesnum: Number;
 }
