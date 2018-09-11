@@ -3,7 +3,7 @@
   <div *ngSwitchCase="'input'" nz-row>
     <!-- Input 窗口 -->
     <ng-container *ngIf="size === '@small'">
-        <div nz-col [nzXl]="{span:4,offset:4}" [nzLg]="{span:6,offset:2}" [nzMd]="{span:8,offset:0}" [nzSm]="{span:8,offset:0}">
+        <div nz-col [nzXl]="{span:6,offset:2}" [nzLg]="{span:6,offset:2}" [nzMd]="{span:8,offset:0}" [nzSm]="{span:8,offset:0}">
             <label class="fld_name">{{fld.label}}&nbsp;&nbsp;</label>
         </div>
         <div nz-col [nzXl]="8" [nzLg]="8" [nzMd]="8" [nzSm]="8">
@@ -15,7 +15,7 @@
     </ng-container>
 
     <ng-container *ngIf="size === '@mid'">
-        <div nz-col [nzXl]="{span:2,offset:2}" [nzLg]="{span:3,offset:1}" [nzMd]="{span:4,offset:0}" [nzSm]="{span:4,offset:0}">
+        <div nz-col [nzXl]="{span:3,offset:1}" [nzLg]="{span:3,offset:1}" [nzMd]="{span:4,offset:0}" [nzSm]="{span:4,offset:0}">
             <label class="fld_name">{{fld.label}}&nbsp;&nbsp;</label>
         </div>
         <div nz-col [nzXl]="4" [nzLg]="4" [nzMd]="4" [nzSm]="4">
@@ -27,7 +27,7 @@
     </ng-container>
 
     <ng-container *ngIf="size === '@big'">
-        <div nz-col [nzXl]="{span:2,offset:2}" [nzLg]="{span:3,offset:1}" [nzMd]="{span:4,offset:0}" [nzSm]="{span:4,offset:0}">
+        <div nz-col [nzXl]="{span:3,offset:1}" [nzLg]="{span:3,offset:1}" [nzMd]="{span:4,offset:0}" [nzSm]="{span:4,offset:0}">
             <label class="fld_name">{{fld.label}}&nbsp;&nbsp;</label>
         </div>
         <div nz-col [nzXl]="18" [nzLg]="18" [nzMd]="18" [nzSm]="18">
@@ -43,9 +43,20 @@
 
 
 
-  <div *ngSwitchCase="'textarea'">
-      <label>{{fld.label}}: </label>
-      <textarea [(ngModel)]='fld.value' name={{fld.label}}></textarea>
-      <label *ngIf="fld.unit"> {{fld.unit}} </label>
-  </div>
+  <div *ngSwitchCase="'select'" nz-row>
+        <!-- Select 窗口 -->
+        <div nz-col [nzXl]="{span:3,offset:1}" [nzLg]="{span:3,offset:1}" [nzMd]="{span:4,offset:0}" [nzSm]="{span:4,offset:0}">
+            <label class="fld_name">{{fld.label}}&nbsp;&nbsp;</label>
+        </div>
+        <div nz-col [nzXl]="4" [nzLg]="4" [nzMd]="4" [nzSm]="4">
+            <select [(ngModel)]='fld.value' class="fld_input">
+                <option value="" disabled>Choose a state</option>
+                <option *ngFor="let opt of options" [ngValue]="opt" [selected]="opt === fld.value">{{opt}}</option>
+            </select>
+        </div>
+        <div nz-col [nzXl]="4" [nzLg]="4" [nzMd]="4" [nzSm]="4">
+            <label *ngIf="fld.unit" class="fld_unit">&nbsp;&nbsp;{{fld.unit}}</label>
+        </div>
+    </div>
+
 </ng-container>

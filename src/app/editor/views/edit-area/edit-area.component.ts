@@ -25,7 +25,7 @@ export class EditAreaComponent implements OnInit {
 
   public onResize() {
     // 更新大小
-    this.editorHeight = (window.innerHeight - 110) + 'px';
+    this.editorHeight = (window.innerHeight - 110) + 'px'; // raw 110
   }
 
 }
