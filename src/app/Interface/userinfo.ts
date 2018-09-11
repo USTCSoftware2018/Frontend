@@ -14,7 +14,7 @@ export class Info {
 }
 export class Report {
   title: String;
-  auther: Simuser;
+  author: Simuser;
   topic: String[];
   abstract: String;
   commentsnum: Number;

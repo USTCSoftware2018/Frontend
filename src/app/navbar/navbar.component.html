@@ -2,7 +2,7 @@
     <div nz-col nzSpan="4"></div>
     <li nz-menu-item nz-col nzSpan="4" [routerLink]="['/index']" class="brand"><img src="../../../assets/img/panda/logo.png" height="16px" style="margin-top: -2px"></li>
     <li nz-menu-item nz-col nzSpan="2" [routerLink]="['/explore']">Explore</li>
-    <li nz-menu-item *ngIf="user != null" nz-col nzSpan="3">Feeds</li>
+    <li nz-menu-item *ngIf="user != null" nz-col nzSpan="3" [routerLink]="['/feeds']">Feeds</li>
     <li nz-menu-item *ngIf="user != null" nz-col nzSpan="2"></li>
     <div nz-col nzSpan="2" *ngIf="user != null">
         <li nz-menu-item nz-popover nzPlacement="bottom" nzTitle="Notification" [nzContent]="notification_content" class="icon-item"><i class="anticon anticon-bell"></i></li>

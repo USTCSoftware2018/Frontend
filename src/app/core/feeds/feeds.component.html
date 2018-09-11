@@ -1,9 +1,9 @@
 <div class="d-bk" nz-row >
-  <div nz-col nzXS="24" [nzSm]="{span:22,offset:1}" [nzMd]="{span:22,offset:1}" [nzLg]="{span:20, offset:2}"
-       [nzXl]="{span:18, offset:3}" [nzXXl]="{span:16, offset:4}">
+  <div nz-col nzXS="24" [nzSm]="{span:24}" [nzMd]="{span:20,offset:2}" [nzLg]="{span:18, offset:3}"
+       [nzXl]="{span:16, offset:4}" [nzXXl]="{span:14, offset:5}">
     <div nz-row nzGutter="10">
       <div nz-col nzSpan="24">
-        <div *ngFor="let feed of feeds">
+        <div *ngFor="let feed of feeds" class="feed-content">
 
           <div nz-row *ngIf="feed.kind === 'follow'">
             <div nz-col nzSpan="1" class="title-avatar">
@@ -42,11 +42,14 @@
           <div nz-row *ngIf="feed.kind === 'upload'">
             <div nz-col nzSpan="1" class="title-avatar">
               <nz-avatar nzIcon="anticon anticon-user" nzSize="large"
-                         nzSrc="{{feed.report.auther.avatar_url}}"></nz-avatar>
+                         nzSrc="{{feed.report.author.avatar_url}}"></nz-avatar>
             </div>
             <div nz-col nzSpan="23">
               <div class="title-content">
-                <p>dbquwdoiwq</p>
+                <span class="title-bold">&nbsp;&nbsp;&nbsp;&nbsp;{{feed.report.author.name}}</span>
+                <span class="title-light">&nbsp;&nbsp;uploaded&nbsp;followed&nbsp;</span>
+                <span class="title-bold">&nbsp;{{feed.report.title}}&nbsp;&nbsp;</span>
+                <span class="title-time">{{feed.date}}</span>
               </div>
               <app-others-report [bkcolor]="'#FFFFFF'" [report]="feed.report"></app-others-report>
             </div>
