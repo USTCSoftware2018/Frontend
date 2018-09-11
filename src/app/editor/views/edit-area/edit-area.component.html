@@ -24,3 +24,10 @@
   </div>
 
 </div>
+
+<div class="coreArea" (window:resize)="onResize()" [ngStyle]="{'height': editorHeight}">
+    <!-- 各个文章 subroutines -->
+    <div *ngFor="let sub of currentReport.subroutines">
+        <app-subroutine [sub]="sub"></app-subroutine>
+    </div>
+</div>

@@ -1,8 +1,8 @@
 @colour_write: #FFFFFF;
 @screen-lg-min: 900px; // 屏幕宽度
-@left-margin: 19px; // 与左边的间距
+@left-margin: 15px; // 与左边的间距
 
-@up-margin-lg: 25px;
+@up-margin-lg: 15px;
 @up-margin-md: 15px;
 
 
@@ -12,7 +12,7 @@
         margin-left: @left-margin;
         margin-top: @up-margin-lg;
         background-color: @colour_write;
-        widows: 100%;
+        width: 100%;
         height: 50px;
 
 
@@ -24,10 +24,21 @@
         margin-left: @left-margin;
         margin-top: @up-margin-md;
         background-color: @colour_write;
-        widows: 100%;
+        width: 100%;
         height: 50px;
         text-align: center;
     }
+}
+
+// 核心编辑区
+.coreArea {
+    width: 100%;
+    margin-left: @left-margin;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar  {
+    width: 0px;
 }
 
 // 按钮群

@@ -1,22 +1,22 @@
 
 @screen-lg-min: 1000px; // 屏幕宽度
-@size-lg: 70px;
-@size-md: 65px;
+@size-lg: 55px;
+@size-md: 50px;
 
 #FixedButton {
     position:fixed;
     top:80%;
-    margin-left: 10px;
+    margin-left: 20px;
 
     @media (min-width: @screen-lg-min) {
         img {
-            height: 80px;
+            height: 70px;
         }
     }
 
     @media (max-width: @screen-lg-min) {
         img {
-            height: 70px;
+            height: 60px;
         }
     }
 }
@@ -25,7 +25,7 @@
 
 #LuckyButton_1 {
     position:fixed;
-    top:70%;
+    top:71%;
     .LuckButton();
     .getSize();
 }
@@ -33,35 +33,42 @@
 #LuckyButton_2 {
     position:fixed;
     .getSize();
-    top:60%;
+    top:62%;
     .LuckButton();
 }
 
 #LuckyButton_3 {
     position:fixed;
     .getSize();
-    top:50%;
+    top:53%;
     .LuckButton();
 }
 
 #LuckyButton_4 {
     position:fixed;
     .getSize();
-    top:40%;
+    top:44%;
     .LuckButton();
 }
 
 #LuckyButton_5 {
     position:fixed;
     .getSize();
-    top:30%;
+    top:35%;
     .LuckButton();
 }
 
 #LuckyButton_6 {
     position:fixed;
     .getSize();
-    top:20%;
+    top:26%;
+    .LuckButton();
+}
+
+#LuckyButton_7 {
+    position:fixed;
+    .getSize();
+    top:17%;
     .LuckButton();
 }
 
@@ -69,7 +76,7 @@
 .LuckButton {
     background: #FFFFFF;
     border-radius: 100px;
-    margin-left: 10px;
+    margin-left: 20px;
 
     img {
         position: relative;

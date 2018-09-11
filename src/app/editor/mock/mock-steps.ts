@@ -13,7 +13,7 @@ const mockStep_2 = new EditorStepHeader();
 mockStep_2.id = '2';
 mockStep_2.desc = 'add things';
 mockStep_2.name = 'add';
-mockStep_2.ico = '/assets/img/editor/icons/mix.png';
+mockStep_2.ico = '/assets/img/editor/icons/add.png';
 mockStep_2.template = '- input things null - input number 1000 -';
 
 mockStep.push(mockStep_1);
