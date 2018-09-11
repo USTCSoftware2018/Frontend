@@ -30,7 +30,7 @@ export class EditorReportService {
     this.report.ndate = '';
     this.report.result = '';
     this.report.subroutines = [];
-    this.mockReport();
+    // this.mockReport();
   }
 
   public parser (step: ReportStepsHeader ) {
@@ -72,6 +72,8 @@ export class EditorReportService {
     for (const fld of _fields) {
       if (data[fld.label]) {
         fld.value = data[fld.label];
+      } else if (fld.default === 'null') {
+        fld.value = '';
       } else {
         fld.value = fld.default;
       }
