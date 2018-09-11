@@ -14,6 +14,10 @@ export class EditorSubroutineHeader {
     id: string; // ID 号码
     ico: string; // 标题 url
     name: string;
+    default: any[];
     desc: string; // Subroutine 描述
     steps: Array<string>; // 包含的 step id
+    constructor () {
+        this.default = [];
+    }
 }

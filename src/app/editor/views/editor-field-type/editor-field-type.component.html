@@ -50,7 +50,8 @@
         </div>
         <div nz-col [nzXl]="4" [nzLg]="4" [nzMd]="4" [nzSm]="4">
             <select [(ngModel)]='fld.value' class="fld_input">
-                <option *ngFor="let opt of options" [ngValue]="fld.value">{{opt}}</option>
+                <option value="" disabled>Choose a state</option>
+                <option *ngFor="let opt of options" [ngValue]="opt" [selected]="opt === fld.value">{{opt}}</option>
             </select>
         </div>
         <div nz-col [nzXl]="4" [nzLg]="4" [nzMd]="4" [nzSm]="4">

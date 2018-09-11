@@ -25,7 +25,7 @@ export class StepPanelComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.panelState = 'active';
+    this.panelState = 'inactive';
     this.getWindowsWidth();
   }
 

@@ -4,8 +4,8 @@
     <div nz-col [nzXl]="1" [nzLg]="1" [nzMd]="2" [nzSm]="2" 
         class="VertAlign" (click)="panelReverse()">
         <span>&nbsp;&nbsp;</span>
-        <i  [ngClass]="{'anticon-down':panelState=='active',
-                        'anticon-up': panelState=='inactive',
+        <i  [ngClass]="{'anticon-down':panelState=='inactive',
+                        'anticon-up': panelState=='active',
                         'anticon': true}" 
                     style="vertical-align: middle;align-self: centent"></i>
     </div>
