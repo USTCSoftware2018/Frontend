@@ -30,7 +30,7 @@ export class EditorReportService {
     this.report.ndate = '';
     this.report.result = '';
     this.report.subroutines = [];
-    this.mockReport();
+    // this.mockReport();
   }
 
   public parser (step: ReportStepsHeader ) {
@@ -72,6 +72,8 @@ export class EditorReportService {
     for (const fld of _fields) {
       if (data[fld.label]) {
         fld.value = data[fld.label];
+      } else if (fld.default === 'null') {
+        fld.value = '';
       } else {
         fld.value = fld.default;
       }
@@ -153,11 +155,13 @@ export class EditorReportService {
     _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
     _new_sub.steps = [];
 
+    let idx = 0;
     for (const step_id of _sub_temp.steps) { // 建立每一个 steps
       const _step_temp = this.stepsService.findStep(step_id);
       const _new_step = new ReportStepsHeader();
       _new_step.name = _step_temp.id;
-      _new_step.data = {};
+      _new_step.data = _sub_temp.default[idx];
+      idx ++;
       _new_step.idx = 1;
       _new_step.temp = _step_temp.template;
       _new_step.id = _step_temp.id;
