@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
+import { SortablejsModule } from 'node_modules/angular-sortablejs';
+
 import { StepsService } from './core/steps.service';
 import { AppendixService } from './core/appendix.service';
 import { EditorReportService } from './core/editorReport.service';
@@ -21,6 +23,7 @@ import { StepPanelComponent } from './views/step-panel/step-panel.component';
     CommonModule,
     NgZorroAntdModule,
     FormsModule,
+    SortablejsModule,
   ],
   declarations: [
     MainComponent,

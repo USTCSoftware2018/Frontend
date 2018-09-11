@@ -10,9 +10,9 @@ import { ReportStepsHeader } from '../../headers/article';
     trigger('panel', [
       state('inactive', style({height: 0, display: 'none' , opacity: 0})),
       state('active',   style({height: 100 , display: 'block' , opacity: 1})),
-      transition('inactive => active', animate('200ms ease-out')),
-      transition('active => inactive', animate('200ms ease-out'))
-    ])
+      transition('inactive => active', animate('200ms')),
+      transition('active => inactive', animate('200ms'))
+    ]),
   ]
 })
 export class StepPanelComponent implements OnInit {
@@ -25,7 +25,7 @@ export class StepPanelComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.panelState = 'active';
+    this.panelState = 'inactive';
     this.getWindowsWidth();
   }
 
