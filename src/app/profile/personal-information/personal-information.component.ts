@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserInfoProfile} from "./userinfoprofile";
-import {USERINFOPROFILE} from "./mock-userinfoprofile";
+import {UserInfoProfile} from './userinfoprofile';
+import {USERINFOPROFILE} from './mock-userinfoprofile';
 
 @Component({
   selector: 'app-personal-information',
@@ -8,7 +8,7 @@ import {USERINFOPROFILE} from "./mock-userinfoprofile";
   styleUrls: ['./personal-information.component.less']
 })
 export class PersonalInformationComponent implements OnInit {
-  userinfo:UserInfoProfile = USERINFOPROFILE;
+  userinfo: UserInfoProfile = USERINFOPROFILE;
   constructor() { }
 
   ngOnInit() {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from './user';
-import { USER } from './mock-user';
-import { SIMUSER } from './mock-user';
+import { User } from '../../Interface/userinfo';
+import { USER } from '../../Interface/mock-user';
+import { SIMUSER } from '../../Interface/mock-user';
 
 @Component({
   selector: 'app-userinfo',

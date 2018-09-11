@@ -1,8 +1,8 @@
-<div class="dinfo" nz-row [@Expandin] [style.background-color]="bkcolor" >
+<div class="dinfo reports" nz-row [style.background-color]="bkcolor" >
   <!-- avatar -->
   <div class="title" nz-col nzSpan="24">
     <nz-avatar nzIcon="anticon anticon-user"
-      nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png">
+      nzSrc="{{report.auther.avatar_url}}" nzSize="large">
     </nz-avatar>
     <a>{{report.title|uppercase}}</a>
   </div>

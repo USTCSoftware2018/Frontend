@@ -4,7 +4,7 @@ import { HttpService } from '../../http.service';
 import { mockStep } from '../mock/mock-steps'; // MockStep
 import { mockSub } from '../mock/mock-sub'; // MockStep
 
-import { User } from '../../Interface/User';
+import { User } from '../../Interface/userinfo';
 
 @Injectable()
 export class GetDataService {
