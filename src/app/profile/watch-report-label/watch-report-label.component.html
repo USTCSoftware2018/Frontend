@@ -1,7 +1,7 @@
 <div>
-<nz-tabset nzSize="large" class="reports">
-  <nz-tab nzTitle="Reports">
-    <div *ngFor="let report of user.reports">
+  <nz-tabset nzSize="large" class="reports">
+    <nz-tab nzTitle="Reports">
+      <div *ngFor="let report of user.reports">
         <app-others-report [report]="report" [bkcolor]="'#F2F2F2'"></app-others-report>
         <!--
         <nz-card class="rectangle4" [@shrinkOut]>
@@ -16,12 +16,12 @@
 
         </nz-card>
         -->
-    </div>
-  </nz-tab>
-  <nz-tab nzTitle="Appreciate">
-  </nz-tab>
-</nz-tabset>
-<div class="pulldown">
-  <a (click)="reportShowMore()"><i class="anticon anticon-down"></i></a>
-</div>
+      </div>
+    </nz-tab>
+    <nz-tab nzTitle="Appreciate">
+    </nz-tab>
+  </nz-tabset>
+  <div class="pulldown">
+    <a (click)="reportShowMore()"><i class="anticon anticon-down"></i></a>
+  </div>
 </div>

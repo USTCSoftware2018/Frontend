@@ -10,6 +10,11 @@ const user1: Simuser = {
   followednum: 233,
   likenum: 1,
   reportsnum: 1,
+  location: 'China',
+  email: 'biohub@mail.ustc.edu.cn',
+  organization: 'USTC',
+  follow_or_unfollow: true,
+  follow_or_edit: true,
 };
 const user2: Simuser = {
   id: 3,
@@ -20,6 +25,11 @@ const user2: Simuser = {
   followednum: 233,
   likenum: 1,
   reportsnum: 1,
+  location: 'China',
+  email: 'biohub@mail.ustc.edu.cn',
+  organization: 'USTC',
+  follow_or_unfollow: true,
+  follow_or_edit: true,
 };
 const user3: Simuser = {
   id: 4,
@@ -30,6 +40,11 @@ const user3: Simuser = {
   followednum: 233,
   likenum: 1,
   reportsnum: 1,
+  location: 'China',
+  email: 'biohub@mail.ustc.edu.cn',
+  organization: 'USTC',
+  follow_or_unfollow: true,
+  follow_or_edit: true,
 };
 const user4: Simuser = {
   id: 5,
@@ -40,6 +55,11 @@ const user4: Simuser = {
   followednum: 233,
   likenum: 1,
   reportsnum: 1,
+  location: 'China',
+  email: 'biohub@mail.ustc.edu.cn',
+  organization: 'USTC',
+  follow_or_unfollow: true,
+  follow_or_edit: true,
 };
 const report1 = {
   title: 'research',
@@ -50,7 +70,10 @@ const report1 = {
   '1. Centifuge 1.5 mL bacterium solution at 11000 rpm, few sediment getted. Remove the supernatant. Repeat twice.\n' +
   '2. Add 250 μL Buﬀer P1, resuspend cells.\n',
   commentsnum: 190,
-  likesnum: 12
+  likesnum: 12,
+  archive: '2018-10-10',
+  popular_report: true,
+  label: 'biological share' //报告分类
 };
 export const USER: User = {
   id: 1,
@@ -77,4 +100,9 @@ export const SIMUSER: Simuser = {
   followednum: 233,
   likenum: 1,
   reportsnum: 1,
+  location: 'China',
+  email: 'biohub@mail.ustc.edu.cn',
+  organization: 'USTC',
+  follow_or_unfollow: true,
+  follow_or_edit: true,
 };

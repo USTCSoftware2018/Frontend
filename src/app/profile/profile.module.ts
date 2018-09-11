@@ -8,6 +8,7 @@ import { Report2Component } from './report/report.component';
 import { ShareModule } from '../share/share.module';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { ProfileRoutingModule } from './profile-routing.module';
+import { WatchReportLabelComponent } from './watch-report-label/watch-report-label.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { ProfileRoutingModule } from './profile-routing.module';
     PersonalInformationComponent,
     ProfilePageComponent,
     Report2Component,
-    UserInfoComponent
+    UserInfoComponent,
+    WatchReportLabelComponent
   ],
   exports: [
     NgZorroAntdModule,

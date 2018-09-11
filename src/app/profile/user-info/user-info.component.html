@@ -1,17 +1,32 @@
 <div nz-row class="card">
   <label>Labels</label>
+  <div class="content">
+    <div *ngFor="let label of all_labels">
+      {{label}}
+    </div>
+  </div>
   <div class="pulldown">
   <i class="anticon anticon-caret-down"></i>
   </div>
 </div>
 <div nz-row class="card">
   <label>Archive</label>
+  <div class="content">
+    <div *ngFor="let archive of all_archive">
+      {{archive}}
+    </div>
+  </div>
   <div class="pulldown">
   <i class="anticon anticon-caret-down"></i>
   </div>
 </div>
 <div nz-row class="card">
   <label>Popular reports</label>
+  <div class="content">
+    <div *ngFor="let pop_report of all_pop_report">
+      {{pop_report}}
+    </div>
+  </div>
   <div class="pulldown">
   <i class="anticon anticon-caret-down"></i>
   </div>

@@ -8,6 +8,11 @@ export class Simuser {
   followednum: number;
   likenum: number;
   reportsnum: number;
+  location: string;
+  email: string;
+  organization: string;
+  follow_or_unfollow: boolean;
+  follow_or_edit: boolean;
 }
 export class Info {
   content: Simuser[];
@@ -19,6 +24,9 @@ export class Report {
   content: String;
   commentsnum: Number;
   likesnum: Number;
+  archive: string; //报告的日期
+  popular_report: boolean; //是否为受欢迎的报告
+  label: string; //报告分类
 }
 export class Like {
   ouser: Simuser;
