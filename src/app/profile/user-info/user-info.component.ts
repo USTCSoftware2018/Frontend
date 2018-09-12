@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {User} from "../../Interface/userinfo";
-import {Simuser} from "../../Interface/userinfo";
+import {User} from '../../Interface/userinfo';
+import {Archive} from '../../Interface/userinfo';
+import {PopularReport} from '../../Interface/userinfo';
+import {Label} from '../../Interface/userinfo';
 
 @Component({
   selector: 'app-user-info',
@@ -9,29 +11,18 @@ import {Simuser} from "../../Interface/userinfo";
 })
 export class UserInfoComponent implements OnInit {
   @Input() user: User;
-  all_archive: string[] = [];
-  all_labels: string[] = [];
-  all_pop_report: String[] = [];
+  all_archive: Archive[] = [];
+  all_labels: PopularReport[] = [];
+  all_pop_report: Label[] = [];
   constructor() { }
 
   ngOnInit() {
     this.initInfo();
   }
-  initInfo(){
-    //统计标签
-    for(let i=0;i<this.user.reports.length;++i){
-      this.all_labels.push(this.user.reports[i].label);
-    }
-    //统计日期
-    for(let i=0;i<this.user.reports.length;++i){
-      this.all_archive.push(this.user.reports[i].archive);
-    }
-    //统计受欢迎的文章
-    for(let i=0;i<this.user.reports.length;++i){
-      if(this.user.reports[i].popular_report){
-      this.all_pop_report.push(this.user.reports[i].title);
-      }
-    }
+  initInfo() {
+    this.all_archive = this.user.classification.archives;
+    this.all_pop_report = this.user.classification.popular_reports;
+    this.all_labels = this.user.classification.labels;
 
   }
 }

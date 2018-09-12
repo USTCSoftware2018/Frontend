@@ -2,7 +2,8 @@
   <label>Labels</label>
   <div class="content">
     <div *ngFor="let label of all_labels">
-      {{label}}
+      <a routerLink="/profile/watch">{{label.name}}</a>
+      <span class="small-word">{{label.num}}&nbsp;reports</span>
     </div>
   </div>
   <div class="pulldown">
@@ -13,7 +14,8 @@
   <label>Archive</label>
   <div class="content">
     <div *ngFor="let archive of all_archive">
-      {{archive}}
+      <a>{{archive.data}}</a>
+      <span  class="small-word">{{archive.num}}&nbsp;reports</span>
     </div>
   </div>
   <div class="pulldown">
@@ -24,7 +26,8 @@
   <label>Popular reports</label>
   <div class="content">
     <div *ngFor="let pop_report of all_pop_report">
-      {{pop_report}}
+      <a>{{pop_report.name}}</a>
+      <span  class="small-word">{{pop_report.num}}&nbsp;reports</span>
     </div>
   </div>
   <div class="pulldown">

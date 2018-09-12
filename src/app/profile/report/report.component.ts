@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Report} from "../../Interface/userinfo";
+import {Report} from '../../Interface/userinfo';
 import {ReportServiceService} from '../report-service.service';
+import {USER} from '../../Interface/mock-user';
 import {
   trigger,
   state,
@@ -9,7 +10,7 @@ import {
   transition
 } from '@angular/animations';
 
-import {User} from "../../Interface/userinfo";
+import {User} from '../../Interface/userinfo';
 
 
 @Component({
@@ -28,9 +29,9 @@ import {User} from "../../Interface/userinfo";
 
 })
 export class Report2Component implements OnInit {
-  @Input() user: User;
-  reports_onshow=[];
-  reports_unshow=[];
+  user: User = USER;
+  reports_onshow = [];
+  reports_unshow = [];
   i = 0;
   t: Report;
 

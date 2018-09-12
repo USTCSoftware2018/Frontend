@@ -10,6 +10,7 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { WatchReportLabelComponent } from './watch-report-label/watch-report-label.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -23,7 +24,7 @@ import { WatchReportLabelComponent } from './watch-report-label/watch-report-lab
     ProfilePageComponent,
     Report2Component,
     UserInfoComponent,
-    WatchReportLabelComponent
+    WatchReportLabelComponent,
   ],
   exports: [
     NgZorroAntdModule,

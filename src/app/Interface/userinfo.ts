@@ -24,9 +24,6 @@ export class Report {
   content: String;
   commentsnum: Number;
   likesnum: Number;
-  archive: string; //报告的日期
-  popular_report: boolean; //是否为受欢迎的报告
-  label: string; //报告分类
 }
 export class Like {
   ouser: Simuser;
@@ -40,6 +37,25 @@ export class User {
   followers: Info;
   likes: Like[];
   reports: Report[];
+  classification: Assortment;
+}
+export class Archive {
+  data: string;
+  num: number;
 }
 
+export class PopularReport {
+  name: string;
+  num: number;
+}
 
+export class Label {
+  name: string;
+  num: number;
+}
+
+export class Assortment {
+  archives: Archive[];
+  popular_reports: PopularReport[];
+  labels: Label[];
+}

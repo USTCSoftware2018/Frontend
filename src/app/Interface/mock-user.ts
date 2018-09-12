@@ -1,4 +1,4 @@
-import { User } from './userinfo';
+import {Archive, Assortment, Label, PopularReport, User} from './userinfo';
 import { Simuser } from './userinfo';
 
 const user1: Simuser = {
@@ -71,9 +71,24 @@ const report1 = {
   '2. Add 250 μL Buﬀer P1, resuspend cells.\n',
   commentsnum: 190,
   likesnum: 12,
-  archive: '2018-10-10',
-  popular_report: true,
-  label: 'biological share' //报告分类
+};
+
+const archives = [
+  {data: '2018-10-9', num: 12},
+  {data: '2018-10-10', num: 14},
+];
+const popular_repots = [
+  {name: 'aaa', num: 12},
+  {name: 'bbb', num: 13},
+];
+const labels = [
+  {name: 'ccc', num: 10},
+  {name: 'ddd', num: 15},
+];
+const assortment = {
+  archives: archives,
+  popular_reports: popular_repots,
+  labels: labels,
 };
 export const USER: User = {
   id: 1,
@@ -89,7 +104,8 @@ export const USER: User = {
     ouser: user1,
     report: report1,
   }],
-  reports: [report1]
+  reports: [report1],
+  classification: assortment,
 };
 export const SIMUSER: Simuser = {
   id: 1,
