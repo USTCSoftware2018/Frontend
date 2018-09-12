@@ -19,10 +19,13 @@
           <!-- Texts -->
           <app-text-panel [sub]="sub"></app-text-panel>
       </div>
+      <div *ngSwitchCase="'Pictures'" class="ABlockOfSub" >
+          <!-- Pictures -->
+          <app-pict-panel [sub]="sub"></app-pict-panel>
+      </div>
 
     </div>
 
-    
     <br style="height: 15px;"/>
     <!-- 下面是各个部分 -->
 </div>

@@ -19,6 +19,17 @@ export class AppendixService {
     this.editor.report.subroutines.push(_new_sub);
   }
 
+  reportAddPict() {
+    const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
+    _new_sub.id = '-98';
+    _new_sub.desc = '';
+    _new_sub.subType = subType.pictures;
+    _new_sub.name = 'Pictures';
+    _new_sub.idx =  0;
+    this.editor.report.subroutines.push(_new_sub);
+    _new_sub.pic = [];
+  }
+
   appendixAddPicture(sub: ReportSubroutineHeader, url: string, name?: string) {
     if (!sub.pic) {
       sub.pic = [];

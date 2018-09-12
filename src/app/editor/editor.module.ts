@@ -18,6 +18,7 @@ import { SubroutineComponent } from './views/subroutine/subroutine.component';
 import { EditorFieldTypeComponent } from './views/editor-field-type/editor-field-type.component';
 import { StepPanelComponent } from './views/step-panel/step-panel.component';
 import { TextPanelComponent } from './views/text-panel/text-panel.component';
+import { PictPanelComponent } from './views/pict-panel/pict-panel.component';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { TextPanelComponent } from './views/text-panel/text-panel.component';
     EditorFieldTypeComponent,
     StepPanelComponent,
     TextPanelComponent,
+    PictPanelComponent,
   ],
   providers: [
     StepsService,

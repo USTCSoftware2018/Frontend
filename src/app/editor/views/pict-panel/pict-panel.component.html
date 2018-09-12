@@ -1,0 +1,16 @@
+<div class="clearfix">
+    <nz-upload
+      nzAction="http://127.0.0.1:8000/pic/"
+      nzListType="picture-card"
+      [(nzFileList)]="sub.pic"
+      [nzShowButton]="sub.pic.length < 5"
+      [nzPreview]="handlePreview">
+        <i class="anticon anticon-plus"></i>
+        <div class="ant-upload-text">Upload</div>
+    </nz-upload>
+    <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="previewVisible=false">
+      <ng-template #modalContent>
+        <img [src]="previewImage" [ngStyle]="{ 'width': '100%' }" />
+      </ng-template>
+    </nz-modal>
+  </div>
