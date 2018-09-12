@@ -6,6 +6,7 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+import {HttpService} from '../../http.service';
 
 @Component({
   selector: 'app-signin',
@@ -15,7 +16,7 @@ import {
 export class SigninComponent implements OnInit {
   validateForm: FormGroup;
   shake = false;
-  constructor() { }
+  constructor(private http: HttpService) { }
   ngOnInit(): void {
     this.validateForm = new FormGroup({
       'username': new FormControl(null,
