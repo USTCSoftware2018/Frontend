@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { forbiddenUsernameValidator, forbiddenEmailValidator} from './forbidden-signin';
 import {
-  AbstractControl,
   FormGroup,
   FormControl,
   Validators,
