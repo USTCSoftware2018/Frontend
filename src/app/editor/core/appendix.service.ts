@@ -1,26 +1,22 @@
 import { Injectable } from '@angular/core';
-import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, ReportGraphHeader } from '../headers/article';
+import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, ReportGraphHeader, subType } from '../headers/article';
 import { EditorSubroutineHeader } from '../headers/steps';
+
+import {EditorReportService} from './editorReport.service';
 
 @Injectable()
 export class AppendixService {
 
-  constructor() { }
+  constructor(public editor: EditorReportService) { }
 
-  appendixGetDesc(sub: ReportSubroutineHeader, content: string) {
-    sub.desc = content;
-  }
-
-  appendixSetDesc(sub: ReportSubroutineHeader) {
-    return sub.desc;
-  }
-
-  appendixGetRemark(sub: ReportSubroutineHeader, content: string) {
-    sub.remark = content;
-  }
-
-  appendixSetRemark(sub: ReportSubroutineHeader) {
-    return sub.remark;
+  reportAddText() {
+    const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
+    _new_sub.id = '-98';
+    _new_sub.desc = '';
+    _new_sub.subType = subType.text;
+    _new_sub.name = 'Text';
+    _new_sub.idx =  0;
+    this.editor.report.subroutines.push(_new_sub);
   }
 
   appendixAddPicture(sub: ReportSubroutineHeader, url: string, name?: string) {

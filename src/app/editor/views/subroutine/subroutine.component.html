@@ -9,10 +9,17 @@
 
     <div [ngSwitch]="sub.subType" style="margin: 0;overflow: hidden;" [@subPanel]="subState">
       <div *ngSwitchCase="'Steps'" class="ABlockOfSub" >
+        <!-- Steps -->
         <div *ngFor="let step of sub.steps">
           <app-step-panel [step]="step"></app-step-panel>
         </div>
       </div>
+
+      <div *ngSwitchCase="'Text'" class="ABlockOfSub" >
+          <!-- Texts -->
+          <app-text-panel [sub]="sub"></app-text-panel>
+      </div>
+
     </div>
 
     

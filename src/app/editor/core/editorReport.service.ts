@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, subType } from '../headers/article';
-import { AppendixService } from './appendix.service';
+
 import {StepsService} from './steps.service';
 
 
@@ -18,7 +18,7 @@ export class EditorReportService {
   }
 
 
-  constructor(public stepsService: StepsService, public appendixService: AppendixService) { }
+  constructor(public stepsService: StepsService) { }
 
   public initReport() {
     // 初始化文章
@@ -130,7 +130,8 @@ export class EditorReportService {
     _new_sub.id = '';
     _new_sub.desc = '';
     _new_sub.name = 'Step';
-    _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
+    // _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
+    _new_sub.idx = 0;
     _new_sub.steps = [];
 
     const _new_step = new ReportStepsHeader();  // 新建 step
@@ -153,7 +154,8 @@ export class EditorReportService {
     _new_sub.id = _sub_temp.id;
     _new_sub.desc = _sub_temp.desc;
     _new_sub.name = _sub_temp.name;
-    _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
+    // _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
+    _new_sub.idx = 0;
     _new_sub.steps = [];
 
     let idx = 0;

@@ -17,6 +17,7 @@ import { ButtonAreaComponent } from './views/button-area/button-area.component';
 import { SubroutineComponent } from './views/subroutine/subroutine.component';
 import { EditorFieldTypeComponent } from './views/editor-field-type/editor-field-type.component';
 import { StepPanelComponent } from './views/step-panel/step-panel.component';
+import { TextPanelComponent } from './views/text-panel/text-panel.component';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { StepPanelComponent } from './views/step-panel/step-panel.component';
     SubroutineComponent,
     EditorFieldTypeComponent,
     StepPanelComponent,
+    TextPanelComponent,
   ],
   providers: [
     StepsService,
