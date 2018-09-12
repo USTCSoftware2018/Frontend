@@ -19,9 +19,9 @@ export class Info {
 }
 export class Report {
   title: String;
-  auther: Simuser;
+  author: Simuser;
   topic: String[];
-  content: String;
+  abstract: String;
   commentsnum: Number;
   likesnum: Number;
 }
