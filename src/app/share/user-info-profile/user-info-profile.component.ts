@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserInfoProfile} from "./user-info-profile";
+/*import { UserInfoProfile} from "./user-info-profile";*/
+import {Simuser} from "../../Interface/userinfo";
 
 @Component({
   selector: 'app-user-info-profile',
@@ -7,7 +8,7 @@ import { UserInfoProfile} from "./user-info-profile";
   styleUrls: ['./user-info-profile.component.less']
 })
 export class UserInfoProfileComponent implements OnInit {
-  @Input() userinfoprofile: UserInfoProfile;
+  @Input() userinfoprofile: Simuser;
   /*
   reports_number = 133;
   following_number = 47;
@@ -21,16 +22,21 @@ export class UserInfoProfileComponent implements OnInit {
   isVisible = false;
   follow_or_edit = true; // 设定这个按钮是follow还是edit，true时时follow，false时是edit
   */
+  follow_and_unfollow: string;
   constructor() { }
   ngOnInit() {
+    this.followAndUnFollow();
   }
-  followAndUnfollow(): void {
-    if (this.userinfoprofile.follow_or_unfollow === 'follow') {
-      this.userinfoprofile.follow_or_unfollow = 'unfollow';
+  followAndUnFollow(): void {
+    if (this.userinfoprofile.follow_or_unfollow) {
+      this.follow_and_unfollow ="unfollow";
+      this.userinfoprofile.follow_or_unfollow=false;
     } else {
-      this.userinfoprofile.isVisible = true;
+      this.follow_and_unfollow="follow";
+      this.userinfoprofile.follow_or_unfollow=true;
     }
   }
+  /*
   handleOk(): void {
     this.userinfoprofile.follow_or_unfollow = 'follow';
     this.userinfoprofile.isVisible = false;
@@ -38,4 +44,5 @@ export class UserInfoProfileComponent implements OnInit {
   handleCancel(): void {
     this.userinfoprofile.isVisible = false;
   }
+  */
 }

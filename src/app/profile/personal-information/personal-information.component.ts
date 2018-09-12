@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UserInfoProfile} from './userinfoprofile';
 import {USERINFOPROFILE} from './mock-userinfoprofile';
+import {Simuser} from '../../Interface/userinfo';
 
 @Component({
   selector: 'app-personal-information',
@@ -8,7 +9,8 @@ import {USERINFOPROFILE} from './mock-userinfoprofile';
   styleUrls: ['./personal-information.component.less']
 })
 export class PersonalInformationComponent implements OnInit {
-  userinfo: UserInfoProfile = USERINFOPROFILE;
+  @Input() userinfo;  //这是左上角的数据
+  @Input() userinfo2; //这是左下角的数据
   constructor() { }
 
   ngOnInit() {

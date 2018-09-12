@@ -7,6 +7,8 @@ export class Socialcomments {
   likenum: number;
   commentnum: number;
   likeo: boolean;
+  oppname: string;
+  oppimg?: string;
 }
 
 export class Me {

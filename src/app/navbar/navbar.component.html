@@ -1,12 +1,13 @@
-<ul nz-row nzType="flex" nzJustify="start" nz-menu [nzMode]="'horizontal'" [nzTheme]="'dark'" [nzSelectable]="false">
+<div class="bio-nav">
+  <ul nz-row nzType="flex" nzJustify="start" nz-menu [nzMode]="'horizontal'" [nzTheme]="'dark'" [nzSelectable]="false">
     <div nz-col nzSpan="4"></div>
     <li nz-menu-item nz-col nzSpan="4" [routerLink]="['/index']" class="brand"><img src="../../../assets/img/panda/logo.png" height="16px" style="margin-top: -2px"></li>
     <li nz-menu-item nz-col nzSpan="2" [routerLink]="['/explore']">Explore</li>
     <li nz-menu-item *ngIf="user != null" nz-col nzSpan="3" [routerLink]="['/feeds']">Feeds</li>
     <li nz-menu-item *ngIf="user != null" nz-col nzSpan="2"></li>
     <div nz-col nzSpan="2" *ngIf="user != null">
-        <li nz-menu-item nz-popover nzPlacement="bottom" nzTitle="Notification" [nzContent]="notification_content" class="icon-item"><i class="anticon anticon-bell"></i></li>
-        <li nz-menu-item nz-popover nzPlacement="bottom" [nzContent]="user_content" [nzTitle]="user.username" class="icon-item"><i class="anticon anticon-smile-o"></i></li>
+      <li nz-menu-item nz-popover nzPlacement="bottom" nzTitle="Notification" [nzContent]="notification_content" class="icon-item"><i class="anticon anticon-bell"></i></li>
+      <li nz-menu-item nz-popover nzPlacement="bottom" [nzContent]="user_content" [nzTitle]="user.name" class="icon-item"><i class="anticon anticon-smile-o"></i></li>
     </div>
     <li nz-menu-item *ngIf="user == null" nz-col nzSpan="3"></li>
     <li nz-menu-item *ngIf="user == null" nz-col nzSpan="2" [routerLink]="['/authentation/signin']">Sign In</li>
@@ -31,4 +32,5 @@
         <p>Someone send you a message</p>
       </div>
     </ng-template>
-</ul>
+  </ul>
+</div>

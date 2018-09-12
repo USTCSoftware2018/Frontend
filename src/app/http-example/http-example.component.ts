@@ -20,7 +20,6 @@ export class HttpExampleComponent implements OnInit {
           this.login_receive = receive;
           console.log(11);
           console.log('message');
-          console.log(receive['meta']['message']['detail']);
           console.log(receive);
         },
         err => {

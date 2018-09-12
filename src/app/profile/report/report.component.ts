@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {Report} from '../report';
+import {Component, Input, OnInit} from '@angular/core';
+import {Report} from '../../Interface/userinfo';
 import {ReportServiceService} from '../report-service.service';
+import {USER} from '../../Interface/mock-user';
 import {
   trigger,
   state,
@@ -8,6 +9,10 @@ import {
   animate,
   transition
 } from '@angular/animations';
+
+import {User} from '../../Interface/userinfo';
+
+
 @Component({
   selector: 'app-report1',
   templateUrl: './report.component.html',
@@ -24,16 +29,19 @@ import {
 
 })
 export class Report2Component implements OnInit {
-  reports: Report[] = [];
-  reports_onshow: Report[] = [];
-  reports_unshow: Report[] = [];
+  user: User = USER;
+  reports_onshow = [];
+  reports_unshow = [];
   i = 0;
   t: Report;
+
   constructor(private reportService: ReportServiceService) { }
   ngOnInit() {
-    this.getReports();
+     this.initReports();
   }
+
   reportShowMore() {
+
     console.log(this.reports_unshow.length);
     this.reports_unshow.reverse();
     for ( this.i = 0; this.i < this.reports_unshow.length && this.i < 6; ++this.i) {
@@ -43,14 +51,16 @@ export class Report2Component implements OnInit {
     this.i = 0;
     this.reports_unshow.reverse();
   }
-  getReports(): void {
-    this.reports = this.reportService.getReports();
-    console.log(this.reports);
-    if (this.reports.length <= 6) {
-      this.reports_onshow = this.reports.slice(0, this.reports.length);
+
+  initReports(): void {
+
+
+    if (this.user.reports.length <= 6) {
+      this.reports_onshow = this.user.reports.slice(0, this.user.reports.length);
     } else {
-      this.reports_onshow = this.reports.slice(0, 6);
-      this.reports_unshow = this.reports.slice(6, this.reports.length);
+      this.reports_onshow = this.user.reports.slice(0, 6);
+      this.reports_unshow = this.user.reports.slice(6, this.user.reports.length);
     }
   }
+
 }

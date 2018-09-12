@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReportsEditorComponent } from './reports-editor.component';
+import { WatchReportLabelComponent } from './watch-report-label.component';
 
-describe('ReportsEditorComponent', () => {
-  let component: ReportsEditorComponent;
-  let fixture: ComponentFixture<ReportsEditorComponent>;
+describe('WatchReportLabelComponent', () => {
+  let component: WatchReportLabelComponent;
+  let fixture: ComponentFixture<WatchReportLabelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReportsEditorComponent ]
+      declarations: [ WatchReportLabelComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReportsEditorComponent);
+    fixture = TestBed.createComponent(WatchReportLabelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

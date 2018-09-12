@@ -7,6 +7,11 @@ export class Simuser {
   followednum: number;
   likenum: number;
   reportsnum: number;
+  location: string;
+  email: string;
+  organization: string;
+  follow_or_unfollow: boolean;
+  follow_or_edit: boolean;
 }
 export class Info {
   content: Simuser[];
@@ -31,6 +36,25 @@ export class User {
   followers: Info;
   likes: Like[];
   reports: Report[];
+  classification: Assortment;
+}
+export class Archive {
+  data: string;
+  num: number;
 }
 
+export class PopularReport {
+  name: string;
+  num: number;
+}
 
+export class Label {
+  name: string;
+  num: number;
+}
+
+export class Assortment {
+  archives: Archive[];
+  popular_reports: PopularReport[];
+  labels: Label[];
+}

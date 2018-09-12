@@ -3,7 +3,7 @@
     <div nz-row nzGutter="10">
       <div nz-col nzSpan="7" >
         <div  class="box-position">
-          <div class="box-bk1 box-position" style="overflow: auto">
+          <div class="box-bk1 box-position" style="overflow: auto;overflow-x: hidden">
             <div nz-col [nzOffset]="6" [nzSpan]="10">
               <img class="avatar" src="{{user.avatar_url}}">
             </div>
@@ -84,12 +84,16 @@
           <br>
           <br>
           <div class="comment-bk comment-style ant-row-flex-top" *ngFor="let comment of socialcomments">
-            <img src="{{comment.userimg}}" style="border-radius: 50%;border: 1px solid #979797;width: 2vw;height: 2vw;">
-            <span ><strong>&nbsp;&nbsp;{{comment.username}}</strong></span>
+            <div nz-row style="overflow: auto;margin-bottom: 1vw">
+              <img src="{{comment.userimg}}" style="border-radius: 50%;border: 1px solid #979797;width: 2vw;height: 2vw;">
+              <span ><strong>&nbsp;&nbsp;{{comment.username}}</strong></span>
+              <span>&nbsp;&nbsp;replied to&nbsp;&nbsp;</span>
+              <img src="{{comment.oppimg}}" style="border-radius: 50%;border: 1px solid #979797;width: 2vw;height: 2vw;">
+              <span ><strong>&nbsp;&nbsp;{{comment.oppname}}</strong></span>
+            </div>
             <div style="padding-bottom: 1vw">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{comment.comments}}
               <p>
-                <span class="iconstyle2 ant-col-2">&nbsp;{{ comment.commentnum }}&nbsp;<i class="handpoint anticon anticon-message"></i></span>
                 <span class="iconstyle2 ant-col-2">&nbsp;{{ comment.likenum }}&nbsp;
                   <i class="handpoint anticon"
                      [class.likeo]="comment.likeo"

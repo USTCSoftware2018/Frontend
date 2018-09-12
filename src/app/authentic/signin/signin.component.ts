@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { forbiddenUsernameValidator, forbiddenEmailValidator} from './forbidden-signin';
 import {
-  AbstractControl,
   FormGroup,
   FormControl,
   Validators,
 } from '@angular/forms';
+import {HttpService} from '../../http.service';
 
 @Component({
   selector: 'app-signin',
@@ -15,7 +15,7 @@ import {
 export class SigninComponent implements OnInit {
   validateForm: FormGroup;
   shake = false;
-  constructor() { }
+  constructor(private http: HttpService) { }
   ngOnInit(): void {
     this.validateForm = new FormGroup({
       'username': new FormControl(null,
