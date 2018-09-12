@@ -129,7 +129,7 @@ export class EditorReportService {
     const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
     _new_sub.id = '';
     _new_sub.desc = '';
-    _new_sub.name = 'Step';
+    _new_sub.name = _step_temp.name;
     // _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
     _new_sub.idx = 0;
     _new_sub.steps = [];
@@ -180,17 +180,17 @@ export class EditorReportService {
     // It will never be completed.
   }
 
-  private getId(subIdx: number): number {
+  private getId(sub: any): number {
     let _id = 0;
-    while ( _id < this.report.subroutines.length && this.report.subroutines[_id].idx !== subIdx) {
+    while ( _id < this.report.subroutines.length && this.report.subroutines[_id] !== sub) {
       _id ++;
     }
     return _id;
   }
 
-  public reportDeleteSubroutine(subIdx: number) {
+  public reportDeleteSubroutine(sub: any) {
     // not implement error
-    this.report.subroutines.splice(this.getId(subIdx), 1);
+    this.report.subroutines.splice(this.getId(sub), 1);
   }
 
   public reportSwap(subIdx_1: number, subIdx_2: number) {

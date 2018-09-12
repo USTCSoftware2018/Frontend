@@ -4,10 +4,10 @@
         <div nz-col [nzXl]="1" [nzLg]="1" [nzMd]="2" [nzSm]="2" id="LuckBox" (click)="reverseState()"></div> 
         <div nz-col [nzXl]="21" [nzLg]="21" [nzMd]="19" [nzSm]="19" class="subTitle" (click)="reverseState()">{{sub.name}}</div>
         <div nz-col [nzXl]="2" [nzLg]="2" [nzMd]="3" [nzSm]="3" 
-                id="deleteButton"  (click)="startDelete(sub.idx)">Delete</div>
+                id="deleteButton"  (click)="startDelete(sub)">Delete</div>
     </div>
 
-    <div [ngSwitch]="sub.subType" style="margin: 0;overflow: hidden;" [@subPanel]="subState">
+    <div [ngSwitch]="sub.subType" style="margin-top: 3px;overflow: hidden;" [@subPanel]="subState">
       <div *ngSwitchCase="'Steps'" class="ABlockOfSub" >
         <!-- Steps -->
         <div *ngFor="let step of sub.steps">
