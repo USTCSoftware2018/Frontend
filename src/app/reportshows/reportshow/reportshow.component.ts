@@ -3,11 +3,12 @@ import { Report } from './reportshow';
 import { REPORTS } from './mock-reports';
 import { Socialcomments } from './socialinfo';
 import { SOLICIALINFO , SOCIALCOMMENTS } from './mock-Socialinfo';
-import { User } from './user';
-import { USER } from './mock-user';
+import { USER } from '../../Interface/mock-user';
+import { user1 } from '../../Interface/mock-user';
 import {variable} from '@angular/compiler/src/output/output_ast';
 import {isLineBreak} from 'codelyzer/angular/sourceMappingVisitor';
 import { ShareModule } from '../../share/share.module';
+import { Simuser } from '../../Interface/userinfo';
 
 @Component({
   selector: 'app-reportshow',
@@ -21,7 +22,7 @@ export class ReportshowComponent implements OnInit {
   socialinfo = SOLICIALINFO;
   socialcomments = SOCIALCOMMENTS;
   selectedcomments: Socialcomments;
-  user = USER;
+  @Input() user: Simuser;
 
   changecolor(): void {
     const Like = document.getElementById('change1');

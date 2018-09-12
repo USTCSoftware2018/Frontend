@@ -1,7 +1,7 @@
-import { User } from './userinfo';
+import { User, Report } from './userinfo';
 import { Simuser } from './userinfo';
 
-const user1: Simuser = {
+export const user1: Simuser = {
   id: 2,
   name: 'Sindy',
   about_me: 'about me',
@@ -11,7 +11,7 @@ const user1: Simuser = {
   likenum: 1,
   reportsnum: 1,
 };
-const user2: Simuser = {
+export const user2: Simuser = {
   id: 3,
   name: 'Cindy',
   about_me: 'about me',
@@ -21,7 +21,7 @@ const user2: Simuser = {
   likenum: 1,
   reportsnum: 1,
 };
-const user3: Simuser = {
+export const user3: Simuser = {
   id: 4,
   name: 'Sindi',
   about_me: 'about me',
@@ -41,11 +41,11 @@ const user4: Simuser = {
   likenum: 1,
   reportsnum: 1,
 };
-const report1 = {
+export const report1: Report = {
   title: 'research',
-  auther: user2,
+  author: user2,
   topic: ['A', 'B', 'C'],
-  content: '1. Centifuge 1.5 mL bacterium solution at 11000 rpm, few sediment getted. Remove the supernatant. Repeat twice.\n' +
+  abstract: '1. Centifuge 1.5 mL bacterium solution at 11000 rpm, few sediment getted. Remove the supernatant. Repeat twice.\n' +
   '2. Add 250 μL Buﬀer P1, resuspend cells.\n' +
   '1. Centifuge 1.5 mL bacterium solution at 11000 rpm, few sediment getted. Remove the supernatant. Repeat twice.\n' +
   '2. Add 250 μL Buﬀer P1, resuspend cells.\n',

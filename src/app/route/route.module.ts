@@ -6,12 +6,14 @@ import { MainComponent as EditorMainComponent} from '../editor/views/main/main.c
 import { ProfilePageComponent } from '../profile/profile-page/profile-page.component';
 import { ReportshowotherComponent } from '../reportshows/reportshow/reportshowother/reportshowother.component';
 import { FeedsComponent } from '../core/feeds/feeds.component';
+import { HttpExampleComponent } from '../http-example/http-example.component';
 
 const appRoutes: Routes = [
+  { path: 'test-http', component: HttpExampleComponent },
   { path: 'editor', component: EditorMainComponent},
   { path: 'reportshow', component: ReportshowComponent},
   { path: 'reportdisplay', component: ReportshowotherComponent},
-  { path: 'FeedsComponent', component: FeedsComponent},
+  { path: 'feeds', component: FeedsComponent},
   { path: 'userset', loadChildren: '../user-set/user-set.module#UserSetModule', data: { preload: true } },
   { path: 'userinfo', loadChildren: '../user-info/watch-info.module#WatchInfoModule', data: {preload: true}},
   { path: 'authentication', loadChildren: '../authentic/authentic.module#AuthenticModule', data: {preload: true}},
