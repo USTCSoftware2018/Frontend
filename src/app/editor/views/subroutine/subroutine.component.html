@@ -1,0 +1,22 @@
+<div class="subroutine" [@deletePanel]="subShow">
+    <!-- 这里是 subroutine 的头部-->
+    <div nz-row >
+        <div nz-col [nzXl]="1" [nzLg]="1" [nzMd]="2" [nzSm]="2" id="LuckBox" (click)="reverseState()"></div> 
+        <div nz-col [nzXl]="21" [nzLg]="21" [nzMd]="19" [nzSm]="19" class="subTitle" (click)="reverseState()">{{sub.name}}</div>
+        <div nz-col [nzXl]="2" [nzLg]="2" [nzMd]="3" [nzSm]="3" 
+                id="deleteButton"  (click)="startDelete(sub.idx)">Delete</div>
+    </div>
+    <!-- <br style="height: 5px;"/> -->
+
+    <div [ngSwitch]="sub.subType" style="margin: 0;overflow: hidden;" [@subPanel]="subState">
+      <div *ngSwitchCase="'Steps'" class="ABlockOfSub" >
+        <div *ngFor="let step of sub.steps">
+          <app-step-panel [step]="step"></app-step-panel>
+        </div>
+      </div>
+    </div>
+
+    
+    <br style="height: 15px;"/>
+    <!-- 下面是各个部分 -->
+</div>

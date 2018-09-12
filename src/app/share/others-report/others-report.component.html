@@ -1,11 +1,22 @@
-<nz-card class="rectangle4" [@shrinkOut]>
-  <h4>{{report.title}}</h4>
-  <p>{{report.overview}}</p>
-  <span class="info">
-            topics:&nbsp;{{report.topics}}
-          </span>
-  <span class="info2">
-            {{report.comments}}&nbsp;comment&nbsp;{{report.likes}}&nbsp;likes
-          </span>
-
-</nz-card>
+<div class="dinfo reports" nz-row [style.background-color]="bkcolor" >
+  <!-- avatar -->
+  <div class="title" nz-col nzSpan="24">
+    <nz-avatar nzIcon="anticon anticon-user"
+      nzSrc="{{report.author.avatar_url}}" >
+    </nz-avatar>
+    <a>{{report.title|uppercase}}</a>
+  </div>
+  <div class="content" nz-col nzSpan="24">
+    <pre>{{report.abstract}}</pre>
+  </div>
+  <div class="topic-title" nz-col nzSpan="6">
+    <span class="topic-title">topics:</span>
+    <span class="topic-content">&nbsp;&nbsp;{{report.topic[0]}}&nbsp;&nbsp;&nbsp;{{report.topic[1]}}&nbsp;&nbsp;&nbsp;{{report.topic[2]}}</span>
+  </div>
+  <div nz-col nzOffset="10" nzSpan="3">
+    <span class="info-num">{{report.likesnum}}&nbsp;likes</span>
+  </div>
+  <div nz-col nzSpan="3">
+    <span class="info-num">{{report.commentsnum}}&nbsp;comments</span>
+  </div>
+</div>

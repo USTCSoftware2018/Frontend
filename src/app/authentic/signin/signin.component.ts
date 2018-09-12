@@ -18,7 +18,7 @@ export class SigninComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {
     this.validateForm = new FormGroup({
-      'userName': new FormControl(null,
+      'username': new FormControl(null,
         [Validators.required, Validators.minLength(4), Validators.maxLength(20),
           forbiddenUsernameValidator(), forbiddenEmailValidator()]),
       'password': new FormControl(null,
@@ -32,7 +32,7 @@ export class SigninComponent implements OnInit {
       this.validateForm.controls[ i ].updateValueAndValidity();
     }
   }
-  get username() { return this.validateForm.get('userName'); }
+  get username() { return this.validateForm.get('username'); }
   get password() { return this.validateForm.get('password'); }
   startShake() {
     this.shake = true;
