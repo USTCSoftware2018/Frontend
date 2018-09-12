@@ -18,6 +18,7 @@ import { ProfileModule } from './profile/profile.module';
 import { ReportshowotherComponent } from './reportshow/reportshowother/reportshowother.component';
 import { ShareModule } from './share/share.module';
 import { FeedsComponent } from './core/feeds/feeds.component';
+import { IndexComponent } from './core/index/index.component';
 
 registerLocaleData(en);
 
@@ -28,6 +29,7 @@ registerLocaleData(en);
     ReportshowComponent,
     ReportshowotherComponent,
     FeedsComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,

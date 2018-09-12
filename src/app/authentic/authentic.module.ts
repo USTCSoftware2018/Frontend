@@ -9,6 +9,7 @@ import { SigninComponent } from './signin/signin.component';
 import { ShareModule } from '../share/share.module';
 import { StartResetComponent } from './start-reset/start-reset.component';
 import { CpltResetComponent } from './cplt-reset/cplt-reset.component';
+import { SignupComponent } from './signup/signup.component';
 
 registerLocaleData(en);
 
@@ -25,6 +26,7 @@ registerLocaleData(en);
     SigninComponent,
     StartResetComponent,
     CpltResetComponent,
+    SignupComponent,
   ],
   exports: [
     NgZorroAntdModule,
