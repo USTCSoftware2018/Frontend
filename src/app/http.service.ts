@@ -11,11 +11,10 @@ import { MyNotification } from './Interface/myNotification';
 })
 export class HttpService {
 
-  private global_url = 'https://api.biohub.tech';
+  private global_url = 'https://api.biohub.tech/api';
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Authorization': 'my-auth-token'
+      'Content-Type':  'application/json'
     })
   };
 
@@ -25,7 +24,7 @@ export class HttpService {
 
   // create a new user
   create_user(user: User): Observable<MyResponse<User>> {
-    const url = `${this.global_url}/users`;
+    const url = `${this.global_url}/users/register/`;
     return this.http.post<MyResponse<User>>(url, user, this.httpOptions)
       .pipe(
         retry(3)
@@ -115,7 +114,7 @@ export class HttpService {
 
   // activate account
   activate_acount(token: string) {
-    const url = `${this.global_url}/signin/comfirm/${token}`;
+    const url = `${this.global_url}/login/comfirm/${token}`;
     return this.http.get(url, this.httpOptions)
       .pipe(
         retry(3)
@@ -131,9 +130,9 @@ export class HttpService {
       );
   }
 
-  // sign in
-  sign_in(data: {information: string, password: string}) {
-    const url = `${this.global_url}/signin`;
+  // log in
+  log_in(data: {username: string, password: string}) {
+    const url = `${this.global_url}/users/login/`;
     return this.http.post(url, data, this.httpOptions)
       .pipe(
         retry(3)

@@ -17,7 +17,7 @@ import { UserSetModule } from './user-set/user-set.module';
 import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
 import { Report2Component} from './profile/report/report.component';
 import { PersonalInformationComponent } from './profile/personal-information/personal-information.component';
-import {TesthttpComponent} from './testhttp/testhttp.component';
+import { HttpExampleComponent } from './http-example/http-example.component';
 
 
 registerLocaleData(en);
@@ -30,7 +30,7 @@ registerLocaleData(en);
     ReportshowComponent,
     Report2Component,
     PersonalInformationComponent,
-    TesthttpComponent,
+    HttpExampleComponent,
   ],
   imports: [
     BrowserModule,
