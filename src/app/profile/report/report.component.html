@@ -1,26 +1,19 @@
-<div style="border-left-width:6px;border-left-color:#F2F2F2;border-left-style:solid">
-<nz-tabset nzSize="large" class="reports">
+<div>
+<nz-tabset nzSize="large">
   <nz-tab nzTitle="Reports">
-    <div *ngFor="let report of reports_onshow">
-      <div class="report">
-        <nz-card class="rectangle4" [@shrinkOut]>
-          <h4>{{report.title}}</h4>
-          <p>{{report.overview}}</p>
-          <span class="info">
-            topics:&nbsp;{{report.topics}}
-          </span>
-          <span class="info2">
-            {{report.comments}}&nbsp;comment&nbsp;{{report.likes}}&nbsp;likes
-          </span>
-
-        </nz-card>
-      </div>
+    <div nz-col nzOffset="20" class="sort">
+      <i class="anticon anticon-swap"></i>
+    </div>
+    <div *ngFor="let report of user.reports">
+      <app-others-report [report]="report" [bkcolor]="'#F2F2F2'"></app-others-report>
+    </div>
+    <div class="pulldown">
+      <a (click)="reportShowMore()"><i class="anticon anticon-down"></i></a>
     </div>
   </nz-tab>
   <nz-tab nzTitle="Appreciate">
   </nz-tab>
+  <nz-tab nzTitle="Followers">
+  </nz-tab>
 </nz-tabset>
-<div class="pulldown">
-  <a (click)="reportShowMore()"><i class="anticon anticon-down"></i></a>
-</div>
 </div>
