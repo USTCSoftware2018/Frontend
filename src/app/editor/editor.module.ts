@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
-import { SortablejsModule } from 'node_modules/angular-sortablejs';
+import { SortablejsModule } from './angular-sortablejs/src/sortablejs.module';
 
 import { StepsService } from './core/steps.service';
 import { AppendixService } from './core/appendix.service';
