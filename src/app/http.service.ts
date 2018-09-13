@@ -57,6 +57,7 @@ export class HttpService {
     };
     this.fire('users/login/', 'post', params, data => { console.log(data); }, error => { alert(error); });
   }
+
   // create a new user
   create_user(user: User): Observable<MyResponse<User>> {
     const url = `${this.global_url}/users/register/`;
