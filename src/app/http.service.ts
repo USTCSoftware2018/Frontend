@@ -45,7 +45,7 @@ export class HttpService {
 
     const errorHandler = function(error) {
       console.log('errorHandler');
-      let result = new ApiResult;
+      const result = new ApiResult;
       result.success = false;
       result.data = error.error;
       result.status = error.status;
@@ -55,7 +55,7 @@ export class HttpService {
     const successHandler = function(data) {
       console.log('successHandler');
       console.log(data);
-      let result = new ApiResult;
+      const result = new ApiResult;
       result.success = true;
       result.data = data;
       result.status = 200;
@@ -78,24 +78,11 @@ export class HttpService {
     this.fire('users/register/', 'post', params, callback);
   }
 
-<<<<<<< HEAD
-  register(callback: Function(test: string)) {
-  }
-
-  // create a new user
-  create_user(user: User): Observable<MyResponse<User>> {
-    const url = `${this.global_url}/users/register/`;
-    return this.http.post<MyResponse<User>>(url, user, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
-=======
   test_fire() {
     const callback = function(result) {
       console.log(result);
     };
     this.user_register('test_5', 'a123456', 'test_5@test.com', callback);
->>>>>>> 9492cb4f325e304dd47d9ebf03b3865d293b940e
   }
 
 
