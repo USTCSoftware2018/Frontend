@@ -29,6 +29,11 @@
           <app-list-panel [sub]="sub"></app-list-panel>
       </div>
 
+      <div *ngSwitchCase="'Result'" class="ABlockOfSub" >
+        <!-- Lists -->
+        <app-remark-panel [sub]="sub"></app-remark-panel>
+    </div>
+
     </div>
 
     <br style="height: 15px;"/>

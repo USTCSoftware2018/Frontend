@@ -20,6 +20,7 @@ import { StepPanelComponent } from './views/step-panel/step-panel.component';
 import { TextPanelComponent } from './views/text-panel/text-panel.component';
 import { PictPanelComponent } from './views/pict-panel/pict-panel.component';
 import { ListPanelComponent } from './views/list-panel/list-panel.component';
+import { RemarkPanelComponent } from './views/remark-panel/remark-panel.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { ListPanelComponent } from './views/list-panel/list-panel.component';
     TextPanelComponent,
     PictPanelComponent,
     ListPanelComponent,
+    RemarkPanelComponent,
   ],
   providers: [
     StepsService,
