@@ -14,40 +14,8 @@ export class HttpExampleComponent implements OnInit {
 
   constructor(private http: HttpService) { }
 
-  LogIn(data: any) {
-    this.http.log_in(data)
-      .subscribe(
-        receive => {
-          this.login_receive = receive;
-          console.log(11);
-          console.log('message');
-          console.log(receive['message']);
-          console.log(receive);
-        },
-        err => {
-          this.login_receive = err['error'];
-          console.log(err);
-        }
-      );
-  }
-
-  Register(data: any) {
-    this.http.create_user(data)
-      .subscribe(
-      receive => {
-        this.register_receive = receive;
-        console.log(1111);
-        console.log(receive);
-       },
-      err => {
-        console.log(1);
-        console.log(err);
-      }
-    );
-    }
   ngOnInit() {
     this.http.test_fire();
-    // this.LogIn({username: 'test', password: 'a123456'});
   }
 }
 

@@ -68,29 +68,21 @@ export class HttpService {
     );
   }
 
-  test_fire() {
+  // create a new user
+  user_register(username: string, password: string, email: string, callback: (result: ApiResult) => void) {
     const params = {
-      username: 'test',
-      password: 'a123456'
+      username: username,
+      password: password,
+      email: email,
     };
-
-    this.fire('users/login/', 'post', params, result => {
-      console.log(result);
-      if (result.success) {
-        console.log('success');
-      } else {
-        console.log('failed');
-      }
-    });
+    this.fire('users/register/', 'post', params, callback);
   }
 
-  // create a new user
-  create_user(user: User): Observable<MyResponse<User>> {
-    const url = `${this.global_url}/users/register/`;
-    return this.http.post<MyResponse<User>>(url, user, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
+  test_fire() {
+    const callback = function(result) {
+      console.log(result);
+    };
+    this.user_register('test_5', 'a123456', 'test_5@test.com', callback);
   }
 
 
