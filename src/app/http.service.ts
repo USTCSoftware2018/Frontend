@@ -84,6 +84,9 @@ export class HttpService {
     });
   }
 
+  register(callback: Function(test: string)) {
+  }
+
   // create a new user
   create_user(user: User): Observable<MyResponse<User>> {
     const url = `${this.global_url}/users/register/`;
