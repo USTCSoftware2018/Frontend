@@ -54,18 +54,16 @@ export class AppendixService {
     _new_sub.pic = [];
   }
 
-  appendixAddPicture(sub: ReportSubroutineHeader, url: string, name?: string) {
-    if (!sub.pic) {
-      sub.pic = [];
-    }
-    const _new_pic = new ReportGraphHeader(url, name);
-    sub.pic.push(_new_pic);
+  reportAddInfo() {
+    const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
+    _new_sub.id = '-98';
+    _new_sub.desc = '';
+    _new_sub.subType = subType.info;
+    _new_sub.name = 'Info';
+    _new_sub.idx =  0;
+    _new_sub.list = [];
+    this.editor.report.subroutines.push(_new_sub);
+    _new_sub.pic = [];
   }
 
-  appendixDeletePicture(sub: ReportSubroutineHeader, idx: number) {
-    if (idx < 0 || !sub.pic || idx > sub.pic.length) {
-      return;
-    }
-    sub.pic.splice(idx, 1);
-  }
 }

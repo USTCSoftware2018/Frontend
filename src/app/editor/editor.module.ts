@@ -21,6 +21,7 @@ import { TextPanelComponent } from './views/text-panel/text-panel.component';
 import { PictPanelComponent } from './views/pict-panel/pict-panel.component';
 import { ListPanelComponent } from './views/list-panel/list-panel.component';
 import { RemarkPanelComponent } from './views/remark-panel/remark-panel.component';
+import { InfoPanelComponent } from './views/info-panel/info-panel.component';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import { RemarkPanelComponent } from './views/remark-panel/remark-panel.componen
     PictPanelComponent,
     ListPanelComponent,
     RemarkPanelComponent,
+    InfoPanelComponent,
   ],
   providers: [
     StepsService,

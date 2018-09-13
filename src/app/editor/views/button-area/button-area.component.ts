@@ -33,7 +33,7 @@ export class ButtonAreaComponent implements OnInit {
   constructor(public append: AppendixService) { }
 
   ngOnInit() {
-    this.flag = 'inactive';
+    this.flag = 'active';
   }
 
   clickButton() {

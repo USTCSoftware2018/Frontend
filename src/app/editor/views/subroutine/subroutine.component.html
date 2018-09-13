@@ -32,7 +32,12 @@
       <div *ngSwitchCase="'Result'" class="ABlockOfSub" >
         <!-- Lists -->
         <app-remark-panel [sub]="sub"></app-remark-panel>
-    </div>
+      </div>
+
+      <div *ngSwitchCase="'Info'" class="ABlockOfSub" >
+          <!-- Lists -->
+          <app-info-panel></app-info-panel>
+      </div>
 
     </div>
 
