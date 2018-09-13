@@ -14,9 +14,9 @@ import { ErrorModule } from './error/error.module';
 import { Error404Component } from './error/error404/error404.component';
 import { ReportshowComponent } from './reportshow/reportshow.component';
 import { UserSetModule } from './user-set/user-set.module';
-import {ProfileModule} from './profile/profile.module';
+import { ProfileModule} from './profile/profile.module';
+import { FeedModule } from './feed/feed.module';
 import { ReportshowotherComponent } from './reportshow/reportshowother/reportshowother.component';
-import { FeedComponent } from './feed/feed.component';
 
 registerLocaleData(en);
 
@@ -26,7 +26,6 @@ registerLocaleData(en);
     NavbarComponent,
     ReportshowComponent,
     ReportshowotherComponent,
-    FeedComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +38,8 @@ registerLocaleData(en);
     EditorModule,
     ErrorModule,
     ReactiveFormsModule,
-    ProfileModule
+    ProfileModule,
+    FeedModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
