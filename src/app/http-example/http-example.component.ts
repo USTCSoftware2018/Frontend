@@ -11,6 +11,7 @@ export class HttpExampleComponent implements OnInit {
   login_receive: any;
   register_receive: any;
 
+
   constructor(private http: HttpService) { }
 
   LogIn(data: any) {
@@ -20,7 +21,7 @@ export class HttpExampleComponent implements OnInit {
           this.login_receive = receive;
           console.log(11);
           console.log('message');
-          console.log(receive['meta']['message']['detail']);
+          console.log(receive['message']);
           console.log(receive);
         },
         err => {
@@ -36,7 +37,8 @@ export class HttpExampleComponent implements OnInit {
       receive => {
         this.register_receive = receive;
         console.log(1111);
-        console.log(receive); },
+        console.log(receive);
+       },
       err => {
         console.log(1);
         console.log(err);
@@ -47,7 +49,7 @@ export class HttpExampleComponent implements OnInit {
 
 
   ngOnInit() {
-    this.LogIn({username: 'test', password: 'test'});
+    this.LogIn({username: 'test', password: 'a123456'});
   }
 
 }
