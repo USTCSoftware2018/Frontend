@@ -20,12 +20,11 @@ export class StepBarComponent implements OnInit {
     this.stepsService.mockData();
     this.steps = this.stepsService.steps;
     this.subs = this.stepsService.subs;
-    console.log(this.steps);
   }
 
   addSteps(stepId: string) {
-    console.log(stepId);
     this.editorReportService.reportAddStep(stepId);
+    console.log(this.editorReportService.report);
   }
 
   addSubs(subId: string) {

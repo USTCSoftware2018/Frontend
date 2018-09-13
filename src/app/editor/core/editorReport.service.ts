@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, subType } from '../headers/article';
-import { AppendixService } from './appendix.service';
+
 import {StepsService} from './steps.service';
 
 
@@ -18,7 +18,7 @@ export class EditorReportService {
   }
 
 
-  constructor(public stepsService: StepsService, public appendixService: AppendixService) { }
+  constructor(public stepsService: StepsService) { }
 
   public initReport() {
     // 初始化文章
@@ -72,7 +72,7 @@ export class EditorReportService {
     for (const fld of _fields) {
       if (data[fld.label]) {
         fld.value = data[fld.label];
-      } else if (fld.default === 'null') {
+      } else if (fld.default === 'null' || fld.default === undefined) {
         fld.value = '';
       } else {
         fld.value = fld.default;
@@ -80,15 +80,16 @@ export class EditorReportService {
     }
 
     // Remark 部分
-
     const fld_remark: any = new Object();
     fld_remark.type = 'input';
-    fld_remark.label = 'Remark';
+    fld_remark.label = 'Notes';
     fld_remark.default = '';
     fld_remark.attr = ['@big'];
-    fld_remark.value = step.remark;
+    fld_remark.value = step.remark ? step.remark : '';
     _fields.push(fld_remark);
     step.fields = _fields;
+
+    console.log(step);
   }
 
   public parseAll() {
@@ -128,8 +129,9 @@ export class EditorReportService {
     const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
     _new_sub.id = '';
     _new_sub.desc = '';
-    _new_sub.name = 'Step';
-    _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
+    _new_sub.name = _step_temp.name;
+    // _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
+    _new_sub.idx = 0;
     _new_sub.steps = [];
 
     const _new_step = new ReportStepsHeader();  // 新建 step
@@ -152,7 +154,8 @@ export class EditorReportService {
     _new_sub.id = _sub_temp.id;
     _new_sub.desc = _sub_temp.desc;
     _new_sub.name = _sub_temp.name;
-    _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
+    // _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
+    _new_sub.idx = 0;
     _new_sub.steps = [];
 
     let idx = 0;
@@ -177,17 +180,17 @@ export class EditorReportService {
     // It will never be completed.
   }
 
-  private getId(subIdx: number): number {
+  private getId(sub: any): number {
     let _id = 0;
-    while ( _id < this.report.subroutines.length && this.report.subroutines[_id].idx !== subIdx) {
+    while ( _id < this.report.subroutines.length && this.report.subroutines[_id] !== sub) {
       _id ++;
     }
     return _id;
   }
 
-  public reportDeleteSubroutine(subIdx: number) {
+  public reportDeleteSubroutine(sub: any) {
     // not implement error
-    this.report.subroutines.splice(this.getId(subIdx), 1);
+    this.report.subroutines.splice(this.getId(sub), 1);
   }
 
   public reportSwap(subIdx_1: number, subIdx_2: number) {

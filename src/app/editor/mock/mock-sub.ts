@@ -11,7 +11,7 @@ mockSub_1.default = [
     {'Name': 'template'},
     {'Name': 'buffer'},
     {'Name': 'enzyme'},
-    {},
+    {'Type': '摇晃'}, // 4
     {'Num': '37'},
 ];
 mockSub.push(mockSub_1);
@@ -62,10 +62,10 @@ mockSub_4.default = [
     {'Name': '1/3 B2 isopropanol'}, // 2
     {'container2': 'adsorption column'}, // 5
     {'Speed': '11000', 'Time': '30s'}, // 1
-    {'Type': '上清'}, // 3
+    {'Phase': '上清'}, // 3
     {'Name': 'wash solution', 'Volume': '500'}, // 2
     {'Speed': '12000', 'Time': '30s'}, // 1
-    {'Type': '上清'}, // 3
+    {'Phase': '上清'}, // 3
     {'From': '9', 'To': '11', 'Count': '1'}, // 6
     {'Speed': '12000', 'Time': '30s'}, // 1
     {'container2': 'new EP'}, // 5
@@ -88,7 +88,7 @@ mockSub_5.default = [
     {}, // 4
     {'container2': 'filtrate'}, // 5
     {'Speed': '11000', 'Time': '30s'}, // 1
-    {'Type': '上清'}, // 3
+    {'Phase': '上清'}, // 3
     {'Name': 'wash solution', 'Volume': '500'}, // 2
     {'Speed': '12000', 'Time': '30s'}, // 1
     {}, // 3

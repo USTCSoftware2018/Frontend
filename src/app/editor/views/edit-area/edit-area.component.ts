@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportHeader } from '../../headers/article';
 import { EditorReportService } from '../../core/editorReport.service';
+import { SortablejsOptions } from '../../angular-sortablejs/src/sortablejs-options';
 
 
 
@@ -13,6 +14,10 @@ export class EditAreaComponent implements OnInit {
 
   editorHeight: string; // 判断高度
   currentReport: ReportHeader;
+
+  options: SortablejsOptions = {
+    handle: '.subroutineTitlePart',
+  };
 
   constructor(public editorReportService: EditorReportService) { }
 
