@@ -4,9 +4,9 @@
 
 <div id="LuckyButton_1" [@change]="flag">
         <img src="/assets/img/editor/icons/top.png">
-    </div>
+</div>
 
-<div id="LuckyButton_2" [@change]="flag">
+<div id="LuckyButton_2" [@change]="flag" (click)="append.reportAddList()">
     <img src="/assets/img/editor/icons/quote.png">
 </div>
 
@@ -14,11 +14,11 @@
     <img src="/assets/img/editor/icons/table.png">
 </div>
 
-<div id="LuckyButton_4" [@change]="flag">
+<div id="LuckyButton_4" [@change]="flag" (click)="append.reportAddPict()">
     <img src="/assets/img/editor/icons/img.png">
 </div>
 
-<div id="LuckyButton_5" [@change]="flag">
+<div id="LuckyButton_5" [@change]="flag" (click)="append.reportAddText()">
     <img src="/assets/img/editor/icons/text.png">
 </div>
 

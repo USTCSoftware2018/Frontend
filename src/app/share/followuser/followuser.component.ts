@@ -8,7 +8,7 @@ import {Otheruser} from '../likereport/likereport';
 })
 export class FollowuserComponent implements OnInit {
   @Input() otheruser: Otheruser;
-  @Input() isFollowing: Boolean;
+  @Input() isFollowing: boolean;
   @Input() bkcolor: string;
   btncontent: String ;
   constructor() { }

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
+import { SortablejsModule } from './angular-sortablejs/src/sortablejs.module';
+
 import { StepsService } from './core/steps.service';
 import { AppendixService } from './core/appendix.service';
 import { EditorReportService } from './core/editorReport.service';
@@ -15,12 +17,16 @@ import { ButtonAreaComponent } from './views/button-area/button-area.component';
 import { SubroutineComponent } from './views/subroutine/subroutine.component';
 import { EditorFieldTypeComponent } from './views/editor-field-type/editor-field-type.component';
 import { StepPanelComponent } from './views/step-panel/step-panel.component';
+import { TextPanelComponent } from './views/text-panel/text-panel.component';
+import { PictPanelComponent } from './views/pict-panel/pict-panel.component';
+import { ListPanelComponent } from './views/list-panel/list-panel.component';
 
 @NgModule({
   imports: [
     CommonModule,
     NgZorroAntdModule,
     FormsModule,
+    SortablejsModule,
   ],
   declarations: [
     MainComponent,
@@ -30,6 +36,9 @@ import { StepPanelComponent } from './views/step-panel/step-panel.component';
     SubroutineComponent,
     EditorFieldTypeComponent,
     StepPanelComponent,
+    TextPanelComponent,
+    PictPanelComponent,
+    ListPanelComponent,
   ],
   providers: [
     StepsService,

@@ -3,7 +3,7 @@
   <!-- navbar -->
 
   <div nz-col nzSpan="24">
-    <nz-tabset nz-row style="text-align: center;" [nzTabBarStyle]="tabset">
+    <nz-tabset nz-row style="text-align: center;" >
       <nz-tab nz-col nzSpan="5" [nzTitle]="ReportsTemplate">
         <ng-template #ReportsTemplate>
             <a>Reports</a>
@@ -27,7 +27,7 @@
           <a>Followers</a>
         </ng-template>
         <div  *ngFor="let otheruser of user.followers.content">
-          <app-followuser [otheruser]="otheruser" [isFollowing]="ifFollowing(otheruser)" [bkcolor]="'#F2F2F2'"></app-followuser>
+          <app-followuser [otheruser]="otheruser" [isFollowing]="ifFollowing(otheruser)"  [bkcolor]="'#F2F2F2'"></app-followuser>
         </div>
       </nz-tab>
 

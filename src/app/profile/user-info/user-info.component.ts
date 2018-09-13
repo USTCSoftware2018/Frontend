@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from '../../Interface/userinfo';
+import {Archive} from '../../Interface/userinfo';
+import {PopularReport} from '../../Interface/userinfo';
+import {Label} from '../../Interface/userinfo';
 
 @Component({
   selector: 'app-user-info',
@@ -6,12 +10,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-info.component.less']
 })
 export class UserInfoComponent implements OnInit {
-  lebels:string[];
-  archive:string[];
-  popular_reports:string[];
+  @Input() user: User;
+  all_archive: Archive[] = [];
+  all_labels: PopularReport[] = [];
+  all_pop_report: Label[] = [];
   constructor() { }
 
   ngOnInit() {
+    this.initInfo();
   }
+  initInfo() {
+    this.all_archive = this.user.classification.archives;
+    this.all_pop_report = this.user.classification.popular_reports;
+    this.all_labels = this.user.classification.labels;
 
+  }
 }

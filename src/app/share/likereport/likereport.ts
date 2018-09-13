@@ -1,4 +1,4 @@
-import { Report } from '../others-report/others-report';
+import { Report } from '../../Interface/userinfo';
 
 export class Otheruser {
   id: number;
