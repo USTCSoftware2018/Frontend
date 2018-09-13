@@ -24,6 +24,11 @@
           <app-pict-panel [sub]="sub"></app-pict-panel>
       </div>
 
+      <div *ngSwitchCase="'List'" class="ABlockOfSub" >
+          <!-- Lists -->
+          <app-list-panel [sub]="sub"></app-list-panel>
+      </div>
+
     </div>
 
     <br style="height: 15px;"/>
