@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError, of } from 'rxjs';
+import { Observable, throwError, of, observable } from 'rxjs';
 import { catchError, retry, map, tap } from 'rxjs/operators';
 import { User } from './Interface/userinfo';
 import { MyResponse } from './Interface/MyResponse';
 import { MyNotification } from './Interface/myNotification';
+import { url } from 'inspector';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +16,47 @@ export class HttpService {
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
-    })
+    }),
+    withCredentials: true
   };
 
   constructor(private http: HttpClient) { }
 
 // --------------- ******************** User ******************** ------------------//
 
+  rawFire(point: string, method: string, params: object) {
+    const apiURL = `${this.global_url}/${point}`;
+    method = method.toLowerCase();
+    let ret = new Observable;
+    if (method === 'get') {
+      ret = this.http.get(apiURL, this.httpOptions).pipe(retry(3));
+    } else if (method === 'post') {
+      ret = this.http.post(apiURL, params, this.httpOptions).pipe(retry(3));
+    } else if (method === 'options') {
+      ret = this.http.options(apiURL, this.httpOptions).pipe(retry(3));
+    } else {
+      ret = this.http.get(apiURL, this.httpOptions).pipe(retry(3));
+    }
+    return ret;
+  }
+
+  fire(point: string, method: string, params: object, successFunc: Function, failedFunc: Function) {
+    this.rawFire(point, method, params).subscribe(
+      function(data) {
+        successFunc(data);
+      }, function(error) {
+        failedFunc(error);
+      }
+    );
+  }
+
+  test_fire() {
+    const params = {
+      username: 'test_username',
+      password: 'test_password'
+    };
+    this.fire('users/login/', 'post', params, data => { console.log(data); }, error => { alert(error); });
+  }
   // create a new user
   create_user(user: User): Observable<MyResponse<User>> {
     const url = `${this.global_url}/users/register/`;
@@ -74,7 +109,7 @@ export class HttpService {
   // follow somebody by id
   follow_by_id(user_id: number) {
     const url = `${this.global_url}/users/${user_id}/follow/`;
-    return this.http.post(url, null , this.httpOptions)
+    return this.http.post(url, null, this.httpOptions)
       .pipe(
         retry(3)
       );

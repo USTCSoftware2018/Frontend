@@ -46,7 +46,8 @@ export class HttpExampleComponent implements OnInit {
     );
     }
   ngOnInit() {
-    this.LogIn({username: 'test', password: 'a123456'});
+    this.http.test_fire();
+    // this.LogIn({username: 'test', password: 'a123456'});
   }
 }
 
