@@ -6,6 +6,7 @@ import { User } from './Interface/userinfo';
 import { MyResponse } from './Interface/MyResponse';
 import { MyNotification } from './Interface/myNotification';
 import { url } from 'inspector';
+import { ApiResult } from './Interface/ApiResult';
 
 @Injectable({
   providedIn: 'root'
@@ -24,38 +25,63 @@ export class HttpService {
 
 // --------------- ******************** User ******************** ------------------//
 
-  rawFire(point: string, method: string, params: object) {
+  rawFire(point: string, method: string, params: object, errorHandler: Function) {
     const apiURL = `${this.global_url}/${point}`;
     method = method.toLowerCase();
     let ret = new Observable;
     if (method === 'get') {
-      ret = this.http.get(apiURL, this.httpOptions).pipe(retry(3));
+      ret = this.http.get(apiURL, this.httpOptions);
     } else if (method === 'post') {
-      ret = this.http.post(apiURL, params, this.httpOptions).pipe(retry(3));
+      ret = this.http.post(apiURL, params, this.httpOptions);
     } else if (method === 'options') {
-      ret = this.http.options(apiURL, this.httpOptions).pipe(retry(3));
+      ret = this.http.options(apiURL, this.httpOptions);
     } else {
-      ret = this.http.get(apiURL, this.httpOptions).pipe(retry(3));
+      ret = this.http.get(apiURL, this.httpOptions);
     }
     return ret;
   }
 
-  fire(point: string, method: string, params: object, successFunc: Function, failedFunc: Function) {
-    this.rawFire(point, method, params).subscribe(
-      function(data) {
-        successFunc(data);
-      }, function(error) {
-        failedFunc(error);
-      }
+  fire(point: string, method: string, params: object, callback: Function) {
+
+    const errorHandler = function(error) {
+      console.log('errorHandler');
+      let result = new ApiResult;
+      result.success = false;
+      result.data = error.error;
+      result.status = error.status;
+      callback(result);
+    };
+
+    const successHandler = function(data) {
+      console.log('successHandler');
+      console.log(data);
+      let result = new ApiResult;
+      result.success = true;
+      result.data = data;
+      result.status = 200;
+      callback(result);
+    };
+
+    this.rawFire(point, method, params, errorHandler).subscribe(
+      data => successHandler(data),
+      error => errorHandler(error)
     );
   }
 
   test_fire() {
     const params = {
-      username: 'test_username',
-      password: 'test_password'
+      username: 'test',
+      password: 'a123456'
     };
-    this.fire('users/login/', 'post', params, data => { console.log(data); }, error => { alert(error); });
+
+    this.fire('users/login/', 'post', params, result => {
+      console.log(result);
+      if (result.success) {
+        console.log('success');
+      } else {
+        console.log('failed');
+      }
+    });
   }
 
   // create a new user
