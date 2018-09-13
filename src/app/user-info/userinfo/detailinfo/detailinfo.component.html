@@ -1,0 +1,45 @@
+
+<div nz-row class="s-bk">
+  <!-- navbar -->
+
+  <div nz-col nzSpan="24">
+    <nz-tabset nz-row style="text-align: center;" >
+      <nz-tab nz-col nzSpan="5" [nzTitle]="ReportsTemplate">
+        <ng-template #ReportsTemplate>
+            <a>Reports</a>
+        </ng-template>
+        <div  *ngFor="let report of user.reports">
+          <app-others-report [report]="report" [bkcolor]="'#F2F2F2'"></app-others-report>
+        </div>
+      </nz-tab>
+
+      <nz-tab nz-col nzSpan="5" [nzTitle]="FollowingTemplate">
+        <ng-template #FollowingTemplate>
+          <a>Following</a>
+        </ng-template>
+        <div  *ngFor="let otheruser of user.following.content">
+          <app-followuser [otheruser]="otheruser" [bkcolor]="'#F2F2F2'" [isFollowing]="ifFollowing(otheruser)"></app-followuser>
+        </div>
+      </nz-tab>
+
+      <nz-tab nz-col nzSpan="4" [nzTitle]="FollowerTemplate">
+        <ng-template #FollowerTemplate>
+          <a>Followers</a>
+        </ng-template>
+        <div  *ngFor="let otheruser of user.followers.content">
+          <app-followuser [otheruser]="otheruser" [isFollowing]="ifFollowing(otheruser)"  [bkcolor]="'#F2F2F2'"></app-followuser>
+        </div>
+      </nz-tab>
+
+      <nz-tab nz-col nzSpan="4" [nzTitle]="PraiseTemplate">
+        <ng-template #PraiseTemplate>
+          <a>Praise</a>
+        </ng-template>
+        <div  *ngFor="let like of user.likes">
+          <app-likereport [like]="like" [bkcolor]="'#F2F2F2'"></app-likereport>
+        </div>
+      </nz-tab>
+
+    </nz-tabset>
+  </div>
+</div>

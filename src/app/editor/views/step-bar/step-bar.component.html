@@ -7,8 +7,10 @@
             <nz-list [nzDataSource]="steps" [nzItemLayout]="'horizontal'" nzSize="small" [nzRenderItem]="item">
               <ng-template #item let-item>
                 <nz-list-item>
-                  <img class="stepBarListIco" [src]="item.ico"/>
-                  <span class="stepBarListName">{{item.name}}</span>
+                  <div (click)="addSteps(item.id)">
+                    <img class="stepBarListIco" [src]="item.ico"/>
+                    <span class="stepBarListName">{{item.name}}</span>
+                  </div>
                 </nz-list-item>
               </ng-template>
             </nz-list>
@@ -20,8 +22,9 @@
       <nz-list [nzDataSource]="subs" [nzItemLayout]="'horizontal'" nzSize="small" [nzRenderItem]="item1">
           <ng-template #item1 let-item>
             <nz-list-item>
-              <img class="stepBarListIco" [src]="item.ico"/>
-              <span class="stepBarListName">{{item.name}}</span>
+              <div (click)="addSubs(item.id)">
+                <span class="stepBarListName">{{item.name}}</span>
+              </div>
             </nz-list-item>
           </ng-template>
         </nz-list>

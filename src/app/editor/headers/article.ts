@@ -17,7 +17,7 @@ export class ReportStepsHeader {
 // subroutine 类型
 
 export enum subType {
-    steps = 'subroutine',
+    steps = 'Steps',
     info = 'Info',
     result = 'Result',
     pictures = 'Pictures',

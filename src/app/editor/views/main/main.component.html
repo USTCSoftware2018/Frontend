@@ -1,4 +1,4 @@
-<nz-alert nzType="warning" nzMessage="Please use a bigger screen to achieve a better experience." nzCloseText="Close Now" *ngIf="innerWidth < 600"></nz-alert>
+<nz-alert nzType="warning" nzMessage="Please use a bigger screen to achieve a better experience." nzCloseText="Close Now" *ngIf="innerWidth < 670"></nz-alert>
 
 <div #editorMain nz-row [ngStyle]="{'height': editorHeight}" (window:resize)="onResize()">
   <!-- This is the main page of editor-->
@@ -17,7 +17,5 @@
       <!-- 小按钮们 -->
       <app-button-area></app-button-area>
   </div>
-
-
 
 </div>
