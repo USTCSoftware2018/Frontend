@@ -2,7 +2,7 @@ import {AbstractControl, ValidatorFn} from '@angular/forms';
 
 const at: RegExp = /^.*[@]+.*$/
 const email: RegExp = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/ ;
-const username: RegExp = /^[a-zA-Z0-9_-]*$/ ;
+const username: RegExp = /^[a-zA-Z0-9_\- ]*$/ ;
 
 export function forbiddenUsernameValidator(): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} | null => {

@@ -20,16 +20,16 @@ label{
   }
 }
 //对于大屏
-@media screen and (min-width:691px){
+@media screen and (min-width:770px){
   .photo{
     margin-top:30px;
-    width:160px;
-    height:160px;
+    width:120px;
+    height:120px;
   }
   //这个是名字的样式
   .name{
     color: #000000;
-    font-size:24px;
+    font-size:26px;
     margin-top:10px;
     margin-bottom:10px;
   }
@@ -45,7 +45,41 @@ label{
   .number-info{
     margin-bottom: 15px;
     font-family: HelveticaNeue;
-    font-size:12px;
+    font-size:8px;
+    .number{
+      font-family: ArialMT;
+      font-size: 24px;
+      color: #333333;
+    }
+  }
+}
+//对于ipad
+@media screen and (min-width:691px) and (max-width:769px){
+  .photo{
+    margin-top:30px;
+    width:160px;
+    height:160px;
+  }
+  //这个是名字的样式
+  .name{
+    color: #000000;
+    font-size:16px;
+    margin-top:10px;
+    margin-bottom:10px;
+  }
+  //这个是按钮的样式
+  .rectangle3{
+    border-radius:15px;
+    backgoround:#3288FF;
+    font-family: AvenirNext-Regular;
+    text-align: center;
+    width:100px;
+    margin-top:15px;
+  }
+  .number-info{
+    margin-bottom: 15px;
+    font-family: HelveticaNeue;
+    font-size:8px;
     .number{
       font-family: ArialMT;
       font-size: 24px;

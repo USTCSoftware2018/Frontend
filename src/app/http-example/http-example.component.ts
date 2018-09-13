@@ -21,7 +21,10 @@ export class HttpExampleComponent implements OnInit {
           this.login_receive = receive;
           console.log(11);
           console.log('message');
+<<<<<<< HEAD
           console.log(receive['message']);
+=======
+>>>>>>> d2e68bfae67cb0afb5de8fa8eaf0e3f4e2a10f8a
           console.log(receive);
         },
         err => {
