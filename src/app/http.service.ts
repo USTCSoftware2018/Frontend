@@ -72,9 +72,9 @@ export class HttpService {
   }
 
   // follow somebody by id
-  follow_somebody_by_id(data: {user_id: number}) {
-    const url = `${this.global_url}/users/followers`;
-    return this.http.post<MyResponse<User>>(url, data, this.httpOptions)
+  follow_by_id(user_id: number) {
+    const url = `${this.global_url}/users/${user_id}/follow/`;
+    return this.http.post(url, data, this.httpOptions)
       .pipe(
         retry(3)
       );
