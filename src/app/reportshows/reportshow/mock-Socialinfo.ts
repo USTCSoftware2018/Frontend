@@ -13,6 +13,8 @@ export const SOCIALCOMMENTS: Socialcomments[] = [
     likenum: 77,
     commentnum: 14,
     likeo: true,
+    oppname: 'van',
+    oppimg: '../../assets/imgtest/van.jpg'
   },
   {
     username: 'van',
@@ -21,6 +23,8 @@ export const SOCIALCOMMENTS: Socialcomments[] = [
     likenum: 33,
     commentnum: 14,
     likeo: true,
+    oppname: '666',
+    oppimg: '../../assets/imgtest/xj.jpg'
   },
 ];
 
