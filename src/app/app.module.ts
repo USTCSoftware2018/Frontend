@@ -15,6 +15,7 @@ import { Error404Component } from './error/error404/error404.component';
 import { ReportshowComponent } from './reportshow/reportshow.component';
 import { UserSetModule } from './user-set/user-set.module';
 import { ProfileModule} from './profile/profile.module';
+import { NotificationModule } from './notification/notification.module';
 import { ReportshowotherComponent } from './reportshow/reportshowother/reportshowother.component';
 
 registerLocaleData(en);
@@ -38,6 +39,7 @@ registerLocaleData(en);
     ErrorModule,
     ReactiveFormsModule,
     ProfileModule,
+    NotificationModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
