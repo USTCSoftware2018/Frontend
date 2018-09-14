@@ -20,8 +20,7 @@ const appRoutes: Routes = [
   { path: 'search', loadChildren: '../biosearch/biosearch.module#BiosearchModule', data: {preload: true}},
   { path: 'profile', loadChildren: '../profile/profile.module#ProfileModule', data: {preload: true}},
   { path: 'reportshows', loadChildren: '../reportshows/reportshows.module#ReportshowsModule'},
-  // { path: 'user-set', loadChildren: '../user-set/user-set.module#UserSetModule', data: { preload: true } },
-  { path: '', redirectTo: '/index', pathMatch: 'full' },
+    { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: Error404Component},
 ];
 
