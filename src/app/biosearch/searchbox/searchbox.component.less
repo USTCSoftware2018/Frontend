@@ -1,6 +1,7 @@
+
 .search-body{
   background-image: url("../../../assets/img/background/serchbox.png");
-  height:1024px;
+  height:768px;
   display:-webkit-flex;
   display:flex;
   justify-content: center;
@@ -25,10 +26,9 @@ app-panda/deep/div{
 }
 .search-input{
   height:3vw;
-  opacity: 0.75;
   font-family: HelveticaNeue;
   font-size: 2vw;
-  color: #9B9B9B;
+  background-color: rgb(256, 256, 254);
   text-indent: 1vw;
 }
 :host /deep/ .anticon-search{
@@ -65,6 +65,55 @@ app-panda/deep/div{
 text-align: center;
 height:4vw;
   width:10vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
   font-size: 1.6vw;
   color: #4A4A4A;
+
+}
+.tips0{
+  animation:mymove1 1s infinite;
+  position:relative;
+}
+.tips1{
+  animation:mymove2 1s infinite;
+  position:relative;
+}
+.tips2{
+  animation:mymove3 1s infinite;
+  position:relative;
+}
+.tips3{
+  animation:mymove4 1s infinite;
+  position:relative;
+}
+.tips4{
+  animation:mymove5 1s infinite;
+  position:relative;
+}
+
+@keyframes mymove1{
+  0%{top:0px;}
+  40%{top:0.2vw;}
+  100%{top:0px;}
+}
+@keyframes mymove2{
+  0%{top:0px;}
+  50%{top:0.2vw;}
+  100%{top:0px;}
+}
+@keyframes mymove3{
+  0%{top:0px;}
+  30%{top:0.2vw;}
+  100%{top:0px;}
+}
+@keyframes mymove4{
+  0%{top:0px;}
+  60%{top:0.2vw;}
+  100%{top:0px;}
+}
+@keyframes mymove5{
+  0%{top:0px;}
+  45%{top:0.2vw;}
+  100%{top:0px;}
 }

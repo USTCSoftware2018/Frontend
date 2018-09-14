@@ -14,7 +14,8 @@ import { ErrorModule } from './error/error.module';
 import { Error404Component } from './error/error404/error404.component';
 import { ReportshowComponent } from './reportshow/reportshow.component';
 import { UserSetModule } from './user-set/user-set.module';
-import { ProfileModule } from './profile/profile.module';
+
+import { ProfileModule} from './profile/profile.module';
 import { ReportshowotherComponent } from './reportshow/reportshowother/reportshowother.component';
 import { ShareModule } from './share/share.module';
 import { FeedsComponent } from './core/feeds/feeds.component';
@@ -45,7 +46,6 @@ registerLocaleData(en);
     ErrorModule,
     ReactiveFormsModule,
     ProfileModule,
-    ShareModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

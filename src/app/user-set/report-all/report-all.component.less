@@ -2,7 +2,7 @@
   margin: 1vw 0 0.5vw 0;
   background: #F2F2F2;
   align-items: center;
-  height:6vw;
+  height:5vw;
 }
 
 .Time{
@@ -10,7 +10,6 @@
   display:flex;
   justify-content: space-around;
   align-items: center;
-  padding-left: 1vw;
 }
 .Time label{
   font-family: ArialMT;
@@ -21,7 +20,7 @@
 .Labels{
   display:-webkit-flex;
   display:flex;
-  justify-content: space-around;
+  justify-content:flex-start;
   padding-left: 1vw;
   align-items: center;
 }
@@ -30,6 +29,21 @@
   font-size: 1.3vw;
   color: #333333;
   text-align: center;
+}
+:host /deep/ .ant-select-selection{
+  height:2.4vw;
+  padding-bottom: 0.5vw;
+}
+:host /deep/ .ant-select-selection__rendered{
+  height:2.4vw;
+
+}
+:host /deep/ .ant-select-selection__placeholder{
+  padding-bottom: 1vw;
+  height:2.4vw;
+}
+:host /deep/ .ant-select-arrow{
+  font-size:1.4vw;
 }
 .reportsearch{
   display:-webkit-flex;
@@ -83,12 +97,11 @@
   margin-bottom:0;
 }
 .read-comment{
-  width:8vw;
   display:-webkit-flex;
   display:flex;
   justify-content:space-around;
   align-items:center;
-  margin-left:2vw;
+  margin-left:1.5vw;
 }
 .read-comment p{
   font-family: ArialMT;
@@ -96,4 +109,8 @@
   color: #9B9B9B;
   text-align: left;
   margin-bottom:0;
+}
+.read-comment img{
+  width:1.5vw;
+  margin-right:0.2vw;
 }

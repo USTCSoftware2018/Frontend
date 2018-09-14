@@ -5,6 +5,7 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-searchbox',
@@ -12,8 +13,10 @@ import {
   styleUrls: ['./searchbox.component.less']
 })
 export class SearchboxComponent implements OnInit {
+
   shake = false;
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
