@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserInfoProfile} from './userinfoprofile';
 import {USERINFOPROFILE} from './mock-userinfoprofile';
-import {Simuser} from "../../Interface/userinfo";
+import {Simuser} from '../../Interface/userinfo';
 
 @Component({
   selector: 'app-personal-information',

@@ -7,6 +7,10 @@ import { User } from './user';
 import { USER } from './mock-user';
 import {variable} from '@angular/compiler/src/output/output_ast';
 import {isLineBreak} from 'codelyzer/angular/sourceMappingVisitor';
+import { ShareModule } from '../../share/share.module';
+import { Simuser } from '../../Interface/userinfo';
+import {UserInfoProfile} from '../../profile/personal-information/userinfoprofile';
+import {USERINFOPROFILE} from '../../profile/personal-information/mock-userinfoprofile';
 
 @Component({
   selector: 'app-reportshow',
@@ -46,6 +50,8 @@ export class ReportshowComponent implements OnInit {
 
   constructor() { }
 
+
   ngOnInit() {
+
   }
 }

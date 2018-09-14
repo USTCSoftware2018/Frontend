@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import {Report} from './report';
-import {REPORTS} from './mock-report';
+import {USER} from '../Interface/mock-user';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReportServiceService {
-  getReports(): Report[] {
-    return REPORTS;
-  }
   constructor() { }
+  getLabel(name: string) {
+    return of(name);
+  }
 }

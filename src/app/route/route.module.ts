@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from '../error/error404/error404.component';
-import { ReportshowComponent} from '../reportshow/reportshow.component';
-import { FeedsComponent } from '../core/feeds/feeds.component';
+import { ReportshowComponent} from '../reportshows/reportshow/reportshow.component';
 import { MainComponent as EditorMainComponent} from '../editor/views/main/main.component';
-import { ProfilePageComponent } from '../profile/profile-page/profile-page.component';
+import { ReportshowotherComponent } from '../reportshows/reportshow/reportshowother/reportshowother.component';
+import { FeedsComponent } from '../core/feeds/feeds.component';
 import { HttpExampleComponent } from '../http-example/http-example.component';
-import { ReportshowotherComponent } from '../reportshow/reportshowother/reportshowother.component';
 import {IndexComponent} from '../core/index/index.component';
+
 
 const appRoutes: Routes = [
   { path: 'test-http', component: HttpExampleComponent },
@@ -21,6 +21,7 @@ const appRoutes: Routes = [
   { path: 'authentication', loadChildren: '../authentic/authentic.module#AuthenticModule', data: {preload: true}},
   { path: 'search', loadChildren: '../biosearch/biosearch.module#BiosearchModule', data: {preload: true}},
   { path: 'profile', loadChildren: '../profile/profile.module#ProfileModule', data: {preload: true}},
+  { path: 'reportshows', loadChildren: '../reportshows/reportshows.module#ReportshowsModule'},
   // { path: 'user-set', loadChildren: '../user-set/user-set.module#UserSetModule', data: { preload: true } },
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: Error404Component},

@@ -3,15 +3,12 @@
 </div>
 
 <div class="content">
-  <nz-tabset nzTabPosition="top">
-    <nz-tab nzTitle="Reports">
-      <app-report-card [report]="reports[0]" ></app-report-card>
-    </nz-tab>
-    <nz-tab nzTitle="iGEMers">
-      <app-report-card [report]="reports[0]" ></app-report-card>
-    </nz-tab>
-    <nz-tab nzTitle="Biobricks">
-      <app-report-card [report]="reports[0]" ></app-report-card>
-    </nz-tab>
-  </nz-tabset>
+  <nz-affix [nzOffsetTop]="45">
+    <ul  nz-menu [nzMode]="'horizontal'">
+      <li  nz-menu-item> Reports</li>
+      <li nz-menu-item> iGEMers</li>
+      <li nz-menu-item> Biobricks </li>
+    </ul>
+  </nz-affix>
+  <app-report-card [report]="reports[0]" ></app-report-card>
 </div>

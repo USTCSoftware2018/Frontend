@@ -18,7 +18,7 @@ const routs: Routes = [
         component: Report2Component,
       },
       {
-        path: 'watch',
+        path: 'watch/:name',
         component: WatchReportLabelComponent,
       }]
   }
