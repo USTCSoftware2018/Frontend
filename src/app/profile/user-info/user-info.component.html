@@ -2,7 +2,7 @@
   <label>Labels</label>
   <div class="content">
     <div *ngFor="let label of all_labels">
-      <a routerLink="/profile/watch">{{label.name}}</a>
+      <a routerLink="/profile/watch/{{label.name}}">{{label.name}}</a>
       <span class="small-word">{{label.num}}&nbsp;reports</span>
     </div>
   </div>
