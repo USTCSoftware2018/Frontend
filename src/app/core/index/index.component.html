@@ -1,3 +1,17 @@
-<p>
-  index works!
-</p>
+<div class="animate">
+  <div id="container"><div id="output"></div></div>
+</div>
+
+<div class="content">
+  <nz-tabset nzTabPosition="top">
+    <nz-tab nzTitle="Reports">
+      <app-report-card [report]="reports[0]" ></app-report-card>
+    </nz-tab>
+    <nz-tab nzTitle="iGEMers">
+      <app-report-card [report]="reports[0]" ></app-report-card>
+    </nz-tab>
+    <nz-tab nzTitle="Biobricks">
+      <app-report-card [report]="reports[0]" ></app-report-card>
+    </nz-tab>
+  </nz-tabset>
+</div>

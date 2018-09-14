@@ -14,7 +14,7 @@ export const user1: Simuser = {
 export const user2: Simuser = {
   id: 3,
   name: 'Cindy',
-  about_me: 'about me',
+  about_me: 'about me balabalabalabalabalabalabalabalabalabala',
   avatar_url: '//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
   followingnum: 42,
   followednum: 233,

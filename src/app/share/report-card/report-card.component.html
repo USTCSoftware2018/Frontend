@@ -1,0 +1,23 @@
+<nz-card style="width:215px; background-color:#EAEDF2" nzLoading="false"
+         nzHoverable="true" [nzActions]="[actionLike,actionCollection]">
+  <div class="report-info-container">
+    <div class="report-info">
+      <nz-avatar [nzSrc]="report.author.avatar_url"></nz-avatar>
+      <span>&nbsp;&nbsp;</span>
+      <span class="report-title">{{report.title}}</span>
+      <div class="report-abstract-container">
+        <p class="report-abstract">{{report.abstract}}</p>
+      </div>
+    </div>
+  </div>
+</nz-card>
+
+<ng-template #actionLike>
+  <i class="anticon anticon-like-o"></i>
+</ng-template>
+<ng-template #actionCollection>
+  <i class="anticon anticon-tag-o"></i>
+</ng-template>
+<ng-template #actionEllipsis>
+  <i class="anticon anticon-ellipsis"></i>
+</ng-template>

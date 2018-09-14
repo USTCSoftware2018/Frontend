@@ -7,6 +7,7 @@ import { MainComponent as EditorMainComponent} from '../editor/views/main/main.c
 import { ProfilePageComponent } from '../profile/profile-page/profile-page.component';
 import { HttpExampleComponent } from '../http-example/http-example.component';
 import { ReportshowotherComponent } from '../reportshow/reportshowother/reportshowother.component';
+import {IndexComponent} from '../core/index/index.component';
 
 const appRoutes: Routes = [
   { path: 'test-http', component: HttpExampleComponent },
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
   { path: 'reportshow', component: ReportshowComponent},
   { path: 'reportdisplay', component: ReportshowotherComponent},
   { path: 'feeds', component: FeedsComponent},
+  { path: 'explore', component: IndexComponent},
   { path: 'userset', loadChildren: '../user-set/user-set.module#UserSetModule', data: { preload: true } },
   { path: 'userinfo', loadChildren: '../user-info/watch-info.module#WatchInfoModule', data: {preload: true}},
   { path: 'authentication', loadChildren: '../authentic/authentic.module#AuthenticModule', data: {preload: true}},
