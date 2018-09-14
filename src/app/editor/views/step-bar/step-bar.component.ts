@@ -24,7 +24,6 @@ export class StepBarComponent implements OnInit {
 
   addSteps(stepId: string) {
     this.editorReportService.reportAddStep(stepId);
-    console.log(this.editorReportService.report);
   }
 
   addSubs(subId: string) {

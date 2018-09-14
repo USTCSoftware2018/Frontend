@@ -4,7 +4,7 @@
     </div>
 
     <!-- 第一组 -->
-    <div id="LuckyButton_1" [@change]="flag">
+    <div id="LuckyButton_1" [@change]="flag" (click)="append.reportShowTop()">
         <img src="/assets/img/editor/icons/top.png">
     </div>
 
@@ -16,7 +16,7 @@
         <img src="/assets/img/editor/icons/rslt.png">
     </div>
 
-    <div id="LuckyButton_4" [@change]="flag" (click)="append.reportAddInfo()">
+    <div id="LuckyButton_4" [@change]="flag" (click)="append.reportShowInfo()">
         <img src="/assets/img/editor/icons/info.png">
     </div>
 

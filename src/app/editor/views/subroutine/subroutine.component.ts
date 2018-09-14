@@ -37,12 +37,12 @@ export class SubroutineComponent implements OnInit {
   constructor(public editorReportService: EditorReportService) { }
 
   ngOnInit() {
-    this.subState = 'active';
+    this.sub.state = 'active';
     this.subShow = 'true';
   }
 
   reverseState() {
-    this.subState = this.subState === 'inactive' ? 'active' : 'inactive';
+    this.sub.state = this.sub.state === 'inactive' ? 'active' : 'inactive';
   }
 
   startDelete(idx: any) {

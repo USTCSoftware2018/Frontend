@@ -33,6 +33,7 @@ export class ReportSubroutineHeader {
     idx: number; // 位置
     steps?: Array<ReportStepsHeader>; // 包含的step
     desc?: string;
+    state: string; // 后端不存储
     list?: ReportListHeader[];
     remark?: string;
     pic?: Array<ReportGraphHeader>;

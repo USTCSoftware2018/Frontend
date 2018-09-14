@@ -9,6 +9,9 @@ export class EditorReportService {
 
   private _report: ReportHeader; // 当前文章
 
+  public resultSub: ReportSubroutineHeader;
+  public infoSub: ReportSubroutineHeader;
+
   public get report () {
     return this._report;
   }
@@ -30,6 +33,8 @@ export class EditorReportService {
     this.report.ndate = '';
     this.report.result = '';
     this.report.subroutines = [];
+    this.resultSub = null;
+    this.reportAddInfo();
     // this.mockReport();
   }
 
@@ -175,6 +180,19 @@ export class EditorReportService {
     this.report.subroutines.push(_new_sub);
   }
 
+  reportAddInfo() {
+    const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
+    _new_sub.id = '-98';
+    _new_sub.desc = '';
+    _new_sub.subType = subType.info;
+    _new_sub.name = 'Info';
+    _new_sub.idx =  0;
+    _new_sub.list = [];
+    this.infoSub = _new_sub;
+    this.report.subroutines.push(_new_sub);
+    _new_sub.pic = [];
+  }
+
   public reportDeleteStep(stepid: string) {
     // not implement error
     // It will never be completed.
@@ -195,7 +213,7 @@ export class EditorReportService {
 
   public reportSwap(subIdx_1: number, subIdx_2: number) {
     // not implement error
-
+    // 被废弃
     this.report.subroutines[this.getId(subIdx_1)].idx = subIdx_2;
     this.report.subroutines[this.getId(subIdx_2)].idx = subIdx_1;
   }

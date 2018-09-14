@@ -2,12 +2,17 @@ import { Injectable } from '@angular/core';
 import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, ReportGraphHeader, subType } from '../headers/article';
 import { EditorSubroutineHeader } from '../headers/steps';
 
+import { EditorEventService } from '../core/editor-event.service';
 import {EditorReportService} from './editorReport.service';
 
 @Injectable()
 export class AppendixService {
 
-  constructor(public editor: EditorReportService) { }
+  constructor(public editor: EditorReportService, public event: EditorEventService) { }
+
+  goToTop(value: number) {
+    this.event.eventEmit.emit(value);
+  }
 
   reportAddText() {
     const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
@@ -17,6 +22,7 @@ export class AppendixService {
     _new_sub.name = 'Text';
     _new_sub.idx =  0;
     this.editor.report.subroutines.push(_new_sub);
+    this.goToTop(1);
   }
 
   reportAddPict() {
@@ -28,6 +34,7 @@ export class AppendixService {
     _new_sub.idx =  0;
     this.editor.report.subroutines.push(_new_sub);
     _new_sub.pic = [];
+    this.goToTop(1);
   }
 
   reportAddList() {
@@ -40,30 +47,49 @@ export class AppendixService {
     _new_sub.list = [];
     this.editor.report.subroutines.push(_new_sub);
     _new_sub.pic = [];
+    this.goToTop(1);
   }
 
   reportAddResult() {
-    const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
-    _new_sub.id = '-98';
-    _new_sub.desc = '';
-    _new_sub.subType = subType.result;
-    _new_sub.name = 'Result';
-    _new_sub.idx =  0;
-    _new_sub.list = [];
-    this.editor.report.subroutines.push(_new_sub);
-    _new_sub.pic = [];
+    if ( !this.editor.resultSub) {
+      const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
+      _new_sub.id = '-98';
+      _new_sub.desc = '';
+      _new_sub.subType = subType.result;
+      _new_sub.name = 'Result';
+      _new_sub.idx =  0;
+      _new_sub.list = [];
+      this.editor.resultSub = _new_sub;
+      this.editor.report.subroutines.push(_new_sub);
+      _new_sub.pic = [];
+    }
+    this.reportShowResult();
   }
 
-  reportAddInfo() {
-    const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
-    _new_sub.id = '-98';
-    _new_sub.desc = '';
-    _new_sub.subType = subType.info;
-    _new_sub.name = 'Info';
-    _new_sub.idx =  0;
-    _new_sub.list = [];
-    this.editor.report.subroutines.push(_new_sub);
-    _new_sub.pic = [];
+  reportShowInfo() {
+    this.goToTop(0);
+    this.editor.infoSub.state = 'active';
   }
+
+  reportShowTop() {
+    this.goToTop(0);
+  }
+
+  reportShowResult() {
+    this.goToTop(1);
+    this.editor.resultSub.state = 'active';
+  }
+
+  // reportAddInfo() {
+  //   const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
+  //   _new_sub.id = '-98';
+  //   _new_sub.desc = '';
+  //   _new_sub.subType = subType.info;
+  //   _new_sub.name = 'Info';
+  //   _new_sub.idx =  0;
+  //   _new_sub.list = [];
+  //   this.editor.report.subroutines.push(_new_sub);
+  //   _new_sub.pic = [];
+  // }
 
 }

@@ -26,7 +26,7 @@
 </div>
 
 <div class="coreArea list-group list-group-flush" [sortablejs]="currentReport.subroutines" 
-    [sortablejsOptions]="options"
+    [sortablejsOptions]="options" #scrollss
     (window:resize)="onResize()" [ngStyle]="{'height': editorHeight}">
     <!-- 各个文章 subroutines -->
     <div  class="list-group-item" *ngFor="let sub of currentReport.subroutines">

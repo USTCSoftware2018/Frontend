@@ -9,6 +9,7 @@ import { StepsService } from './core/steps.service';
 import { AppendixService } from './core/appendix.service';
 import { EditorReportService } from './core/editorReport.service';
 import { GetDataService } from './getData/getData.service';
+import { EditorEventService } from './core/editor-event.service';
 
 import { MainComponent } from './views/main/main.component';
 import { StepBarComponent } from './views/step-bar/step-bar.component';
@@ -49,6 +50,7 @@ import { InfoPanelComponent } from './views/info-panel/info-panel.component';
     EditorReportService,
     GetDataService,
     AppendixService,
+    EditorEventService,
   ],
 })
 export class EditorModule { }
