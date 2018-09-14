@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition} from '@angular/animations';
 
+import {AppendixService} from '../../core/appendix.service';
 @Component({
   selector: 'app-button-area',
   templateUrl: './button-area.component.html',
@@ -17,7 +18,7 @@ import { trigger, state, style, animate, transition} from '@angular/animations';
 export class ButtonAreaComponent implements OnInit {
 
   flag: string;
-  constructor() { }
+  constructor(public append: AppendixService) { }
 
   ngOnInit() {
   }

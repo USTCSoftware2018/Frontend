@@ -1,0 +1,17 @@
+<div>
+  <div *ngFor="let li of sub.list; let i = index">
+    <div nz-row style="margin-bottom: 10px">
+      <div nz-col nzSpan="9" nzOffset="1">
+        <input [(ngModel)]="sub.list[i].str" name="" class="panelList" />
+      </div>
+      <i class="anticon anticon-minus-circle-o dynamic-delete-button" (click)="delList(i)"></i>
+    </div>
+  </div>
+  <div nz-row style="margin-bottom: 10px">
+    <div nz-col nzSpan="9" nzOffset="1">
+        <button nz-button nzType="dashed" class="dynamic-add-button" (click)="pushList()">
+          <i class="anticon anticon-plus"></i> Add new item.
+        </button>
+    </div>
+  </div>
+</div>

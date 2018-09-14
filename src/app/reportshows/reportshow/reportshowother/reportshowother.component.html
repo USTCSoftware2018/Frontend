@@ -1,0 +1,113 @@
+<div class="d-bk" nz-row >
+  <div nz-col nzSm="24" nzXs="24" [nzMd]="{span:22,offset:1}" [nzLg]="{span:20, offset:2}" [nzXl]="{span:18, offset:3}" [nzXXl]="{span:18, offset:3}">
+    <div nz-row nzGutter="10">
+      <div nz-col nzSpan="7" >
+        <div  class="box-position">
+          <div class="box-bk1 box-position" style="overflow: auto;overflow-x: hidden">
+            <div nz-col [nzOffset]="6" [nzSpan]="10">
+              <img class="avatar" src="{{user.avatar_url}}">
+            </div>
+            <div class="username" nz-col [nzOffset]="" [nzSpan]="24" align="center">
+              <span>{{user.name}}</span>
+            </div>
+            <div style="position: relative;left: 2vw">
+              <p  nz-col [nzOffset]="" [nzSpan]="24"  class="infoicon"><i class="anticon anticon-environment-o" style="color: #3C7BB8"></i>&nbsp;&nbsp;&nbsp;&nbsp;China</p>
+              <p  nz-col [nzOffset]="" [nzSpan]="24"  class="infoicon"><i class="anticon anticon-mail" style="color: #3C7BB8"></i>&nbsp;&nbsp;&nbsp;&nbsp;biohub@mail.ustc.edu.cn</p>
+              <p  nz-col [nzOffset]="" [nzSpan]="24"  class="infoicon"><i class="anticon anticon-team" style="color: #3C7BB8"></i>&nbsp;&nbsp;&nbsp;&nbsp;USTC</p>
+            </div>
+            <div class="sim-info" nz-col [nzSpan]="6" >
+              <p>{{user.following.inum}}</p>
+              <p>following</p>
+            </div>
+            <div class="sim-info" nz-col [nzSpan]="6" >
+              <p>{{user.followers.inum}}</p>
+              <p>followers</p>
+            </div>
+            <div class="sim-info" nz-col [nzSpan]="6" >
+              <p>{{user.likes.inum}}</p>
+              <p>likes</p>
+            </div>
+            <div class="sim-info" nz-col [nzSpan]="6" >
+              <p>{{user.reports.inum}}</p>
+              <p>reports</p>
+            </div>
+          </div>
+
+          <div class="box-position" style="height: 10px;color: #f2f2f2;background-color: #f2f2f2">
+          </div>
+
+          <div class="box-bk box-position" style="height: 350px;">
+            <div class="box-bk card-border fontsize-title box-position">
+              <b>Related report</b>
+            </div>
+            <div class="box-bk card-border box-position" *ngFor="let report of reports">
+              <u><b>{{report.title}}</b></u>
+              <h5 class="begin">{{report.begin}}</h5>
+              <a><strong style="color: black">topics : </strong>{{report.topics}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div nz-col nzSpan="17" >
+        <div nz-col [nzOffset]="1" id="mainbox1" class="box-bk2 fontSize mainbox-position1 card-border" style="overflow: auto">
+          <div class="ant-row-flex ant-row-flex-top ant-row-flex-center" style="float: right">
+            <button nz-button [nzType]="'primary'" [nzSize]="'default'" class="ant-btn ant-btn-primary button-style1" style="float: right;">
+              <span> Edit </span>
+            </button>
+            <button nz-button [nzType]="'primary'" [nzSize]="'default'" class="ant-btn ant-btn-primary button-style1" style="float: right;">
+              <i class="anticon anticon-down ng-star-inserted" style="display: inline-block;"></i><span>Download</span>
+            </button>
+            <button nz-button [nzType]="'primary'" [nzSize]="'default'" class="ant-btn ant-btn-primary button-style1" style="float: right;">
+              <span> Delete </span>
+            </button>
+          </div>
+        </div>
+
+        <div nz-col [nzOffset]="1" id="mainbox2" class="box-bk2 fontSize mainbox-position2 card-border">
+          <div  style="width: 100%"><h3>{{Report.title}}</h3></div>
+          <div class="font-style">topics : {{Report.topics}}</div>
+          <div class="time-style">{{Report.time}}</div>
+          <div>
+            <p class="article">{{Report.begin}}</p>
+          </div>
+          <img src="{{me.myhead}}" style="border-radius: 50%;border: 1px solid #979797;width: 3vw;height: 3vw;float: left;align-self: center">
+          <textarea class="comment-bk comment-style mycomment-style ant-row-flex-top" rows="2" placeholder="Say somethig"></textarea>
+        </div>
+
+        <div nz-col [nzOffset]="1" id="mainbox3" class="box-bk2 fontSize mainbox-position2 card-border">
+          <div class="box-bk1 box-position ant-col-12 ant-row-flex-top" style="width: 100%;margin-top: 10px">
+            <p>
+              <span class="iconstyle ant-col-3">&nbsp;{{ socialinfo.likenum }}&nbsp;<i id="change1" class="handpoint anticon anticon-like-o" (click)="changecolor()"></i></span>
+              <span class="iconstyle ant-col-3">&nbsp;{{ socialinfo.commentnum }}&nbsp;<i class="handpoint anticon anticon-message"></i></span>
+            </p>
+          </div>
+          <br>
+          <br>
+          <div class="comment-bk comment-style ant-row-flex-top" *ngFor="let comment of socialcomments">
+            <div nz-row style="overflow: auto;margin-bottom: 1vw">
+              <img src="{{comment.userimg}}" style="border-radius: 50%;border: 1px solid #979797;width: 2vw;height: 2vw;">
+              <span ><strong>&nbsp;&nbsp;{{comment.username}}</strong></span>
+              <span>&nbsp;&nbsp;replied to&nbsp;&nbsp;</span>
+              <img src="{{comment.oppimg}}" style="border-radius: 50%;border: 1px solid #979797;width: 2vw;height: 2vw;">
+              <span ><strong>&nbsp;&nbsp;{{comment.oppname}}</strong></span>
+            </div>
+            <div style="padding-bottom: 1vw">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{comment.comments}}
+              <p>
+                <span class="iconstyle2 ant-col-2">&nbsp;{{ comment.likenum }}&nbsp;
+                  <i class="handpoint anticon"
+                     [class.likeo]="comment.likeo"
+                     [class.like]="!comment.likeo"
+                     [class.anticon-like-o]="comment.likeo"
+                     [class.anticon-like]="!comment.likeo"
+                     (click)="changecolor2(comment)">
+                  </i>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
