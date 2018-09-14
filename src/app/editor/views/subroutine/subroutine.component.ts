@@ -45,7 +45,7 @@ export class SubroutineComponent implements OnInit {
     this.subState = this.subState === 'inactive' ? 'active' : 'inactive';
   }
 
-  startDelete(idx: number) {
+  startDelete(idx: any) {
     this.subShow = 'void';
     this.editorReportService.reportDeleteSubroutine(idx);
   }
