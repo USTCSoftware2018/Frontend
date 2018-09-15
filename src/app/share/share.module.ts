@@ -10,6 +10,7 @@ import { LikereportComponent } from './likereport/likereport.component';
 import { FollowuserComponent } from './followuser/followuser.component';
 import { UserInfoProfileComponent } from './user-info-profile/user-info-profile.component';
 import { ReportCardComponent } from './report-card/report-card.component';
+import { MyReportComponent } from './my-report/my-report.component';
 
 registerLocaleData(en);
 
@@ -26,6 +27,7 @@ registerLocaleData(en);
     FollowuserComponent,
     UserInfoProfileComponent,
     ReportCardComponent,
+    MyReportComponent,
   ],
   // 公用导出组件放在exports数组内
   providers: [{ provide: NZ_I18N, useValue: en_US }],
