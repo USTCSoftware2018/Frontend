@@ -12,11 +12,15 @@ import { AppRoutingModule } from './route/route.module';
 import { EditorModule } from './editor/editor.module';
 import { ErrorModule } from './error/error.module';
 import { Error404Component } from './error/error404/error404.component';
-import { ReportshowComponent } from './reportshow/reportshow.component';
+import { ReportshowComponent } from './reportshows/reportshow/reportshow.component';
 import { UserSetModule } from './user-set/user-set.module';
 import { ProfileModule} from './profile/profile.module';
 import { NotificationModule } from './notification/notification.module';
-import { ReportshowotherComponent } from './reportshow/reportshowother/reportshowother.component';
+import { ReportshowotherComponent } from './reportshows/reportshow/reportshowother/reportshowother.component';
+import { ShareModule } from './share/share.module';
+import { FeedsComponent } from './core/feeds/feeds.component';
+import { IndexComponent } from './core/index/index.component';
+import { HttpExampleComponent } from './http-example/http-example.component';
 
 registerLocaleData(en);
 
@@ -26,6 +30,9 @@ registerLocaleData(en);
     NavbarComponent,
     ReportshowComponent,
     ReportshowotherComponent,
+    FeedsComponent,
+    IndexComponent,
+    HttpExampleComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +47,7 @@ registerLocaleData(en);
     ReactiveFormsModule,
     ProfileModule,
     NotificationModule,
+    ShareModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

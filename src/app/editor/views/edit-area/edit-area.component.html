@@ -25,9 +25,11 @@
 
 </div>
 
-<div class="coreArea" (window:resize)="onResize()" [ngStyle]="{'height': editorHeight}">
+<div class="coreArea list-group list-group-flush" [sortablejs]="currentReport.subroutines" 
+    [sortablejsOptions]="options"
+    (window:resize)="onResize()" [ngStyle]="{'height': editorHeight}">
     <!-- 各个文章 subroutines -->
-    <div *ngFor="let sub of currentReport.subroutines">
+    <div  class="list-group-item" *ngFor="let sub of currentReport.subroutines">
         <app-subroutine [sub]="sub"></app-subroutine>
     </div>
 </div>

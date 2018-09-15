@@ -1,37 +1,88 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError, of } from 'rxjs';
+import { Observable, throwError, of, observable } from 'rxjs';
 import { catchError, retry, map, tap } from 'rxjs/operators';
-import { User } from './Interface/User';
+import { User } from './Interface/userinfo';
 import { MyResponse } from './Interface/MyResponse';
 import { MyNotification } from './Interface/myNotification';
+import { url } from 'inspector';
+import { ApiResult } from './Interface/ApiResult';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
-  // private global_url = 'https://api.biohub.tech';
-  private global_url = 'http://localhost:5000';
+  private global_url = 'https://api.biohub.tech/api';
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Authorization': 'my-auth-token',
-      // 'Access-Control-Allow-Origin': '*',
-    })
+      'Content-Type':  'application/json'
+    }),
+    withCredentials: true
   };
 
   constructor(private http: HttpClient) { }
 
 // --------------- ******************** User ******************** ------------------//
 
+  rawFire(point: string, method: string, params: object, errorHandler: Function) {
+    const apiURL = `${this.global_url}/${point}`;
+    method = method.toLowerCase();
+    let ret = new Observable;
+    if (method === 'get') {
+      ret = this.http.get(apiURL, this.httpOptions);
+    } else if (method === 'post') {
+      ret = this.http.post(apiURL, params, this.httpOptions);
+    } else if (method === 'options') {
+      ret = this.http.options(apiURL, this.httpOptions);
+    } else {
+      ret = this.http.get(apiURL, this.httpOptions);
+    }
+    return ret;
+  }
+
+  fire(point: string, method: string, params: object, callback: Function) {
+
+    const errorHandler = function(error) {
+      console.log('errorHandler');
+      let result = new ApiResult;
+      result.success = false;
+      result.data = error.error;
+      result.status = error.status;
+      callback(result);
+    };
+
+    const successHandler = function(data) {
+      console.log('successHandler');
+      console.log(data);
+      let result = new ApiResult;
+      result.success = true;
+      result.data = data;
+      result.status = 200;
+      callback(result);
+    };
+
+    this.rawFire(point, method, params, errorHandler).subscribe(
+      data => successHandler(data),
+      error => errorHandler(error)
+    );
+  }
+
   // create a new user
-  create_user(user: User): Observable<MyResponse<User>> {
-    const url = `${this.global_url}/users`;
-    return this.http.post<MyResponse<User>>(url, user, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
+  user_register(username: string, password: string, email: string, callback: (result: ApiResult) => void) {
+    const params = {
+      username: username,
+      password: password,
+      email: email,
+    };
+    this.fire('users/register/', 'post', params, callback);
+  }
+
+  test_fire() {
+    const callback = function(result) {
+      console.log(result);
+    };
+    this.user_register('test_5', 'a123456', 'test_5@test.com', callback);
   }
 
 
@@ -75,9 +126,9 @@ export class HttpService {
   }
 
   // follow somebody by id
-  follow_somebody_by_id(data: {user_id: number}) {
-    const url = `${this.global_url}/users/followers`;
-    return this.http.post<MyResponse<User>>(url, data, this.httpOptions)
+  follow_by_id(user_id: number) {
+    const url = `${this.global_url}/users/${user_id}/follow/`;
+    return this.http.post(url, null, this.httpOptions)
       .pipe(
         retry(3)
       );
@@ -117,7 +168,7 @@ export class HttpService {
 
   // activate account
   activate_acount(token: string) {
-    const url = `${this.global_url}/signin/comfirm/${token}`;
+    const url = `${this.global_url}/login/comfirm/${token}`;
     return this.http.get(url, this.httpOptions)
       .pipe(
         retry(3)
@@ -133,9 +184,9 @@ export class HttpService {
       );
   }
 
-  // sign in
-  sign_in(data: {information: string, password: string}) {
-    const url = `${this.global_url}/signin`;
+  // log in
+  log_in(data: {username: string, password: string}) {
+    const url = `${this.global_url}/users/login/`;
     return this.http.post(url, data, this.httpOptions)
       .pipe(
         retry(3)

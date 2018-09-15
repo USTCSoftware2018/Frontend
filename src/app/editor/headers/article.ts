@@ -17,11 +17,11 @@ export class ReportStepsHeader {
 // subroutine 类型
 
 export enum subType {
-    steps = 'subroutine',
+    steps = 'Steps',
     info = 'Info',
     result = 'Result',
     pictures = 'Pictures',
-    quote = 'Quote',
+    list = 'List',
     text = 'Text',
     table = 'Table',
 }
@@ -33,6 +33,7 @@ export class ReportSubroutineHeader {
     idx: number; // 位置
     steps?: Array<ReportStepsHeader>; // 包含的step
     desc?: string;
+    list?: ReportListHeader[];
     remark?: string;
     pic?: Array<ReportGraphHeader>;
     table?: string;
@@ -44,6 +45,7 @@ export class ReportSubroutineHeader {
 
 export class ReportHeader {
     // 元数据部分
+    id: number;
     title: string;  // 标题
     author: string[];   // 作者
     mdate: string;  // 修改时间
@@ -66,4 +68,9 @@ export class ReportGraphHeader {
         this.name = name ? name : '';
         this.url = url;
     }
+}
+
+export class ReportListHeader {
+    str: string;
+    idx: number;
 }

@@ -7,6 +7,7 @@ import {ShareModule} from '../share/share.module';
 
 registerLocaleData(en);
 import { SearchboxComponent } from './searchbox/searchbox.component';
+import { SearchresultComponent} from './searchresult/searchresult.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,11 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
   ],
   declarations: [
     SearchboxComponent,
+    SearchresultComponent
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }]
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  exports: [
+    NgZorroAntdModule
+  ]
 })
 export class BiosearchModule { }

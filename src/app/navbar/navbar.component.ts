@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, Input } from '@angular/core';
-import { User } from '../Interface/User';
+import { Simuser } from '../Interface/userinfo';
 
 @Component({
   selector: 'app-navbar',
@@ -11,10 +11,10 @@ export class NavbarComponent implements OnInit {
   private has_shown = false;
   private input: any = null;
   private menu_lists: any = null;
-  public user: User = null;
+  public user: Simuser = null;
   to_search: String;
   constructor(private el: ElementRef) {
-    this.user = new User(1, 'WTWTWTWT9');
+    this.user = new Simuser();
   }
 
   ngOnInit() {

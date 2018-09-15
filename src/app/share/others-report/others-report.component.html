@@ -1,13 +1,13 @@
-<div class="dinfo" nz-row [@Expandin] [style.background-color]="bkcolor" >
+<div class="dinfo reports" nz-row [style.background-color]="bkcolor" >
   <!-- avatar -->
   <div class="title" nz-col nzSpan="24">
     <nz-avatar nzIcon="anticon anticon-user"
-      nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png">
+      nzSrc="{{report.author.avatar_url}}" >
     </nz-avatar>
     <a>{{report.title|uppercase}}</a>
   </div>
   <div class="content" nz-col nzSpan="24">
-    <pre>{{report.content}}</pre>
+    <pre>{{report.abstract}}</pre>
   </div>
   <div class="topic-title" nz-col nzSpan="6">
     <span class="topic-title">topics:</span>

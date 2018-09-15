@@ -1,5 +1,5 @@
 export class Simuser {
-  avatar_url: string
+  avatar_url: string;
   name: string;
   followingnum: number;
   followednum: number;

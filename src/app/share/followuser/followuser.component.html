@@ -1,5 +1,5 @@
 
-<div class="dinfo" nz-row [@Expandin] [style.background-color]="bkcolor">
+<div class="dinfo" nz-row [style.background-color]="bkcolor">
   <!-- avatar -->
   <div  class="down" nz-col  nzSpan="4" align="center">
     <div nz-row>
@@ -15,19 +15,22 @@
         <div nz-col nzSpan="16">
           <div nz-row>
             <div class="oname" nz-col nzSpan="24">
-              <p>{{otheruser.name}}</p>
+              <a>{{otheruser.name}}</a>
             </div>
             <div nz-col  class="about-me" nzSpan="24">
               <pre>{{otheruser.about_me}}</pre>
             </div>
-            <div class="oinfo" nz-col nzSpan="8">
+            <div class="oinfo" nz-col nzSpan="6">
               <p>{{otheruser.followingnum}}&nbsp;following</p>
             </div>
-            <div class="oinfo" nz-col nzSpan="8">
+            <div class="oinfo" nz-col nzSpan="6">
               <p>{{otheruser.followednum}}&nbsp;followers</p>
             </div>
-            <div class="oinfo" nz-col nzSpan="8">
+            <div class="oinfo" nz-col nzSpan="6">
               <p>{{otheruser.likenum}}&nbsp;likes</p>
+            </div>
+            <div class="oinfo" nz-col nzSpan="6">
+              <p>{{otheruser.reportsnum}}&nbsp;reports</p>
             </div>
           </div>
         </div>
