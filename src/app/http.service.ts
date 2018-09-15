@@ -7,7 +7,7 @@ import { MyResponse } from './Interface/MyResponse';
 import { MyNotification } from './Interface/myNotification';
 import { url } from 'inspector';
 import { ApiResult } from './Interface/ApiResult';
-
+type response = (result: ApiResult) => void;
 @Injectable({
   providedIn: 'root'
 })
@@ -22,7 +22,7 @@ export class HttpService {
   };
 
   constructor(private http: HttpClient) { }
-
+ 
 // --------------- ******************** User ******************** ------------------//
 
   rawFire(point: string, method: string, params: object, errorHandler: Function) {
@@ -69,20 +69,24 @@ export class HttpService {
   }
 
   // create a new user
-  user_register(username: string, password: string, email: string, callback: (result: ApiResult) => void) {
-    const params = {
-      username: username,
-      password: password,
-      email: email,
-    };
+  user_register(params: object, callback: response) {
     this.fire('users/register/', 'post', params, callback);
   }
 
+  // login
+  user_login(params: object, callback: response) {
+    this.fire('users/login/', 'post', params, callback);
+  }
   test_fire() {
+    const request = {
+      username: 'test',
+      password: 'a123456',
+      email: 'test_5@test.com'
+    };
     const callback = function(result) {
       console.log(result);
     };
-    this.user_register('test_5', 'a123456', 'test_5@test.com', callback);
+    this.user_register(request, callback);
   }
 
 

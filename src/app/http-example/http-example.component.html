@@ -1,18 +1,65 @@
-<h1 style="text-align:center">
-  This is Http-Example Page
-</h1>
-<div style="test-align:center">
-  <ul>
-    <li>所有的函数正确的调用写法都在/src/app/http-example/http-example.component.ts里面</li>
-    <li>本页面分块展示了各个函数调用的结果</li>
-  </ul>
+<br><br><br><br>
+<div nz-row>
+  <div nz-col nzSpan="8"></div>
+  <div nz-col nzSpan="8">
+      <h1 style="text-align: center">
+          This is Http-Example Page
+      </h1>
+  </div>
+  <div nz-col nzSpan="8"></div>
+  
 </div>
-
 <br><br>
 
-
-<div class="block">
-  <h3 class="function"> 调用函数：log_in　</h3>
-  <p></p>
+<!-- Register-->
+<div nz-row>
+    <div nz-col nzSpan="4"></div>
+    <div nz-col nzSpan="8">
+      <select [(ngModel)]="choice">
+        <option>Register</option>
+      </select>
+    </div>
 </div>
+<div nz-row nzGutter="16">
+  <div nz-col nzSpan="4"></div>
+  <div nz-col nzSpan="8">
+    <label style="font-size: 20px">request</label>
+    <textarea [(ngModel)]="requset" nz-input placeholder="login request data" 
+    [nzAutosize]="{ minRows: 10, maxRows: 10 }" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 600">
+    </textarea>
+    <button (click)="Try(request,FunctionList[choice])" nz-button nzType="primary" style="font-family:Arial, Helvetica, sans-serif; font-weight: 500">Try</button>
+  </div>
+  <div nz-col nzSpan="8">
+    <label style="font-size: 20px">response</label>
+    <textarea [(ngModel)]="register_response" placeholder="login response data" 
+    nz-input [nzAutosize]="{ minRows: 10, maxRows: 10 }" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 600">
+    </textarea>
+  </div>
+  <div nz-col nzSpan="4"></div>
+</div>
+<br><br>
 
+<!-- Login -->
+<div nz-row>
+    <div nz-col nzSpan="4"></div>
+    <div nz-col nzSpan="8">
+      <h2 style="font-size: 30px">user_login()</h2>
+    </div>
+</div>
+<div nz-row nzGutter="16">
+  <div nz-col nzSpan="4"></div>
+  <div nz-col nzSpan="8">
+    <label style="font-size: 20px">request</label>
+    <textarea [(ngModel)]="login_request" nz-input placeholder="login request data" 
+    [nzAutosize]="{ minRows: 10, maxRows: 10 }" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 600">
+    </textarea>
+    <button (click)="Register(login_request)" nz-button nzType="primary" style="font-family:Arial, Helvetica, sans-serif; font-weight: 500">Try</button>
+  </div>
+  <div nz-col nzSpan="8">
+    <label style="font-size: 20px">response</label>
+    <textarea [(ngModel)]="login_response" placeholder="login response data" 
+    nz-input [nzAutosize]="{ minRows: 10, maxRows: 10 }" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 600">
+    </textarea>
+  </div>
+  <div nz-col nzSpan="4"></div>
+</div>
