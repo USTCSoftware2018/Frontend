@@ -1,11 +1,11 @@
 <div nz-row class="notificationbox">
-<div nz-col nzSpan="7" class="myuserinfo0">
+<div nz-col nzSpan="6" class="myuserinfo0">
   <div nz-col nzSpan="22">
   <app-siminfo [user]="user"></app-siminfo>
   </div>
 </div>
-  <div nz-col nzSpan="17" class="messages">
-    <div *ngFor="let notification of notifications">
+  <div nz-col nzSpan="18" class="messages">
+    <div *ngFor="let notification of notifications" class="notification-content">
 
       <div nz-row *ngIf="notification.kind === 'follow'">
         <div nz-col nzSpan="1" class="title-avatar">
@@ -36,7 +36,7 @@
             <span class="title-light">&nbsp;you&nbsp;&nbsp;</span>
             <span class="title-time">{{notification.date}}</span>
           </div>
-          <app-others-report [bkcolor]="'#FFFFFF'" [report]="notification.report"></app-others-report>
+          <app-my-report [bkcolor]="'#FFFFFF'" [report]="notification.report"></app-my-report>
         </div>
       </div>
     </div>
