@@ -19,7 +19,7 @@ export const user1: Simuser = {
 export const user2: Simuser = {
   id: 3,
   name: 'Cindy',
-  about_me: 'about me',
+  about_me: 'about me balabalabalabalabalabalabalabalabalabala',
   avatar_url: '//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
   followingnum: 42,
   followednum: 233,
@@ -63,7 +63,7 @@ const user4: Simuser = {
 };
 export const report1: Report = {
   title: 'research',
-  author: user2,
+  author: user4,
   topic: ['A', 'B', 'C'],
   abstract: '1. Centifuge 1.5 mL bacterium solution at 11000 rpm, few sediment getted. Remove the supernatant. Repeat twice.\n' +
   '2. Add 250 μL Buﬀer P1, resuspend cells.\n' +
