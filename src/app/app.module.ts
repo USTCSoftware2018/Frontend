@@ -14,12 +14,19 @@ import { ErrorModule } from './error/error.module';
 import { Error404Component } from './error/error404/error404.component';
 import { ReportshowComponent } from './reportshows/reportshow/reportshow.component';
 import { UserSetModule } from './user-set/user-set.module';
+<<<<<<< HEAD
 import { ProfileModule} from './profile/profile.module';
 import { NotificationModule } from './notification/notification.module';
+=======
+import { ProfileModule } from './profile/profile.module';
+>>>>>>> upstream/dev
 import { ReportshowotherComponent } from './reportshows/reportshow/reportshowother/reportshowother.component';
 import { ShareModule } from './share/share.module';
+<<<<<<< HEAD
 import { FeedsComponent } from './core/feeds/feeds.component';
 import { IndexComponent } from './core/index/index.component';
+=======
+>>>>>>> upstream/dev
 import { HttpExampleComponent } from './http-example/http-example.component';
 
 registerLocaleData(en);
@@ -31,7 +38,6 @@ registerLocaleData(en);
     ReportshowComponent,
     ReportshowotherComponent,
     FeedsComponent,
-    IndexComponent,
     HttpExampleComponent,
   ],
   imports: [
