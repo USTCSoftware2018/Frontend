@@ -63,7 +63,7 @@ const user4: Simuser = {
 };
 export const report1: Report = {
   title: 'research',
-  author: user2,
+  author: user4,
   topic: ['A', 'B', 'C'],
   abstract: '1. Centifuge 1.5 mL bacterium solution at 11000 rpm, few sediment getted. Remove the supernatant. Repeat twice.\n' +
   '2. Add 250 μL Buﬀer P1, resuspend cells.\n' +

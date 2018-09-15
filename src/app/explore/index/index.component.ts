@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Report } from '../../Interface/userinfo';
-import {report1 } from '../../Interface/mock-user';
+import { Component, OnInit, HostListener,  ViewChild } from '@angular/core';
+
 
 @Component({
   selector: 'app-index',
@@ -8,9 +7,10 @@ import {report1 } from '../../Interface/mock-user';
   styleUrls: ['./index.component.less']
 })
 export class IndexComponent implements OnInit {
-  reports: Report[] = [report1];
+  public opacity: number;
+  @ViewChild('content')
+  private contentRef;
   constructor() { }
-
   ngOnInit() {
     const victor = Victor('container', 'output');
     const theme = [
@@ -24,5 +24,9 @@ export class IndexComponent implements OnInit {
    }
    settheme();
   }
-
+  @HostListener('window: scroll', [])
+  changOpacity() {
+    this.opacity = Math.abs(1 - window.pageYOffset / 260);
+    console.log(this.opacity);
+  }
 }

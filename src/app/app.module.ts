@@ -18,7 +18,6 @@ import { ProfileModule } from './profile/profile.module';
 import { ReportshowotherComponent } from './reportshows/reportshow/reportshowother/reportshowother.component';
 import { FeedsComponent } from './core/feeds/feeds.component';
 import { ShareModule } from './share/share.module';
-import { IndexComponent } from './core/index/index.component';
 import { HttpExampleComponent } from './http-example/http-example.component';
 
 registerLocaleData(en);
@@ -30,7 +29,6 @@ registerLocaleData(en);
     ReportshowComponent,
     ReportshowotherComponent,
     FeedsComponent,
-    IndexComponent,
     HttpExampleComponent,
   ],
   imports: [
