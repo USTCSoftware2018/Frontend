@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Report, User} from '../../Interface/userinfo';
 import {USER} from '../../Interface/mock-user';
+import {ActivatedRoute} from '@angular/router';
+import {ReportServiceService} from '../report-service.service';
+import {ParamMap} from '@angular/router';
 
 @Component({
   selector: 'app-watch-report-label',
@@ -15,9 +18,15 @@ export class WatchReportLabelComponent implements OnInit {
   i = 0;
   t: Report;
   label_show: string;
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private labelServe: ReportServiceService,
+  ) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.label = params.get('name');
+    });
   }
   reportShowMore() {
     this.reports_unshow.reverse();
@@ -30,7 +39,6 @@ export class WatchReportLabelComponent implements OnInit {
   }
 
   initReports(): void {
-
 
     if (this.user.reports.length <= 6) {
       this.reports_onshow = this.user.reports.slice(0, this.user.reports.length);
