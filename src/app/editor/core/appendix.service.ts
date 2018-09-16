@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, ReportGraphHeader, subType } from '../headers/article';
+import {  ReportHeader, ReportSubroutineHeader, ReportResultHeader, subType } from '../headers/article';
 import { EditorSubroutineHeader } from '../headers/steps';
 
 import { EditorEventService } from '../core/editor-event.service';
@@ -15,39 +15,30 @@ export class AppendixService {
   }
 
   reportAddText() {
-    const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
-    _new_sub.id = '-98';
+    const _new_sub = new ReportResultHeader();  // 新建 subroutine
     _new_sub.desc = '';
     _new_sub.subType = subType.text;
-    _new_sub.name = 'Text';
-    _new_sub.idx =  0;
-    this.editor.report.subroutines.push(_new_sub);
-    this.goToTop(1);
+    _new_sub.list = [];
+    _new_sub.pic = [];
+    this.editor.report.result.push(_new_sub);
   }
 
   reportAddPict() {
-    const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
-    _new_sub.id = '-98';
+    const _new_sub = new ReportResultHeader();  // 新建 subroutine
     _new_sub.desc = '';
     _new_sub.subType = subType.pictures;
-    _new_sub.name = 'Pictures';
-    _new_sub.idx =  0;
-    this.editor.report.subroutines.push(_new_sub);
+    _new_sub.list = [];
     _new_sub.pic = [];
-    this.goToTop(1);
+    this.editor.report.result.push(_new_sub);
   }
 
   reportAddList() {
-    const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
-    _new_sub.id = '-98';
+    const _new_sub = new ReportResultHeader();  // 新建 subroutine
     _new_sub.desc = '';
     _new_sub.subType = subType.list;
-    _new_sub.name = 'List';
-    _new_sub.idx =  0;
     _new_sub.list = [];
-    this.editor.report.subroutines.push(_new_sub);
     _new_sub.pic = [];
-    this.goToTop(1);
+    this.editor.report.result.push(_new_sub);
   }
 
   reportAddResult() {
@@ -68,7 +59,7 @@ export class AppendixService {
 
   reportShowInfo() {
     this.goToTop(0);
-    this.editor.infoSub.state = 'active';
+    // this.editor.infoSub.state = 'active';
   }
 
   reportShowTop() {
@@ -77,7 +68,6 @@ export class AppendixService {
 
   reportShowResult() {
     this.goToTop(1);
-    this.editor.resultSub.state = 'active';
   }
 
   // reportAddInfo() {

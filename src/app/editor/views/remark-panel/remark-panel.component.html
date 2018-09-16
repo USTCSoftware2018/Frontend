@@ -1,2 +1,24 @@
-<textarea class="panelResult" [(ngModel)]="sub.remark" 
-      placeholder="Subroutines after this will be considered as a port of Result"> </textarea>
+<!-- <textarea class="panelResult" [(ngModel)]="sub.remark"  -->
+      <!-- placeholder="Subroutines after this will be considered as a port of Result"> </textarea> -->
+<div class="list-group list-group-flush" [sortablejs]="editor.report.result">
+  <div *ngFor="let ret of editor.report.result;let i = index" class="list-group-item">
+    <div nz-row>
+      <div nz-col nzSpan="20" nzOffset="0">
+        <div [ngSwitch]="ret.subType">
+          <div *ngSwitchCase="'Text'" class="panelArea">
+              <app-text-panel [ret]="ret"></app-text-panel>
+          </div>
+          <div *ngSwitchCase="'Pictures'"  class="panelArea">
+              <app-pict-panel [ret]="ret"></app-pict-panel>
+          </div>
+          <div *ngSwitchCase="'List'"  class="panelArea">
+              <app-list-panel [ret]="ret"></app-list-panel>
+          </div>
+        </div>
+      </div>
+      <div nz-col nzSpan="2" nzOffset="2">
+        <i class="anticon anticon-minus-circle-o dynamic-delete-button-result" (click)="delResult(i)"></i>
+      </div>
+    </div>
+  </div>
+</div>

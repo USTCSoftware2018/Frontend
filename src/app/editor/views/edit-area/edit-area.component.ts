@@ -1,5 +1,4 @@
-import { Component, OnInit,  ElementRef, ViewChild  } from '@angular/core';
-import { trigger, state, style, animate, transition} from '@angular/animations';
+import { Component, OnInit,  ElementRef, ViewChild, OnChanges  } from '@angular/core';
 import { ReportHeader } from '../../headers/article';
 import { EditorReportService } from '../../core/editorReport.service';
 import { SortablejsOptions } from '../../angular-sortablejs/src/sortablejs-options';
@@ -14,15 +13,11 @@ import { ScrollStrategyOptions } from '@angular/cdk/overlay';
   templateUrl: './edit-area.component.html',
   styleUrls: ['./edit-area.component.less'],
 })
-export class EditAreaComponent implements OnInit {
+export class EditAreaComponent implements OnInit, OnChanges {
 
   editorHeight: string; // 判断高度
   currentReport: ReportHeader;
   flag: string;
-
-  @ViewChild('scrollss') editorArea: ElementRef;
-  @ViewChild('info') editorInfo: ElementRef;
-  @ViewChild('result') editorResult: ElementRef;
 
 
   options: SortablejsOptions = {
@@ -33,6 +28,9 @@ export class EditAreaComponent implements OnInit {
               public event: EditorEventService,
               public element: ElementRef) { }
 
+  ngOnChanges() {
+  }
+
   ngOnInit() {
     this.onResize();
     this.flag = 'inactive';
@@ -41,17 +39,6 @@ export class EditAreaComponent implements OnInit {
     this.editorReportService.parseAll(); // 编译
 
     this.event.eventEmit.subscribe((value: any) => {
-      if (value === 0 ) {
-        this.editorArea.nativeElement.scrollTop = 0;
-      } else if (value === 1 ) {
-        console.log(value);
-        this.editorArea.nativeElement.scrollTop = this.editorArea.nativeElement.scrollHeight;
-      }
-      // } else if ( value === 1 ) {
-        // this.editorArea.nativeElement.scrollTop = this.editorInfo.nativeElement.scrollHeight;
-      // } else if ( value === 2 ) {
-        // this.editorArea.nativeElement.scrollTop = this.editorResult.nativeElement.scrollHeight;
-      // }
    });
   }
 
@@ -59,5 +46,4 @@ export class EditAreaComponent implements OnInit {
     // 更新大小
     this.editorHeight = (window.innerHeight - 110) + 'px'; // raw 110
   }
-
 }

@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, subType } from '../headers/article';
+import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, ReportResultHeader, subType } from '../headers/article';
 
 import {StepsService} from './steps.service';
 
@@ -31,10 +31,9 @@ export class EditorReportService {
     this.report.label = [];
     this.report.mdate = '';
     this.report.ndate = '';
-    this.report.result = '';
+    this.report.result = [];
     this.report.subroutines = [];
     this.resultSub = null;
-    this.reportAddInfo();
     // this.mockReport();
   }
 
@@ -180,18 +179,18 @@ export class EditorReportService {
     this.report.subroutines.push(_new_sub);
   }
 
-  reportAddInfo() {
-    const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
-    _new_sub.id = '-98';
-    _new_sub.desc = '';
-    _new_sub.subType = subType.info;
-    _new_sub.name = 'Info';
-    _new_sub.idx =  0;
-    _new_sub.list = [];
-    this.infoSub = _new_sub;
-    this.report.subroutines.push(_new_sub);
-    _new_sub.pic = [];
-  }
+  // reportAddInfo() {
+  //   const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
+  //   _new_sub.id = '-98';
+  //   _new_sub.desc = '';
+  //   _new_sub.subType = subType.info;
+  //   _new_sub.name = 'Info';
+  //   _new_sub.idx =  0;
+  //   _new_sub.list = [];
+  //   this.infoSub = _new_sub;
+  //   this.report.subroutines.push(_new_sub);
+  //   _new_sub.pic = [];
+  // }
 
   public reportDeleteStep(stepid: string) {
     // not implement error
