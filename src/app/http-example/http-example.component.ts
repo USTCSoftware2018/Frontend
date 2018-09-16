@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
-import { ApiResult } from '../Interface/ApiResult'
+import { ApiResult } from '../Interface/ApiResult';
+
 @Component({
   selector: 'app-http-example',
   templateUrl: './http-example.component.html',
@@ -13,49 +14,45 @@ export class HttpExampleComponent implements OnInit {
 
   constructor(private http: HttpService) { }
 
-  FunctionList = {
-      'Register' : this.Register
-  };
-
-   Register(register_request: string) {
-    const that = this;
-    console.log(this);
-    const request = JSON.parse(register_request);
-    const callback = function(result: ApiResult) {
-      console.log(typeof(result));
-      console.log(result);
-      that.response = JSON.stringify(result, null, ' ');
-    };
-    that.http.user_register(request, callback);
-  }
-
   ngOnInit() {
-    this.request = JSON.stringify({
-      username: 'test',
-      password: 'a123456',
-      email: 'test_5@test.com'
-    }, null, ' ');
-    // this.http.test_fire();
-
-    this.response = JSON.stringify({
-      username: 'test',
-      password: 'a123456'
-    });
+    this.request = '';
+    this.response = '';
   }
 
-  Try(request: string, callback: any) {
-    callback(request);
-  }
-
-
-
-  Login(login_request: string) {
-    const that = this;
-    const request = JSON.parse(login_request);
+  fire() {
+    const __this = this;
+    const request = JSON.parse(this.request);
     const callback = function(result: ApiResult) {
-      that.response = JSON.stringify(result, null, ' ');
+      console.log(result);
+      __this.response = JSON.stringify(result, null, ' ');
     };
-    this.http.user_login(request, callback);
+    console.log(this.choice);
+    switch (this.choice) {
+      case 'user_register': this.http.user_register(request, callback); break;
+      case 'user_login': this.http.user_login(request, callback); break;
+    }
   }
+
+  refresh() {
+    console.log(this.choice);
+    switch (this.choice) {
+      case 'user_register':
+        this.Stringfy({
+            username: 'test',
+            password: 'a123456',
+            email: 'test@test.com'
+          }); break;
+      case 'user_login':
+        this.Stringfy({
+          username: 'test',
+          password: 'a123456'
+        }); break;
+    }
+  }
+
+  Stringfy(request: object) {
+    this.request = JSON.stringify(request, null, ' ');
+  }
+
 }
 

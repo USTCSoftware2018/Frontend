@@ -77,6 +77,8 @@ export class HttpService {
   user_login(params: object, callback: response) {
     this.fire('users/login/', 'post', params, callback);
   }
+
+
   test_fire() {
     const request = {
       username: 'test',

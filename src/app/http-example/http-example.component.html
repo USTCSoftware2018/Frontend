@@ -11,53 +11,35 @@
 </div>
 <br><br>
 
-<!-- Register-->
 <div nz-row>
     <div nz-col nzSpan="4"></div>
     <div nz-col nzSpan="8">
-      <select [(ngModel)]="choice">
-        <option>Register</option>
-      </select>
+        <span style="font-size: 30px; text-align: center">Name:</span><span style="color:rgb(9, 45, 56); font-size: 2em; font-family: Arial, Helvetica, sans-serif"> {{ choice }} </span>
+    </div>
+    <div nz-col nzSpan="8"></div>
+</div>
+<div nz-row style="margin-bottom: 20px"> 
+    <div nz-col nzSpan="4"></div>
+    <div nz-col nzSpan="8">
+        <nz-select [(ngModel)]="choice" (ngModelChange)="refresh()" style="width: 200px;" nzShowSearch nzAllowClear nzPlaceHolder="Select a function">
+            <nz-option nzLabel="注册" nzValue="user_register"></nz-option>
+            <nz-option nzLabel="登录" nzValue="user_login"></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+        </nz-select>  
     </div>
 </div>
 <div nz-row nzGutter="16">
   <div nz-col nzSpan="4"></div>
   <div nz-col nzSpan="8">
     <label style="font-size: 20px">request</label>
-    <textarea [(ngModel)]="requset" nz-input placeholder="login request data" 
+    <textarea [(ngModel)]="request" nz-input placeholder="request data" 
     [nzAutosize]="{ minRows: 10, maxRows: 10 }" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 600">
     </textarea>
-    <button (click)="Try(request,FunctionList[choice])" nz-button nzType="primary" style="font-family:Arial, Helvetica, sans-serif; font-weight: 500">Try</button>
-  </div>
+    <button (click)="fire()" nz-button nzType="primary" style="font-family:Arial, Helvetica, sans-serif; font-weight: 600">Send</button>
+  </div>  
   <div nz-col nzSpan="8">
     <label style="font-size: 20px">response</label>
-    <textarea [(ngModel)]="register_response" placeholder="login response data" 
-    nz-input [nzAutosize]="{ minRows: 10, maxRows: 10 }" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 600">
-    </textarea>
-  </div>
-  <div nz-col nzSpan="4"></div>
-</div>
-<br><br>
-
-<!-- Login -->
-<div nz-row>
-    <div nz-col nzSpan="4"></div>
-    <div nz-col nzSpan="8">
-      <h2 style="font-size: 30px">user_login()</h2>
-    </div>
-</div>
-<div nz-row nzGutter="16">
-  <div nz-col nzSpan="4"></div>
-  <div nz-col nzSpan="8">
-    <label style="font-size: 20px">request</label>
-    <textarea [(ngModel)]="login_request" nz-input placeholder="login request data" 
-    [nzAutosize]="{ minRows: 10, maxRows: 10 }" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 600">
-    </textarea>
-    <button (click)="Register(login_request)" nz-button nzType="primary" style="font-family:Arial, Helvetica, sans-serif; font-weight: 500">Try</button>
-  </div>
-  <div nz-col nzSpan="8">
-    <label style="font-size: 20px">response</label>
-    <textarea [(ngModel)]="login_response" placeholder="login response data" 
+    <textarea [(ngModel)]="response" placeholder="response data" 
     nz-input [nzAutosize]="{ minRows: 10, maxRows: 10 }" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 600">
     </textarea>
   </div>
