@@ -100,6 +100,12 @@ export class HttpService {
     this.fire(`users/${id}/`, 'get', null, callback);
   }
 
+  get_myself(callback: callbackFunc) {
+    // get myself
+    this.fire(`users/me/`, 'get', null, callback);
+  }
+
+
   delete_user_by_id(id: number, callback: callbackFunc) {
     // delete user from the server
     throw new Error('Not Implemented');
