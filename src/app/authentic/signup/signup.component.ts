@@ -10,6 +10,7 @@ import {HttpService} from '../../http.service';
 import {NzMessageService} from 'ng-zorro-antd';
 import {ApiResult} from '../../Interface/ApiResult';
 import { Router} from '@angular/router';
+import { UserSigninfoService } from '../../user-signinfo.service';
 
 @Component({
   selector: 'app-signup',
@@ -21,7 +22,8 @@ export class SignupComponent implements OnInit {
   shake = false;
   constructor(private http: HttpService,
               private message: NzMessageService,
-              private router: Router) {}
+              private router: Router,
+              private usersigninfo: UserSigninfoService) {}
 
   ngOnInit() {
     this.validateForm = new FormGroup({
@@ -53,11 +55,12 @@ export class SignupComponent implements OnInit {
     }
     this.http.user_register(reginfo['username'], reginfo['username'], reginfo['email'], this.judgeRegister);
   }
-  judgeRegister(result: ApiResult): void {
+  judgeRegister = (result: ApiResult) => {
     console.log(result);
     if (result.success) {
       this.message.success('Sign up sucessfully');
       this.router.navigateByUrl('/explore');
+      this.usersigninfo.setUserInfo(result.data);
     } else {
       this.message.error('Fail to Sign up');
     }
