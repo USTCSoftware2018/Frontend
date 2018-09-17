@@ -19,6 +19,7 @@ export class EditAreaComponent implements OnInit, OnChanges {
   currentReport: ReportHeader;
   flag: string;
 
+  @ViewChild('scrolss') scroll: ElementRef;
 
   options: SortablejsOptions = {
     handle: '.subroutineTitlePart',
@@ -39,6 +40,11 @@ export class EditAreaComponent implements OnInit, OnChanges {
     this.editorReportService.parseAll(); // 编译
 
     this.event.eventEmit.subscribe((value: any) => {
+      if (value === 0) {
+        this.scroll.nativeElement.scrollTop = 0;
+      } else {
+        this.scroll.nativeElement.scrollTop = this.scroll.nativeElement.scrollHeight;
+      }
    });
   }
 

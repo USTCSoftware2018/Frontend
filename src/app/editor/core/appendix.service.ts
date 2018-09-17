@@ -42,19 +42,7 @@ export class AppendixService {
   }
 
   reportAddResult() {
-    if ( !this.editor.resultSub) {
-      const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
-      _new_sub.id = '-98';
-      _new_sub.desc = '';
-      _new_sub.subType = subType.result;
-      _new_sub.name = 'Result';
-      _new_sub.idx =  0;
-      _new_sub.list = [];
-      this.editor.resultSub = _new_sub;
-      this.editor.report.subroutines.push(_new_sub);
-      _new_sub.pic = [];
-    }
-    this.reportShowResult();
+    this.goToTop(1);
   }
 
   reportShowInfo() {

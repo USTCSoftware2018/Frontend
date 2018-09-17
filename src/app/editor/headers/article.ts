@@ -5,6 +5,7 @@ export class ReportStepsHeader {
     id: string;
     name: string; // 类型 对应 EditorSubroutine 中的id
     data: any;
+    ico: string;
 
     temp?: string;
     fields?: any;

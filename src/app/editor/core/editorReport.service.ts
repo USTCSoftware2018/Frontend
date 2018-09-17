@@ -142,6 +142,7 @@ export class EditorReportService {
     _new_step.name = _step_temp.id;
     _new_step.data = {};
     _new_step.idx = 1;
+    _new_step.ico = _step_temp.ico;
     _new_step.temp = _step_temp.template;
     _new_step.id = _step_temp.id;
     _new_step.name = _step_temp.name;
@@ -167,6 +168,7 @@ export class EditorReportService {
       const _step_temp = this.stepsService.findStep(step_id);
       const _new_step = new ReportStepsHeader();
       _new_step.name = _step_temp.id;
+      _new_step.ico = _step_temp.ico;
       _new_step.data = _sub_temp.default[idx];
       idx ++;
       _new_step.idx = 1;

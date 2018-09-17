@@ -31,7 +31,7 @@
 #LuckyButton_0 {
     position: fixed;
     top:80%;
-    right: 3%;
+    .get_right();
     background: #FFFFFF;
     border-radius: 100px;
 }
@@ -76,12 +76,26 @@
 .LuckButton {
     background: #FFFFFF;
     border-radius: 100px;
-    right: 3%;
-
+    .get_right();
     img {
         position: relative;
         margin: 0 0 0 0;
         .getSize();
+    }
+}
+
+.get_right {
+    @media screen and (max-width: 4800px) {
+        right: 3%;
+    }
+
+
+    @media screen and (max-width: 1200px) {
+        right: 2%;
+    }
+
+    @media screen and (max-width: 950px) {
+        right: 3%;
     }
 }
 

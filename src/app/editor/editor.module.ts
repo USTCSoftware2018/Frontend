@@ -23,6 +23,7 @@ import { PictPanelComponent } from './views/pict-panel/pict-panel.component';
 import { ListPanelComponent } from './views/list-panel/list-panel.component';
 import { RemarkPanelComponent } from './views/remark-panel/remark-panel.component';
 import { InfoPanelComponent } from './views/info-panel/info-panel.component';
+import { EditorScrollComponent } from './views/editor-scroll/editor-scroll.component';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import { InfoPanelComponent } from './views/info-panel/info-panel.component';
     ListPanelComponent,
     RemarkPanelComponent,
     InfoPanelComponent,
+    EditorScrollComponent,
   ],
   providers: [
     StepsService,
