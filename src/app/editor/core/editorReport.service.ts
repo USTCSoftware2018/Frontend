@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, subType } from '../headers/article';
+import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, ReportResultHeader, subType } from '../headers/article';
 
 import {StepsService} from './steps.service';
 
@@ -8,6 +8,9 @@ import {StepsService} from './steps.service';
 export class EditorReportService {
 
   private _report: ReportHeader; // 当前文章
+
+  public resultSub: ReportSubroutineHeader;
+  public infoSub: ReportSubroutineHeader;
 
   public get report () {
     return this._report;
@@ -28,8 +31,9 @@ export class EditorReportService {
     this.report.label = [];
     this.report.mdate = '';
     this.report.ndate = '';
-    this.report.result = '';
+    this.report.result = [];
     this.report.subroutines = [];
+    this.resultSub = null;
     // this.mockReport();
   }
 
@@ -138,6 +142,7 @@ export class EditorReportService {
     _new_step.name = _step_temp.id;
     _new_step.data = {};
     _new_step.idx = 1;
+    _new_step.ico = _step_temp.ico;
     _new_step.temp = _step_temp.template;
     _new_step.id = _step_temp.id;
     _new_step.name = _step_temp.name;
@@ -163,6 +168,7 @@ export class EditorReportService {
       const _step_temp = this.stepsService.findStep(step_id);
       const _new_step = new ReportStepsHeader();
       _new_step.name = _step_temp.id;
+      _new_step.ico = _step_temp.ico;
       _new_step.data = _sub_temp.default[idx];
       idx ++;
       _new_step.idx = 1;
@@ -174,6 +180,19 @@ export class EditorReportService {
     }
     this.report.subroutines.push(_new_sub);
   }
+
+  // reportAddInfo() {
+  //   const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
+  //   _new_sub.id = '-98';
+  //   _new_sub.desc = '';
+  //   _new_sub.subType = subType.info;
+  //   _new_sub.name = 'Info';
+  //   _new_sub.idx =  0;
+  //   _new_sub.list = [];
+  //   this.infoSub = _new_sub;
+  //   this.report.subroutines.push(_new_sub);
+  //   _new_sub.pic = [];
+  // }
 
   public reportDeleteStep(stepid: string) {
     // not implement error
@@ -195,7 +214,7 @@ export class EditorReportService {
 
   public reportSwap(subIdx_1: number, subIdx_2: number) {
     // not implement error
-
+    // 被废弃
     this.report.subroutines[this.getId(subIdx_1)].idx = subIdx_2;
     this.report.subroutines[this.getId(subIdx_2)].idx = subIdx_1;
   }

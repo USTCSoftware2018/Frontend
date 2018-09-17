@@ -3,9 +3,9 @@
   <nz-tabset [nzSize]="'large'" [nzTabBarGutter]="5">
 
     <nz-tab nzTitle="&nbsp;&nbsp;&nbsp;&nbsp;Step&nbsp;&nbsp;&nbsp;&nbsp;">
-      <nz-input-group nzSuffixIcon="anticon anticon-search">
-        <input type="text" nz-input placeholder="Input search steps">
-      </nz-input-group>
+        <nz-input-group nzSuffixIcon="anticon anticon-search" nz-col nzSpan="22" nzOffset="1">
+          <input type="text" nz-input placeholder="Input search steps">
+        </nz-input-group>
       <div class="stepBarList">
         <!-- 这里是 step 和 process 的列表部分 -->
         <nz-list [nzDataSource]="steps" [nzItemLayout]="'horizontal'"

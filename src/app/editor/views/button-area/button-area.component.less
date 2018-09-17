@@ -3,73 +3,72 @@
 @size-lg: 55px;
 @size-md: 50px;
 
-#FixedButton {
-    position: fixed;
-    top:80%;
+// #FixedButton {
+//     position: fixed;
+//     top:80%;
 
-    margin-left: 20px;
+//     margin-left: 20px;
 
-    @media (min-width: @screen-lg-min) {
-        img {
-            height: 70px;
-        }
-    }
+//     @media (min-width: @screen-lg-min) {
+//         img {
+//             height: 70px;
+//         }
+//     }
 
-    @media (max-width: @screen-lg-min) {
-        img {
-            height: 60px;
-        }
-    }
-}
+//     @media (max-width: @screen-lg-min) {
+//         img {
+//             height: 60px;
+//         }
+//     }
+// }
 
 // buttons
 
+#sideButtons {
+    align-content: center;
+}
+
+#LuckyButton_0 {
+    position: fixed;
+    top:80%;
+    .get_right();
+    background: #FFFFFF;
+    border-radius: 100px;
+}
+
+.mainButton {
+    position: relative;
+    margin: 0 0 0 0;
+    padding: 8px;
+    width: 60px;
+    height: 60px;
+}
+
 #LuckyButton_1 {
-    position:fixed;
+    position: fixed;
     top:71%;
     .LuckButton();
     .getSize();
 }
 
 #LuckyButton_2 {
-    position:fixed;
+    position: fixed;
     .getSize();
     top:62%;
     .LuckButton();
 }
 
 #LuckyButton_3 {
-    position:fixed;
+    position: fixed;
     .getSize();
     top:53%;
     .LuckButton();
 }
 
 #LuckyButton_4 {
-    position:fixed;
+    position: fixed;
     .getSize();
     top:44%;
-    .LuckButton();
-}
-
-#LuckyButton_5 {
-    position:fixed;
-    .getSize();
-    top:35%;
-    .LuckButton();
-}
-
-#LuckyButton_6 {
-    position:fixed;
-    .getSize();
-    top:26%;
-    .LuckButton();
-}
-
-#LuckyButton_7 {
-    position:fixed;
-    .getSize();
-    top:17%;
     .LuckButton();
 }
 
@@ -77,13 +76,26 @@
 .LuckButton {
     background: #FFFFFF;
     border-radius: 100px;
-    margin-left: 20px;
-
+    .get_right();
     img {
         position: relative;
         margin: 0 0 0 0;
         .getSize();
+    }
+}
 
+.get_right {
+    @media screen and (max-width: 4800px) {
+        right: 3%;
+    }
+
+
+    @media screen and (max-width: 1200px) {
+        right: 2%;
+    }
+
+    @media screen and (max-width: 950px) {
+        right: 3%;
     }
 }
 
