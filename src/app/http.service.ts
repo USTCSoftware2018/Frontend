@@ -100,6 +100,11 @@ export class HttpService {
     this.fire(`users/${id}/`, 'get', null, callback);
   }
 
+  get_myself(callback: callbackFunc) {
+    // get myself
+    this.fire(`users/me/`, 'get', null, callback);
+  }
+
   // update user (myself)
   update_user(user: User): Observable<User> {
     const url = `${this.global_url}/users`;
