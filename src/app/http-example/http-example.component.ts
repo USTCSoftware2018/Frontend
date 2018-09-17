@@ -28,8 +28,8 @@ export class HttpExampleComponent implements OnInit {
     };
     console.log(this.choice);
     switch (this.choice) {
-      case 'user_register': this.http.user_register(request, callback); break;
-      case 'user_login': this.http.user_login(request, callback); break;
+      case 'user_register': this.http.user_register(request['username'], request['password'], request['username'], callback); break;
+      case 'user_login': this.http.user_login(request['username'], request['password'], callback); break;
     }
   }
 
