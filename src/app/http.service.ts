@@ -45,7 +45,7 @@ export class HttpService {
   fire(point: string, method: string, params: object, callback: callbackFunc) {
 
     const errorHandler = function(error) {
-      let result = new ApiResult;
+      const result = new ApiResult;
       result.success = false;
       result.data = error.error;
       result.status = error.status;
@@ -53,7 +53,7 @@ export class HttpService {
     };
 
     const successHandler = function(data) {
-      let result = new ApiResult;
+      const result = new ApiResult;
       result.success = true;
       result.data = data;
       result.status = 200;
@@ -160,6 +160,11 @@ export class HttpService {
       password: password
     };
     this.fire('users/login/', 'post', params, callback);
+  }
+
+  user_logout(callback: callbackFunc) {
+    // user logout
+    this.fire('users/logout/', 'get', null, callback);
   }
 
   update_password(old_password: string, new_password: string, callback: callbackFunc) {
