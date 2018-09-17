@@ -170,6 +170,15 @@ export class HttpService {
     this.fire('users/login/', 'post', params, callback);
   }
 
+  update_password(old_password: string, new_password: string, callback: callbackFunc) {
+    const params = {
+      old: old_password,
+      new1: new_password,
+      new2: new_password
+    };
+    this.fire('users/change_password/', 'post', params, callback);
+  }
+
   // get feeds
   get_feeds() {
     const url = `${this.global_url}/get-feeds`;
