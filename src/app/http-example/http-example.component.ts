@@ -35,6 +35,8 @@ export class HttpExampleComponent implements OnInit {
       case 'follow_user_by_id': this.http.follow_user_by_id(request['user_id'], callback); break;
       case 'unfollow_user_by_id': this.http.unfollow_user_by_id(request['user_id'], callback); break;
       case 'get_all_my_followers': this.http.get_all_my_followers(callback); break;
+      case 'user_logout': this.http.user_logout(callback); break;
+      case 'update_password': this.http.user_logout(callback); break;
     }
   }
 
@@ -67,6 +69,9 @@ export class HttpExampleComponent implements OnInit {
           user_id: '1'
         }); break;
       case 'get_all_my_followers':
+        this.Stringfy({
+        }); break;
+      case 'user_logout':
         this.Stringfy({
         }); break;
     }
