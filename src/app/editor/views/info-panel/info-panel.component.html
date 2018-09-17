@@ -1,0 +1,27 @@
+<div nz-row>
+  <div nz-col nzSpan="3" nzOffset="1">
+    <span class="spanArea">Title:</span>
+  </div>
+  <div nz-col nzSpan="9">
+      <input nz-input placeholder="Basic usage" [(ngModel)]="editor.report.title">
+  </div>
+</div>
+
+<div nz-row>
+  <div nz-col nzSpan="3" nzOffset="1" style="vertical-align: middle;height: 40px;top:5px;">
+    <span class="spanArea">Labels:</span>
+  </div>
+  <div nz-col nzSpan="16" style="margin-top: 5px;margin-bottom: 5px;">
+    <nz-select nzMode="tags" style="width: 100%;" nzPlaceHolder="Tag Mode" [(ngModel)]="editor.report.label">
+    </nz-select>
+  </div>
+</div>
+
+<div nz-row>
+  <div nz-col nzSpan="3" nzOffset="1">
+    <span class="spanArea">Abstract:</span>
+  </div>
+  <div nz-col nzSpan="16">
+        <textarea nz-input placeholder="Abstract here" [nzAutosize]="{ minRows: 2, maxRows: 6 }"></textarea>
+  </div>
+</div>

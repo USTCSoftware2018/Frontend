@@ -11,9 +11,9 @@ import { ReportStepsHeader, ReportSubroutineHeader } from '../../headers/article
   animations: [
     trigger('subPanel', [
       state('inactive', style({height: 0, display: 'none' , opacity: 0})),
-      state('active',   style({height: 100 , display: 'block' , opacity: 1})),
-      transition('inactive => active', animate('200ms')),
-      transition('active => inactive', animate('200ms'))
+      state('active',   style({ display: 'block' , opacity: 1})),
+      transition('inactive => active', animate('200ms ease')),
+      transition('active => inactive', animate('200ms ease'))
     ]),
     trigger('deletePanel', [
       transition('* => void', animate(200, style({height: 0})))
@@ -23,6 +23,8 @@ import { ReportStepsHeader, ReportSubroutineHeader } from '../../headers/article
 export class SubroutineComponent implements OnInit {
 
   @Input() sub: ReportSubroutineHeader;
+  @Input() type: string;
+
   subState: string; // 控制面板
   subShow: string;
 
@@ -39,6 +41,16 @@ export class SubroutineComponent implements OnInit {
   ngOnInit() {
     this.subState = 'active';
     this.subShow = 'true';
+  }
+
+  getTitle() {
+    if ( this.type === 'Steps' ) {
+      return this.sub.name;
+    } else if ( this.type === 'Info' ) {
+      return 'Info';
+    } else {
+      return 'Result';
+    }
   }
 
   reverseState() {
