@@ -5,13 +5,12 @@ export class ReportStepsHeader {
     id: string;
     name: string; // 类型 对应 EditorSubroutine 中的id
     data: any;
+    ico: string;
 
     temp?: string;
     fields?: any;
     desc: string;
     remark: string;
-    pic: Array<ReportGraphHeader>;
-    table: string;
 }
 
 // subroutine 类型
@@ -43,18 +42,26 @@ export class ReportSubroutineHeader {
     }
 }
 
+export class ReportResultHeader {
+    subType: subType;
+    desc?: string;
+    list?: ReportListHeader[];
+    remark?: string;
+    pic?: Array<ReportGraphHeader>;
+    table?: string;
+}
+
 export class ReportHeader {
     // 元数据部分
-    id: number;
+    id: number; // 约定 id 是 0 就新建
     title: string;  // 标题
     author: string[];   // 作者
-    mdate: string;  // 修改时间
-    ndate: string;  // 创建时间
+    mdate: string;  // 修改时间 后端
+    ndate: string;  // 创建时间 后端
     introduction: string;   // 介绍
-    result: string; // 结果部分
+    result: ReportResultHeader[]; // 结果部分
     label: string[];    // 标签部分
     subroutines: Array<ReportSubroutineHeader>;
-
     constructor () {}
 }
 

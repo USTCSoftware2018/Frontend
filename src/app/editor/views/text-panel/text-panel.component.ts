@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ReportSubroutineHeader } from '../../headers/article';
+import { ReportSubroutineHeader, ReportResultHeader } from '../../headers/article';
 
 @Component({
   selector: 'app-text-panel',
@@ -8,7 +8,7 @@ import { ReportSubroutineHeader } from '../../headers/article';
 })
 export class TextPanelComponent implements OnInit {
 
-  @Input() sub: ReportSubroutineHeader;
+  @Input() ret: ReportResultHeader;
   constructor() { }
 
   ngOnInit() {

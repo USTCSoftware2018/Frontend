@@ -1,6 +1,7 @@
 <div class="editAreaMenu" nz-row>
   <!-- 进度条 -->
-  <div nz-col nzSm="8" nzMd="12" nzLg="12" nzXl="16" class="VertAlign">  <p>这里是 进度条</p> 
+  <div nz-col nzSm="8" nzMd="12" nzLg="12" nzXl="16" class="VertAlign">
+      <app-editor-scroll></app-editor-scroll>
   </div>
 
   <!-- Save 按钮 -->
@@ -25,11 +26,20 @@
 
 </div>
 
-<div class="coreArea list-group list-group-flush" [sortablejs]="currentReport.subroutines" 
-    [sortablejsOptions]="options"
-    (window:resize)="onResize()" [ngStyle]="{'height': editorHeight}">
+<div class="coreArea" (window:resize)="onResize()" [ngStyle]="{'height': editorHeight}" #scrolss>
     <!-- 各个文章 subroutines -->
-    <div  class="list-group-item" *ngFor="let sub of currentReport.subroutines">
-        <app-subroutine [sub]="sub"></app-subroutine>
+    <div>
+        <app-subroutine [type]="'Info'"></app-subroutine>
+    </div>
+
+    <div class="list-group list-group-flush" [sortablejs]="currentReport.subroutines" 
+        [sortablejsOptions]="options">
+        <div  class="list-group-item" *ngFor="let sub of currentReport.subroutines">
+            <app-subroutine [sub]="sub" [type]="'Steps'"></app-subroutine>
+        </div>
+    </div>
+
+    <div>
+        <app-subroutine [type]="'Result'"></app-subroutine>
     </div>
 </div>

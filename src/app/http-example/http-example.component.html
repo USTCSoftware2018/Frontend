@@ -14,16 +14,45 @@
 <div nz-row>
     <div nz-col nzSpan="4"></div>
     <div nz-col nzSpan="8">
-        <span style="font-size: 30px; text-align: center">Name:</span><span style="color:rgb(9, 45, 56); font-size: 2em; font-family: Arial, Helvetica, sans-serif"> {{ choice }} </span>
+        <span style="font-size: 30px; text-align: center">Name:</span><span style="color:rgb(18, 167, 212); font-size: 2em; font-family: Arial, Helvetica, sans-serif"> {{ choice }} </span>
     </div>
     <div nz-col nzSpan="8"></div>
 </div>
 <div nz-row style="margin-bottom: 20px"> 
     <div nz-col nzSpan="4"></div>
-    <div nz-col nzSpan="8">
+    <div nz-col nzSpan="16">
         <nz-select [(ngModel)]="choice" (ngModelChange)="refresh()" style="width: 200px;" nzShowSearch nzAllowClear nzPlaceHolder="Select a function">
             <nz-option nzLabel="注册" nzValue="user_register"></nz-option>
             <nz-option nzLabel="登录" nzValue="user_login"></nz-option>
+            <nz-option nzLabel="拿到用户信息" nzValue="get_user_by_id"></nz-option>
+            <nz-option nzLabel="我是谁" nzValue="get_myself"></nz-option>
+            <nz-option nzLabel="拿头像框下面的四个数据" nzValue=""></nz-option>
+            <nz-option nzLabel="关注某人" nzValue="follow_user_by_id"></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
+            <nz-option nzLabel="" nzValue=""></nz-option>
             <nz-option nzLabel="" nzValue=""></nz-option>
         </nz-select>  
     </div>
