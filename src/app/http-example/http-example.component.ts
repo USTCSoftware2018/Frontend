@@ -30,6 +30,7 @@ export class HttpExampleComponent implements OnInit {
     switch (this.choice) {
       case 'user_register': this.http.user_register(request['username'], request['password'], request['username'], callback); break;
       case 'user_login': this.http.user_login(request['username'], request['password'], callback); break;
+      case 'get_user_by_id': this.http.get_user_by_id(request['id'], callback); break;
     }
   }
 
@@ -47,6 +48,10 @@ export class HttpExampleComponent implements OnInit {
           username: 'test',
           password: 'a123456'
         }); break;
+      case 'get_user_by_id':
+      this.Stringfy({
+        id: '1'
+      }); break;
     }
   }
 

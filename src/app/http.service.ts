@@ -100,15 +100,6 @@ export class HttpService {
     this.fire(`users/${id}/`, 'get', null, callback);
   }
 
-  // update user (myself)
-  update_user(user: User): Observable<User> {
-    const url = `${this.global_url}/users`;
-    return this.http.put<User>(url, user, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
-  }
-
   delete_user_by_id(id: number, callback: callbackFunc) {
     // delete user from the server
     throw new Error('Not Implemented');
