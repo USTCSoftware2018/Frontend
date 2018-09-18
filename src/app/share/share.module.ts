@@ -40,6 +40,7 @@ registerLocaleData(en);
     FollowuserComponent,
     UserInfoProfileComponent,
     ReportCardComponent,
+    MyReportComponent
   ]
 })
 export class ShareModule { }
