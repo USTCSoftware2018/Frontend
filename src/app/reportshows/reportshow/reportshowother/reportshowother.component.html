@@ -4,33 +4,7 @@
       <div nz-col nzSpan="7" >
         <div  class="box-position">
           <div class="box-bk1 box-position" style="overflow: auto;overflow-x: hidden">
-            <div nz-col [nzOffset]="6" [nzSpan]="10">
-              <img class="avatar" src="{{user.avatar_url}}">
-            </div>
-            <div class="username" nz-col [nzOffset]="" [nzSpan]="24" align="center">
-              <span>{{user.name}}</span>
-            </div>
-            <div style="position: relative;left: 2vw">
-              <p  nz-col [nzOffset]="" [nzSpan]="24"  class="infoicon"><i class="anticon anticon-environment-o" style="color: #3C7BB8"></i>&nbsp;&nbsp;&nbsp;&nbsp;China</p>
-              <p  nz-col [nzOffset]="" [nzSpan]="24"  class="infoicon"><i class="anticon anticon-mail" style="color: #3C7BB8"></i>&nbsp;&nbsp;&nbsp;&nbsp;biohub@mail.ustc.edu.cn</p>
-              <p  nz-col [nzOffset]="" [nzSpan]="24"  class="infoicon"><i class="anticon anticon-team" style="color: #3C7BB8"></i>&nbsp;&nbsp;&nbsp;&nbsp;USTC</p>
-            </div>
-            <div class="sim-info" nz-col [nzSpan]="6" >
-              <p>{{user.following.inum}}</p>
-              <p>following</p>
-            </div>
-            <div class="sim-info" nz-col [nzSpan]="6" >
-              <p>{{user.followers.inum}}</p>
-              <p>followers</p>
-            </div>
-            <div class="sim-info" nz-col [nzSpan]="6" >
-              <p>{{user.likes.inum}}</p>
-              <p>likes</p>
-            </div>
-            <div class="sim-info" nz-col [nzSpan]="6" >
-              <p>{{user.reports.inum}}</p>
-              <p>reports</p>
-            </div>
+            <app-user-info-profile [userinfoprofile]="user1"></app-user-info-profile>
           </div>
 
           <div class="box-position" style="height: 10px;color: #f2f2f2;background-color: #f2f2f2">
