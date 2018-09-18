@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition} from '@angular/animations';
-
 import {AppendixService} from '../../core/appendix.service';
+import {EditorReportService} from '../../core/editorReport.service';
 @Component({
   selector: 'app-button-area',
   templateUrl: './button-area.component.html',
@@ -30,14 +30,43 @@ import {AppendixService} from '../../core/appendix.service';
 export class ButtonAreaComponent implements OnInit {
 
   flag: string;
-  constructor(public append: AppendixService) { }
+  isVisible = false;
+  varibleField: string;
+  constructor(public append: AppendixService,
+              public editor: EditorReportService ) { }
 
   ngOnInit() {
     this.flag = 'active';
   }
 
+
   clickButton() {
     this.flag = this.flag === 'active' ? 'inactive' : 'active';
+  }
+
+
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    const words = this.varibleField.split(/\s+/)
+          .filter( (elem) => Object.keys(elem).length > 0 )
+          .filter( (elem) => elem !== '=');
+
+    const envs = {};
+    for (let ii = 0; ii < words.length - 1; ii += 2) {
+      envs[words[ii]] = words[ ii + 1 ];
+    }
+
+    console.log(envs);
+    this.editor.report.envs = envs;
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
   }
 
 }

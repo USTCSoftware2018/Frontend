@@ -8,7 +8,7 @@
         <img src="/assets/img/editor/icons/top.png">
     </div>
 
-    <div id="LuckyButton_2" [@change]="flag">
+    <div id="LuckyButton_2" [@change]="flag" (click)="showModal()">
         <img src="/assets/img/editor/icons/var.png">
     </div>
 
@@ -37,3 +37,9 @@
         <img src="/assets/img/editor/icons/text.png">
     </div>
 </div>
+
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Enviroment Varibles" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <textarea [(ngModel)]="varibleField" nz-input placeholder="Input varibles like title = lalala author = andy" 
+            [nzAutosize]="{ minRows: 6, maxRows: 10 }"></textarea>
+</nz-modal>

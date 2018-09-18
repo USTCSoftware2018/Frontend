@@ -59,6 +59,7 @@ export class ReportHeader {
     mdate: string;  // 修改时间 后端
     ndate: string;  // 创建时间 后端
     introduction: string;   // 介绍
+    envs: {};
     result: ReportResultHeader[]; // 结果部分
     label: string[];    // 标签部分
     subroutines: Array<ReportSubroutineHeader>;
