@@ -21,7 +21,6 @@ const appRoutes: Routes = [
   { path: 'explore', loadChildren: '../explore/explore.module#ExploreModule', data: {preload: true}},
   { path: 'profile', loadChildren: '../profile/profile.module#ProfileModule', data: {preload: true}},
   { path: 'notification', loadChildren: '../notification/notification.module#NotificationModule', data: {preload:true}},
-  { path: 'reportshows', loadChildren: '../reportshows/reportshows.module#ReportshowsModule'},
   { path: 'reportshows', loadChildren: '../reportshows/reportshows.module#ReportshowsModule', data: {preload: true}},
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: Error404Component},
