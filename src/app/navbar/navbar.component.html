@@ -6,7 +6,7 @@
     <li nz-menu-item *ngIf="user != null" nz-col nzSpan="3" [routerLink]="['/feeds']">Feeds</li>
     <li nz-menu-item *ngIf="user != null" nz-col nzSpan="2"></li>
     <div nz-col nzSpan="2" *ngIf="user != null">
-      <li nz-menu-item nz-popover nzPlacement="bottom" nzTitle="Notification" [nzContent]="notification_content" class="icon-item"><i class="anticon anticon-bell"></i></li>
+      <li nz-menu-item nz-popover nzPlacement="bottom" nzTitle="Notification" [nzContent]="notification_content" class="icon-item" [routerLink]="['/notification']" ><i class="anticon anticon-bell"></i></li>
       <li nz-menu-item nz-popover nzPlacement="bottom" [nzContent]="user_content" [nzTitle]="user.name" class="icon-item"><i class="anticon anticon-smile-o"></i></li>
     </div>
     <li nz-menu-item *ngIf="user == null" nz-col nzSpan="3"></li>
