@@ -8,9 +8,7 @@ import {StepsService} from './steps.service';
 export class EditorReportService {
 
   private _report: ReportHeader; // 当前文章
-
-  public resultSub: ReportSubroutineHeader;
-  public infoSub: ReportSubroutineHeader;
+  private _state: boolean;
 
   public get report () {
     return this._report;
@@ -22,20 +20,6 @@ export class EditorReportService {
 
 
   constructor(public stepsService: StepsService) { }
-
-  public initReport() {
-    // 初始化文章
-    this.report = new  ReportHeader();
-    this.report.title = '';
-    this.report.introduction = '';
-    this.report.label = [];
-    this.report.mdate = '';
-    this.report.ndate = '';
-    this.report.result = [];
-    this.report.subroutines = [];
-    this.resultSub = null;
-    // this.mockReport();
-  }
 
   public parser (step: ReportStepsHeader ) {
     // 解析简单模版
@@ -131,7 +115,7 @@ export class EditorReportService {
   public reportAddStep(stepid: string) {
     const _step_temp = this.stepsService.findStep(stepid);
     const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
-    _new_sub.id = '';
+    _new_sub.id = '-1';
     _new_sub.desc = '';
     _new_sub.name = _step_temp.name;
     // _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
@@ -233,5 +217,64 @@ export class EditorReportService {
     newStep.temp = '- input speed 3000 rpm @small - input temp 20 @small - input xxx 55555 @mid - input yy 666 @big';
     newSub.steps.push(newStep);
     this.report.subroutines.push(newSub);
+  }
+
+  /*
+  ** 下面是文章加载、保存等。
+  */
+
+  public initReport() {
+    // 初始化文章
+    this.report = new  ReportHeader();
+    this.report.title = '';
+    this.report.introduction = '';
+    this.report.label = [];
+    this.report.mdate = '';
+    this.report.ndate = '';
+    this.report.result = [];
+    this.report.subroutines = [];
+    // this.mockReport();
+  }
+
+  public saveReport (): void {
+    this._state = false;
+    if (!this.report) {
+      return;
+    }
+    if (!this.report.id ) {
+      this.report.id = 0;
+    }
+    for (const attr of ['introduction', 'title', 'mdate', 'ndate', ]) {
+      if (!this.report[attr]) {
+        this.report[attr] = '';
+      }
+    }
+    for (const attr of ['label', 'author', 'result', 'subroutines']) {
+      if (!this.report[attr]) {
+        this.report[attr] = [];
+      }
+    }
+    for (const sub of this.report.subroutines) {
+      for (const attr of ['subType', 'idx', 'desc', 'list', 'remark', 'pic', 'table']) {
+        if (sub[attr]) {
+          delete sub[attr];
+        }
+      }
+      for (const step of sub.steps) {
+        for (const fld of step.fields) {
+          if (fld.label === 'Notes') {
+            step.remark = fld.value;
+          } else {
+            step.data[fld.label] = fld.value;
+          }
+        }
+        for (const attr of ['idx', 'temp', 'fields', 'desc']) {
+          if (step[attr]) {
+            delete step[attr];
+          }
+        }
+      }
+    }
+    console.log(this.report);
   }
 }
