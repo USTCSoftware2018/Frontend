@@ -70,7 +70,7 @@ const mockStep_9 = new EditorStepHeader();
 mockStep_9.id = '9';
 mockStep_9.desc = 'Incubate';
 mockStep_9.name = 'Incubate';
-mockStep_9.ico = '/assets/img/editor/icons/preserve.png';
+mockStep_9.ico = '/assets/img/editor/icons/I.png';
 mockStep_9.template = '- input Num null -';
 mockStep.push(mockStep_9);
 
@@ -78,7 +78,7 @@ const mockStep_10 = new EditorStepHeader();
 mockStep_10.id = '10';
 mockStep_10.desc = 'Cut';
 mockStep_10.name = 'Cut';
-mockStep_10.ico = '/assets/img/editor/icons/preserve.png';
+mockStep_10.ico = '/assets/img/editor/icons/C.png';
 mockStep_10.template = '- input Obj null - input Num null -';
 mockStep.push(mockStep_10);
 
@@ -86,7 +86,15 @@ const mockStep_11 = new EditorStepHeader();
 mockStep_11.id = '11';
 mockStep_11.desc = 'Weight';
 mockStep_11.name = 'Weight';
-mockStep_11.ico = '/assets/img/editor/icons/preserve.png';
+mockStep_11.ico = '/assets/img/editor/icons/W.png';
 mockStep_11.template = '- input Obj null - input Num null -';
 mockStep.push(mockStep_11);
+
+const mockStep_12 = new EditorStepHeader();
+mockStep_12.id = '12';
+mockStep_12.desc = 'Test';
+mockStep_12.name = 'Test';
+mockStep_12.ico = '/assets/img/editor/icons/T.png';
+mockStep_12.template = '- input test @tmp -';
+mockStep.push(mockStep_12);
 

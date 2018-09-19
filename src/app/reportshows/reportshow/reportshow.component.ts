@@ -2,13 +2,14 @@ import {Attribute, Component, Input, OnInit} from '@angular/core';
 import { Report } from './reportshow';
 import { REPORTS } from './mock-reports';
 import { Socialcomments } from './socialinfo';
-import { SOLICIALINFO , SOCIALCOMMENTS } from './mock-Socialinfo';
+import {SOLICIALINFO, SOCIALCOMMENTS, ME} from './mock-Socialinfo';
 import { User } from './user';
 import { USER } from './mock-user';
 import {variable} from '@angular/compiler/src/output/output_ast';
 import {isLineBreak} from 'codelyzer/angular/sourceMappingVisitor';
 import { ShareModule } from '../../share/share.module';
 import { Simuser } from '../../Interface/userinfo';
+import { user1 } from '../../Interface/mock-user';
 import {UserInfoProfile} from '../../profile/personal-information/userinfoprofile';
 import {USERINFOPROFILE} from '../../profile/personal-information/mock-userinfoprofile';
 
@@ -25,6 +26,7 @@ export class ReportshowComponent implements OnInit {
   socialcomments = SOCIALCOMMENTS;
   selectedcomments: Socialcomments;
   user = USER;
+  user1 = user1;
 
   changecolor(): void {
     const Like = document.getElementById('change1');

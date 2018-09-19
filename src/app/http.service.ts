@@ -7,6 +7,7 @@ import { MyResponse } from './Interface/MyResponse';
 import { MyNotification } from './Interface/myNotification';
 import { url } from 'inspector';
 import { ApiResult } from './Interface/ApiResult';
+import { callbackFunc } from './Type/callbackFunc';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class HttpService {
   };
 
   constructor(private http: HttpClient) { }
-
+ 
 // --------------- ******************** User ******************** ------------------//
 
   rawFire(point: string, method: string, params: object, errorHandler: Function) {
@@ -41,11 +42,10 @@ export class HttpService {
     return ret;
   }
 
-  fire(point: string, method: string, params: object, callback: Function) {
+  fire(point: string, method: string, params: object, callback: callbackFunc) {
 
     const errorHandler = function(error) {
-      console.log('errorHandler');
-      let result = new ApiResult;
+      const result = new ApiResult;
       result.success = false;
       result.data = error.error;
       result.status = error.status;
@@ -53,9 +53,7 @@ export class HttpService {
     };
 
     const successHandler = function(data) {
-      console.log('successHandler');
-      console.log(data);
-      let result = new ApiResult;
+      const result = new ApiResult;
       result.success = true;
       result.data = data;
       result.status = 200;
@@ -68,8 +66,22 @@ export class HttpService {
     );
   }
 
-  // create a new user
-  user_register(username: string, password: string, email: string, callback: (result: ApiResult) => void) {
+  test_fire() {
+    const callback = function(result: ApiResult) {
+      console.log(result);
+    };
+    this.user_login('test', 'a123456', callback);
+    this.get_all_users(callback);
+    this.get_user_by_id(3, callback);
+    this.follow_user_by_id(3, callback);
+    this.get_all_my_followers(callback);
+    this.get_all_my_followings(callback);
+    this.get_followers_by_id(2, callback);
+    this.get_followings_by_id(2, callback);
+    }
+
+  user_register(username: string, password: string, email: string, callback: callbackFunc) {
+    // create a new user
     const params = {
       username: username,
       password: password,
@@ -78,89 +90,46 @@ export class HttpService {
     this.fire('users/register/', 'post', params, callback);
   }
 
-  test_fire() {
-    const callback = function(result) {
-      console.log(result);
-    };
-    this.user_register('test_5', 'a123456', 'test_5@test.com', callback);
+  get_all_users(callback: callbackFunc) {
+    // get all users
+    this.fire('users/', 'get', null, callback);
+  }
+
+  get_user_by_id(id: number, callback: callbackFunc) {
+    // get user by id
+    this.fire(`users/${id}/`, 'get', null, callback);
+  }
+
+  get_myself(callback: callbackFunc) {
+    // get myself
+    this.fire(`users/me/`, 'get', null, callback);
   }
 
 
-  // get all users
-  get_all_users(): Observable<MyResponse<User[]>> {
-    const url = `${this.global_url}/users`;
-    return this.http.get<MyResponse<User[]>>(url)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`fetch all users`))
-    );
+  delete_user_by_id(id: number, callback: callbackFunc) {
+    // delete user from the server
+    throw new Error('Not Implemented');
   }
 
-  // get user by id
-  get_user_by_id(id: number): Observable<MyResponse<User>> {
-    const url = `${this.global_url}/users/${id}`;
-    return this.http.get<MyResponse<User>>(url)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`fetch user with ${id}`))
-      );
+  follow_user_by_id(user_id: number, callback: callbackFunc) {
+    // follow somebody by id
+    this.fire(`users/${user_id}/follow/`, 'post', null, callback);
   }
 
-  // update user (myself)
-  update_user(user: User): Observable<User> {
-    const url = `${this.global_url}/users`;
-    return this.http.put<User>(url, user, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
+  unfollow_user_by_id(user_id: number, callback: callbackFunc) {
+    // follow somebody by id
+    this.fire(`users/${user_id}/unfollow/`, 'post', null, callback);
   }
 
-  // delete user from the server
-  delete_user_by_id(id: number): Observable<{}> {
-    const url = `${this.global_url}/users/${id}`;
-    return this.http.delete(url, this.httpOptions)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`delete user with ${id}`))
-      );
-  }
-
-  // follow somebody by id
-  follow_by_id(user_id: number) {
-    const url = `${this.global_url}/users/${user_id}/follow/`;
-    return this.http.post(url, null, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
-  }
-
-  // unfollow somebody
-  unfollow_somebody_by_id(id: number) {
-    const url = `${this.global_url}/users/followers/${id}`;
-    return this.http.delete(url, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
-  }
-
-  // get all my followers
-  get_all_my_followers() {
-    const url = `${this.global_url}/users/my/followers`;
-    return this.http.get(url)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`fetch all my followers`))
-    );
+  get_all_my_followers(callback: callbackFunc) {
+    // get all my followers
+    this.fire(`users/me/followers/`, 'get', null, callback);
   }
 
   // get all my followings
-  get_all_my_followings() {
-    const url = `${this.global_url}/users/my/followings`;
-    return this.http.get(url)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`fetch all my followings`))
-    );
+  get_all_my_followings(callback: callbackFunc) {
+    // get all my followings
+    this.fire(`users/me/following/`, 'get', null, callback);
   }
 
 
@@ -184,13 +153,27 @@ export class HttpService {
       );
   }
 
-  // log in
-  log_in(data: {username: string, password: string}) {
-    const url = `${this.global_url}/users/login/`;
-    return this.http.post(url, data, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
+  user_login(username: string, password: string, callback: callbackFunc) {
+    // user login
+    const params = {
+      username: username,
+      password: password
+    };
+    this.fire('users/login/', 'post', params, callback);
+  }
+
+  user_logout(callback: callbackFunc) {
+    // user logout
+    this.fire('users/logout/', 'get', null, callback);
+  }
+
+  update_password(old_password: string, new_password: string, callback: callbackFunc) {
+    const params = {
+      old: old_password,
+      new1: new_password,
+      new2: new_password
+    };
+    this.fire('users/change_password/', 'post', params, callback);
   }
 
   // get feeds
@@ -213,14 +196,14 @@ export class HttpService {
       );
   }
 
-  // get someone's followers
-  get_followers_by_id(id: number) {
-    const url = `${this.global_url}/users/${id}/followers`;
-    return this.http.get(url)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`fetch id's followers`))
-    );
+  get_followers_by_id(user_id: number, callback: callbackFunc) {
+    // get someone's followers
+    this.fire(`users/${user_id}/followers/`, 'get', null, callback);
+  }
+
+  get_followings_by_id(user_id: number, callback: callbackFunc) {
+    // get someone's followings
+    this.fire(`users/${user_id}/following/`, 'get', null, callback);
   }
 
   // get someone's collections
@@ -233,15 +216,7 @@ export class HttpService {
     );
   }
 
-  // get someone's followings
-  get_followings(id: number) {
-    const url = `${this.global_url}/users/${id}/followings`;
-    return this.http.get(url)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`fetch id's followings`))
-    );
-  }
+  
 
   // --------------- ******************** Notification ******************** ------------------//
 
