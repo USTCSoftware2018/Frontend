@@ -4,6 +4,7 @@ import { Otheruser, Like } from '../../share/likereport/likereport';
 import { user1,user2,report1 } from '../../Interface/mock-user';
 import { NOTIS } from '../mock-notification';
 import { LikeNotification, FollowNotification } from '../notification';
+import { HttpService } from '../../http.service';
 
 @Component({
   selector: 'app-notification',
@@ -15,7 +16,7 @@ export class NotificationComponent implements OnInit {
   user = user1;
   notifications = NOTIS;
   isFollowing = true;
-  constructor() { }
+  constructor(private http:HttpService) { }
 
   ngOnInit() {
   }
