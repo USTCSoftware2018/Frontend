@@ -8,17 +8,15 @@
 </div>
 <div class="content" #content>
   <nz-affix [nzOffsetTop]="45">
-    <ul  nz-menu [nzMode]="'horizontal'">
-      <li  nz-menu-item routerLink="/explore/reports"> Reports</li>
+    <ul  nz-menu [nzMode]="'horizontal'"  >
+      <li nz-menu-item routerLink="/explore/reports"> Reports</li>
       <li nz-menu-item> iGEMers</li>
       <li nz-menu-item> Biobricks </li>
     </ul>
   </nz-affix>
 
   <div class="popular-display" align="center">
-    <div class="content-display">
-      <router-outlet></router-outlet>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 </div>
 

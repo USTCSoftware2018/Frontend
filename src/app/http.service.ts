@@ -14,6 +14,7 @@ import { callbackFunc } from './Type/callbackFunc';
 })
 export class HttpService {
 
+
   private global_url = 'https://api.biohub.tech/api';
   private httpOptions = {
     headers: new HttpHeaders({
@@ -23,7 +24,7 @@ export class HttpService {
   };
 
   constructor(private http: HttpClient) { }
- 
+
 // --------------- ******************** User ******************** ------------------//
 
   rawFire(point: string, method: string, params: object, errorHandler: Function) {
@@ -70,6 +71,7 @@ export class HttpService {
     const callback = function(result: ApiResult) {
       console.log(result);
     };
+    /*
     this.user_login('test', 'a123456', callback);
     this.get_all_users(callback);
     this.get_user_by_id(3, callback);
@@ -78,6 +80,7 @@ export class HttpService {
     this.get_all_my_followings(callback);
     this.get_followers_by_id(2, callback);
     this.get_followings_by_id(2, callback);
+    */
     }
 
   user_register(username: string, password: string, email: string, callback: callbackFunc) {
@@ -131,6 +134,95 @@ export class HttpService {
     // get all my followings
     this.fire(`users/me/following/`, 'get', null, callback);
   }
+
+  // get all my steps
+  get_all_my_steps(callback: callbackFunc) {
+    this.fire(`editor/step/`, 'get', null, callback);
+  }
+
+  // get step by id
+  get_step_by_id(id: number, callback: callbackFunc) {
+    this.fire(`editor/step/${id}`, 'get', null, callback);
+  }
+
+  create_step(step: object, callback: callbackFunc) {
+    // create new step
+    this.fire(`editor/step/`, 'post', null, callback);
+  }
+
+  delete_step(id: number, callback: callbackFunc) {
+    // delete step by id
+    this.fire(`editor/step/${id}`, 'delete', null, callback);
+  }
+
+  update_step(id: number, callback: callbackFunc) {
+    // update step
+    this.fire(`editor/step/${id}`, 'delete', null, callback);
+  }
+
+  get_all_my_subroutines(callback: callbackFunc) {
+    // get all my subroutines
+    this.fire(`editor/subroutine/`, 'get', null, callback);
+  }
+
+  get_subroutine_by_id(id: number, callback: callbackFunc) {
+    this.fire(`editor/subroutine/${id}`, 'get', null, callback);
+  }
+
+  create_subroutine(subroutine: object, callback: callbackFunc) {
+    // create new subroutine
+    this.fire(`editor/subroutine/`, 'post', null, callback);
+  }
+
+  delete_subroutine(id: number, callback: callbackFunc) {
+    // delete subroutine by id
+    this.fire(`editor/subroutine/${id}`, 'delete', null, callback);
+  }
+
+  update_subroutine(id: number, callback: callbackFunc) {
+    // update subroutine
+    this.fire(`editor/subroutine/${id}`, 'delete', null, callback);
+  }
+
+  get_all_my_reports(callback: callbackFunc) {
+    // get all my reports in editor
+    this.fire(`editor/report/`, 'get', null, callback);
+  }
+
+  create_report(report: object, callback: callbackFunc) {
+    // create new report
+    this.fire(`editor/report/`, 'post', null, callback);
+  }
+
+  delete_report(id: number, callback: callbackFunc) {
+    // delete report by id
+    this.fire(`editor/report/${id}`, 'delete', null, callback);
+  }
+
+  update_report(id: number, callback: callbackFunc) {
+    // update report
+    this.fire(`editor/report/${id}`, 'post', null, callback);
+  }
+
+  create_report_html(html: string, callback: callbackFunc) {
+    // create new report html
+    this.fire(`editor/report/`, 'post', null, callback);
+  }
+
+  update_report_html(id: number, callback: callbackFunc) {
+    // update report html
+    this.fire(`editor/report/${id}`, 'post', null, callback);
+  }
+
+  get_report_html(id: number, callback: callbackFunc) {
+    // get report html
+    this.fire(`editor/report/${id}`, 'get', null, callback);
+  }
+
+
+
+
+
 
 
 // --------------- ******************** Action ******************** ------------------//
@@ -215,208 +307,13 @@ export class HttpService {
         tap(() => console.log(`fetch id's collections`))
     );
   }
-
-  
-
-  // --------------- ******************** Notification ******************** ------------------//
-
-  // get all notification
-  get_all_notification() {
-    const url = `${this.global_url}/notifications`;
-    return this.http.get(url)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`fetch all notifications`))
-    );
-  }
-
-  // create new notification
-  create_notification(data: MyNotification) {
-    const url = `${this.global_url}/notifications`;
-    return this.http.post(url, data, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
-  }
-
-  // delete a notification
-  delete_notification(id: number) {
-    const url = `${this.global_url}/notifications/${id}`;
-    return this.http.delete(url, this.httpOptions)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`delete notification with ${id}`))
-      );
-  }
-
-
-  // --------------- ******************** Reports ******************** ------------------//
-
-
-
-  //  get reports by id for reading
-  get_reports_by_id(id: number) {
-    const url = `${this.global_url}/reports/${id}`;
-    return this.http.get(url)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`fetch reports with idnumber ${id}`))
-    );
-  }
-
-  // praise a report
-  praise_report_by_id(report_id: number) {
-    const url = `${this.global_url}/reports`;
-    return this.http.post(url, {id: report_id}, this.httpOptions)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`praise success`))
-      );
-  }
-
-  // cancel praise
-  cancel_praise(id: number) {
-    const url = `${this.global_url}/reports/${id}`;
-    return this.http.delete(url, this.httpOptions)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`delete praise with ${id}`))
-      );
-  }
-
-// --------------- ******************** Comment ******************** ------------------//
-
-
-  // create_comment
-  create_comment(data: Comment) {
-    const url = `${this.global_url}/comments`;
-    return this.http.post(url, data, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
-  }
-
-  // update_comment
-  update_comment(data: Comment, id: number) {
-    const url = `${this.global_url}/comments/${id}`;
-    return this.http.put<User>(url, data, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
-  }
-
-  // delete_comment
-  delete_comment(id: number) {
-    const url = `${this.global_url}/coments/${id}`;
-    return this.http.delete(url, this.httpOptions)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`delete comment with ${id}`))
-      );
-  }
-
-
-// --------------- ******************** Editor ******************** ------------------//
-
-// ************ Reports ************ //
-  // create new reports
-  create_reports<Reports>(data: Reports) {
-    const url = `${this.global_url}/reports`;
-    return this.http.post(url, data, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
-  }
-
-  // update reports
-  update_reports<Reports>(data: Reports, id: number) {
-    const url = `${this.global_url}/editor/report/${id}`;
-    return this.http.put<User>(url, data, this.httpOptions)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`update report with ${id}`))
-      );
-  }
-
-  // get reports
-  get_report_by_id(id: number) {
-    const url = `${this.global_url}/editor/report/${id}`;
-    return this.http.get(url)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`fetch the report with id ${id}`))
-    );
-  }
-
-  // get the users all reports
-  get_report_all() {
-    const url = `${this.global_url}/editor/report`;
-    return this.http.get(url)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`fetch all this users reports`))
-    );
-  }
-
-// ************ Steps ************ //
-
-  // get step for report
-  get_step() {
-    const url = `${this.global_url}/editor/step`;
-    return this.http.get(url)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`fetch all steps for you`))
-    );
-  }
-
-  // create new step
-  create_step<step>(data: step) {
-    const url = `${this.global_url}/editor/step`;
-    return this.http.post(url, data, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
-  }
-
-  // update step
-  update_step<step>(data: step, id: number) {
-    const url = `${this.global_url}/editor/step/${id}`;
-    return this.http.put(url, data, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
-  }
-
-// ************ Steps ************ //
-  // get subroutine for report
-  get_subroutine() {
-    const url = `${this.global_url}/editor/subroutine`;
-    return this.http.get(url)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`fetch all subroutines for you`))
-    );
-  }
-
-  // create new subroutine
-  create_subroutine<subroutine>(data: subroutine) {
-    const url = `${this.global_url}/editor/subroutine`;
-    return this.http.post(url, data, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
-  }
-
-  // update subroutine
-  update_subroutine<subroutine>(data: subroutine, id: number) {
-    const url = `${this.global_url}/editor/subroutine/${id}`;
-    return this.http.put(url, data, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
-  }
-
 }
+
+
+
+
+
+
+
 
 

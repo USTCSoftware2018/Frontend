@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntdModule, NZ_I18N, en_US, zh_CN } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './core/navbar/navbar.component';
 import { AppRoutingModule } from './route/route.module';
 import { EditorModule } from './editor/editor.module';
 import { ErrorModule } from './error/error.module';

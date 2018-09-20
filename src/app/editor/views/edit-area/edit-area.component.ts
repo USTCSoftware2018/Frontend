@@ -35,7 +35,8 @@ export class EditAreaComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.onResize();
     this.flag = 'inactive';
-    this.editorReportService.initReport();
+    // this.editorReportService.initReport();
+    this.editorReportService.loadReport(new ReportHeader());
     this.currentReport = this.editorReportService.report;
     this.editorReportService.parseAll(); // 编译
 

@@ -9,17 +9,16 @@
       <li nz-menu-item nz-popover nzPlacement="bottom" nzTitle="Notification" [nzContent]="notification_content" class="icon-item" [routerLink]="['/notification']" ><i class="anticon anticon-bell"></i></li>
       <li nz-menu-item nz-popover nzPlacement="bottom" [nzContent]="user_content" [nzTitle]="user.name" class="icon-item"><i class="anticon anticon-smile-o"></i></li>
     </div>
-    <li nz-menu-item *ngIf="user == null" nz-col nzSpan="3"></li>
-    <li nz-menu-item *ngIf="user == null" nz-col nzSpan="2" [routerLink]="['/authentation/signin']">Sign In</li>
-    <li nz-menu-item *ngIf="user == null" nz-col nzSpan="2">Register</li>
+    <li nz-menu-item *ngIf="!ifLogin" nz-col nzSpan="3"></li>
+    <li nz-menu-item *ngIf="!ifLogin" nz-col nzSpan="2" [routerLink]="['/authentication/signin']">Sign In</li>
+    <li nz-menu-item *ngIf="!ifLogin" nz-col nzSpan="2" [routerLink]="['/authentication/signup']">Register</li>
     <li nz-menu-item class="menu-item-reverse" nz-col nzSpan="2" [routerLink]="['/editor']"><span>Editor</span></li>
-    <input nz-input placeholder="Search" [(ngModel)]="toSearch" nzSize="'small'" class="navbar-input">
-    <li nz-menu-item (click)="toggle_search()" nz-col nzSpan="2"><i class="anticon anticon-search"></i></li>
-    <div nz-col nzSpan="4"></div>
+    <li nz-menu-item class="menu-item-reverse" nz-col nzSpan="2" [routerLink]="['/search']"><span>Search</span></li>
+
     <ng-template #user_content>
       <div>
         <p style="cursor: pointer;" [routerLink]="['/profile']">Profile</p>
-        <p style="cursor: pointer;" [routerLink]="['/logout']">Logout</p>
+        <p style="cursor: pointer;" (click)="logout()" lick>Logout</p>
       </div>
     </ng-template>
     <ng-template #notification_content>
