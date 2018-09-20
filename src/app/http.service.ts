@@ -8,6 +8,7 @@ import { MyNotification } from './Interface/myNotification';
 import { url } from 'inspector';
 import { ApiResult } from './Interface/ApiResult';
 import { callbackFunc } from './Type/callbackFunc';
+import { callbackify } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -215,6 +216,11 @@ export class HttpService {
   get_report_html(id: number, callback: callbackFunc) {
     // get report html
     this.fire(`editor/report/${id}`, 'get', null, callback);
+  }
+
+  get_stat_by_id(id: number, callback: callbackFunc) {
+    // get stat by id
+    this.fire(`users/${id}/stat`, 'get', null, callback);
   }
 
 
