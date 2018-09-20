@@ -1,24 +1,27 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, DoCheck } from '@angular/core';
+import {EditorReportService} from '../../core/editorReport.service';
 
 @Component({
   selector: 'app-editor-field-type',
   templateUrl: './editor-field-type.component.html',
   styleUrls: ['./editor-field-type.component.less']
 })
-export class EditorFieldTypeComponent implements OnInit {
+export class EditorFieldTypeComponent implements OnInit, DoCheck {
 
   @Input() fld: any;
   @Input() size: string;
   options: string[];
+  envField?: string;
   changed: Boolean = false;
 
-  constructor() { }
+  constructor(public editor: EditorReportService) { }
 
   ngOnInit() {
 
 
     for (const key of this.fld.attr) {
       const keystring: string = key;
+      this.changeEnv();
       if (keystring.length >= 5 && keystring.substr(0, 5) === '@opt=') {
         const opts: string = keystring.substr(5);
         this.options = opts.split('/').filter((elem) => elem !== '');
@@ -26,6 +29,23 @@ export class EditorFieldTypeComponent implements OnInit {
           this.options.push(this.fld.value);
         }
       }
+    }
+  }
+
+  ngDoCheck() {
+    this.changeEnv();
+  }
+
+  changeEnv() {
+    if ( typeof this.fld.value === 'string' && this.fld.value.substr(0, 1) === '@') {
+      console.log(this.fld.value);
+      this.envField = this.fld.value.substr(1);
+    }
+
+    try {
+      this.fld.value = this.editor.report.envs[this.envField];
+    } catch (err) {
+      // 不知道在这里写什么
     }
   }
 

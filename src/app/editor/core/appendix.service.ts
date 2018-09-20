@@ -41,10 +41,6 @@ export class AppendixService {
     this.editor.report.result.push(_new_sub);
   }
 
-  reportAddResult() {
-    this.goToTop(1);
-  }
-
   reportShowInfo() {
     this.goToTop(0);
     // this.editor.infoSub.state = 'active';
@@ -55,7 +51,7 @@ export class AppendixService {
   }
 
   reportShowResult() {
-    this.goToTop(1);
+    this.goToTop(-1);
   }
 
   // reportAddInfo() {

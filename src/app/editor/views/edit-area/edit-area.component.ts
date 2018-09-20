@@ -42,7 +42,7 @@ export class EditAreaComponent implements OnInit, OnChanges {
     this.event.eventEmit.subscribe((value: any) => {
       if (value === 0) {
         this.scroll.nativeElement.scrollTop = 0;
-      } else {
+      } else if (value === -1) {
         this.scroll.nativeElement.scrollTop = this.scroll.nativeElement.scrollHeight;
       }
    });

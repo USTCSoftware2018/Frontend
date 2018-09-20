@@ -90,3 +90,11 @@ mockStep_11.ico = '/assets/img/editor/icons/W.png';
 mockStep_11.template = '- input Obj null - input Num null -';
 mockStep.push(mockStep_11);
 
+const mockStep_12 = new EditorStepHeader();
+mockStep_12.id = '12';
+mockStep_12.desc = 'Test';
+mockStep_12.name = 'Test';
+mockStep_12.ico = '/assets/img/editor/icons/T.png';
+mockStep_12.template = '- input test @tmp -';
+mockStep.push(mockStep_12);
+
