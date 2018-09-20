@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener,  ViewChild } from '@angular/core';
-
+import {UserSigninfoService } from '../../user-signinfo.service';
 
 @Component({
   selector: 'app-index',
@@ -10,7 +10,8 @@ export class IndexComponent implements OnInit {
   public opacity: number;
   @ViewChild('content')
   private contentRef;
-  constructor() { }
+  constructor(private myInfo: UserSigninfoService) {
+  }
   ngOnInit() {
     const victor = Victor('container', 'output');
     const theme = [
@@ -27,6 +28,5 @@ export class IndexComponent implements OnInit {
   @HostListener('window: scroll', [])
   changOpacity() {
     this.opacity = Math.abs(1 - window.pageYOffset / 260);
-    console.log(this.opacity);
   }
 }

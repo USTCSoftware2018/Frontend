@@ -4,8 +4,12 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
-import {forbiddenEmailValidator, forbiddenUsernameValidator, forbiddenAlphaValidator,
-  forbiddenNumericValidator, forbiddenSpecialValidator} from './forbidden-signup';
+import {
+  forbiddenEmailValidator,
+  forbiddenUsernameValidator,
+  forbiddenAlphaValidator,
+  forbiddenNumericValidator,
+} from './forbidden-signup';
 import {HttpService} from '../../http.service';
 import {NzMessageService} from 'ng-zorro-antd';
 import {ApiResult} from '../../Interface/ApiResult';
@@ -23,7 +27,8 @@ export class SignupComponent implements OnInit {
   constructor(private http: HttpService,
               private message: NzMessageService,
               private router: Router,
-              private usersigninfo: UserSigninfoService) {}
+              private userinfo: UserSigninfoService
+              ) {}
 
   ngOnInit() {
     this.validateForm = new FormGroup({
@@ -41,7 +46,6 @@ export class SignupComponent implements OnInit {
           Validators.required,
           Validators.minLength(8),
           Validators.maxLength(30),
-          forbiddenSpecialValidator(),
           forbiddenNumericValidator(),
           forbiddenAlphaValidator()
         ])
@@ -53,18 +57,17 @@ export class SignupComponent implements OnInit {
       this.validateForm.controls[ i ].markAsDirty();
       this.validateForm.controls[ i ].updateValueAndValidity();
     }
-    this.http.user_register(reginfo['username'], reginfo['username'], reginfo['email'], this.judgeRegister);
+    this.http.user_register(reginfo.username, reginfo.password, reginfo.email, this.judgeRegister);
   }
   judgeRegister = (result: ApiResult) => {
     console.log(result);
     if (result.success) {
-      this.message.success('Sign up sucessfully');
-      this.router.navigateByUrl('/explore');
-      this.usersigninfo.setUserInfo(result.data);
+      this.message.success('Sign up sucessfully. Start to sign in now!');
+      this.router.navigateByUrl('/authentication/signin');
     } else {
-      this.message.error('Fail to Sign up');
+      this.message.error(result.data.username + '.' + result.data.email);
     }
-  };
+  }
   get username() { return this.validateForm.get('username'); }
   get password() { return this.validateForm.get('password'); }
   get email() { return this.validateForm.get('email'); }

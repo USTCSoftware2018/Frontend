@@ -3,22 +3,24 @@
     <div nz-col nzSpan="4"></div>
     <li nz-menu-item nz-col nzSpan="4" [routerLink]="['/index']" class="brand"><img src="../../../assets/img/panda/logo.png" height="16px" style="margin-top: -2px"></li>
     <li nz-menu-item nz-col nzSpan="2" [routerLink]="['/explore']">Explore</li>
-    <li nz-menu-item *ngIf="user" nz-col nzSpan="3" [routerLink]="['/feeds']">Feeds</li>
-    <li nz-menu-item *ngIf="user" nz-col nzSpan="2"></li>
-    <div nz-col nzSpan="2" *ngIf="user">
+    <li nz-menu-item *ngIf="ifLogin" nz-col nzSpan="3" [routerLink]="['/feeds']">Feeds</li>
+    <li nz-menu-item *ngIf="ifLogin" nz-col nzSpan="2"></li>
+    <div nz-col nzSpan="2" *ngIf="ifLogin">
       <li nz-menu-item nz-popover nzPlacement="bottom" nzTitle="Notification" [nzContent]="notification_content" class="icon-item"><i class="anticon anticon-bell"></i></li>
-      <li nz-menu-item nz-popover nzPlacement="bottom" [nzContent]="user_content" [nzTitle]="user.name" class="icon-item"><i class="anticon anticon-smile-o"></i></li>
+      <li nz-menu-item nz-popover nzPlacement="bottom" [nzContent]="user_content" [nzTitle]="user.name" class="icon-item">
+        <nz-avatar nzIcon="anticon anticon-user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+      </li>
     </div>
-    <li nz-menu-item *ngIf="!user" nz-col nzSpan="3"></li>
-    <li nz-menu-item *ngIf="!user" nz-col nzSpan="2" [routerLink]="['/authentication/signin']">Sign In</li>
-    <li nz-menu-item *ngIf="!user" nz-col nzSpan="2" [routerLink]="['/authentication/signup']">Register</li>
+    <li nz-menu-item *ngIf="!ifLogin" nz-col nzSpan="3"></li>
+    <li nz-menu-item *ngIf="!ifLogin" nz-col nzSpan="2" [routerLink]="['/authentication/signin']">Sign In</li>
+    <li nz-menu-item *ngIf="!ifLogin" nz-col nzSpan="2" [routerLink]="['/authentication/signup']">Register</li>
     <li nz-menu-item class="menu-item-reverse" nz-col nzSpan="2" [routerLink]="['/editor']"><span>Editor</span></li>
     <li nz-menu-item class="menu-item-reverse" nz-col nzSpan="2" [routerLink]="['/search']"><span>Search</span></li>
 
     <ng-template #user_content>
       <div>
         <p style="cursor: pointer;" [routerLink]="['/profile']">Profile</p>
-        <p style="cursor: pointer;" [routerLink]="['/logout']">Logout</p>
+        <p style="cursor: pointer;" (click)="logout()" lick>Logout</p>
       </div>
     </ng-template>
     <ng-template #notification_content>

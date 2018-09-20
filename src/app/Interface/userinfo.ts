@@ -2,6 +2,7 @@ export class Simuser {
   id: number;
   name: string;
   avatar_url: string;
+  actual_name: string;
   about_me: string;
   followingnum: number;
   followednum: number;
