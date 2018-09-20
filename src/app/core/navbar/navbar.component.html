@@ -6,8 +6,12 @@
     <li nz-menu-item *ngIf="user != null" nz-col nzSpan="3" [routerLink]="['/feeds']">Feeds</li>
     <li nz-menu-item *ngIf="user != null" nz-col nzSpan="2"></li>
     <div nz-col nzSpan="2" *ngIf="user != null">
-      <li nz-menu-item nz-popover nzPlacement="bottom" nzTitle="Notification" [nzContent]="notification_content" class="icon-item" [routerLink]="['/notification']" ><i class="anticon anticon-bell"></i></li>
-      <li nz-menu-item nz-popover nzPlacement="bottom" [nzContent]="user_content" [nzTitle]="user.name" class="icon-item"><i class="anticon anticon-smile-o"></i></li>
+      <li nz-menu-item nz-popover nzPlacement="bottom" nzTitle="Notification" [nzContent]="notification_content" class="icon-item" [routerLink]="['/notification']" >
+        <i class="anticon anticon-bell"></i>
+      </li>
+      <li nz-menu-item nz-popover nzPlacement="bottom" nzPlacement="bottomRight" [nzContent]="userContentTemplate" [nzTitle]="userTitleTemplate" class="icon-item">
+        <nz-avatar nzIcon="anticon anticon-user" [nzSrc]="user.avatar_url"></nz-avatar>
+      </li>
     </div>
     <li nz-menu-item *ngIf="!ifLogin" nz-col nzSpan="3"></li>
     <li nz-menu-item *ngIf="!ifLogin" nz-col nzSpan="2" [routerLink]="['/authentication/signin']">Sign In</li>
@@ -15,11 +19,13 @@
     <li nz-menu-item class="menu-item-reverse" nz-col nzSpan="2" [routerLink]="['/editor']"><span>Editor</span></li>
     <li nz-menu-item class="menu-item-reverse" nz-col nzSpan="2" [routerLink]="['/search']"><span>Search</span></li>
 
-    <ng-template #user_content>
-      <div>
-        <p style="cursor: pointer;" [routerLink]="['/profile']">Profile</p>
-        <p style="cursor: pointer;" (click)="logout()" lick>Logout</p>
-      </div>
+    <ng-template #userTitleTemplate>
+      <span>{{user.name}}</span>
+    </ng-template>
+    <ng-template #userContentTemplate>
+      <div><a class="profile-content">Profile</a></div>
+      <div><a class="profile-content">Setting</a></div>
+      <div><a class="profile-content"><i class="anticon anticon-poweroff"></i>Log out</a></div>
     </ng-template>
     <ng-template #notification_content>
       <div>

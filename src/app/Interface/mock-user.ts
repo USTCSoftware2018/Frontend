@@ -66,6 +66,7 @@ const user4: Simuser = {
   follow_or_edit: true,
 };
 export const report1: Report = {
+  id: 1,
   title: 'research',
   author: user4,
   topic: ['A', 'B', 'C'],
