@@ -4,6 +4,7 @@ import { Simuser } from './userinfo';
 export const user1: Simuser = {
   id: 2,
   name: 'Sindy',
+  actual_name: 'Cindy',
   about_me: 'about me',
   avatar_url: '//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
   followingnum: 42,
@@ -19,6 +20,7 @@ export const user1: Simuser = {
 export const user2: Simuser = {
   id: 3,
   name: 'Cindy',
+  actual_name: 'Cindy',
   about_me: 'about me balabalabalabalabalabalabalabalabalabala',
   avatar_url: '//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
   followingnum: 42,
@@ -34,6 +36,7 @@ export const user2: Simuser = {
 export const user3: Simuser = {
   id: 4,
   name: 'Sindi',
+  actual_name: 'Cindy',
   about_me: 'about me',
   avatar_url: '../../../assets/img/test/img.jpg',
   followingnum: 42,
@@ -50,6 +53,7 @@ const user4: Simuser = {
   id: 5,
   name: 'Candy',
   about_me: 'about me',
+  actual_name: 'Cindy',
   avatar_url: '../../../assets/img/test/img.jpg',
   followingnum: 42,
   followednum: 233,
@@ -111,6 +115,7 @@ export const SIMUSER: Simuser = {
   id: 1,
   name: 'Thomas Romero',
   about_me: 'messages',
+  actual_name: 'Cindy',
   avatar_url: '//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
   followingnum: 42,
   followednum: 233,

@@ -72,6 +72,7 @@ export class HttpService {
     const callback = function(result: ApiResult) {
       console.log(result);
     };
+    /*
     this.user_login('test', 'a123456', callback);
     this.get_all_users(callback);
     this.get_user_by_id(3, callback);
@@ -80,6 +81,7 @@ export class HttpService {
     this.get_all_my_followings(callback);
     this.get_followers_by_id(2, callback);
     this.get_followings_by_id(2, callback);
+    */
     }
 
   user_register(username: string, password: string, email: string, callback: callbackFunc) {
