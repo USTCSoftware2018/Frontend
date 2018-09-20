@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, ReportResultHeader, subType } from '../headers/article';
-
+import {objs} from '../mock/mock-load';
 import {StepsService} from './steps.service';
 
 
@@ -23,7 +23,7 @@ export class EditorReportService {
 
   public parser (step: ReportStepsHeader ) {
     // 解析简单模版
-    let temp = step.temp;
+    let temp = step.temp ? step.temp : this.stepsService.getTemp(step.id);
     const data = step.data;
 
     temp += ' - ';
@@ -76,20 +76,18 @@ export class EditorReportService {
     fld_remark.value = step.remark ? step.remark : '';
     _fields.push(fld_remark);
     step.fields = _fields;
-
-    console.log(step);
   }
 
   public parseAll() {
     for (const sub of this.report.subroutines ) {
-      if (sub.subType === subType.steps) {
+      // if (sub.subType === subType.steps) {
         for (const step of sub.steps) {
           this.parser(step);
-          sub.name = 'Steps';
+          sub.name = step.name;
         }
-      } else {
-        sub.name = sub.subType;
-      }
+      // } else {
+      //   sub.name = sub.subType;
+      // }
     }
   }
 
@@ -225,6 +223,7 @@ export class EditorReportService {
 
   public initReport() {
     // 初始化文章
+    this._state = true;
     this.report = new  ReportHeader();
     this.report.title = '';
     this.report.introduction = '';
@@ -238,23 +237,25 @@ export class EditorReportService {
 
   public saveReport (): void {
     this._state = false;
-    if (!this.report) {
+    // 序列化反序列化大法
+    const _sent_report = JSON.parse(JSON.stringify(this.report));
+    if (!_sent_report) {
       return;
     }
-    if (!this.report.id ) {
-      this.report.id = 0;
+    if (!_sent_report.id ) {
+      _sent_report.id = 0;
     }
     for (const attr of ['introduction', 'title', 'mdate', 'ndate', ]) {
-      if (!this.report[attr]) {
-        this.report[attr] = '';
+      if (!_sent_report[attr]) {
+        _sent_report[attr] = '';
       }
     }
     for (const attr of ['label', 'author', 'result', 'subroutines']) {
-      if (!this.report[attr]) {
-        this.report[attr] = [];
+      if (!_sent_report[attr]) {
+        _sent_report[attr] = [];
       }
     }
-    for (const sub of this.report.subroutines) {
+    for (const sub of _sent_report.subroutines) {
       for (const attr of ['subType', 'idx', 'desc', 'list', 'remark', 'pic', 'table']) {
         if (sub[attr]) {
           delete sub[attr];
@@ -275,6 +276,14 @@ export class EditorReportService {
         }
       }
     }
+    console.log(JSON.stringify(_sent_report));
+  }
+
+  public loadReport (_tmp_obj: ReportHeader): void {
+    _tmp_obj = JSON.parse(objs);
+    this._state = true;
+    this.report = _tmp_obj;
+    this.parseAll();
     console.log(this.report);
   }
 }

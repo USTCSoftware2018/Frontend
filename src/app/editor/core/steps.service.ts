@@ -42,4 +42,8 @@ export class StepsService {
     // 没有定义
   }
 
+  public getTemp(stepId: string) {
+    const step_t = this.findStep(stepId);
+    return step_t.template;
+  }
 }
