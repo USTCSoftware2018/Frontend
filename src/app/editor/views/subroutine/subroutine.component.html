@@ -1,13 +1,13 @@
 <div class="subroutine" [@deletePanel]="subShow">
     <!-- 这里是 subroutine 的头部-->
-    <div nz-row class="subroutineTitlePart">
+    <div nz-row class="subroutineTitlePart" style="margin-bottom:0px;">
         <div nz-col [nzXl]="1" [nzLg]="1" [nzMd]="2" [nzSm]="2" id="LuckBox" (click)="reverseState()"></div> 
-        <div nz-col [nzXl]="21" [nzLg]="21" [nzMd]="19" [nzSm]="19" class="subTitle" (click)="reverseState()">{{sub.name}}</div>
+        <div nz-col [nzXl]="21" [nzLg]="21" [nzMd]="19" [nzSm]="19" class="subTitle" (click)="reverseState()">{{getTitle()}}</div>
         <div nz-col [nzXl]="2" [nzLg]="2" [nzMd]="3" [nzSm]="3" 
-                id="deleteButton"  (click)="startDelete(sub)">Delete</div>
+                id="deleteButton"  (click)="startDelete(sub)" *ngIf="type === 'Steps'">Delete</div>
     </div>
 
-    <div [ngSwitch]="sub.subType" style="margin-top: 3px;overflow: hidden;" [@subPanel]="subState">
+    <div [ngSwitch]="type" style="margin-top: 3px;overflow: hidden;" [@subPanel]="subState">
       <div *ngSwitchCase="'Steps'" class="ABlockOfSub" >
         <!-- Steps -->
         <div *ngFor="let step of sub.steps">
@@ -15,22 +15,34 @@
         </div>
       </div>
 
-      <div *ngSwitchCase="'Text'" class="ABlockOfSub" >
+      <div *ngSwitchCase="'Info'" class="ABlockOfSub" >
+          <!-- Info -->
+          <app-info-panel #info></app-info-panel>
+      </div>
+
+      <div *ngSwitchCase="'Result'" class="ABlockOfSub" >
+          <!-- Result -->
+          <app-remark-panel #result></app-remark-panel>
+      </div>
+
+      <!-- <div *ngSwitchCase="'Text'" class="ABlockOfSub" > -->
           <!-- Texts -->
-          <app-text-panel [sub]="sub"></app-text-panel>
-      </div>
-      <div *ngSwitchCase="'Pictures'" class="ABlockOfSub" >
+          <!-- <app-text-panel [sub]="sub"></app-text-panel> -->
+      <!-- </div> -->
+      <!-- <div *ngSwitchCase="'Pictures'" class="ABlockOfSub" > -->
           <!-- Pictures -->
-          <app-pict-panel [sub]="sub"></app-pict-panel>
-      </div>
+          <!-- <app-pict-panel [sub]="sub"></app-pict-panel> -->
+      <!-- </div> -->
 
-      <div *ngSwitchCase="'List'" class="ABlockOfSub" >
+      <!-- <div *ngSwitchCase="'List'" class="ABlockOfSub" > -->
           <!-- Lists -->
-          <app-list-panel [sub]="sub"></app-list-panel>
-      </div>
+          <!-- <app-list-panel [sub]="sub"></app-list-panel> -->
+      <!-- </div> -->
 
+      <!-- <div *ngSwitchCase="'Result'" class="ABlockOfSub" > -->
+        <!-- Lists -->
+        <!-- <app-remark-panel [sub]="sub" #result></app-remark-panel> -->
+      <!-- </div> -->
     </div>
-
-    <br style="height: 15px;"/>
     <!-- 下面是各个部分 -->
 </div>

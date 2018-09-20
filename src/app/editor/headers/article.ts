@@ -1,17 +1,16 @@
 // 这里是文章的定义
 
 export class ReportStepsHeader {
-    idx: number;
+    idx: number; // 废弃
     id: string;
     name: string; // 类型 对应 EditorSubroutine 中的id
     data: any;
+    ico: string;
 
-    temp?: string;
-    fields?: any;
-    desc: string;
+    temp?: string; // 删除
+    fields?: any; // 删除
+    desc: string; // 删除
     remark: string;
-    pic: Array<ReportGraphHeader>;
-    table: string;
 }
 
 // subroutine 类型
@@ -29,32 +28,41 @@ export enum subType {
 export class ReportSubroutineHeader {
     id: string; // 类型 对应 EditorStep 中的id
     name: string;
-    subType: subType;
-    idx: number; // 位置
+    subType: subType; // 废弃
+    idx: number; // 位置，废弃
     steps?: Array<ReportStepsHeader>; // 包含的step
-    desc?: string;
-    list?: ReportListHeader[];
-    remark?: string;
-    pic?: Array<ReportGraphHeader>;
-    table?: string;
+    desc?: string; // 废弃
+    list?: ReportListHeader[]; // 废弃
+    remark?: string; // 废弃
+    pic?: Array<ReportGraphHeader>; // 废弃
+    table?: string; // 废弃
 
     constructor() {
         this.subType = subType.steps;
     }
 }
 
+export class ReportResultHeader {
+    subType: subType;
+    desc?: string;
+    list?: ReportListHeader[];
+    remark?: string;
+    pic?: Array<ReportGraphHeader>;
+    table?: string;
+}
+
 export class ReportHeader {
     // 元数据部分
-    id: number;
+    id: number; // 约定 id 是 0 就新建
     title: string;  // 标题
     author: string[];   // 作者
-    mdate: string;  // 修改时间
-    ndate: string;  // 创建时间
+    mdate: string;  // 修改时间 后端
+    ndate: string;  // 创建时间 后端
     introduction: string;   // 介绍
-    result: string; // 结果部分
+    envs: {};
+    result: ReportResultHeader[]; // 结果部分
     label: string[];    // 标签部分
     subroutines: Array<ReportSubroutineHeader>;
-
     constructor () {}
 }
 

@@ -4,8 +4,17 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
-import {forbiddenEmailValidator, forbiddenUsernameValidator, forbiddenAlphaValidator,
-  forbiddenNumericValidator, forbiddenSpecialValidator} from './forbidden-signup';
+import {
+  forbiddenEmailValidator,
+  forbiddenUsernameValidator,
+  forbiddenAlphaValidator,
+  forbiddenNumericValidator,
+} from './forbidden-signup';
+import {HttpService} from '../../http.service';
+import {NzMessageService} from 'ng-zorro-antd';
+import {ApiResult} from '../../Interface/ApiResult';
+import { Router} from '@angular/router';
+import { UserSigninfoService } from '../../user-signinfo.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +24,11 @@ import {forbiddenEmailValidator, forbiddenUsernameValidator, forbiddenAlphaValid
 export class SignupComponent implements OnInit {
   validateForm: FormGroup;
   shake = false;
-  constructor() { }
+  constructor(private http: HttpService,
+              private message: NzMessageService,
+              private router: Router,
+              private userinfo: UserSigninfoService
+              ) {}
 
   ngOnInit() {
     this.validateForm = new FormGroup({
@@ -33,16 +46,26 @@ export class SignupComponent implements OnInit {
           Validators.required,
           Validators.minLength(8),
           Validators.maxLength(30),
-          forbiddenSpecialValidator(),
           forbiddenNumericValidator(),
           forbiddenAlphaValidator()
         ])
     });
   }
   submitForm(): void {
+    const reginfo = this.validateForm.value;
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[ i ].markAsDirty();
       this.validateForm.controls[ i ].updateValueAndValidity();
+    }
+    this.http.user_register(reginfo.username, reginfo.password, reginfo.email, this.judgeRegister);
+  }
+  judgeRegister = (result: ApiResult) => {
+    console.log(result);
+    if (result.success) {
+      this.message.success('Sign up sucessfully. Start to sign in now!');
+      this.router.navigateByUrl('/authentication/signin');
+    } else {
+      this.message.error(result.data.username + '.' + result.data.email);
     }
   }
   get username() { return this.validateForm.get('username'); }

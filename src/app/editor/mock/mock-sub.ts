@@ -101,3 +101,13 @@ mockSub_5.default = [
     {'Speed': '12000', 'Time': '60s'}, // 1
 ];
 mockSub.push(mockSub_5);
+
+const mockSub_6 = new EditorSubroutineHeader();
+mockSub_6.id = '6';
+mockSub_6.name = 'Test env';
+mockSub_6.desc = 'Test env';
+mockSub_6.steps = ['12'];
+mockSub_6.default = [
+    {'test': '@proc'},
+];
+mockSub.push(mockSub_6);

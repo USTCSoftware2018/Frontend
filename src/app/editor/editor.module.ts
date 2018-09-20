@@ -9,6 +9,7 @@ import { StepsService } from './core/steps.service';
 import { AppendixService } from './core/appendix.service';
 import { EditorReportService } from './core/editorReport.service';
 import { GetDataService } from './getData/getData.service';
+import { EditorEventService } from './core/editor-event.service';
 
 import { MainComponent } from './views/main/main.component';
 import { StepBarComponent } from './views/step-bar/step-bar.component';
@@ -20,6 +21,9 @@ import { StepPanelComponent } from './views/step-panel/step-panel.component';
 import { TextPanelComponent } from './views/text-panel/text-panel.component';
 import { PictPanelComponent } from './views/pict-panel/pict-panel.component';
 import { ListPanelComponent } from './views/list-panel/list-panel.component';
+import { RemarkPanelComponent } from './views/remark-panel/remark-panel.component';
+import { InfoPanelComponent } from './views/info-panel/info-panel.component';
+import { EditorScrollComponent } from './views/editor-scroll/editor-scroll.component';
 
 @NgModule({
   imports: [
@@ -39,12 +43,16 @@ import { ListPanelComponent } from './views/list-panel/list-panel.component';
     TextPanelComponent,
     PictPanelComponent,
     ListPanelComponent,
+    RemarkPanelComponent,
+    InfoPanelComponent,
+    EditorScrollComponent,
   ],
   providers: [
     StepsService,
     EditorReportService,
     GetDataService,
     AppendixService,
+    EditorEventService,
   ],
 })
 export class EditorModule { }
