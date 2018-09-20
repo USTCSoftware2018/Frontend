@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, ReportResultHeader, subType } from '../headers/article';
-
+import {objs} from '../mock/mock-load';
 import {StepsService} from './steps.service';
 
 
@@ -8,9 +8,7 @@ import {StepsService} from './steps.service';
 export class EditorReportService {
 
   private _report: ReportHeader; // 当前文章
-
-  public resultSub: ReportSubroutineHeader;
-  public infoSub: ReportSubroutineHeader;
+  private _state: boolean;
 
   public get report () {
     return this._report;
@@ -23,23 +21,9 @@ export class EditorReportService {
 
   constructor(public stepsService: StepsService) { }
 
-  public initReport() {
-    // 初始化文章
-    this.report = new  ReportHeader();
-    this.report.title = '';
-    this.report.introduction = '';
-    this.report.label = [];
-    this.report.mdate = '';
-    this.report.ndate = '';
-    this.report.result = [];
-    this.report.subroutines = [];
-    this.resultSub = null;
-    // this.mockReport();
-  }
-
   public parser (step: ReportStepsHeader ) {
     // 解析简单模版
-    let temp = step.temp;
+    let temp = step.temp ? step.temp : this.stepsService.getTemp(step.id);
     const data = step.data;
 
     temp += ' - ';
@@ -92,20 +76,18 @@ export class EditorReportService {
     fld_remark.value = step.remark ? step.remark : '';
     _fields.push(fld_remark);
     step.fields = _fields;
-
-    console.log(step);
   }
 
   public parseAll() {
     for (const sub of this.report.subroutines ) {
-      if (sub.subType === subType.steps) {
+      // if (sub.subType === subType.steps) {
         for (const step of sub.steps) {
           this.parser(step);
-          sub.name = 'Steps';
+          sub.name = step.name;
         }
-      } else {
-        sub.name = sub.subType;
-      }
+      // } else {
+      //   sub.name = sub.subType;
+      // }
     }
   }
 
@@ -131,7 +113,7 @@ export class EditorReportService {
   public reportAddStep(stepid: string) {
     const _step_temp = this.stepsService.findStep(stepid);
     const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
-    _new_sub.id = '';
+    _new_sub.id = '-1';
     _new_sub.desc = '';
     _new_sub.name = _step_temp.name;
     // _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
@@ -233,5 +215,75 @@ export class EditorReportService {
     newStep.temp = '- input speed 3000 rpm @small - input temp 20 @small - input xxx 55555 @mid - input yy 666 @big';
     newSub.steps.push(newStep);
     this.report.subroutines.push(newSub);
+  }
+
+  /*
+  ** 下面是文章加载、保存等。
+  */
+
+  public initReport() {
+    // 初始化文章
+    this._state = true;
+    this.report = new  ReportHeader();
+    this.report.title = '';
+    this.report.introduction = '';
+    this.report.label = [];
+    this.report.mdate = '';
+    this.report.ndate = '';
+    this.report.result = [];
+    this.report.subroutines = [];
+    // this.mockReport();
+  }
+
+  public saveReport (): void {
+    this._state = false;
+    // 序列化反序列化大法
+    const _sent_report = JSON.parse(JSON.stringify(this.report));
+    if (!_sent_report) {
+      return;
+    }
+    if (!_sent_report.id ) {
+      _sent_report.id = 0;
+    }
+    for (const attr of ['introduction', 'title', 'mdate', 'ndate', ]) {
+      if (!_sent_report[attr]) {
+        _sent_report[attr] = '';
+      }
+    }
+    for (const attr of ['label', 'author', 'result', 'subroutines']) {
+      if (!_sent_report[attr]) {
+        _sent_report[attr] = [];
+      }
+    }
+    for (const sub of _sent_report.subroutines) {
+      for (const attr of ['subType', 'idx', 'desc', 'list', 'remark', 'pic', 'table']) {
+        if (sub[attr]) {
+          delete sub[attr];
+        }
+      }
+      for (const step of sub.steps) {
+        for (const fld of step.fields) {
+          if (fld.label === 'Notes') {
+            step.remark = fld.value;
+          } else {
+            step.data[fld.label] = fld.value;
+          }
+        }
+        for (const attr of ['idx', 'temp', 'fields', 'desc']) {
+          if (step[attr]) {
+            delete step[attr];
+          }
+        }
+      }
+    }
+    console.log(JSON.stringify(_sent_report));
+  }
+
+  public loadReport (_tmp_obj: ReportHeader): void {
+    _tmp_obj = JSON.parse(objs);
+    this._state = true;
+    this.report = _tmp_obj;
+    this.parseAll();
+    console.log(this.report);
   }
 }
