@@ -1,17 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Simuser, Report } from '../../Interface/userinfo';
 import { Otheruser, Like } from '../../share/likereport/likereport';
-<<<<<<< HEAD:src/app/notification/notification/notification.component.ts
 import { user1,user2,report1 } from '../../Interface/mock-user';
-import { NOTIS } from '../mock-notification';
-import { LikeNotification, FollowNotification } from '../notification';
-import { HttpService } from '../../http.service';
-import { ApiResult } from '../../Interface/ApiResult';
-=======
-import { user1, user2, report1 } from '../../Interface/mock-user';
 import { NOTIS } from './mock-notification';
 import { LikeNotification, FollowNotification } from './notification';
->>>>>>> upstream/dev:src/app/core/notification/notification.component.ts
+import { HttpService } from '../../http.service';
+import { ApiResult } from '../../Interface/ApiResult';
 
 @Component({
   selector: 'app-notification',

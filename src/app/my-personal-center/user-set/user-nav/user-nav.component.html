@@ -1,6 +1,6 @@
 <div nz-row nzType="flex" nzJustify="space-around" style="background-color:#F2F2F2;margin-top:80px;height:1000px;">
   <div nz-col [nzXs]="{ span: 4 }" [nzLg]="{ span: 4 }"  >
-    <nz-affix>
+    <nz-affix [nzOffsetTop]="10">
       <!--<ul *ngIf="!isreport" id="navi0" >
         <li class="navi1" >
           <a  [class.navichild]="!rla.isActive" routerLink="./user-basic" routerLinkActive="active" (click)="changeisreport()"#rla="routerLinkActive">Basic Information</a>
@@ -17,13 +17,13 @@
         <nz-sider [nzCollapsed]="isCollapsed" [nzCollapsedWidth]='0' [nzWidth]="0" >
           <ul class="navi2">
             <li class="navi1">
-              <a [class.navichild]="!rla.isActive" routerLink="./user-basic" routerLinkActive="active" >Basic Information</a>
+              <a routerLink="./user-basic" routerLinkActive="active" >Basic Information</a>
             </li>
             <li class="navi1">
-              <a [class.navichild]="!rla1.isActive" routerLink="./user-account" routerLinkActive="active" >Account</a>
+              <a routerLink="./user-account" routerLinkActive="active" >Account</a>
             </li>
             <li class="navi1">
-            <a [class.navichild]="!rla2.isActive" routerLink="./user-report" routerLinkActive="active" >Report</a>
+            <a routerLink="./user-report" routerLinkActive="active" >Report</a>
             </li>
           </ul>
         </nz-sider>

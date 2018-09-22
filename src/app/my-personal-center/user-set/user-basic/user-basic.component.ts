@@ -3,7 +3,6 @@ import { NzMessageService, UploadFile } from 'ng-zorro-antd';
 import { FormGroup, FormControl, Validators, ValidationErrors, FormBuilder } from '@angular/forms';
 import { Observable, Observer } from 'rxjs';
 import { forbiddenNameValidator } from '../formvalidate/forbidden-name.directive';
-import { HttpService } from '../../http.service';
 
 @Component({
   selector: 'app-user-basic',
@@ -55,7 +54,7 @@ export class UserBasicComponent implements OnInit {
   onSave(){
     this.issaved=true;
   }
-  constructor(private fb:FormBuilder,private msg: NzMessageService,private http: HttpService) { }
+  constructor(private fb:FormBuilder,private msg: NzMessageService) { }
 
   ngOnInit() {
   }
