@@ -1,10 +1,10 @@
 <div nz-row class="notificationbox">
-<div nz-col nzSpan="6" class="myuserinfo0">
+<!--<div nz-col nzSpan="6" class="myuserinfo0">
   <div nz-col nzSpan="22">
   <app-siminfo [user]="user"></app-siminfo>
   </div>
-</div>
-  <div nz-col nzSpan="18" class="messages">
+</div>-->
+  <div nz-col nzSpan="20" class="messages">
     <div *ngFor="let notification of notifications" class="notification-content">
 
       <div nz-row *ngIf="notification.kind === 'follow'">
