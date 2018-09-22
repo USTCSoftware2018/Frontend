@@ -14,8 +14,8 @@
   </div>
   <div align="center">
 
-    <div *ngIf="userinfoprofile.follow_or_edit">
-    <button nz-button nzType="primary" class="rectangle3" (click)="followAndUnFollow()">{{follow_and_unfollow}}</button>
+    <div *ngIf="!ifmyself">
+    <button nz-button nzType="primary" class="rectangle3" (click)="toggleFollow()">{{follow_or_unfollow}}</button>
     </div>
     <!--
     <nz-modal [(nzVisible)]="userinfoprofile.isVisible" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
@@ -23,7 +23,7 @@
     </nz-modal>
     </div>
     -->
-    <div *ngIf="!userinfoprofile.follow_or_edit">
+    <div *ngIf="ifmyself">
       <button nz-button nzType="primary" class="rectangle3">edit</button>
     </div>
   </div>

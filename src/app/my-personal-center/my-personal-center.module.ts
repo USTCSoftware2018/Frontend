@@ -8,6 +8,7 @@ import { UserSetModule } from './user-set/user-set.module';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import {en_US, NZ_I18N} from 'ng-zorro-antd';
+import { MyIndexBodyComponent } from './my-center-index/my-index-body/my-index-body.component';
 registerLocaleData(en);
 
 @NgModule({
@@ -17,7 +18,7 @@ registerLocaleData(en);
     ShareModule,
     UserSetModule,
   ],
-  declarations: [MyCenterIndexComponent],
+  declarations: [MyCenterIndexComponent, MyIndexBodyComponent],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
 })
 export class MyPersonalCenterModule { }

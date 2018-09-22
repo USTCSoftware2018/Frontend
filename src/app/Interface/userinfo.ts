@@ -11,8 +11,7 @@ export class Simuser {
   location: string;
   email: string;
   organization: string;
-  follow_or_unfollow?: boolean;
-  follow_or_edit?: boolean;
+  ifFollow?: boolean;
 }
 export class Info {
   content: Simuser[];

@@ -1,19 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MyCenterIndexComponent } from './my-center-index.component';
 
-describe('MyCenterIndexComponent', () => {
-  let component: MyCenterIndexComponent;
-  let fixture: ComponentFixture<MyCenterIndexComponent>;
+import { MyIndexBodyComponent } from './my-index-body.component';
+
+describe('MyIndexBodyComponent', () => {
+  let component: MyIndexBodyComponent;
+  let fixture: ComponentFixture<MyIndexBodyComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MyCenterIndexComponent ]
+      declarations: [ MyIndexBodyComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MyCenterIndexComponent);
+    fixture = TestBed.createComponent(MyIndexBodyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
