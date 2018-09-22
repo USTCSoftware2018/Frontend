@@ -27,7 +27,7 @@ export class HttpExampleComponent implements OnInit {
       password: 'a123456',
       email: 'test@test.com'
     }},
-    {name: '拿到用户信息', lable: 'get_user_by_id', func: this.http, templa: {
+    {name: '拿到用户信息', lable: 'get_user_by_id', func: this.http.get_user_by_id, templa: {
       id: '1'
     }},
     {name: '我是谁', lable: 'get_myself', func: this.http.get_myself, templa: {}},
