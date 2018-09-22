@@ -83,8 +83,8 @@ const archives = [
   {data: '2018-10-10', num: 14},
 ];
 const popular_repots = [
-  {name: 'aaa', num: 12},
-  {name: 'bbb', num: 13},
+  {name: 'aaa', praises: 12},
+  {name: 'bbb', praises: 13},
 ];
 const labels = [
   {name: 'ccc', num: 10},

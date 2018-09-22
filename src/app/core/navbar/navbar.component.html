@@ -1,41 +1,67 @@
+<style>
+  li .ant-menu .ant-menu-dark ant-menu-item-selected{
+    background-color: transparent;
+  }
+</style>
+
 <div class="bio-nav">
-  <ul nz-row nzType="flex" nzJustify="start" nz-menu [nzMode]="'horizontal'" [nzTheme]="'dark'" [nzSelectable]="false">
-    <div nz-col nzSpan="4"></div>
-    <li nz-menu-item nz-col nzSpan="4" [routerLink]="['/index']" class="brand"><img src="../../../assets/img/panda/logo.png" height="16px" style="margin-top: -2px"></li>
-    <li nz-menu-item nz-col nzSpan="2" [routerLink]="['/explore']">Explore</li>
-    <li nz-menu-item *ngIf="user != null" nz-col nzSpan="3" [routerLink]="['/feeds']">Feeds</li>
-    <li nz-menu-item *ngIf="user != null" nz-col nzSpan="2"></li>
-    <div nz-col nzSpan="2" *ngIf="user != null">
-      <li nz-menu-item nz-popover nzPlacement="bottom" nzTitle="Notification" [nzContent]="notification_content" class="icon-item" [routerLink]="['/notification']" >
-        <i class="anticon anticon-bell"></i>
-      </li>
-      <li nz-menu-item nz-popover nzPlacement="bottom" nzPlacement="bottomRight" [nzContent]="userContentTemplate" [nzTitle]="userTitleTemplate" class="icon-item">
-        <nz-avatar nzIcon="anticon anticon-user" [nzSrc]="user.avatar_url"></nz-avatar>
+  <ul class="nav-container">
+    <div class="nav-left">
+      <li class="nav-item" [routerLink]="['/index']" routerLinkActive="selected">
+        <img src="../../../assets/img/panda/logo.png" class="brand">
       </li>
     </div>
-    <li nz-menu-item *ngIf="!ifLogin" nz-col nzSpan="3"></li>
-    <li nz-menu-item *ngIf="!ifLogin" nz-col nzSpan="2" [routerLink]="['/authentication/signin']">Sign In</li>
-    <li nz-menu-item *ngIf="!ifLogin" nz-col nzSpan="2" [routerLink]="['/authentication/signup']">Register</li>
-    <li nz-menu-item class="menu-item-reverse" nz-col nzSpan="2" [routerLink]="['/editor']"><span>Editor</span></li>
-    <li nz-menu-item class="menu-item-reverse" nz-col nzSpan="2" [routerLink]="['/search']"><span>Search</span></li>
+
+    <div class="nav-center">
+      <li class="nav-item" [routerLink]="['/explore']" routerLinkActive="selected">Explore</li>
+      <li class="nav-item"[routerLink]="['/editor']" routerLinkActive="selected">Editor</li>
+      <li class="nav-item" [routerLink]="['/search']" routerLinkActive="selected">Search</li>
+    </div>
+
+    <div class="nav-right">
+      <li class="nav-item" *ngIf="ifLogin" nz-popover nzPlacement="bottom" nzTitle="Notification"
+          [nzContent]="notification_content" routerLinkActive="selected">
+        <nz-badge [nzDot]="true">
+              <nz-avatar nzSize="small" nzIcon="anticon anticon-notification" [nzShape]="'square'"></nz-avatar>
+        </nz-badge>
+      </li>
+      <li class="nav-item" *ngIf="ifLogin" [routerLink]="['/feeds']" routerLinkActive="selected">
+         <nz-badge [nzDot]="false" >
+              <nz-avatar nzSize="small" nzIcon="anticon anticon-mail" [nzShape]="'square'"></nz-avatar>
+        </nz-badge>
+      </li>
+      <li class="nav-item" *ngIf="ifLogin" >
+        <nz-avatar nz-popover nzPlacement="bottom" nzPlacement="bottomRight" [nzContent]="userContentTemplate"
+                   [nzTitle]="userTitleTemplate" nzIcon="anticon anticon-user" [nzSrc]="user.avatar_url"></nz-avatar>
+      </li>
+      <li class="nav-item" *ngIf="!ifLogin" [routerLink]="['/authentication/signin']" routerLinkActive="selected">Sign In</li>
+      <li class="nav-item" *ngIf="!ifLogin" [routerLink]="['/authentication/signup']" routerLinkActive="selected">Register</li>
+    </div>
+  </ul>
 
     <ng-template #userTitleTemplate>
-      <span>{{user.name}}</span>
+      <div nz-row class="title">
+        <div nz-col nzSpan="24">
+          <span class="name">{{user.name}}</span><br/>
+          <span class="abstract">{{user.about_me}}</span>
+        </div>
+      </div>
     </ng-template>
     <ng-template #userContentTemplate>
-      <div><a class="profile-content">Profile</a></div>
-      <div><a class="profile-content">Setting</a></div>
-      <div><a class="profile-content"><i class="anticon anticon-poweroff"></i>Log out</a></div>
+      <div class="button">
+        <div><a class="profile-content">Profile</a></div>
+        <div><a class="profile-content">Setting</a></div>
+      </div>
+        <div class="underline"></div>
+      <div class="logout">
+        <a (click)="logout()">
+          <i class="anti-logout anticon anticon-poweroff"></i>log out
+        </a>
+      </div>
     </ng-template>
     <ng-template #notification_content>
       <div>
         <p> Someone like your report </p>
       </div>
     </ng-template>
-    <ng-template #message_content>
-      <div>
-        <p>Someone send you a message</p>
-      </div>
-    </ng-template>
-  </ul>
 </div>

@@ -1,41 +1,102 @@
+*{
+  font-family: Helvetica;
+}
+// fix on the top
 .bio-nav{
   position: fixed;
   z-index:100;
   width:100%;
   top:0;
 }
-.menu-item-reverse {
-    span {
-        color: black;
-        background-color: #FFF;
-        padding: 3px 5px;
-        border-radius: 4px;
-    }
+
+//nav
+.brand{
+  width:auto;
+  height:21px;
+  margin-bottom: 2px;
 }
-.ant-menu {
-    background-color: #333333;
+
+.nav-container{
+  background-color: #333333;
+  display:flex;
+  height: 45px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 }
-.ant-menu-item .anticon {
-    margin-right: 0px;
+.nav-item{
+  display:inline;
+  color: #ffffff;
 }
-.ant-menu-item {
-    transition: transform 0.5s ease-in-out;
-    color: white;
-    box-shadow: none;
-    text-align: center;
+.nav-center .nav-item{
+  margin: 0px 20px 10px 20px;
 }
-.brand {
-    text-align: left;
+
+.nav-right .nav-item{
+  margin: 0px 20px 5px 20px;
 }
-.ant-menu-item:focus, .ant-menu-item:active {
-    box-shadow: none;
-    outline: none;
+:focus{
+  outline: 0;
 }
-.icon-item {
-    width: 25%;
-    display: inline-block;
-    padding: 0px 0px;
+.nav-item:hover{
+  cursor: pointer;
+}
+// user profile pop
+
+.avatar {
+  border-radius: 50%;
+  width: 100%;
+  height:auto;
+}
+.title{
+  width:200px;
+  .abstract{
+    font-family: HelveticaNeue;
+    color: #9B9B9B;
+    font-size: 5px;
+  }
+  .name{
+    font-family: HelveticaNeue-Bold;
+    color: #333333;
+    font-size:20px;
+  }
+}
+.underline{
+  color: #F2F2F2;
+  background-color: #e8e8e8;
+  height: 1px;
+}
+.logout{
+  color: black;
+  margin-top: 5px;
+  height:20px;
+}
+.logout a{
+  font-family:HelveticaNeue;
+  font-size: 15px;
+  color: black;
+  .anti-logout{
+    font-size: 14px;
+    margin-right: 5px;
+  }
+}
+.button{
+  margin-bottom: 10px;
+  size:15px;
+  div{
+    margin-bottom:10px;
+    height:20px;
+  }
 }
 .profile-content{
-  color: #1b1e21;
+  color: black;
+  font-family:HelveticaNeue;
+  font-size:14px;
+}
+
+.profile-content:hover{
+  color:#1890ff;
+}
+.logout a:hover{
+  color:#1890ff;
 }
