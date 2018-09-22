@@ -12,8 +12,8 @@ import {Label} from '../../Interface/userinfo';
 export class UserInfoComponent implements OnInit {
   @Input() user: User;
   all_archive: Archive[] = [];
-  all_labels: PopularReport[] = [];
-  all_pop_report: Label[] = [];
+  all_labels: Label[] = [];
+  all_pop_report: PopularReport[] = [];
   constructor() { }
 
   ngOnInit() {
