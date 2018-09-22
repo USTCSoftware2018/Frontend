@@ -1,8 +1,7 @@
 
 <div nz-row align="center">
   <div nz-col nzSpan="16" nzOffset="4">
-    <nz-avatar class="photo" nzIcon="anticon anticon-user" nzSrc="{{userinfoprofile.avatar_url}}" >
-    </nz-avatar>
+    <nz-avatar class="photo" nzIcon="anticon anticon-user" nzSrc="{{userinfoprofile.avatar_url}}" ></nz-avatar>
     <div class="name">{{userinfoprofile.name}}</div>
   </div>
 </div>
@@ -30,7 +29,7 @@
   <nz-divider></nz-divider>
 </div>
 <div nz-row align="center" class="number-info">
-  <div nz-col nzSpan="6">
+  <div nz-col nzSpan="6" [routerLink]="number_router">
     <div class="number">
       {{userinfoprofile.reportsnum}}
     </div>
@@ -38,7 +37,7 @@
       reports
     </div>
   </div>
-  <div nz-col nzSpan="6">
+  <div nz-col nzSpan="6" [routerLink]="number_router">
     <div class="number">
       {{userinfoprofile.followingnum}}
     </div>
@@ -46,7 +45,7 @@
       following
     </div>
   </div>
-  <div nz-col nzSpan="6">
+  <div nz-col nzSpan="6" [routerLink]="number_router">
     <div class="number">
       {{userinfoprofile.followednum}}
     </div>
@@ -54,7 +53,7 @@
       followers
     </div>
   </div>
-  <div nz-col nzSpan="6">
+  <div nz-col nzSpan="6" [routerLink]="number_router">
     <div class="number">
       {{userinfoprofile.likenum}}
     </div>

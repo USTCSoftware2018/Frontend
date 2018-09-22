@@ -18,7 +18,6 @@ const appRoutes: Routes = [
   { path: 'notification', component: NotificationComponent},
   { path: 'mypersonalcenter',
     loadChildren: '../my-personal-center/my-personal-center.module#MyPersonalCenterModule', data: {preload: true}},
-  { path: 'userinfo', loadChildren: '../user-info/watch-info.module#WatchInfoModule', data: {preload: true}},
   { path: 'authentication', loadChildren: '../authentic/authentic.module#AuthenticModule', data: {preload: true}},
   { path: 'search', loadChildren: '../biosearch/biosearch.module#BiosearchModule', data: {preload: true}},
   { path: 'explore', loadChildren: '../explore/explore.module#ExploreModule', data: {preload: true}},

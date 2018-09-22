@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
-import {WatchReportLabelComponent} from './watch-report-label/watch-report-label.component';
-import {Report2Component} from './report/report.component';
-import {WatchReportArchiveComponent} from './watch-report-archive/watch-report-archive.component';
+import { WatchReportLabelComponent } from './watch-report-label/watch-report-label.component';
+import { Report2Component } from './report/report.component';
+import { WatchReportArchiveComponent } from './watch-report-archive/watch-report-archive.component';
 
 const routs: Routes = [
   {

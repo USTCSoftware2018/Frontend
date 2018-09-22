@@ -9,12 +9,19 @@ import {Simuser} from '../../Interface/userinfo';
 export class UserInfoProfileComponent implements OnInit {
   @Input() userinfoprofile: Simuser;
   @Input() ifmyself: boolean;
+  number_router: string;
   ifFollow: boolean;
   follow_or_unfollow: string;
   constructor() { }
   ngOnInit() {
     this.ifFollow = this.userinfoprofile.ifFollow;
     this.follow_or_unfollow = this.ifFollow ? 'Follow' : 'Unfollow';
+    // 根据是否是自己设置点击四个字母跳转
+    if (this.ifmyself) {
+      this.number_router = '/mypersonalcenter/myinfo';
+    } else{
+      this.number_router = '/profile';
+    }
   }
   toggleFollow() {
     this.ifFollow = this.ifFollow ? false : true;

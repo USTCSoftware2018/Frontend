@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Simuser, User} from '../../../Interface/userinfo';
+import {Simuser, User} from '../../../../Interface/userinfo';
 
 @Component({
   selector: 'app-detailinfo',

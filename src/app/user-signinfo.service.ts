@@ -22,7 +22,7 @@ export class UserSigninfoService {
       this.myInfo = {
         id: info.id,
         actual_name: info.actualname,
-        name: info.user_name,
+        name: info.username,
         organization: info.organization,
         email: info.email,
         avatar_url: info.avatar_url,
