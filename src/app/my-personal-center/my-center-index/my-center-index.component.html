@@ -3,10 +3,10 @@
        [nzXl]="{span:18, offset:3}" [nzXXl]="{span:18, offset:3}" style="background-color:#ffffff">
     <div nz-row nzGutter="10">
       <div nz-col nzSpan="7" class="body">
-        <app-user-info-profile [ifmyself]="true" [userinfoprofile]="user"></app-user-info-profile>
+        <app-user-info-profile [ifmyself]="true" [user]="user"></app-user-info-profile>
         <nz-divider></nz-divider>
         <div class="about-me">
-          <pre>{{user.about_me}}</pre>
+          <pre>{{user?.about_me}}</pre>
         </div>
       </div>
       <div nz-col nzSpan="17" class="body right">

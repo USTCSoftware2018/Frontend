@@ -18,10 +18,8 @@ export class DetailinfoComponent implements OnInit {
       return value.id === otheruser.id;
     });
     if (ii === -1) {
-      console.log('no');
       return false;
     } else {
-      console.log('yes');
       return true;
     }
   }

@@ -1,4 +1,4 @@
-import { User, Report } from './userinfo';
+import {User, Report, Assortment} from './userinfo';
 import { Simuser } from './userinfo';
 
 export const user1: Simuser = {
@@ -93,7 +93,6 @@ const assortment = {
 };
 export const USER: User = {
   id: 1,
-  name: 'Thomas Romero',
   about_me: 'a student in ustc',
   following: {
     content: [ user1, user2],
@@ -106,7 +105,6 @@ export const USER: User = {
     report: report1,
   }],
   reports: [report1],
-  classification: assortment,
 };
 export const SIMUSER: Simuser = {
   id: 1,
@@ -123,3 +121,4 @@ export const SIMUSER: Simuser = {
   organization: 'USTC',
   ifFollow: true,
 };
+export const CLASSIFICATION: Assortment = assortment;

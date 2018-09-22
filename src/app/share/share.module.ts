@@ -13,6 +13,7 @@ import { ReportCardComponent } from './report-card/report-card.component';
 import { MyReportComponent } from './my-report/my-report.component';
 import { WatchReportByLabelComponent } from './watch-report-by-label/watch-report-by-label.component';
 import {RouterModule} from '@angular/router';
+import { ClassificationComponent } from './classification/classification.component';
 
 registerLocaleData(en);
 
@@ -32,6 +33,7 @@ registerLocaleData(en);
     ReportCardComponent,
     MyReportComponent,
     WatchReportByLabelComponent,
+    ClassificationComponent,
   ],
   // 公用导出组件放在exports数组内
   providers: [{ provide: NZ_I18N, useValue: en_US }],
@@ -45,7 +47,8 @@ registerLocaleData(en);
     UserInfoProfileComponent,
     ReportCardComponent,
     MyReportComponent,
-    WatchReportByLabelComponent
+    WatchReportByLabelComponent,
+    ClassificationComponent
   ]
 })
 export class ShareModule { }

@@ -6,8 +6,7 @@ import { PersonalInformationComponent } from './personal-information/personal-in
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { Report2Component } from './report/report.component';
 import { ShareModule } from '../share/share.module';
-import { UserInfoComponent } from './user-info/user-info.component';
-import { ProfileRoutingModule } from './profile-routing.module';
+import {OthersPersonalCenterRoutingModule} from './others-personal-center-routing.module';
 import { WatchReportLabelComponent } from './watch-report-label/watch-report-label.component';
 import { WatchReportArchiveComponent } from './watch-report-archive/watch-report-archive.component';
 
@@ -18,13 +17,12 @@ import { WatchReportArchiveComponent } from './watch-report-archive/watch-report
     NgZorroAntdModule,
     FormsModule,
     ShareModule,
-    ProfileRoutingModule
+    OthersPersonalCenterRoutingModule
   ],
   declarations: [
     PersonalInformationComponent,
     ProfilePageComponent,
     Report2Component,
-    UserInfoComponent,
     WatchReportLabelComponent,
     WatchReportArchiveComponent,
   ],
@@ -32,4 +30,4 @@ import { WatchReportArchiveComponent } from './watch-report-archive/watch-report
     NgZorroAntdModule,
   ]
 })
-export class ProfileModule { }
+export class OthersPersonalCenterModule { }

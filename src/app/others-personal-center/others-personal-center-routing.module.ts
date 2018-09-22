@@ -5,7 +5,7 @@ import { WatchReportLabelComponent } from './watch-report-label/watch-report-lab
 import { Report2Component } from './report/report.component';
 import { WatchReportArchiveComponent } from './watch-report-archive/watch-report-archive.component';
 
-const routs: Routes = [
+const routes: Routes = [
   {
     path: '',
     component: ProfilePageComponent,
@@ -28,13 +28,8 @@ const routs: Routes = [
       }]
   }
 ];
-
 @NgModule({
-  imports: [
-    RouterModule.forChild(routs)
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
-export class ProfileRoutingModule { }
+export class OthersPersonalCenterRoutingModule { }

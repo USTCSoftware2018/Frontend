@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../Interface/userinfo';
-import { USER } from '../../Interface/mock-user';
-import { SIMUSER } from '../../Interface/mock-user';
+import { User, Assortment } from '../../Interface/userinfo';
+import {SIMUSER, CLASSIFICATION} from '../../Interface/mock-user';
 import {HttpService} from '../../http.service';
 import {ApiResult} from '../../Interface/ApiResult';
 
@@ -12,7 +11,7 @@ import {ApiResult} from '../../Interface/ApiResult';
   styleUrls: ['./profile-page.component.less']
 })
 export class ProfilePageComponent implements OnInit {
-  user: User = USER;
+  user: Assortment = CLASSIFICATION;
   simuser = SIMUSER;
   yinyinyin: any;
   id: any;

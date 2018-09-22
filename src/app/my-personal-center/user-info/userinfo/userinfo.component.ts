@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../Interface/userinfo';
-import { USER } from '../../../Interface/mock-user';
-import { SIMUSER } from '../../../Interface/mock-user';
+import { UserSigninfoService } from '../../../user-signinfo.service';
+import { Simuser, User, Assortment} from '../../../Interface/userinfo';
+import { USER, SIMUSER, CLASSIFICATION} from '../../../Interface/mock-user';
 
 @Component({
   selector: 'app-userinfo',
@@ -10,10 +10,13 @@ import { SIMUSER } from '../../../Interface/mock-user';
 })
 export class UserinfoComponent implements OnInit {
   user: User = USER;
-  simuser = SIMUSER;
-  constructor() { }
+  simuser: Simuser = SIMUSER;
+  classification: Assortment = CLASSIFICATION;
+  constructor(private myinfo: UserSigninfoService) {
+  }
 
   ngOnInit() {
+    this.simuser = this.myinfo.myInfo;
   }
 
 }

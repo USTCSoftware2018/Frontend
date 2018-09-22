@@ -1,26 +1,26 @@
 <div>
   <div nz-row align="center">
     <div nz-col nzSpan="16" nzOffset="4">
-      <nz-avatar class="photo" nzIcon="anticon anticon-user" nzSrc="{{user.avatar_url}}" ></nz-avatar>
-      <div class="name">{{user.name}}</div>
+      <nz-avatar class="photo" nzIcon="anticon anticon-user" nzSrc="{{user?.avatar_url}}" ></nz-avatar>
+      <div class="name">{{user?.name}}</div>
     </div>
   </div>
   <nz-divider></nz-divider>
   <div nz-row align="center" class="number-info">
     <div nz-col nzSpan="6" [routerLink]="number_router">
-      <div class="number">{{user.reportsnum}}</div>
+      <div class="number">{{user?.reportsnum}}</div>
       <div>reports</div>
     </div>
     <div nz-col nzSpan="6" [routerLink]="number_router">
-      <div class="number">{{user.followingnum}}</div>
+      <div class="number">{{user?.followingnum}}</div>
       <div>following</div>
     </div>
     <div nz-col nzSpan="6" [routerLink]="number_router">
-      <div class="number">{{user.followednum}}</div>
+      <div class="number">{{user?.followednum}}</div>
       <div>followers</div>
     </div>
     <div nz-col nzSpan="6" [routerLink]="number_router">
-      <div class="number">{{user.likenum}}</div>
+      <div class="number">{{user?.likenum}}</div>
       <div>praises</div>
     </div>
   </div>

@@ -31,13 +31,11 @@ export class Like {
 }
 export class User {
   id: Number;
-  name: String;
   about_me: String;
   following: Info;
   followers: Info;
   likes: Like[];
   reports: Report[];
-  classification: Assortment;
 }
 export class Archive {
   data: string;

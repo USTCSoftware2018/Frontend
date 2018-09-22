@@ -13,7 +13,6 @@ import { EditorModule } from './editor/editor.module';
 import { ErrorModule } from './error/error.module';
 import { Error404Component } from './error/error404/error404.component';
 import { ReportshowComponent } from './reportshows/reportshow/reportshow.component';
-import { ProfileModule} from './profile/profile.module';
 import { ReportshowotherComponent } from './reportshows/reportshow/reportshowother/reportshowother.component';
 import { FeedsComponent } from './core/feeds/feeds.component';
 import { ShareModule } from './share/share.module';
@@ -42,7 +41,6 @@ registerLocaleData(en);
     EditorModule,
     ErrorModule,
     ReactiveFormsModule,
-    ProfileModule,
     ShareModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],

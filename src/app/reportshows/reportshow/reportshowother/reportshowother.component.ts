@@ -8,8 +8,8 @@ import { USER } from '../mock-user';
 import { ShareModule } from '../../../share/share.module';
 import { Simuser } from '../../../Interface/userinfo';
 import { user1 } from '../../../Interface/mock-user';
-import {UserInfoProfile} from '../../../profile/personal-information/userinfoprofile';
-import {USERINFOPROFILE} from '../../../profile/personal-information/mock-userinfoprofile';
+import {UserInfoProfile} from '../../../others-personal-center/personal-information/userinfoprofile';
+import {USERINFOPROFILE} from '../../../others-personal-center/personal-information/mock-userinfoprofile';
 import {variable} from '@angular/compiler/src/output/output_ast';
 import {isLineBreak} from 'codelyzer/angular/sourceMappingVisitor';
 
