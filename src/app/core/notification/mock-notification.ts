@@ -1,4 +1,4 @@
-import { user1, user2, user3, report1 } from '../Interface/mock-user';
+import { user1, user2, user3, report1 } from '../../Interface/mock-user';
 
 const LIKENOTI = {
   kind: 'like',

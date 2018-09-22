@@ -7,8 +7,8 @@ import { user1} from './Interface/mock-user';
   providedIn: 'root'
 })
 export class UserSigninfoService {
-  isLogin = true;
-  myInfo: Simuser|undefined = user1;
+  isLogin = false;
+  myInfo: Simuser|undefined = undefined;
   username: string;
   password: string;
 
