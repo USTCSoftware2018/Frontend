@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 /*import { UserInfoProfile} from "./user-info-profile";*/
-import {Simuser} from "../../Interface/userinfo";
+import {Simuser} from '../../Interface/userinfo';
 
 @Component({
   selector: 'app-user-info-profile',
