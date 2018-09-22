@@ -10,6 +10,7 @@ import { AppendixService } from './core/appendix.service';
 import { EditorReportService } from './core/editorReport.service';
 import { GetDataService } from './getData/getData.service';
 import { EditorEventService } from './core/editor-event.service';
+import { RenderService } from './render/render.service';
 
 import { MainComponent } from './views/main/main.component';
 import { StepBarComponent } from './views/step-bar/step-bar.component';
@@ -24,6 +25,7 @@ import { ListPanelComponent } from './views/list-panel/list-panel.component';
 import { RemarkPanelComponent } from './views/remark-panel/remark-panel.component';
 import { InfoPanelComponent } from './views/info-panel/info-panel.component';
 import { EditorScrollComponent } from './views/editor-scroll/editor-scroll.component';
+import { EditorReportShowAreaComponent } from './render/editor-report-show-area/editor-report-show-area.component';
 
 @NgModule({
   imports: [
@@ -46,6 +48,7 @@ import { EditorScrollComponent } from './views/editor-scroll/editor-scroll.compo
     RemarkPanelComponent,
     InfoPanelComponent,
     EditorScrollComponent,
+    EditorReportShowAreaComponent,
   ],
   providers: [
     StepsService,
@@ -53,6 +56,7 @@ import { EditorScrollComponent } from './views/editor-scroll/editor-scroll.compo
     GetDataService,
     AppendixService,
     EditorEventService,
+    RenderService,
   ],
 })
 export class EditorModule { }
