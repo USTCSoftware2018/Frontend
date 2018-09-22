@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Report} from '../../Interface/userinfo';
+import {Report, Simuser} from '../../Interface/userinfo';
 import {ReportServiceService} from '../report-service.service';
 import {USER} from '../../Interface/mock-user';
 import {
@@ -60,6 +60,18 @@ export class Report2Component implements OnInit {
     } else {
       this.reports_onshow = this.user.reports.slice(0, 6);
       this.reports_unshow = this.user.reports.slice(6, this.user.reports.length);
+    }
+  }
+  ifFollowing(otheruser: Simuser) {
+    const ii = this.user.following.content.findIndex(function(value) {
+      return value.id === otheruser.id;
+    });
+    if (ii === -1) {
+      console.log('no');
+      return false;
+    } else {
+      console.log('yes');
+      return true;
     }
   }
 
