@@ -6,6 +6,7 @@ import { MainComponent as EditorMainComponent} from '../editor/views/main/main.c
 import { ReportshowotherComponent } from '../reportshows/reportshow/reportshowother/reportshowother.component';
 import { FeedsComponent } from '../core/feeds/feeds.component';
 import { HttpExampleComponent } from '../http-example/http-example.component';
+import { EditorReportShowAreaComponent } from '../editor/render/editor-report-show-area/editor-report-show-area.component';
 
 
 const appRoutes: Routes = [
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   { path: 'reportshows', loadChildren: '../reportshows/reportshows.module#ReportshowsModule', data: {preload: true}},
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: Error404Component},
+  { path: 'test', component: EditorReportShowAreaComponent},
 ];
 
 @NgModule({

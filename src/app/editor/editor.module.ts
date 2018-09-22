@@ -49,6 +49,7 @@ import { EditorReportShowAreaComponent } from './render/editor-report-show-area/
     InfoPanelComponent,
     EditorScrollComponent,
     EditorReportShowAreaComponent,
+    EditorReportShowAreaComponent
   ],
   providers: [
     StepsService,
