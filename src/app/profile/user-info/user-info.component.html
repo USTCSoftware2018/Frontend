@@ -14,7 +14,7 @@
   <label>Archive</label>
   <div class="content">
     <div *ngFor="let archive of all_archive">
-      <a>{{archive.data}}</a>
+      <a routerLink="/profile/archive/{{archive.data}}">{{archive.data}}</a>
       <span  class="small-word">{{archive.num}}&nbsp;reports</span>
     </div>
   </div>

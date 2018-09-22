@@ -9,6 +9,7 @@ import { ShareModule } from '../share/share.module';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { WatchReportLabelComponent } from './watch-report-label/watch-report-label.component';
+import { WatchReportArchiveComponent } from './watch-report-archive/watch-report-archive.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { WatchReportLabelComponent } from './watch-report-label/watch-report-lab
     Report2Component,
     UserInfoComponent,
     WatchReportLabelComponent,
+    WatchReportArchiveComponent,
   ],
   exports: [
     NgZorroAntdModule,
