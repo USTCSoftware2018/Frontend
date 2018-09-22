@@ -1,4 +1,4 @@
-import {Report, Simuser} from '../Interface/userinfo';
+import {Report, Simuser} from '../../Interface/userinfo';
 
 export class LikeNotification {
   kind: string;

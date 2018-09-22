@@ -15,11 +15,11 @@ import { Error404Component } from './error/error404/error404.component';
 import { ReportshowComponent } from './reportshows/reportshow/reportshow.component';
 import { UserSetModule } from './user-set/user-set.module';
 import { ProfileModule} from './profile/profile.module';
-import { NotificationModule } from './notification/notification.module';
 import { ReportshowotherComponent } from './reportshows/reportshow/reportshowother/reportshowother.component';
 import { FeedsComponent } from './core/feeds/feeds.component';
 import { ShareModule } from './share/share.module';
 import { HttpExampleComponent } from './http-example/http-example.component';
+import {NotificationComponent} from './core/notification/notification.component';
 
 registerLocaleData(en);
 
@@ -31,6 +31,7 @@ registerLocaleData(en);
     ReportshowotherComponent,
     FeedsComponent,
     HttpExampleComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +45,6 @@ registerLocaleData(en);
     ErrorModule,
     ReactiveFormsModule,
     ProfileModule,
-    NotificationModule,
     ShareModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Simuser } from './Interface/userinfo';
 import {HttpService} from './http.service';
+import { user1} from './Interface/mock-user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserSigninfoService {
   isLogin = false;
-  myInfo: Simuser|undefined;
+  myInfo: Simuser|undefined = undefined;
   username: string;
   password: string;
 
