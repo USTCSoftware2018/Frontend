@@ -10,8 +10,8 @@ import { Location } from '@angular/common';
   styleUrls: ['./user-nav.component.less']
 })
 export class UserNavComponent implements OnInit {
-  isreport:boolean;
-  thisurl:string;
+  isreport: boolean;
+  thisurl: string;
   constructor( private route: ActivatedRoute,
                private router: Router,
                private location:Location) { }
@@ -20,8 +20,8 @@ export class UserNavComponent implements OnInit {
     this.isCollapsed = !this.isCollapsed;
   }
   ngOnInit() {
-    this.thisurl=location.pathname;
-    this.isreport=this.thisurl==='/userset/user-report/report-all'||this.thisurl==='/userset/user-report/report-draft';
+    this.thisurl = location.pathname;
+    this.isreport = this.thisurl==='/userset/user-report/report-all'||this.thisurl==='/userset/user-report/report-draft';
     this.isCollapsed=this.isreport;
   }
   okisreport(){

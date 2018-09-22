@@ -13,7 +13,6 @@ import { EditorModule } from './editor/editor.module';
 import { ErrorModule } from './error/error.module';
 import { Error404Component } from './error/error404/error404.component';
 import { ReportshowComponent } from './reportshows/reportshow/reportshow.component';
-import { UserSetModule } from './user-set/user-set.module';
 import { ProfileModule} from './profile/profile.module';
 import { ReportshowotherComponent } from './reportshows/reportshow/reportshowother/reportshowother.component';
 import { FeedsComponent } from './core/feeds/feeds.component';
@@ -38,7 +37,6 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    UserSetModule,
     NgZorroAntdModule,
     AppRoutingModule,
     EditorModule,
