@@ -48,7 +48,7 @@ export class ReportResultHeader {
     list?: ReportListHeader[];
     remark?: string;
     pic?: Array<ReportGraphHeader>;
-    table?: string;
+    table?: any[];
 }
 
 export class ReportHeader {
