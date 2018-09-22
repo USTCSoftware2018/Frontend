@@ -14,8 +14,7 @@ export const user1: Simuser = {
   location: 'China',
   email: 'biohub@mail.ustc.edu.cn',
   organization: 'USTC',
-  follow_or_unfollow: true,
-  follow_or_edit: true,
+  ifFollow: true,
 };
 export const user2: Simuser = {
   id: 3,
@@ -30,8 +29,7 @@ export const user2: Simuser = {
   location: 'China',
   email: 'biohub@mail.ustc.edu.cn',
   organization: 'USTC',
-  follow_or_unfollow: true,
-  follow_or_edit: true,
+  ifFollow: true,
 };
 export const user3: Simuser = {
   id: 4,
@@ -46,8 +44,7 @@ export const user3: Simuser = {
   location: 'China',
   email: 'biohub@mail.ustc.edu.cn',
   organization: 'USTC',
-  follow_or_unfollow: true,
-  follow_or_edit: true,
+  ifFollow: true,
 };
 const user4: Simuser = {
   id: 5,
@@ -62,14 +59,13 @@ const user4: Simuser = {
   location: 'China',
   email: 'biohub@mail.ustc.edu.cn',
   organization: 'USTC',
-  follow_or_unfollow: true,
-  follow_or_edit: true,
+  ifFollow: true,
 };
 export const report1: Report = {
   id: 1,
   title: 'research',
   author: user4,
-  topic: ['A', 'B', 'C'],
+  labels: ['A', 'B', 'C'],
   abstract: '1. Centifuge 1.5 mL bacterium solution at 11000 rpm, few sediment getted. Remove the supernatant. Repeat twice.\n' +
   '2. Add 250 μL Buﬀer P1, resuspend cells.\n' +
   '1. Centifuge 1.5 mL bacterium solution at 11000 rpm, few sediment getted. Remove the supernatant. Repeat twice.\n' +
@@ -125,6 +121,5 @@ export const SIMUSER: Simuser = {
   location: 'China',
   email: 'biohub@mail.ustc.edu.cn',
   organization: 'USTC',
-  follow_or_unfollow: true,
-  follow_or_edit: true,
+  ifFollow: true,
 };

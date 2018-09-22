@@ -14,11 +14,11 @@ export class UserInfoProfileComponent implements OnInit {
   constructor() { }
   ngOnInit() {
     this.ifFollow = this.userinfoprofile.ifFollow;
-    this.follow_or_unfollow = this.ifFollow ? 'follow' : 'unfollow';
+    this.follow_or_unfollow = this.ifFollow ? 'Follow' : 'Unfollow';
   }
   toggleFollow() {
     this.ifFollow = this.ifFollow ? false : true;
-    this.follow_or_unfollow = this.ifFollow ? 'follow' : 'unfollow';
+    this.follow_or_unfollow = this.ifFollow ? 'Follow' : 'Unfollow';
   }
   /*
   handleOk(): void {

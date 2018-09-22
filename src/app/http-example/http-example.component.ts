@@ -109,4 +109,3 @@ export class HttpExampleComponent implements OnInit {
   }
 
 }
-

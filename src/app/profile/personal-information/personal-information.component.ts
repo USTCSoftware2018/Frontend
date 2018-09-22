@@ -9,8 +9,8 @@ import {Simuser} from '../../Interface/userinfo';
   styleUrls: ['./personal-information.component.less']
 })
 export class PersonalInformationComponent implements OnInit {
-  @Input() userinfo;  //这是左上角的数据
-  @Input() userinfo2; //这是左下角的数据
+  @Input() userinfo;  // 这是左上角的数据
+  @Input() userinfo2; // 这是左下角的数据
   constructor() { }
 
   ngOnInit() {

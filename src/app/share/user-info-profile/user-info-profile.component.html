@@ -1,7 +1,7 @@
 
 <div nz-row align="center">
   <div nz-col nzSpan="16" nzOffset="4">
-    <nz-avatar class="photo" nzIcon="anticon anticon-user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" >
+    <nz-avatar class="photo" nzIcon="anticon anticon-user" nzSrc="{{userinfoprofile.avatar_url}}" >
     </nz-avatar>
     <div class="name">{{userinfoprofile.name}}</div>
   </div>
@@ -24,7 +24,7 @@
     </div>
     -->
     <div *ngIf="ifmyself">
-      <button nz-button nzType="primary" class="rectangle3">edit</button>
+      <button nz-button nzType="primary" class="rectangle3" routerLink="/mypersonalcenter/userset">Edit</button>
     </div>
   </div>
   <nz-divider></nz-divider>

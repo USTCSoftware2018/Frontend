@@ -20,7 +20,7 @@
 
     <div class="nav-right">
       <li class="nav-item" *ngIf="ifLogin" nz-popover nzPlacement="bottom" nzTitle="Notification"
-          [nzContent]="notification_content" routerLinkActive="selected">
+          [nzContent]="notification_content" [routerLink]="['/notification']" routerLinkActive="selected">
         <nz-badge [nzDot]="true">
               <nz-avatar nzSize="small" nzIcon="anticon anticon-notification" [nzShape]="'square'"></nz-avatar>
         </nz-badge>
@@ -49,8 +49,8 @@
     </ng-template>
     <ng-template #userContentTemplate>
       <div class="button">
-        <div><a class="profile-content" routerLink="/notification">Profile</a></div>
-        <div><a class="profile-content" routerLink="/userset">Setting</a></div>
+        <div><a class="profile-content" routerLink="/mypersonalcenter">Profile</a></div>
+        <div><a class="profile-content" routerLink="/mypersonalcenter/userset">Setting</a></div>
       </div>
         <div class="underline"></div>
       <div class="logout">

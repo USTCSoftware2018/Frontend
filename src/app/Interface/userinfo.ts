@@ -20,7 +20,7 @@ export class Report {
   id: number;
   title: String;
   author: Simuser;
-  topic: String[];
+  labels: String[];
   abstract: String;
   commentsnum: Number;
   likesnum: Number;
