@@ -31,7 +31,7 @@ export class HttpExampleComponent implements OnInit {
       id: '1'
     }},
     {name: '我是谁', lable: 'get_myself', func: this.http.get_myself, templa: {}},
-    {name: '拿到Simuser', lable: 'get_stat_by_id', func: this.http.get_stat_by_id, templa: {id: 1}},
+    {name: '拿到Simuser', lable: 'get_simuser_by_id', func: this.http.get_simuser_by_id, templa: {id: 1}},
     {name: '关注某人', lable: 'follow_user_by_id', func: this.http.follow_user_by_id, templa: {
       user_id: '1'
     }},
