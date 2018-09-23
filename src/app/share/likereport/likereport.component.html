@@ -3,14 +3,14 @@
   <div nz-col nzSpan="4" align="center">
     <div nz-row>
       <div nz-col nzOffset="5" nzSpan="14">
-        <a><img class="avatar" src="{{like.ouser.avatar_url}}"></a>
+        <a (click)="gotoIndex()"><img class="avatar" src="{{like.ouser.avatar_url}}"></a>
       </div>
     </div>
   </div>
   <div  nz-col nzSpan="20">
     <div nz-row >
       <div class="title" nz-col nzSpan="24">
-        <a class="titleb">{{like.ouser.username}}</a>
+        <a class="titleb" (click)="gotoIndex()">{{like.ouser.username}}</a>
         <span class="titlel">&nbsp;&nbsp;likes&nbsp;&nbsp;</span>
         <a class="titleb">{{like.report.title}}</a>
       </div>
@@ -19,7 +19,9 @@
       </div>
       <div class="topic-title" nz-col nzSpan="6">
         <span class="topic-title">labels:</span>
-        <span class="topic-content">&nbsp;&nbsp;{{like.report.labels[0]}}&nbsp;&nbsp;&nbsp;{{like.report.labels[1]}}&nbsp;&nbsp;&nbsp;{{like.report.labels[2]}}</span>
+        <a class="topic-content">&nbsp;&nbsp;{{like.report.labels[0]}}</a>
+        <a class="topic-content"> {{like.report.labels[1]}} </a>
+        <a class="topic-content"> {{like.report.labels[2]}}</a>
       </div>
       <div nz-col nzOffset="10" nzSpan="3">
         <span class="info-num">{{like.report.likesnum}}&nbsp;likes</span>

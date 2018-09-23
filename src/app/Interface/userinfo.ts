@@ -10,7 +10,7 @@ export class Simuser {
   followed?: boolean;
   site_url?: string;
   last_login?: string;
-  stat: Stat;
+  stat?: Stat; // 头像框下方四个数据
 }
 export class Stat {
   following_count: number;

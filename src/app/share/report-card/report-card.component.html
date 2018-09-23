@@ -2,7 +2,7 @@
          nzHoverable="true" [nzActions]="[actionLike,actionCollection]">
   <div class="report-info-container">
     <div class="report-info">
-      <nz-avatar [nzSrc]="report.author.avatar_url"></nz-avatar>
+      <a (click)="gotoIndex()"><nz-avatar [nzSrc]="report.author.avatar_url"></nz-avatar></a>
       <span>&nbsp;&nbsp;</span>
       <span class="report-title">{{report.title}}</span>
       <div class="report-abstract-container">
