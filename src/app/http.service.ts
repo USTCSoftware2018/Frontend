@@ -105,7 +105,12 @@ export class HttpService {
     this.fire('users/register/', 'post', params, callback);
   }
 
-  update_personal_information(avatar_url: string, actualname: string, location: string, description: string, organization: string, 
+  update_profile(avatar_url: string, actualname: string, location: string, description: string, organization: string, 
+    // update self profile
+    // will be updated:
+    //   actualname: "aaa"
+    // will not be updated
+    //   actualname: null
     email: string, callback: callbackFunc) {
       const params = {
         avatar_url: avatar_url,
@@ -115,7 +120,7 @@ export class HttpService {
         organization: organization,
         email: email
       };
-      this.fire('users/information/', 'post', params, callback);
+      this.fire('users/information/', 'patch', params, callback);
     }
 
     update_actualname(actualname: string, callback: callbackFunc) {
