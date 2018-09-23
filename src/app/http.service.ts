@@ -32,6 +32,8 @@ export class HttpService {
       ret = this.http.post(apiURL, params, this.httpOptions);
     } else if (method === 'options') {
       ret = this.http.options(apiURL, this.httpOptions);
+    } else if (method === 'patch') {
+      ret = this.http.patch(apiURL, this.httpOptions);
     } else {
       ret = this.http.get(apiURL, this.httpOptions);
     }
@@ -124,7 +126,6 @@ user_login(username: string, password: string, callback: callbackFunc) {
     // get myself
     this.fire(`users/me/`, 'get', null, callback);
   }
-
 
   delete_user_by_id(id: number, callback: callbackFunc) {
     // delete user from the server
