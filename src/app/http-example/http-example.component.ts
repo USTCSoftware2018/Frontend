@@ -43,8 +43,7 @@ export class HttpExampleComponent implements OnInit {
     {name: '退出登录', lable: 'user_logout', func: this.http.user_logout, templa: {}},
     {name: '更改密码', lable: 'update_password', func: this.http.update_password, templa: {
       old: 'b123456',
-      new1: 'a123456',
-      new2: 'a123456'
+      new1: 'a123456'
     }},
     {name: '获取steps', lable: 'get_all_my_steps', func: this.http.get_all_my_steps, templa: {}},
     {name: '获取reports', lable: 'get_all_my_reports', func: this.http.get_all_my_reports, templa:
