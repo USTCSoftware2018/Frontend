@@ -120,7 +120,7 @@ export class HttpService {
         organization: organization,
         email: email
       };
-      this.fire('users/information/', 'patch', params, callback);
+      this.fire('users/me/', 'patch', params, callback);
     }
 
     update_actualname(actualname: string, callback: callbackFunc) {
