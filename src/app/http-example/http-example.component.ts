@@ -31,15 +31,25 @@ export class HttpExampleComponent implements OnInit {
       id: '1'
     }},
     {name: '我是谁', lable: 'get_myself', func: this.http.get_myself, templa: {}},
-    {name: '拿头像框下面的四个数据', lable: 'get_stat_by_id', func: this.http.get_stat_by_id, templa: {id: 1}},
+    {name: '拿到Simuser', lable: 'get_simuser_by_id', func: this.http.get_simuser_by_id, templa: {id: 1}},
     {name: '关注某人', lable: 'follow_user_by_id', func: this.http.follow_user_by_id, templa: {
       user_id: '1'
     }},
     {name: '取消关注某人', lable: 'unfollow_user_by_id', func: this.http.unfollow_user_by_id, templa: {
       user_id: '1'
     }},
-    {name: '拿到我的所有follower', lable: 'get_all_my_followers', func: this.http.get_all_my_followers, templa: {}},
-    {name: '拿到我的所有following', lable: 'get_all_my_followings', func: this.http.get_all_my_followers, templa: {}},
+    {name: '拿到我的的所有follower', lable: 'get_followers_by_id', func: this.http.get_followers_by_id, templa: {
+      id: 'me'
+    }},
+    {name: '拿到我的所有following', lable: 'get_followings_by_id', func: this.http.get_followings_by_id, templa: {
+      id: 'me'
+    }},
+    {name: '拿到一个人的所有follower', lable: 'get_followers_by_id', func: this.http.get_followers_by_id, templa: {
+      id: '2'
+    }},
+    {name: '拿到一个人的所有following', lable: 'get_followings_by_id', func: this.http.get_followings_by_id, templa: {
+      id: '2'
+    }},
     {name: '退出登录', lable: 'user_logout', func: this.http.user_logout, templa: {}},
     {name: '更改密码', lable: 'update_password', func: this.http.update_password, templa: {
       old: 'b123456',

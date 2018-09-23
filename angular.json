@@ -31,7 +31,9 @@
               "src/theme.less",
               "src/styles.less"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -82,7 +84,9 @@
               "src/theme.less",
               "src/styles.less"
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"

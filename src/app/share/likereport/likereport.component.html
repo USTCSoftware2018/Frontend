@@ -10,7 +10,7 @@
   <div  nz-col nzSpan="20">
     <div nz-row >
       <div class="title" nz-col nzSpan="24">
-        <a class="titleb">{{like.ouser.name}}</a>
+        <a class="titleb">{{like.ouser.username}}</a>
         <span class="titlel">&nbsp;&nbsp;likes&nbsp;&nbsp;</span>
         <a class="titleb">{{like.report.title}}</a>
       </div>
@@ -18,8 +18,8 @@
         <pre>{{like.report.abstract}}</pre>
       </div>
       <div class="topic-title" nz-col nzSpan="6">
-        <span class="topic-title">topics:</span>
-        <span class="topic-content">&nbsp;&nbsp;{{like.report.topic[0]}}&nbsp;&nbsp;&nbsp;{{like.report.topic[1]}}&nbsp;&nbsp;&nbsp;{{like.report.topic[2]}}</span>
+        <span class="topic-title">labels:</span>
+        <span class="topic-content">&nbsp;&nbsp;{{like.report.labels[0]}}&nbsp;&nbsp;&nbsp;{{like.report.labels[1]}}&nbsp;&nbsp;&nbsp;{{like.report.labels[2]}}</span>
       </div>
       <div nz-col nzOffset="10" nzSpan="3">
         <span class="info-num">{{like.report.likesnum}}&nbsp;likes</span>

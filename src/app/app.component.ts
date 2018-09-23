@@ -15,7 +15,7 @@ export class AppComponent {
   constructor( private http: HttpService,
                private myinfo: UserSigninfoService) {
     this.http.user_logout(function() {});
-    this.http.user_login('test', 'a123456', this.judegeSign);
+    this.http.user_login('miaowashuang', 'yjw123456', this.judegeSign);
   }
   judegeSign = (result: ApiResult) => {
     this.myinfo.setUserInfobyInfo(result.success, result.data);

@@ -44,11 +44,11 @@ export class ReportSubroutineHeader {
 
 export class ReportResultHeader {
     subType: subType;
-    desc?: string;
+    desc?: string; // 废弃
     list?: ReportListHeader[];
     remark?: string;
     pic?: Array<ReportGraphHeader>;
-    table?: string;
+    table?: any[];
 }
 
 export class ReportHeader {
@@ -65,6 +65,7 @@ export class ReportHeader {
     subroutines: Array<ReportSubroutineHeader>;
     constructor () {}
 }
+
 
 // 图片
 

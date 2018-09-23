@@ -1,17 +1,22 @@
 export class Simuser {
   id: number;
-  name: string;
+  username: string;
   avatar_url: string;
   actual_name: string;
-  about_me: string;
-  followingnum: number;
-  followednum: number;
-  likenum: number;
-  reportsnum: number;
+  description: string;
   location: string;
   email: string;
   organization: string;
-  ifFollow?: boolean;
+  followed?: boolean;
+  site_url?: string;
+  last_login?: string;
+  stat: Stat;
+}
+export class Stat {
+  following_count: number;
+  follower_count: number;
+  star_count: number;
+  experience_count: number;
 }
 export class Info {
   content: Simuser[];
@@ -38,7 +43,7 @@ export class User {
   reports: Report[];
 }
 export class Archive {
-  data: string;
+  date: string;
   num: number;
 }
 

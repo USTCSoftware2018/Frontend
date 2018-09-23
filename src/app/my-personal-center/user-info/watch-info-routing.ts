@@ -5,11 +5,11 @@ import {DetailinfoBylabelComponent} from './watch-info/detailinfo-bylabel/detail
 import {DetailinfoByarchiveComponent} from './watch-info/detailinfo-byarchive/detailinfo-byarchive.component';
 
 export const userinfo_route: Route = {
-  path: 'myinfo', component: UserinfoComponent,
+  path: 'detailinfo', component: UserinfoComponent,
   children: [
     { path: '', redirectTo: 'index'} ,
     { path: 'index', component: DetailinfoComponent},
     { path: 'label/:name', component: DetailinfoBylabelComponent},
-    { path: 'archive/:data', component: DetailinfoByarchiveComponent},
+    { path: 'archive/:date', component: DetailinfoByarchiveComponent},
     ]
 };
