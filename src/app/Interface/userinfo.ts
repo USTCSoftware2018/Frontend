@@ -11,16 +11,16 @@ export class Simuser {
   location: string;
   email: string;
   organization: string;
-  follow_or_unfollow: boolean;
-  follow_or_edit: boolean;
+  ifFollow?: boolean;
 }
 export class Info {
   content: Simuser[];
 }
 export class Report {
+  id: number;
   title: String;
   author: Simuser;
-  topic: String[];
+  labels: String[];
   abstract: String;
   commentsnum: Number;
   likesnum: Number;
@@ -31,13 +31,11 @@ export class Like {
 }
 export class User {
   id: Number;
-  name: String;
   about_me: String;
   following: Info;
   followers: Info;
   likes: Like[];
   reports: Report[];
-  classification: Assortment;
 }
 export class Archive {
   data: string;
@@ -46,7 +44,7 @@ export class Archive {
 
 export class PopularReport {
   name: string;
-  num: number;
+  praises: number;
 }
 
 export class Label {

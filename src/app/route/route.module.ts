@@ -6,7 +6,11 @@ import { MainComponent as EditorMainComponent} from '../editor/views/main/main.c
 import { ReportshowotherComponent } from '../reportshows/reportshow/reportshowother/reportshowother.component';
 import { FeedsComponent } from '../core/feeds/feeds.component';
 import { HttpExampleComponent } from '../http-example/http-example.component';
+<<<<<<< HEAD
 import { EditorReportShowAreaComponent } from '../editor/render/editor-report-show-area/editor-report-show-area.component';
+=======
+import {NotificationComponent} from '../core/notification/notification.component';
+>>>>>>> dev
 
 
 const appRoutes: Routes = [
@@ -16,13 +20,19 @@ const appRoutes: Routes = [
   { path: 'reportshow', component: ReportshowComponent},
   { path: 'reportdisplay', component: ReportshowotherComponent},
   { path: 'feeds', component: FeedsComponent},
-  { path: 'userset', loadChildren: '../user-set/user-set.module#UserSetModule', data: { preload: true } },
-  { path: 'userinfo', loadChildren: '../user-info/watch-info.module#WatchInfoModule', data: {preload: true}},
+  { path: 'notification', component: NotificationComponent},
+  { path: 'mypersonalcenter',
+    loadChildren: '../my-personal-center/my-personal-center.module#MyPersonalCenterModule', data: {preload: true}},
   { path: 'authentication', loadChildren: '../authentic/authentic.module#AuthenticModule', data: {preload: true}},
   { path: 'search', loadChildren: '../biosearch/biosearch.module#BiosearchModule', data: {preload: true}},
   { path: 'explore', loadChildren: '../explore/explore.module#ExploreModule', data: {preload: true}},
+<<<<<<< HEAD
   { path: 'profile', loadChildren: '../profile/profile.module#ProfileModule', data: {preload: true}},
   { path: 'notification', loadChildren: '../notification/notification.module#NotificationModule', data: {preload: true}},
+=======
+  { path: 'infocenter', loadChildren: '../others-personal-center/others-personal-center.module#OthersPersonalCenterModule',
+    data: {preload: true}},
+>>>>>>> dev
   { path: 'reportshows', loadChildren: '../reportshows/reportshows.module#ReportshowsModule', data: {preload: true}},
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: Error404Component}

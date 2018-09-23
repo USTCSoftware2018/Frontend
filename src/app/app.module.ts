@@ -13,14 +13,15 @@ import { EditorModule } from './editor/editor.module';
 import { ErrorModule } from './error/error.module';
 import { Error404Component } from './error/error404/error404.component';
 import { ReportshowComponent } from './reportshows/reportshow/reportshow.component';
-import { UserSetModule } from './user-set/user-set.module';
-import { ProfileModule} from './profile/profile.module';
-import { NotificationModule } from './notification/notification.module';
 import { ReportshowotherComponent } from './reportshows/reportshow/reportshowother/reportshowother.component';
 import { FeedsComponent } from './core/feeds/feeds.component';
 import { ShareModule } from './share/share.module';
 import { HttpExampleComponent } from './http-example/http-example.component';
+<<<<<<< HEAD
 import { TryComponent } from './try/try.component';
+=======
+import {NotificationComponent} from './core/notification/notification.component';
+>>>>>>> dev
 
 registerLocaleData(en);
 
@@ -32,21 +33,22 @@ registerLocaleData(en);
     ReportshowotherComponent,
     FeedsComponent,
     HttpExampleComponent,
+<<<<<<< HEAD
     TryComponent,
+=======
+    NotificationComponent
+>>>>>>> dev
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    UserSetModule,
     NgZorroAntdModule,
     AppRoutingModule,
     EditorModule,
     ErrorModule,
     ReactiveFormsModule,
-    ProfileModule,
-    NotificationModule,
     ShareModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
