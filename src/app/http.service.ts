@@ -219,30 +219,9 @@ export class HttpService {
     this.fire(`editor/report/${id}`, 'get', null, callback);
   }
 
-
-
-
-
-
-
-// --------------- ******************** Action ******************** ------------------//
-
-  // activate account
-  activate_acount(token: string) {
-    const url = `${this.global_url}/login/comfirm/${token}`;
-    return this.http.get(url, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
-  }
-
-  // forget password
-  forget_password(email: string, data: {email: string}) {
-    const url = `${this.global_url}/forget-password`;
-    return this.http.post(url, data, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
+  get_stat_by_id(id: number, callback: callbackFunc) {
+    // get stat by id
+    this.fire(`users/${id}/stat`, 'get', null, callback);
   }
 
   user_login(username: string, password: string, callback: callbackFunc) {
@@ -267,53 +246,5 @@ export class HttpService {
     };
     this.fire('users/change_password/', 'post', params, callback);
   }
-
-  // get feeds
-  get_feeds() {
-    const url = `${this.global_url}/get-feeds`;
-    return this.http.get(url)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`fetch all feeds`))
-    );
-  }
-
-
-  // get someone's favorites
-  get_favorites_by_id(id: number) {
-    const url = `${this.global_url}/users/${id}/favorites`;
-    return this.http.get(url, this.httpOptions)
-      .pipe(
-        retry(3)
-      );
-  }
-
-  get_followers_by_id(user_id: number, callback: callbackFunc) {
-    // get someone's followers
-    this.fire(`users/${user_id}/followers/`, 'get', null, callback);
-  }
-
-  get_followings_by_id(user_id: number, callback: callbackFunc) {
-    // get someone's followings
-    this.fire(`users/${user_id}/following/`, 'get', null, callback);
-  }
-
-  // get someone's collections
-  get_collections(id: number) {
-    const url = `${this.global_url}/users/${id}/collections`;
-    return this.http.get(url)
-      .pipe(
-        retry(3),
-        tap(() => console.log(`fetch id's collections`))
-    );
-  }
 }
-
-
-
-
-
-
-
-
 
