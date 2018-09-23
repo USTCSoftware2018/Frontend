@@ -63,7 +63,14 @@ export class HttpService {
     );
   }
 
-user_login(username: string, password: string, callback: callbackFunc) {
+
+  ///////////////////// User //////////////////////////////////////////
+  get_simuser_by_id(id: number, callback: callbackFunc) {
+    // get stat by id
+    this.fire(`users/${id}/stat`, 'get', null, callback);
+  }
+
+  user_login(username: string, password: string, callback: callbackFunc) {
     // user login
     const params = {
       username: username,
@@ -157,6 +164,8 @@ user_login(username: string, password: string, callback: callbackFunc) {
     this.fire(`users/${user_id}/following/`, 'get', null, callback);
   }
 
+/////////////////////////// Report //////////////////////////////////////////
+
   // get all my steps
   get_all_my_steps(callback: callbackFunc) {
     this.fire(`editor/step/`, 'get', null, callback);
@@ -226,8 +235,9 @@ user_login(username: string, password: string, callback: callbackFunc) {
     this.fire(`editor/report/${id}`, 'post', report, callback);
   }
 
-  get_simuser_by_id(id: number, callback: callbackFunc) {
-    // get stat by id
-    this.fire(`users/${id}/stat`, 'get', null, callback);
+  /////////////////////// Notificaiton /////////////////////////
+  get_all_my_notifications() {
+    // get all my notifications
   }
 }
+
