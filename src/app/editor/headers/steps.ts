@@ -14,12 +14,12 @@ export class EditorStepHeader {
 
 export class EditorSubroutineHeader {
     id: string; // ID 号码
-    ico: string; // 标题 url
+    ico?: string; // 标题 url
     name: string;
     default: any[];
     desc: string; // Subroutine 描述
     steps: Array<string>; // 包含的 step id
-    yield_method: string;
+    yield_method?: string;
     constructor () {
         this.default = [];
     }

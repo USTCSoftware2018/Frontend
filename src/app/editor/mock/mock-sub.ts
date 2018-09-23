@@ -2,18 +2,19 @@ import { EditorSubroutineHeader } from '../headers/steps';
 
 export let mockSub: EditorSubroutineHeader[] = new Array<EditorSubroutineHeader>();
 
-const mockSub_1 = new EditorSubroutineHeader();
-mockSub_1.id = '1';
-mockSub_1.name = 'Single digestion(8h)';
-mockSub_1.desc = 'Single digestion(8h)';
-mockSub_1.steps = ['2', '2', '2', '4', '9'];
-mockSub_1.default = [
-    {'Name': 'template'},
-    {'Name': 'buffer'},
-    {'Name': 'enzyme'},
-    {'Type': '摇晃'}, // 4
-    {'Num': '37'},
-];
+const mockSub_1: EditorSubroutineHeader = {
+    id: '1',
+    name: 'Single digestion(8h)',
+    desc: 'Single digestion(8h)',
+    steps: ['2', '2', '2', '4', '9'],
+    default: [
+        {'Name': 'template'},
+        {'Name': 'buffer'},
+        {'Name': 'enzyme'},
+        {'Type': '摇晃'},
+        {'Num': '37'},
+    ]
+};
 mockSub.push(mockSub_1);
 
 const mockSub_2 = new EditorSubroutineHeader();
