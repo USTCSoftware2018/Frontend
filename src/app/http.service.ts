@@ -141,15 +141,14 @@ user_login(username: string, password: string, callback: callbackFunc) {
     this.fire(`users/${user_id}/unfollow/`, 'post', null, callback);
   }
 
-  get_all_my_followers(callback: callbackFunc) {
-    // get all my followers
-    this.fire(`users/me/followers/`, 'get', null, callback);
+  get_followers_by_id(user_id: number, callback: callbackFunc) {
+    // get someone's followers
+    this.fire(`users/${user_id}/followers/`, 'get', null, callback);
   }
 
-  // get all my followings
-  get_all_my_followings(callback: callbackFunc) {
-    // get all my followings
-    this.fire(`users/me/following/`, 'get', null, callback);
+  get_followings_by_id(user_id: number, callback: callbackFunc) {
+    // get someone's followings
+    this.fire(`users/${user_id}/following/`, 'get', null, callback);
   }
 
   // get all my steps
