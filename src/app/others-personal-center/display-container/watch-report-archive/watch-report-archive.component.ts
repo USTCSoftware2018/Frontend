@@ -1,33 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import {Report, User} from '../../Interface/userinfo';
-import {USER} from '../../Interface/mock-user';
+import {Report, User} from '../../../Interface/userinfo';
+import {USER} from '../../../Interface/mock-user';
 import {ActivatedRoute} from '@angular/router';
 import {ParamMap} from '@angular/router';
 
 @Component({
-  selector: 'app-watch-report-by-label',
-  templateUrl: './watch-report-by-label.component.html',
-  styleUrls: ['./watch-report-by-label.component.less']
+  selector: 'app-watch-report-archive',
+  templateUrl: './watch-report-archive.component.html',
+  styleUrls: ['./watch-report-archive.component.less']
 })
-export class WatchReportByLabelComponent implements OnInit {
+export class WatchReportArchiveComponent implements OnInit {
   user: User = USER;
-  big_label: string;
-  label: string; // 要展示的哪种归档的report
+  archive: string; // 要展示的哪种归档的report
   reports_onshow = [];
   reports_unshow = [];
   i = 0;
   t: Report;
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    ) { }
+  type: string;
   ngOnInit() {
       this.route.paramMap.subscribe((params: ParamMap) => {
-        if ( params.get('name') != null) {
-          this.label = params.get('name');
-          this.big_label = 'Report';
-        } else {
-          this.label = params.get('data');
-          this.big_label = 'Archive';
-        }
-    });
+        this.archive = params.get('data');
+        });
   }
   reportShowMore() {
     this.reports_unshow.reverse();

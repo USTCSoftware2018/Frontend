@@ -1,41 +1,24 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Report, Simuser} from '../../Interface/userinfo';
-import {ReportServiceService} from '../report-service.service';
 import {USER} from '../../Interface/mock-user';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
 
 import {User} from '../../Interface/userinfo';
 
 
 @Component({
-  selector: 'app-report1',
-  templateUrl: './report.component.html',
-  styleUrls: ['./report.component.less'],
-  animations: [
-    trigger('shrinkOut', [
-      state('in', style({height: 0})),
-      transition('void => *', [
-        style({height: 0}),
-        animate(250, style({height: '*'}))
-      ])
-    ])
-  ]
+  selector: 'app-display-all-info',
+  templateUrl: './display-all-info.component.html',
+  styleUrls: ['./display-all-info.component.less'],
 
 })
-export class Report2Component implements OnInit {
+export class DisplayAllInfoComponent implements OnInit {
   user: User = USER;
   reports_onshow = [];
   reports_unshow = [];
   i = 0;
   t: Report;
 
-  constructor(private reportService: ReportServiceService) { }
+  constructor() { }
   ngOnInit() {
      this.initReports();
   }
@@ -67,10 +50,8 @@ export class Report2Component implements OnInit {
       return value.id === otheruser.id;
     });
     if (ii === -1) {
-      console.log('no');
       return false;
     } else {
-      console.log('yes');
       return true;
     }
   }

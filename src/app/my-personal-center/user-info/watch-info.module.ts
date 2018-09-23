@@ -3,9 +3,11 @@ import {CommonModule, registerLocaleData} from '@angular/common';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import en from '@angular/common/locales/en';
 import { RouterModule } from '@angular/router';
-import { UserinfoComponent } from './userinfo/userinfo.component';
-import { DetailinfoComponent } from './userinfo/detailinfo/detailinfo.component';
+import { UserinfoComponent } from './watch-info/userinfo.component';
+import { DetailinfoComponent } from './watch-info/detailinfo/detailinfo.component';
 import { ShareModule } from '../../share/share.module';
+import { DetailinfoBylabelComponent } from './watch-info/detailinfo-bylabel/detailinfo-bylabel.component';
+import { DetailinfoByarchiveComponent } from './watch-info/detailinfo-byarchive/detailinfo-byarchive.component';
 
 registerLocaleData(en);
 
@@ -19,6 +21,8 @@ registerLocaleData(en);
   declarations: [
     DetailinfoComponent,
     UserinfoComponent,
+    DetailinfoBylabelComponent,
+    DetailinfoByarchiveComponent,
   ],
   exports: [
     NgZorroAntdModule,

@@ -23,19 +23,19 @@ export const userset_route: Route = {
       component: UserAccountComponent
     },
     {
-      path: 'user-report',
+      path: 'user-display-all-info',
       component: UserReportComponent,
       children: [{
         path: '',
-        redirectTo: 'report-all',
+        redirectTo: 'display-all-info-all',
         pathMatch: 'full'
       },
         {
-          path: 'report-all',
+          path: 'display-all-info-all',
           component: ReportAllComponent
         },
         {
-          path: 'report-draft',
+          path: 'display-all-info-draft',
           component: ReportDraftComponent
         }]
     }]

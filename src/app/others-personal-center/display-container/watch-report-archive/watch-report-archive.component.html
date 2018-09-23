@@ -1,7 +1,7 @@
 <!--
 <div class="content">
   <div nz-row class="up-nav">
-    <div nz-col nzSpan="4" class="report-word">
+    <div nz-col nzSpan="4" class="display-all-info-word">
       Archives
     </div>
     <div nz-col nzOffset="1" nzSpan="1" class="icon">
@@ -14,11 +14,11 @@
       <i class="anticon anticon-swap"><div class="rotate">&nbsp;sort</div></i>
     </div>
   </div>
-  <div nz-row class="report">
-    <div *ngFor="let report of user.reports">
-      <app-others-report [report]="report" [bkcolor]="'#F2F2F2'"></app-others-report>
+  <div nz-row class="display-all-info">
+    <div *ngFor="let display-all-info of user.reports">
+      <app-others-display-all-info [display-all-info]="display-all-info" [bkcolor]="'#F2F2F2'"></app-others-display-all-info>
     </div>
   </div>
 </div>
 -->
-<app-watch-report-by-label></app-watch-report-by-label>
+<app-watch-report-by-classification [big_label]="'Archieve'" [label]="archive"></app-watch-report-by-classification>
