@@ -56,4 +56,9 @@ export class StepsService {
     const step_t = this.findStep(stepId);
     return step_t.yield_method;
   }
+
+  public getMaterial(stepId: string) {
+    const step_t = this.findStep(stepId);
+    return step_t.material;
+  }
 }

@@ -7,6 +7,7 @@ export class EditorStepHeader {
     desc: string; // step 描述
     template: string; // 模板
     yield_method: string;
+    material: Array<string>;
 }
 
 // This is the step of the article
