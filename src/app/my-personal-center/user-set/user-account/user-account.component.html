@@ -32,6 +32,7 @@ margin:0 auto;">Save</button>
         <p>Old password</p>
         <nz-form-control nz-col nzSpan="17">
           <input nz-input type="password" id="oldpassword" formControlName="oldpassword" required>
+
           <nz-form-explain *ngIf="useraccount.get('oldpassword').dirty&&useraccount.get('oldpassword').hasError('required')">Please input your password!</nz-form-explain>
         </nz-form-control>
       </nz-form-item>
@@ -56,8 +57,9 @@ margin:0 auto;">Save</button>
 font-family: AvenirNext-Regular;
 font-size: 1.5vw;
 color: #FFFFFF;
-text-align: center;">Update password</button>
+text-align: center;"(click)="update_password()">Update password</button>
       </div>
+      {{this.useraccount.value.oldpassword}}
       <div class="forget" nz-col nzSpan="10">
         I forgot my password
       </div>

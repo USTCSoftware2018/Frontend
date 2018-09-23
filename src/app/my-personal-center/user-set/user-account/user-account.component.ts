@@ -6,6 +6,8 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { HttpService} from '../../../http.service';
+import { ApiResult } from '../../../Interface/ApiResult';
 
 @Component({
   selector: 'app-user-account',
@@ -19,8 +21,13 @@ export class UserAccountComponent implements OnInit {
     newpassword:[''],
     confirmpassword:['']
   })
-  constructor(private fb:FormBuilder) { }
-
+  callback=function(result: ApiResult){
+    console.log(result);
+}
+  constructor(private fb:FormBuilder,private http:HttpService) { }
+  update_password():void{
+    this.http.update_password(this.useraccount.value.old_password, this.useraccount.value.new_password, this.callback);
+  }
   ngOnInit() {
   }
 
