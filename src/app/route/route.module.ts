@@ -6,10 +6,12 @@ import { MainComponent as EditorMainComponent} from '../editor/views/main/main.c
 import { ReportshowotherComponent } from '../reportshows/reportshow/reportshowother/reportshowother.component';
 import { FeedsComponent } from '../core/feeds/feeds.component';
 import { HttpExampleComponent } from '../http-example/http-example.component';
+import { EditorReportShowAreaComponent } from '../editor/render/editor-report-show-area/editor-report-show-area.component';
 import {NotificationComponent} from '../core/notification/notification.component';
 
 
 const appRoutes: Routes = [
+  { path: 'try', component: EditorReportShowAreaComponent },
   { path: 'test-http', component: HttpExampleComponent },
   { path: 'editor', component: EditorMainComponent},
   { path: 'reportshow', component: ReportshowComponent},
@@ -25,7 +27,7 @@ const appRoutes: Routes = [
     data: {preload: true}},
   { path: 'reportshows', loadChildren: '../reportshows/reportshows.module#ReportshowsModule', data: {preload: true}},
   { path: '', redirectTo: '/index', pathMatch: 'full' },
-  { path: '**', component: Error404Component},
+  { path: '**', component: Error404Component}
 ];
 
 @NgModule({
