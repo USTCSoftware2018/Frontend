@@ -28,10 +28,11 @@ export class NavbarComponent implements OnInit, AfterViewChecked {
     console.log(this.myinfo.isLogin);
   }
   ngAfterViewChecked() {
-    const myinfo = this.myinfo.isLogin;
-    if (this.ifLogin !== myinfo) {
-      this.ifLogin = myinfo;
-      this.user = this.myinfo.myInfo;
+    const iflogin = this.myinfo.isLogin;
+    const userinfo = this.myinfo.myInfo
+    if (this.ifLogin !== iflogin || this.user !== userinfo) {
+      this.ifLogin = iflogin;
+      this.user = userinfo;
       this.cdRef.detectChanges();
     }
   }

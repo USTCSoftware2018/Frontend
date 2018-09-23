@@ -1,62 +1,61 @@
 
 <div nz-row align="center">
   <div nz-col nzSpan="16" nzOffset="4">
-    <nz-avatar class="photo" nzIcon="anticon anticon-user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" >
-    </nz-avatar>
-    <div class="name">{{userinfoprofile.name}}</div>
+    <nz-avatar class="photo" nzIcon="anticon anticon-user" nzSrc="{{user?.avatar_url}}" ></nz-avatar>
+    <div class="name">{{user?.name}}</div>
   </div>
 </div>
 <div nz-row>
   <div nz-col nzSpan="20" [nzOffset]="2">
-    <span style="width: 100%;font-size: 1vw"><i class="anticon anticon-environment-o" style="color:#3C7BBB"></i>&nbsp;&nbsp;location:</span> <span class="detail" style="font-size: 1vw">{{userinfoprofile.location}}</span><br>
-    <span style="width: 100%;font-size: 1vw"><i class="anticon anticon-mail" style="color:#3C7BBB"></i>&nbsp;&nbsp;email: </span> <span class="detail" style="font-size: 1vw">{{userinfoprofile.email}}</span><br>
-    <span style="width: 100%;font-size: 1vw"><i class="anticon anticon-usergroup-add" style="color:#3C7BBB"></i>&nbsp;&nbsp;organization: </span> <span class="detail" style="font-size: 1vw">{{userinfoprofile.organization}}</span><br>
+    <span style="width: 100%;font-size: 1vw"><i class="anticon anticon-environment-o" style="color:#3C7BBB"></i>&nbsp;&nbsp;location:</span> <span class="detail" style="font-size: 1vw">{{user?.location}}</span><br>
+    <span style="width: 100%;font-size: 1vw"><i class="anticon anticon-mail" style="color:#3C7BBB"></i>&nbsp;&nbsp;email: </span> <span class="detail" style="font-size: 1vw">{{user?.email}}</span><br>
+    <span style="width: 100%;font-size: 1vw"><i class="anticon anticon-usergroup-add" style="color:#3C7BBB"></i>&nbsp;&nbsp;organization: </span> <span class="detail" style="font-size: 1vw">{{user?.organization}}</span><br>
   </div>
   <div align="center">
 
-    <div *ngIf="userinfoprofile.follow_or_edit">
-    <button nz-button nzType="primary" class="rectangle3" (click)="followAndUnFollow()">{{follow_and_unfollow}}</button>
+    <div *ngIf="!ifmyself">
+    <button nz-button nzType="primary" class="rectangle3" (click)="toggleFollow()">{{follow_or_unfollow}}</button>
     </div>
     <!--
-    <nz-modal [(nzVisible)]="userinfoprofile.isVisible" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <nz-modal [(nzVisible)]="user?.isVisible" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
       <p>unfollow check</p>
     </nz-modal>
     </div>
     -->
-    <div *ngIf="!userinfoprofile.follow_or_edit">
-      <button nz-button nzType="primary" class="rectangle3">edit</button>
+    <div *ngIf="ifmyself">
+      <button nz-button nzType="primary" class="rectangle3" routerLink="/mypersonalcenter/userset">Edit</button>
     </div>
   </div>
   <nz-divider></nz-divider>
 </div>
 <div nz-row align="center" class="number-info">
-  <div nz-col nzSpan="6">
+  <div nz-col nzSpan="6" [routerLink]="number_router">
     <div class="number">
-      {{userinfoprofile.reportsnum}}
+      {{user?.reportsnum}}
     </div>
     <div>
       reports
     </div>
   </div>
-  <div nz-col nzSpan="6">
+  <div nz-col nzSpan="6" [routerLink]="number_router">
     <div class="number">
-      {{userinfoprofile.followingnum}}
+      {{user?.followingnum}}
     </div>
     <div>
       following
     </div>
   </div>
-  <div nz-col nzSpan="6">
+  <div nz-col nzSpan="6" [routerLink]="number_router">
     <div class="number">
-      {{userinfoprofile.followednum}}
+      {{user?.followednum}}
     </div>
     <div>
       followers
     </div>
   </div>
-  <div nz-col nzSpan="6">
+  <div nz-col nzSpan="6" [routerLink]="number_router">
     <div class="number">
-      {{userinfoprofile.likenum}}
+      {{user?.likenum}}
     </div>
     <div>
       praises

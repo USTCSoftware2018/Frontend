@@ -1,0 +1,27 @@
+<div>
+<nz-tabset nzSize="large">
+  <nz-tab nzTitle="Reports">
+    <!--
+    <div nz-col nzOffset="18" class="sort">
+      <i class="anticon anticon-swap"></i>
+    </div>
+    -->
+    <div *ngFor="let report of user.reports">
+      <app-others-report [report]="report" [bkcolor]="'#F2F2F2'"></app-others-report>
+    </div>
+    <div class="pulldown">
+      <a (click)="reportShowMore()"><i class="anticon anticon-down"></i></a>
+    </div>
+  </nz-tab>
+  <nz-tab nzTitle="Following">
+    <div  *ngFor="let otheruser of user.following.content">
+      <app-followuser [otheruser]="otheruser" [bkcolor]="'#F2F2F2'" [isFollowing]="ifFollowing(otheruser)"></app-followuser>
+    </div>
+  </nz-tab>
+  <nz-tab nzTitle="Followers">
+    <div  *ngFor="let otheruser of user.followers.content">
+      <app-followuser [otheruser]="otheruser" [isFollowing]="ifFollowing(otheruser)"  [bkcolor]="'#F2F2F2'"></app-followuser>
+    </div>
+  </nz-tab>
+</nz-tabset>
+</div>
