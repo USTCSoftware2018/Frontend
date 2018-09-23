@@ -1,0 +1,38 @@
+<div nz-row class="card">
+  <label>Labels</label>
+  <div class="content">
+    <div *ngFor="let label of all_labels">
+      <a routerLink="/mypersonalcenter/label/{{label.name}}">{{label.name}}</a>
+      <span class="small-word">{{label.num}}&nbsp;reports</span>
+    </div>
+  </div>
+  <div class="pulldown">
+    <i class="anticon anticon-caret-down"></i>
+  </div>
+</div>
+<nz-divider></nz-divider>
+<div nz-row class="card">
+  <label>Archive</label>
+  <div class="content">
+    <div *ngFor="let archive of all_archive">
+      <a routerLink="/mypersonalcenter/archive/{{archive.data}}">{{archive.data}}</a>
+      <span  class="small-word">{{archive.num}}&nbsp;reports</span>
+    </div>
+  </div>
+  <div class="pulldown">
+    <i class="anticon anticon-caret-down"></i>
+  </div>
+</div>
+<nz-divider></nz-divider>
+<div nz-row class="card">
+  <label>Popular reports</label>
+  <div class="content">
+    <div *ngFor="let pop_report of all_pop_report">
+      <a>{{pop_report.name}}</a>
+      <span  class="small-word">{{pop_report.praises}}&nbsp;reports</span>
+    </div>
+  </div>
+  <div class="pulldown">
+    <i class="anticon anticon-caret-down"></i>
+  </div>
+</div>

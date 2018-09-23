@@ -10,8 +10,8 @@ import {isLineBreak} from 'codelyzer/angular/sourceMappingVisitor';
 import { ShareModule } from '../../share/share.module';
 import { Simuser } from '../../Interface/userinfo';
 import { user1 } from '../../Interface/mock-user';
-import {UserInfoProfile} from '../../profile/personal-information/userinfoprofile';
-import {USERINFOPROFILE} from '../../profile/personal-information/mock-userinfoprofile';
+import {UserInfoProfile} from '../../others-personal-center/display-container/personal-information/userinfoprofile';
+import {USERINFOPROFILE} from '../../others-personal-center/display-container/personal-information/mock-userinfoprofile';
 
 @Component({
   selector: 'app-reportshow',

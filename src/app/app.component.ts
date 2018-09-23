@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpService} from './http.service';
+import { UserSigninfoService } from './user-signinfo.service';
+import {ApiResult} from './Interface/ApiResult';
+
 declare var $: any;
 @Component({
   selector: 'app-root',
@@ -8,5 +12,17 @@ declare var $: any;
 
 export class AppComponent {
   title = 'igem-frontend';
-  constructor( ) { }
+  constructor( private http: HttpService,
+               private myinfo: UserSigninfoService) {
+    this.http.user_logout(function() {});
+    this.http.user_login('test', 'a123456', this.judegeSign);
+  }
+  judegeSign = (result: ApiResult) => {
+    this.myinfo.setUserInfobyInfo(result.success, result.data);
+    if (result.success) {
+      console.log('log in success');
+    } else {
+      console.log('fail');
+    }
+  }
 }

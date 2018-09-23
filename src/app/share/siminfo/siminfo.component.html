@@ -1,30 +1,31 @@
-<div class="s-bk">
-  <div nz-row class="down">
-    <div nz-col nzOffset="7" nzSpan="10">
-      <img class="avatar" src="{{user.avatar_url}}">
-    </div>
-    <div nz-col nzSpan="7"></div>
-    <div class="username" nz-col nzSpan="24" align="center">
-      <span>{{user.name}}</span>
+<div>
+  <div nz-row align="center">
+    <div nz-col nzSpan="16" nzOffset="4">
+      <nz-avatar class="photo" nzIcon="anticon anticon-user" nzSrc="{{user?.avatar_url}}" ></nz-avatar>
+      <div class="name">{{user?.name}}</div>
     </div>
   </div>
-  <div nz-row nzType="flex" nzJustify="space-around" class="down">
-    <div class="sim-info" nz-col nzSpan="6" >
-      <p class="sim-info-num">{{user.followingnum}}</p>
-      <p class="sim-info-name">following</p>
+  <nz-divider></nz-divider>
+  <div nz-row align="center" class="number-info">
+    <div nz-col nzSpan="6" [routerLink]="number_router">
+      <div class="number">{{user?.reportsnum}}</div>
+      <div>reports</div>
     </div>
-    <div class="sim-info" nz-col nzSpan="6" >
-      <p class="sim-info-num">{{user.followednum}}</p>
-      <p class="sim-info-name">followers</p>
+    <div nz-col nzSpan="6" [routerLink]="number_router">
+      <div class="number">{{user?.followingnum}}</div>
+      <div>following</div>
     </div>
-    <div class="sim-info" nz-col nzSpan="6" >
-      <p class="sim-info-num">{{user.likenum}}</p>
-      <p class="sim-info-name">likes</p>
+    <div nz-col nzSpan="6" [routerLink]="number_router">
+      <div class="number">{{user?.followednum}}</div>
+      <div>followers</div>
     </div>
-    <div class="sim-info" nz-col nzSpan="6" >
-      <p class="sim-info-num">{{user.reportsnum}}</p>
-      <p class="sim-info-name">reports</p>
+    <div nz-col nzSpan="6" [routerLink]="number_router">
+      <div class="number">{{user?.likenum}}</div>
+      <div>praises</div>
     </div>
   </div>
 </div>
+
+
+
 

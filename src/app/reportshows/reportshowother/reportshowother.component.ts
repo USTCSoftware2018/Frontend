@@ -8,8 +8,6 @@ import { USER } from '../reportshow/mock-user';
 import { ShareModule } from '../../share/share.module';
 import { Simuser } from '../../Interface/userinfo';
 import { user1 } from '../../Interface/mock-user';
-import {UserInfoProfile} from '../../profile/personal-information/userinfoprofile';
-import {USERINFOPROFILE} from '../../profile/personal-information/mock-userinfoprofile';
 import {variable} from '@angular/compiler/src/output/output_ast';
 import {isLineBreak} from 'codelyzer/angular/sourceMappingVisitor';
 import {ReportshowsModule} from '../reportshows.module';
