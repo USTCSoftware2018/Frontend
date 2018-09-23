@@ -1,8 +1,8 @@
 
 <div nz-row align="center">
   <div nz-col nzSpan="16" nzOffset="4">
-    <nz-avatar class="photo" nzIcon="anticon anticon-user" nzSrc="{{user?.avatar_url}}" ></nz-avatar>
-    <div class="name">{{user?.name}}</div>
+    <nz-avatar (click)="gotoIndex()" class="photo" nzIcon="anticon anticon-user" nzSrc="{{user?.avatar_url}}" ></nz-avatar>
+    <div class="name">{{user?.username}}</div>
   </div>
 </div>
 <div nz-row>
@@ -29,37 +29,21 @@
   <nz-divider></nz-divider>
 </div>
 <div nz-row align="center" class="number-info">
-  <div nz-col nzSpan="6" [routerLink]="number_router">
-    <div class="number">
-      {{user?.reportsnum}}
-    </div>
-    <div>
-      reports
-    </div>
+  <div nz-col nzSpan="6" (click)="gotoDetailInfo()">
+    <div class="number">{{user?.stat.experience_count}}</div>
+    <div>reports</div>
   </div>
-  <div nz-col nzSpan="6" [routerLink]="number_router">
-    <div class="number">
-      {{user?.followingnum}}
-    </div>
-    <div>
-      following
-    </div>
+  <div nz-col nzSpan="6" (click)="gotoDetailInfo()">
+    <div class="number">{{user?.stat.following_count}}</div>
+    <div>following</div>
   </div>
-  <div nz-col nzSpan="6" [routerLink]="number_router">
-    <div class="number">
-      {{user?.followednum}}
-    </div>
-    <div>
-      followers
-    </div>
+  <div nz-col nzSpan="6" (click)="gotoDetailInfo()">
+    <div class="number">{{user?.stat.follower_count}}</div>
+    <div>followers</div>
   </div>
-  <div nz-col nzSpan="6" [routerLink]="number_router">
-    <div class="number">
-      {{user?.likenum}}
-    </div>
-    <div>
-      praises
-    </div>
+  <div nz-col nzSpan="6" (click)="gotoDetailInfo()">
+    <div class="number">{{user?.stat.star_count}}</div>
+    <div>praises</div>
   </div>
 </div>
 

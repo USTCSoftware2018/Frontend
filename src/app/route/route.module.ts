@@ -23,7 +23,7 @@ const appRoutes: Routes = [
   { path: 'authentication', loadChildren: '../authentic/authentic.module#AuthenticModule', data: {preload: true}},
   { path: 'search', loadChildren: '../biosearch/biosearch.module#BiosearchModule', data: {preload: true}},
   { path: 'explore', loadChildren: '../explore/explore.module#ExploreModule', data: {preload: true}},
-  { path: 'infocenter', loadChildren: '../others-personal-center/others-personal-center.module#OthersPersonalCenterModule',
+  { path: 'userprofile/:id', loadChildren: '../others-personal-center/others-personal-center.module#OthersPersonalCenterModule',
     data: {preload: true}},
   { path: 'reportshows', loadChildren: '../reportshows/reportshows.module#ReportshowsModule', data: {preload: true}},
   { path: '', redirectTo: '/index', pathMatch: 'full' },

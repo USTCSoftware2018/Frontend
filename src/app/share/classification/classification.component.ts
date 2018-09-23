@@ -3,6 +3,7 @@ import { Assortment } from '../../Interface/userinfo';
 import {Archive} from '../../Interface/userinfo';
 import {PopularReport} from '../../Interface/userinfo';
 import {Label} from '../../Interface/userinfo';
+import {RouterjudgeService} from '../routerjudge.service';
 
 @Component({
   selector: 'app-classification',
@@ -10,14 +11,21 @@ import {Label} from '../../Interface/userinfo';
   styleUrls: ['./classification.component.less']
 })
 export class ClassificationComponent implements OnInit {
+  @Input() userid: number;
   @Input() classifyInfo: Assortment;
   all_archive: Archive[] = [];
   all_labels: Label[] = [];
   all_pop_report: PopularReport[] = [];
-  constructor() { }
+  constructor(private routerjudge: RouterjudgeService) { }
 
   ngOnInit() {
     this.initInfo();
+  }
+  gotoArchive = ( date: string) => {
+    this.routerjudge.gotoReportbyArchive(this.userid, date);
+  }
+  gotoLabel = (name: string) => {
+    this.routerjudge.gotoReportbyLabel(this.userid, name);
   }
   initInfo() {
     this.all_archive = this.classifyInfo.archives;

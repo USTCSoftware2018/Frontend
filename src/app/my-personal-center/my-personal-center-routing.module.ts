@@ -5,7 +5,8 @@ import { userinfo_route } from './user-info/watch-info-routing';
 import {userset_route } from './user-set/user-set-routing';
 
 const routes: Routes = [
-  { path: '', component: MyCenterIndexComponent},
+  { path: 'index', component: MyCenterIndexComponent},
+  { path: '', redirectTo: 'index'},
   userset_route,
   userinfo_route,
 ]

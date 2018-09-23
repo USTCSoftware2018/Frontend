@@ -18,7 +18,7 @@
           <a>Following</a>
         </ng-template>
         <div  *ngFor="let otheruser of user.following.content">
-          <app-followuser [otheruser]="otheruser" [bkcolor]="'#F2F2F2'" [isFollowing]="ifFollowing(otheruser)"></app-followuser>
+          <app-followuser [otheruser]="otheruser" [bkcolor]="'#F2F2F2'" ></app-followuser>
         </div>
       </nz-tab>
 
@@ -27,7 +27,7 @@
           <a>Followers</a>
         </ng-template>
         <div  *ngFor="let otheruser of user.followers.content">
-          <app-followuser [otheruser]="otheruser" [isFollowing]="ifFollowing(otheruser)"  [bkcolor]="'#F2F2F2'"></app-followuser>
+          <app-followuser [otheruser]="otheruser"  [bkcolor]="'#F2F2F2'"></app-followuser>
         </div>
       </nz-tab>
 
