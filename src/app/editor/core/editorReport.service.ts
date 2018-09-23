@@ -69,10 +69,13 @@ export class EditorReportService {
     }
 
     // Remark 部分
+    if ((!step.remark || step.remark === '') && data['Notes']) {
+      step.remark = data['Notes'];
+    }
     const fld_remark: any = new Object();
     fld_remark.type = 'input';
     fld_remark.label = 'Notes';
-    fld_remark.default = data['Notes'] ? data['Notes'] : '';
+    fld_remark.default = '';
     fld_remark.attr = ['@big'];
     fld_remark.value = step.remark ? step.remark : '';
     _fields.push(fld_remark);
