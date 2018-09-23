@@ -48,7 +48,6 @@ import { EditorReportShowAreaComponent } from './render/editor-report-show-area/
     RemarkPanelComponent,
     InfoPanelComponent,
     EditorScrollComponent,
-    EditorReportShowAreaComponent,
     EditorReportShowAreaComponent
   ],
   providers: [

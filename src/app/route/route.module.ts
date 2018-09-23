@@ -10,6 +10,7 @@ import { EditorReportShowAreaComponent } from '../editor/render/editor-report-sh
 
 
 const appRoutes: Routes = [
+  { path: 'try', component: EditorReportShowAreaComponent },
   { path: 'test-http', component: HttpExampleComponent },
   { path: 'editor', component: EditorMainComponent},
   { path: 'reportshow', component: ReportshowComponent},
@@ -21,11 +22,10 @@ const appRoutes: Routes = [
   { path: 'search', loadChildren: '../biosearch/biosearch.module#BiosearchModule', data: {preload: true}},
   { path: 'explore', loadChildren: '../explore/explore.module#ExploreModule', data: {preload: true}},
   { path: 'profile', loadChildren: '../profile/profile.module#ProfileModule', data: {preload: true}},
-  { path: 'notification', loadChildren: '../notification/notification.module#NotificationModule', data: {preload:true}},
+  { path: 'notification', loadChildren: '../notification/notification.module#NotificationModule', data: {preload: true}},
   { path: 'reportshows', loadChildren: '../reportshows/reportshows.module#ReportshowsModule', data: {preload: true}},
   { path: '', redirectTo: '/index', pathMatch: 'full' },
-  { path: '**', component: Error404Component},
-  { path: 'test', component: EditorReportShowAreaComponent},
+  { path: '**', component: Error404Component}
 ];
 
 @NgModule({

@@ -20,6 +20,7 @@ import { ReportshowotherComponent } from './reportshows/reportshow/reportshowoth
 import { FeedsComponent } from './core/feeds/feeds.component';
 import { ShareModule } from './share/share.module';
 import { HttpExampleComponent } from './http-example/http-example.component';
+import { TryComponent } from './try/try.component';
 
 registerLocaleData(en);
 
@@ -31,6 +32,7 @@ registerLocaleData(en);
     ReportshowotherComponent,
     FeedsComponent,
     HttpExampleComponent,
+    TryComponent,
   ],
   imports: [
     BrowserModule,

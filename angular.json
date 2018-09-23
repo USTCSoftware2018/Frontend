@@ -32,7 +32,7 @@
               "src/styles.less"
             ],
             "scripts": [
-              "../node_modules/jquery/dist/jquery.js"
+              "./node_modules/jquery/dist/jquery.js"
             ]
           },
           "configurations": {
@@ -85,7 +85,7 @@
               "src/styles.less"
             ],
             "scripts": [
-              "../node_modules/jquery/dist/jquery.js"
+              "./node_modules/jquery/dist/jquery.js"
             ],
             "assets": [
               "src/favicon.ico",
