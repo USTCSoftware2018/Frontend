@@ -17,11 +17,7 @@ import { ReportshowotherComponent } from './reportshows/reportshow/reportshowoth
 import { FeedsComponent } from './core/feeds/feeds.component';
 import { ShareModule } from './share/share.module';
 import { HttpExampleComponent } from './http-example/http-example.component';
-<<<<<<< HEAD
-import { TryComponent } from './try/try.component';
-=======
 import {NotificationComponent} from './core/notification/notification.component';
->>>>>>> dev
 
 registerLocaleData(en);
 
@@ -33,11 +29,7 @@ registerLocaleData(en);
     ReportshowotherComponent,
     FeedsComponent,
     HttpExampleComponent,
-<<<<<<< HEAD
-    TryComponent,
-=======
     NotificationComponent
->>>>>>> dev
   ],
   imports: [
     BrowserModule,

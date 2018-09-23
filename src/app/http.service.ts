@@ -240,32 +240,4 @@ user_login(username: string, password: string, callback: callbackFunc) {
     // get stat by id
     this.fire(`users/${id}/stat`, 'get', null, callback);
   }
-<<<<<<< HEAD
-
-  user_login(username: string, password: string, callback: callbackFunc) {
-    // user login
-    const params = {
-      username: username,
-      password: password
-    };
-    this.fire('users/login/', 'post', params, callback);
-  }
-
-  user_logout(callback: callbackFunc) {
-    // user logout
-    this.fire('users/logout/', 'get', null, callback);
-  }
-
-  update_password(old_password: string, new_password: string, callback: callbackFunc) {
-    const params = {
-      old: old_password,
-      new1: new_password,
-      new2: new_password
-    };
-    this.fire('users/change_password/', 'post', params, callback);
-  }
 }
-
-=======
-}
->>>>>>> dev
