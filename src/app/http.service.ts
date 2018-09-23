@@ -240,3 +240,4 @@ user_login(username: string, password: string, callback: callbackFunc) {
     // get stat by id
     this.fire(`users/${id}/stat`, 'get', null, callback);
   }
+}
