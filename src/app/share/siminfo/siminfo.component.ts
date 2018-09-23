@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {Simuser} from '../../Interface/userinfo';
+import {RouterjudgeService} from '../routerjudge.service';
 
 @Component({
   selector: 'app-siminfo',
@@ -10,14 +11,19 @@ export class SiminfoComponent implements OnInit {
   @Input() user: Simuser;
   @Input() ifmyself: boolean;
   number_router: string;
-  constructor() { }
-
+  constructor(private routerjudge: RouterjudgeService) { }
+  gotoIndex = () => {
+    this.routerjudge.gotoUserIndex(this.user.id);
+  }
+  gotoDetailInfo = () => {
+    this.routerjudge.gotoUserDetailInfo(this.user.id);
+  }
   ngOnInit() {
     // 根据是否是自己设置点击四个字母跳转
     if (this.ifmyself) {
-      this.number_router = '/mypersonalcenter/myinfo';
+      this.number_router = '/mypersonalcenter/detailinfo';
     } else {
-      this.number_router = '/profile';
+      this.number_router = '/infocenter';
     }
   }
 

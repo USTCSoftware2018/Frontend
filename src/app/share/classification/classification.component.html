@@ -2,7 +2,7 @@
   <label>Labels</label>
   <div class="content">
     <div *ngFor="let label of all_labels">
-      <a routerLink="/mypersonalcenter/label/{{label.name}}">{{label.name}}</a>
+      <a (click)="gotoLabel(label.name)">{{label.name}}</a>
       <span class="small-word">{{label.num}}&nbsp;reports</span>
     </div>
   </div>
@@ -15,7 +15,7 @@
   <label>Archive</label>
   <div class="content">
     <div *ngFor="let archive of all_archive">
-      <a routerLink="/mypersonalcenter/archive/{{archive.data}}">{{archive.data}}</a>
+      <a (click)="gotoArchive(archive.date)">{{archive.date}}</a>
       <span  class="small-word">{{archive.num}}&nbsp;reports</span>
     </div>
   </div>

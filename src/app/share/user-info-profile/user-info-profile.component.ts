@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {Simuser} from '../../Interface/userinfo';
+import { Simuser } from '../../Interface/userinfo';
+import {RouterjudgeService} from '../routerjudge.service';
 
 @Component({
   selector: 'app-user-info-profile',
@@ -12,16 +13,17 @@ export class UserInfoProfileComponent implements OnInit {
   number_router: string;
   ifFollow: boolean;
   follow_or_unfollow: string;
-  constructor() { }
+  constructor(private routerjudge: RouterjudgeService) { }
   ngOnInit() {
-    this.ifFollow = this.user.ifFollow;
+    this.ifFollow = this.user.followed;
     this.follow_or_unfollow = this.ifFollow ? 'Follow' : 'Unfollow';
     // 根据是否是自己设置点击四个字母跳转
-    if (this.ifmyself) {
-      this.number_router = '/mypersonalcenter/myinfo';
-    } else {
-      this.number_router = '/profile';
-    }
+  }
+  gotoIndex = () => {
+    this.routerjudge.gotoUserIndex(this.user.id);
+  }
+  gotoDetailInfo = () => {
+    this.routerjudge.gotoUserDetailInfo(this.user.id);
   }
   toggleFollow() {
     this.ifFollow = this.ifFollow ? false : true;

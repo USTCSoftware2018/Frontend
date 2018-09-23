@@ -9,7 +9,6 @@ import { LikeFeed, UploadFeed, FollowFeed } from './feeds';
 })
 export class FeedsComponent implements OnInit {
   feeds = FEEDS;
-  isFollowing = true;
   constructor() { }
 
   ngOnInit() {

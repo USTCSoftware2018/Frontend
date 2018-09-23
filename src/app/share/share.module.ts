@@ -12,8 +12,9 @@ import { UserInfoProfileComponent } from './user-info-profile/user-info-profile.
 import { ReportCardComponent } from './report-card/report-card.component';
 import { MyReportComponent } from './my-report/my-report.component';
 import { WatchReportByClassificationComponent } from './watch-report-by-classification/watch-report-by-classification.component';
-import {RouterModule} from '@angular/router';
+import { RouterModule} from '@angular/router';
 import { ClassificationComponent } from './classification/classification.component';
+
 
 registerLocaleData(en);
 
@@ -36,7 +37,9 @@ registerLocaleData(en);
     ClassificationComponent,
   ],
   // 公用导出组件放在exports数组内
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+  ],
   exports: [
     PandaComponent,
     NgZorroAntdModule,
@@ -48,7 +51,7 @@ registerLocaleData(en);
     ReportCardComponent,
     MyReportComponent,
     WatchReportByClassificationComponent,
-    ClassificationComponent
+    ClassificationComponent,
   ]
 })
 export class ShareModule { }

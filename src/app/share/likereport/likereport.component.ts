@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { Like } from './likereport';
+import { Like } from '../../Interface/userinfo';
 
 @Component({
   selector: 'app-likereport',
