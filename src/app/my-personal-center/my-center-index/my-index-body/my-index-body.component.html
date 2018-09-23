@@ -1,0 +1,27 @@
+<div nz-row class="s-bk">
+  <!-- navbar -->
+
+  <div nz-col nzSpan="24">
+    <nz-tabset nz-row style="text-align: center;" >
+      <nz-tab nz-col nzSpan="5" [nzTitle]="CollectionTemplate">
+        <ng-template #CollectionTemplate>
+          <a>Collections</a>
+        </ng-template>
+        <div *ngFor="let report of collections">
+          <app-others-report [bkcolor]="'#F2F2F2'" [report]="report"></app-others-report>
+        </div>
+      </nz-tab>
+
+      <nz-tab nz-col nzSpan="5" [nzTitle]="FavoriteTemplate">
+        <ng-template #FavoriteTemplate>
+          <a>Favorite</a>
+        </ng-template>
+        <div *ngFor="let report of favorite">
+          <app-others-report [bkcolor]="'#F2F2F2'" [report]="report"></app-others-report>
+        </div>
+      </nz-tab>
+
+
+    </nz-tabset>
+  </div>
+</div>

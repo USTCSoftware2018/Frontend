@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Simuser } from './Interface/userinfo';
 import {HttpService} from './http.service';
+import { user1} from './Interface/mock-user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserSigninfoService {
   isLogin = false;
-  myInfo: Simuser|undefined;
+  myInfo: Simuser|undefined = undefined;
   username: string;
   password: string;
 
@@ -15,26 +16,27 @@ export class UserSigninfoService {
   constructor(private http: HttpService) {
   }
 
-
-
-  setUserInfobyInfo( iflogin: boolean , info: Info) {
+  setUserInfobyInfo( iflogin: boolean , info: Info|undefined) {
     this.isLogin = iflogin;
-    this.myInfo = {
-      id: info.id,
-      actual_name: info.actualname,
-      name: info.user_name,
-      organization: info.organization,
-      email: info.email,
-      avatar_url: info.avatar_url,
-      location: info.location,
-      about_me: info.description,
-      followingnum: info.stat.following_count,
-      followednum: info.stat.follower_count,
-      likenum: info.stat.star_count,
-      reportsnum: info.stat.experience_count,
-      follow_or_unfollow: true,
-      follow_or_edit: false,
-    };
+    if ( ifInfo(info)) {
+      this.myInfo = {
+        id: info.id,
+        actual_name: info.actualname,
+        name: info.username,
+        organization: info.organization,
+        email: info.email,
+        avatar_url: info.avatar_url,
+        location: info.location,
+        about_me: info.description,
+        followingnum: info.stat.following_count,
+        followednum: info.stat.follower_count,
+        likenum: info.stat.star_count,
+        reportsnum: info.stat.experience_count,
+        ifFollow: true,
+      };
+    } else {
+     this.myInfo = undefined;
+    }
   }
   setUserInfo( iflogin: boolean, info: Simuser|undefined) {
     this.isLogin = iflogin;
@@ -67,6 +69,6 @@ class Info {
     'follower_count': number;
   };
 }
-function ifSimuser(info: Simuser|undefined): info is Simuser {
-  return (<Simuser>info).id !== undefined;
+function ifInfo(info: Info|undefined): info is Info {
+  return (<Info>info).id !== undefined;
 }

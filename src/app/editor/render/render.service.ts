@@ -38,10 +38,10 @@ export class RenderService {
   private renderToDom(report: ReportHeader) {
     // Information Part
     this.domList.insertChild('div', 'report_title', report.title);
-    const secondRaw = new DomClass('div', 'report_sub_title');
-    secondRaw.insertChild('div', 'report_author', 'Recorder: ' + report.author);
-    secondRaw.insertChild('div', 'report_date', 'Date: ' + report.mdate);
-    this.domList.innerDom.push(secondRaw);
+    const rawTitle = new DomClass('div', 'report_sub_title');
+    rawTitle.insertChild('div', 'report_author', 'Recorder: ' + report.author);
+    rawTitle.insertChild('div', 'report_date', 'Date: ' + report.mdate);
+    this.domList.innerDom.push(rawTitle);
 
     const IntroductionRaw = new DomClass('div', 'report_introducrtion');
     IntroductionRaw.insertChild('div', 'report_introduction_title', 'Introduction');

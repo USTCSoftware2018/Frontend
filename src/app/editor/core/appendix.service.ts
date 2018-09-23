@@ -72,7 +72,7 @@ export class AppendixService {
   //   _new_sub.name = 'Info';
   //   _new_sub.idx =  0;
   //   _new_sub.list = [];
-  //   this.editor.report.subroutines.push(_new_sub);
+  //   this.editor.display-all-info.subroutines.push(_new_sub);
   //   _new_sub.pic = [];
   // }
 

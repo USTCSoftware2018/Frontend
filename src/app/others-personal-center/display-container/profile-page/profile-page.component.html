@@ -1,0 +1,14 @@
+
+<div class="d-bk" nz-row >
+  <div nz-col nzSm="24" nzXs="24" [nzMd]="{span:22,offset:1}" [nzLg]="{span:20, offset:2}"
+       [nzXl]="{span:18, offset:3}" [nzXXl]="{span:18, offset:3}">
+    <div nz-row nzGutter="10">
+      <div nz-col nzSpan="7" class="body">
+        <app-personal-information [userinfo]="simuser" [classification]="user"></app-personal-information>
+      </div>
+      <div nz-col nzSpan="17" class="body right">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
