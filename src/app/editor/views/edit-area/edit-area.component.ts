@@ -20,6 +20,7 @@ export class EditAreaComponent implements OnInit, OnChanges {
   flag: string;
 
   @ViewChild('scrolss') scroll: ElementRef;
+  @ViewChild('subDom') subDom: ElementRef;
 
   options: SortablejsOptions = {
     handle: '.subroutineTitlePart',
@@ -45,6 +46,10 @@ export class EditAreaComponent implements OnInit, OnChanges {
         this.scroll.nativeElement.scrollTop = 0;
       } else if (value === -1) {
         this.scroll.nativeElement.scrollTop = this.scroll.nativeElement.scrollHeight;
+      } else {
+        const subsDoms = this.subDom.nativeElement.querySelectorAll('.subs_flag');
+        console.log(subsDoms);
+        this.scroll.nativeElement.scrollTop = subsDoms[value - 1].offsetTop;
       }
    });
   }
