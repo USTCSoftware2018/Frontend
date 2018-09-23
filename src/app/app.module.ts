@@ -16,7 +16,7 @@ import { ReportshowComponent } from './reportshows/reportshow/reportshow.compone
 import { UserSetModule } from './user-set/user-set.module';
 import { ProfileModule} from './profile/profile.module';
 import { NotificationModule } from './notification/notification.module';
-import { ReportshowotherComponent } from './reportshows/reportshow/reportshowother/reportshowother.component';
+import { ReportshowotherComponent } from './reportshows/reportshowother/reportshowother.component';
 import { FeedsComponent } from './core/feeds/feeds.component';
 import { ShareModule } from './share/share.module';
 import { HttpExampleComponent } from './http-example/http-example.component';

@@ -29,11 +29,11 @@ export class UserInfoProfileComponent implements OnInit {
   }
   followAndUnFollow(): void {
     if (this.userinfoprofile.follow_or_unfollow) {
-      this.follow_and_unfollow ="unfollow";
-      this.userinfoprofile.follow_or_unfollow=false;
+      this.follow_and_unfollow = 'unfollow';
+      this.userinfoprofile.follow_or_unfollow = false;
     } else {
-      this.follow_and_unfollow="follow";
-      this.userinfoprofile.follow_or_unfollow=true;
+      this.follow_and_unfollow = 'follow';
+      this.userinfoprofile.follow_or_unfollow = true;
     }
   }
   /*
