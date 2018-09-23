@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { HttpService} from '../../../http.service';
 import { ApiResult } from '../../../Interface/ApiResult';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-user-account',
@@ -16,17 +17,24 @@ import { ApiResult } from '../../../Interface/ApiResult';
 })
 export class UserAccountComponent implements OnInit {
   useraccount=this.fb.group({
-    name:[''],
     oldpassword:[''],
     newpassword:[''],
     confirmpassword:['']
   })
-  callback=function(result: ApiResult){
+  callback = (result: ApiResult) => {
     console.log(result);
-}
-  constructor(private fb:FormBuilder,private http:HttpService) { }
+    if (result.success) {
+      this.message.success('Update sucessfully');
+    }else {
+      this.message.error('Fail to Update.' + result.data.detail);
+    }
+  }
+  constructor(private fb:FormBuilder,private http:HttpService, private message: NzMessageService) { }
+
   update_password():void{
-    this.http.update_password(this.useraccount.value.old_password, this.useraccount.value.new_password, this.callback);
+    console.log(this.useraccount.value);
+    console.log(this.useraccount.value.oldpassword);
+    this.http.update_password(this.useraccount.value.oldpassword, this.useraccount.value.newpassword, this.callback);
   }
   ngOnInit() {
   }

@@ -2,10 +2,10 @@
   <div class="cardtitle">REPORTS</div>
   <ul >
     <li class="tagpage"  routerLinkActive="tagpageactive" style="width: 7vw;">
-      <a [class.tagc]="!tagrla1.isActive" routerLink="./report-all" routerLinkActive="tagactive" #tagrla1="routerLinkActive">All({{allnum}})</a>
+      <a [class.tagc]="!tagrla1.isActive" routerLink="./display-all-info-all" routerLinkActive="tagactive" #tagrla1="routerLinkActive">All({{allnum}})</a>
     </li>
     <li class="tagpage" routerLinkActive="tagpageactive" style="width: 7vw;">
-      <a [class.tagc]="!tagrla2.isActive"routerLink="./report-draft" routerLinkActive="tagactive" #tagrla2="routerLinkActive">Drafts({{draftnum}})</a>
+      <a [class.tagc]="!tagrla2.isActive"routerLink="./display-all-info-draft" routerLinkActive="tagactive" #tagrla2="routerLinkActive">Drafts({{draftnum}})</a>
     </li>
   </ul>
   <router-outlet></router-outlet>

@@ -17,13 +17,13 @@
         <nz-sider [nzCollapsed]="isCollapsed" [nzCollapsedWidth]='0' [nzWidth]="0" >
           <ul class="navi2">
             <li class="navi1">
-              <a routerLink="./user-basic" routerLinkActive="active" >Basic Information</a>
+              <a [class.navichild]="!rla.isActive" routerLink="./user-basic" routerLinkActive="active" #rla="routerLinkActive">Basic Information</a>
             </li>
             <li class="navi1">
-              <a routerLink="./user-account" routerLinkActive="active" >Account</a>
+              <a [class.navichild]="!rla1.isActive" routerLink="./user-account" routerLinkActive="active"  #rla1="routerLinkActive">Account</a>
             </li>
             <li class="navi1">
-            <a routerLink="./user-report" routerLinkActive="active" >Report</a>
+            <a [class.navichild]="!rla2.isActive" routerLink="./user-display-all-info" routerLinkActive="active" #rla2="routerLinkActive">Report</a>
             </li>
           </ul>
         </nz-sider>

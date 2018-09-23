@@ -1,5 +1,5 @@
 <div class="userset0" [formGroup]="useraccount">
-  <div class="cardtitle">CHANGE USERNAME</div>
+  <!--<div class="cardtitle">CHANGE USERNAME</div>
   <nz-divider style="margin: 1vw 0;"></nz-divider>
 <div class="username">
   <nz-form-item>
@@ -20,7 +20,7 @@ text-align: center;
 margin:0 auto;">Save</button>
     </nz-form-control>
   </div>
-</div>
+</div>-->
   <div class="cardtitle">CHANGE PASSWORD</div>
 
   <nz-divider style="margin: 1vw 0;"></nz-divider>
@@ -45,7 +45,7 @@ margin:0 auto;">Save</button>
       <nz-form-item>
         <p>Confirm new password</p>
         <nz-form-control nz-col nzSpan="17">
-          <input nz-input type="password" id="confirmpassword" formControlName="confirmpassword">
+          <input nz-input type="password" id="confirmpassword" formControlName="confirmpassword" [(ngModel)]="useraccount.confirmpassword">
         </nz-form-control>
       </nz-form-item>
     </div>
