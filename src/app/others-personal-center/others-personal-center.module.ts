@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { PersonalInformationComponent } from './personal-information/personal-information.component';
-import { ProfilePageComponent } from './profile-page/profile-page.component';
-import { Report2Component } from './report/report.component';
+import { PersonalInformationComponent } from './display-container/personal-information/personal-information.component';
+import { ProfilePageComponent } from './display-container/profile-page/profile-page.component';
+import { DisplayAllInfoComponent } from './display-all-info/display-all-info.component';
 import { ShareModule } from '../share/share.module';
 import {OthersPersonalCenterRoutingModule} from './others-personal-center-routing.module';
-import { WatchReportLabelComponent } from './watch-report-label/watch-report-label.component';
-import { WatchReportArchiveComponent } from './watch-report-archive/watch-report-archive.component';
+import { WatchReportLabelComponent } from './display-container/watch-report-label/watch-report-label.component';
+import { WatchReportArchiveComponent } from './display-container/watch-report-archive/watch-report-archive.component';
 
 
 @NgModule({
@@ -22,7 +22,7 @@ import { WatchReportArchiveComponent } from './watch-report-archive/watch-report
   declarations: [
     PersonalInformationComponent,
     ProfilePageComponent,
-    Report2Component,
+    DisplayAllInfoComponent,
     WatchReportLabelComponent,
     WatchReportArchiveComponent,
   ],

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProfilePageComponent } from './profile-page/profile-page.component';
-import { WatchReportLabelComponent } from './watch-report-label/watch-report-label.component';
-import { Report2Component } from './report/report.component';
-import { WatchReportArchiveComponent } from './watch-report-archive/watch-report-archive.component';
+import { ProfilePageComponent } from './display-container/profile-page/profile-page.component';
+import { WatchReportLabelComponent } from './display-container/watch-report-label/watch-report-label.component';
+import { DisplayAllInfoComponent } from './display-all-info/display-all-info.component';
+import { WatchReportArchiveComponent } from './display-container/watch-report-archive/watch-report-archive.component';
 
 const routes: Routes = [
   {
@@ -11,12 +11,12 @@ const routes: Routes = [
     component: ProfilePageComponent,
     children: [{
       path: '',
-      redirectTo: 'reportshow',
+      redirectTo: 'index',
       pathMatch: 'full'
     },
       {
-        path: 'reportshow',
-        component: Report2Component,
+        path: 'index',
+        component: DisplayAllInfoComponent,
       },
       {
         path: 'watch/:name',

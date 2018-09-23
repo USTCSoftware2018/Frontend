@@ -11,7 +11,7 @@ import { FollowuserComponent } from './followuser/followuser.component';
 import { UserInfoProfileComponent } from './user-info-profile/user-info-profile.component';
 import { ReportCardComponent } from './report-card/report-card.component';
 import { MyReportComponent } from './my-report/my-report.component';
-import { WatchReportByLabelComponent } from './watch-report-by-label/watch-report-by-label.component';
+import { WatchReportByClassificationComponent } from './watch-report-by-classification/watch-report-by-classification.component';
 import {RouterModule} from '@angular/router';
 import { ClassificationComponent } from './classification/classification.component';
 
@@ -32,7 +32,7 @@ registerLocaleData(en);
     UserInfoProfileComponent,
     ReportCardComponent,
     MyReportComponent,
-    WatchReportByLabelComponent,
+    WatchReportByClassificationComponent,
     ClassificationComponent,
   ],
   // 公用导出组件放在exports数组内
@@ -47,7 +47,7 @@ registerLocaleData(en);
     UserInfoProfileComponent,
     ReportCardComponent,
     MyReportComponent,
-    WatchReportByLabelComponent,
+    WatchReportByClassificationComponent,
     ClassificationComponent
   ]
 })

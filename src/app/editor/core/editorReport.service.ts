@@ -116,7 +116,7 @@ export class EditorReportService {
     _new_sub.id = '-1';
     _new_sub.desc = '';
     _new_sub.name = _step_temp.name;
-    // _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
+    // _new_sub.idx =  (this.display-all-info.subroutines[this.display-all-info.subroutines.length - 1] || {idx: 0}).idx + 1;
     _new_sub.idx = 0;
     _new_sub.steps = [];
 
@@ -141,7 +141,7 @@ export class EditorReportService {
     _new_sub.id = _sub_temp.id;
     _new_sub.desc = _sub_temp.desc;
     _new_sub.name = _sub_temp.name;
-    // _new_sub.idx =  (this.report.subroutines[this.report.subroutines.length - 1] || {idx: 0}).idx + 1;
+    // _new_sub.idx =  (this.display-all-info.subroutines[this.display-all-info.subroutines.length - 1] || {idx: 0}).idx + 1;
     _new_sub.idx = 0;
     _new_sub.steps = [];
 
@@ -172,7 +172,7 @@ export class EditorReportService {
   //   _new_sub.idx =  0;
   //   _new_sub.list = [];
   //   this.infoSub = _new_sub;
-  //   this.report.subroutines.push(_new_sub);
+  //   this.display-all-info.subroutines.push(_new_sub);
   //   _new_sub.pic = [];
   // }
 

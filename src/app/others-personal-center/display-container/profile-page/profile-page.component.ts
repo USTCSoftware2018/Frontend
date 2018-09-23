@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User, Assortment } from '../../Interface/userinfo';
-import {SIMUSER, CLASSIFICATION} from '../../Interface/mock-user';
-import {HttpService} from '../../http.service';
-import {ApiResult} from '../../Interface/ApiResult';
+import { User, Assortment } from '../../../Interface/userinfo';
+import {SIMUSER, CLASSIFICATION} from '../../../Interface/mock-user';
+import {HttpService} from '../../../http.service';
+import {ApiResult} from '../../../Interface/ApiResult';
 
 
 @Component({

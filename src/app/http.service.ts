@@ -207,32 +207,32 @@ user_login(username: string, password: string, callback: callbackFunc) {
   }
 
   create_report(report: object, callback: callbackFunc) {
-    // create new report
+    // create new display-all-info
     this.fire(`editor/report/`, 'post', null, callback);
   }
 
   delete_report(id: number, callback: callbackFunc) {
-    // delete report by id
+    // delete display-all-info by id
     this.fire(`editor/report/${id}`, 'delete', null, callback);
   }
 
   update_report(id: number, callback: callbackFunc) {
-    // update report
+    // update display-all-info
     this.fire(`editor/report/${id}`, 'post', null, callback);
   }
 
   create_report_html(html: string, callback: callbackFunc) {
-    // create new report html
+    // create new display-all-info html
     this.fire(`editor/report/`, 'post', null, callback);
   }
 
   update_report_html(id: number, callback: callbackFunc) {
-    // update report html
+    // update display-all-info html
     this.fire(`editor/report/${id}`, 'post', null, callback);
   }
 
   get_report_html(id: number, callback: callbackFunc) {
-    // get report html
+    // get display-all-info html
     this.fire(`editor/report/${id}`, 'get', null, callback);
   }
 
