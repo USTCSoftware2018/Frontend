@@ -42,11 +42,11 @@ export class RouterjudgeService {
     this.goToJudge(id, '/mypersonalcenter/detailinfo', '/userprofile/' + id);
   }
   // 点击label
-  gotoReportbyLabel = ( id: number, name: string) => {
-    this.goToJudge(id, '/mypersonalcenter/detailinfo/label/' + name , '/userprofile/' + id + '/label/' + name);
+  gotoReportbyLabel = ( id: number, label_id: number) => {
+    this.goToJudge(id, '/mypersonalcenter/detailinfo/label/' + label_id , '/userprofile/' + id + '/label/' + label_id);
   }
   // 点击archive
-  gotoReportbyArchive = ( id: number, date: string) => {
-    this.goToJudge(id, '/mypersonalcenter/detailinfo/archive/' + date, '/userprofile/' + id + '/archive/' + date);
+  gotoReportbyArchive = ( id: number, archive_id: number) => {
+    this.goToJudge(id, '/mypersonalcenter/detailinfo/archive/' + archive_id, '/userprofile/' + id + '/archive/' + archive_id);
   }
 }

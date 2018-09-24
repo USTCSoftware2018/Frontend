@@ -18,7 +18,7 @@ export class OthersReportComponent implements OnInit {
   gotoIndex = () => {
     this.routerjudge.gotoUserIndex(this.report.author.id);
   }
-  gotoLabel = (name: string) => {
-    this.routerjudge.gotoReportbyLabel(this.report.author.id, name);
+  gotoLabel = (label_id: number) => {
+    this.routerjudge.gotoReportbyLabel(this.report.author.id, label_id);
   }
 }

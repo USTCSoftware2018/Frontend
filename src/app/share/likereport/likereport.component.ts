@@ -17,7 +17,7 @@ export class LikereportComponent implements OnInit {
   gotoIndex = () => {
     this.routerjudge.gotoUserIndex(this.like.ouser.id);
   }
-  gotoLabel = (name: string) => {
-    this.routerjudge.gotoReportbyLabel(this.like.report.author.id, name);
+  gotoLabel = (label_id: number) => {
+    this.routerjudge.gotoReportbyLabel(this.like.report.author.id, label_id);
   }
 }

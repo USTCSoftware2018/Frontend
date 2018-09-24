@@ -69,11 +69,15 @@ const user4: Simuser = {
   organization: 'USTC',
   followed: true,
 };
+const labels = [
+  { id: 1, name: 'ccc', num: 10},
+  { id: 2, name: 'ddd', num: 15},
+];
 export const report1: Report = {
   id: 1,
   title: 'research',
   author: user4,
-  labels: ['A', 'B', 'C'],
+  labels: labels,
   abstract: '1. Centifuge 1.5 mL bacterium solution at 11000 rpm, few sediment getted. Remove the supernatant. Repeat twice.\n' +
   '2. Add 250 μL Buﬀer P1, resuspend cells.\n' +
   '1. Centifuge 1.5 mL bacterium solution at 11000 rpm, few sediment getted. Remove the supernatant. Repeat twice.\n' +
@@ -83,17 +87,14 @@ export const report1: Report = {
 };
 
 const archives = [
-  {date: '2018-10-9', num: 12},
-  {date: '2018-10-10', num: 14},
+  { id: 1, date: '2018-10-9', num: 12},
+  { id: 2, date: '2018-10-10', num: 14},
 ];
 const popular_repots = [
-  {name: 'aaa', praises: 12},
-  {name: 'bbb', praises: 13},
+  {id: 1, title: 'aaa', praises: 12},
+  {id: 2, title: 'bbb', praises: 13},
 ];
-const labels = [
-  {name: 'ccc', num: 10},
-  {name: 'ddd', num: 15},
-];
+
 const assortment = {
   archives: archives,
   popular_reports: popular_repots,
@@ -102,12 +103,8 @@ const assortment = {
 export const USER: User = {
   id: 1,
   about_me: 'a student in ustc',
-  following: {
-    content: [ user1, user2],
-  },
-  followers: {
-    content: [user3, user4, user1 ],
-  },
+  following: [ user1, user2],
+  followers: [user3, user4, user1 ],
   likes: [{
     ouser: user1,
     report: report1,
