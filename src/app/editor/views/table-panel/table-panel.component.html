@@ -1,8 +1,9 @@
 <nz-table #basicTable nzBordered 
         [nzData]="ret.table" 
         nzSize="middle" 
-        [nzPageSize]="10" 
-        [nzFooter]="TableFooter">
+        [nzPageSize]="20" 
+        [nzFooter]="TableFooter"
+        [nzHideOnSinglePage]="true">
   <thead>
     <tr>
         <th *ngFor="let field of basicTable.data[0];let ii = index">

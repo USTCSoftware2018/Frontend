@@ -3,9 +3,18 @@
   <nz-tabset [nzSize]="'large'" [nzTabBarGutter]="5">
 
     <nz-tab nzTitle="&nbsp;&nbsp;&nbsp;&nbsp;Step&nbsp;&nbsp;&nbsp;&nbsp;">
-        <nz-input-group nzSuffixIcon="anticon anticon-search" nz-col nzSpan="22" nzOffset="1">
-          <input type="text" nz-input placeholder="Input search steps">
-        </nz-input-group>
+
+      <div nz-row>
+        <div nz-col nzSpan="18" nzOffset="1">
+          <nz-input-group nzSuffixIcon="anticon anticon-search">
+            <input type="text" nz-input placeholder="Input search steps">
+          </nz-input-group>
+        </div>
+        <div nz-col nzSpan="4" >
+            <i class="anticon anticon-plus-circle-o dynamic-button-step-bar" (click)="showStepModel()"></i>
+        </div>
+      </div>
+
       <div class="stepBarList">
         <!-- 这里是 step 和 process 的列表部分 -->
         <nz-list [nzDataSource]="steps" [nzItemLayout]="'horizontal'"
@@ -24,9 +33,18 @@
 
 
     <nz-tab nzTitle="Process">
-      <nz-input-group nzSuffixIcon="anticon anticon-search">
-          <input type="text" nz-input placeholder="Input search Process">
-      </nz-input-group>
+
+      <div nz-row>
+        <div nz-col nzSpan="18" nzOffset="1">
+          <nz-input-group nzSuffixIcon="anticon anticon-search">
+            <input type="text" nz-input placeholder="Input search process">
+          </nz-input-group>
+        </div>
+        <div nz-col nzSpan="4" >
+            <i class="anticon anticon-plus-circle-o dynamic-button-step-bar"></i>
+        </div>
+      </div>
+        
       <div class="stepBarList">
       <!-- 这里是 step 和 process 的列表部分 -->
       <nz-list [nzDataSource]="subs" [nzItemLayout]="'horizontal'" nzSize="small" [nzRenderItem]="item1">
@@ -41,25 +59,41 @@
       </div>
     </nz-tab>
   </nz-tabset>
-
-  <!-- <div class="stepBarTop" nz-row> -->
-    <!-- 头部 -->
-      <!-- <p nz-col nzSpan="12">Step</p> -->
-      <!-- <p nz-col nzSpan="12">Process</p> -->
-  <!-- </div> -->
-<!--  -->
-  <!-- <hr /> -->
-<!--  -->
-  <!-- <div class="stepBarList"> -->
-    <!-- 这里是 step 和 process 的列表部分 -->
-    <!-- <nz-list [nzDataSource]="steps" [nzItemLayout]="'horizontal'" nzSize="small" [nzRenderItem]="item"> -->
-      <!-- <ng-template #item let-item> -->
-        <!-- <nz-list-item> -->
-          <!-- <img class="stepBarListIco" [src]="item.ico"/> -->
-          <!-- <span class="stepBarListName">{{item.name}}</span> -->
-        <!-- </nz-list-item> -->
-      <!-- </ng-template> -->
-    <!-- </nz-list> -->
-  <!-- </div> -->
-
 </div>
+
+<nz-modal [(nzVisible)]="isVisibleStep" nzTitle="New Step" (nzOnCancel)="handleCancelStep()" (nzOnOk)="handleOkStep()">
+  <form nz-form>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" >Name</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <input nz-input  [(ngModel)]="tempNewStepName" [ngModelOptions]="{standalone: true}"/>
+      </nz-form-control>
+    </nz-form-item>
+    
+
+    <nz-form-item *ngFor="let temp of tempNewStepTemp;let i = index">
+        <nz-form-label [nzSpan]="6" >Template</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <input nz-input style="width: 100%; margin-right:8px;" [(ngModel)]="tempNewStepTemp[i].value" [ngModelOptions]="{standalone: true}"/>
+        </nz-form-control>
+        <div nz-col [nzSpan]="2">
+          <i class="anticon anticon-minus-circle-o dynamic-button-step-list-bar" (click)="removeFieldStep(i)"></i>
+        </div>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-control [nzXs]="{span:14,offset:6}" [nzSm]="{span:14,offset:6}">
+          <button nz-button nzType="dashed" style="width:100%" (click)="addFieldStep()">
+            <i class="anticon anticon-plus"></i> Add field
+          </button>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6">Yield</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <textarea nz-input [(ngModel)]="tempNewStepField" [ngModelOptions]="{standalone: true}"></textarea>
+      </nz-form-control>
+    </nz-form-item >
+  </form>
+</nz-modal>
