@@ -55,8 +55,37 @@ export class HttpExampleComponent implements OnInit {
       old: 'b123456',
       new1: 'a123456'
     }},
+    {name: '通过report的id获取report', lable: 'get', func: this.http.get_report_list_by_userid, templa: {
+      id: 1
+    }},
+    {name: '获取一个人的所有reports列表', lable: 'get_reports_list_by_id', func: this.http.get_report_list_by_userid, templa: {
+      id: 1
+    }},
+    {name: '更新profile', lable: 'update_profile', func: this.http.update_profile, templa: {
+        avatar_url: 'avatar_url',
+        actualname: 'actualname',
+        location: 'location',
+        description: 'description',
+        organization: 'organization',
+        email: 'email'
+    }}
+  ];
+
+  EditorList: Array<FuncEle> = [
     {name: '获取steps', lable: 'get_all_my_steps', func: this.http.get_all_my_steps, templa: {}},
-    {name: '获取reports', lable: 'get_all_my_reports', func: this.http.get_all_my_reports, templa:
+    {name: '创建step', lable: 'create_step', func: this.http.create_step, templa: {
+      title: 'test'
+    }},
+    {name: '更新step', lable: 'update_step', func: this.http.update_step, templa: {
+      title: 'test'
+    }},
+    {name: '删除step', lable: 'delet_step', func: this.http.delete_step, templa: {
+      id: 1
+    }},
+    {name: '根据id获取step', lable: 'get_step_by_id', func: this.http.get_step_by_id, templa: {
+      id: 1
+    }},
+    {name: '创建reports', lable: 'create_report', func: this.http.create_report, templa:
     JSON.parse(`{"title":"11","introduction":"33","label":["22"],
     "mdate":"","ndate":"","result":[{"desc":"11111","subType":"Text","list":[],"pic":[]},
     {"desc":"","subType":"List","list":[{"str":"111"},{"str":"2222"},{}],"pic":[]}],
@@ -69,7 +98,31 @@ export class HttpExampleComponent implements OnInit {
     "id":0,"author":[]}
     `)
     },
-    {name: '获取subroutine', lable: 'get_all_my_subroutine', func: this.http.get_all_my_subroutines, templa: {}}
+    {name: '更新report', lable: 'update_report', func: this.http.update_report, templa: {
+      id: 1,
+      string: '12234'
+    }},
+    {name: '通过report的id获取report', lable: 'get_report_by_id', func: this.http.get_report_by_id, templa: {
+      id: 1
+    }},
+    {name: '删除report', lable: 'delete_report', func: this.http.delete_report, templa: {
+      id: 1,
+      string: 'skdljsldj'
+    }},
+    {name: '更新subroutine', lable: 'update_subroutine', func: this.http.update_subroutine, templa: {
+      id: 1,
+      subroutine: 'hhh'
+    } },
+    {name: '创建subroutine', lable: 'create_subroutine', func: this.http.create_subroutine, templa: {
+      subroutine: 'hhh'
+    }},
+    {name: '获取我的所有subroutine', lable: 'get_all_my_subroutine', func: this.http.get_all_my_subroutines, templa: {}},
+    {name: '根据id获取subroutine', lable: 'get_subroutine_by_id', func: this.http.get_subroutine_by_id, templa: {
+      id: 1
+    }},
+    {name: '删除subroutine', lable: 'delete', func: this.http.delete_subroutine, templa: {
+      id: 1
+    }}
   ];
 
   constructor(private http: HttpService) { }
@@ -102,6 +155,19 @@ export class HttpExampleComponent implements OnInit {
         break;
       }
     }
+
+    const editorRequest = JSON.parse(this.request);
+    // editor function
+    for (const select of this.EditorList) {
+      if (this.choice === select.lable) {
+        if (this.request === '{}') {
+          select.func.call(this.http, callback);
+          // this.http.get_all_my_steps(callback);
+        } else {
+          select.func.call(this.http, editorRequest, callback);
+        }
+      }
+    }
   }
 
   refresh() {
@@ -110,6 +176,11 @@ export class HttpExampleComponent implements OnInit {
       if (this.choice === t.lable) {
         this.Stringfy(t.templa);
       }
+    for (const s of this.EditorList) {
+      if (this.choice === s.lable) {
+        this.Stringfy(s.templa);
+      }
+    }
   }
   }
 

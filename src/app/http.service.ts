@@ -34,7 +34,7 @@ export class HttpService {
     } else if (method === 'options') {
       ret = this.http.options(apiURL, this.httpOptions);
     } else if (method === 'patch') {
-      ret = this.http.patch(apiURL, this.httpOptions);
+      ret = this.http.patch(apiURL, params, this.httpOptions);
     } else {
       ret = this.http.get(apiURL, this.httpOptions);
     }
@@ -170,11 +170,31 @@ export class HttpService {
     this.fire(`users/${user_id}/following/`, 'get', null, callback);
   }
 
-/////////////////////////// Report //////////////////////////////////////////
 
+
+/////////////////////////// Report //////////////////////////////////////////
+  get_report_list_by_userid(user_id: number, callback: callbackFunc) {
+    this.fire(`users/report-list/${user_id}`, 'get', null, callback);
+}
+
+
+
+
+
+
+
+
+
+
+///////////////////////// Editor /////////////////////////////////////////
   // get all my steps
   get_all_my_steps(callback: callbackFunc) {
-    this.fire(`editor/step/`, 'get', null, callback);
+    // this.fire('editor/step', 'get', null, callback);
+    this.fire('users/logout/', 'get', null, callback);
+  }
+
+  get_report_by_id(id: number, callback: callbackFunc) {
+    this.fire(`editor/report/${id}`, 'get', null, callback);
   }
 
   // get step by id
