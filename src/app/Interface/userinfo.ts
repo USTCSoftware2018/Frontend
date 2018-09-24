@@ -54,7 +54,7 @@ export class PopularReport {
 export class Label {
   id: number;
   name: string;
-  num: number;
+  report_count: number;
 }
 
 export class Assortment {

@@ -70,8 +70,9 @@ const user4: Simuser = {
   followed: true,
 };
 const labels = [
-  { id: 1, name: 'ccc', num: 10},
-  { id: 2, name: 'ddd', num: 15},
+  { id: 1, name: 'ccc', report_count: 10},
+  { id: 2, name: 'ddd', report_count: 15},
+  { id: 2, name: 'ddd', report_count: 15},
 ];
 export const report1: Report = {
   id: 1,

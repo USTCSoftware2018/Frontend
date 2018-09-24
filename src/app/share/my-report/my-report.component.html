@@ -11,9 +11,9 @@
   </div>
   <div class="topic-title" nz-col nzSpan="6">
     <span class="topic-title">labels:</span>
-    <a class="topic-content" (click)="gotoLabel(report.labels[0].id)">&nbsp;&nbsp;{{report.labels[0].name}}</a>
-    <a class="topic-content" (click)="gotoLabel(report.labels[1].id)"> {{report.labels[1].name}} </a>
-    <a class="topic-content" (click)="gotoLabel(report.labels[2].id)"> {{report.labels[2].name}}</a>
+    <a class="topic-content" (click)="gotoLabel((report.labels)[0].id)">&nbsp;&nbsp;{{(report.labels)[0].name}}</a>
+    <a class="topic-content" (click)="gotoLabel((report.labels)[1].id)"> {{(report.labels)[1].name}} </a>
+    <a class="topic-content" (click)="gotoLabel((report.labels)[2].id)"> {{(report.labels)[2].name}}</a>
   </div>
   <div nz-col nzOffset="10" nzSpan="3">
     <span class="info-num">{{report.likesnum}}&nbsp;likes</span>
