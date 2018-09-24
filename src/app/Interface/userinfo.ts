@@ -43,6 +43,7 @@ export class Archive {
   id: number;
   date: string;
   num: number;
+  reports: Array<Report>;
 }
 
 export class PopularReport {
@@ -55,10 +56,17 @@ export class Label {
   id: number;
   name: string;
   report_count: number;
+  reports: Array<Report>;
 }
 
 export class Assortment {
   archives: Archive[];
   popular_reports: PopularReport[];
   labels: Label[];
+}
+
+export class Collection {
+  id: number;
+  name: string;
+  reports: Array<Report>;
 }
