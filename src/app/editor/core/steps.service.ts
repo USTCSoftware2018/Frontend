@@ -34,8 +34,23 @@ export class StepsService {
     return this.subs.filter ( sub => sub.id === subId)[0];
   }
 
-  public addSteps() {
+  public addSteps(stepName: string, stepYield: string, stepTemp: {value: string}[]) {
     // 没有定义
+    const newStep = new EditorStepHeader();
+    newStep.id = (this.steps.length + 1).toString();
+    newStep.desc = stepName;
+    newStep.name = stepName;
+    newStep.ico = '/assets/img/editor/icons/' + stepName[0].toUpperCase() + '.png';
+
+    const arr: string[] =  [];
+    for (const st of stepTemp) {
+      arr.push(st.value);
+    }
+    newStep.template = '- ' + arr.join(' - ') + ' -';
+    newStep.yield_method = stepName;
+    // this._steps.push(JSON.parse(JSON.stringify(newStep)));
+    this._steps = [ ...this._steps, newStep];
+    // console.log(this.steps);
   }
 
   public addSubroutine() {
