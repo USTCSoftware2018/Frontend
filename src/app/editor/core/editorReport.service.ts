@@ -69,6 +69,9 @@ export class EditorReportService {
     }
 
     // Remark 部分
+    if ((!step.remark || step.remark === '') && data['Notes']) {
+      step.remark = data['Notes'];
+    }
     const fld_remark: any = new Object();
     fld_remark.type = 'input';
     fld_remark.label = 'Notes';

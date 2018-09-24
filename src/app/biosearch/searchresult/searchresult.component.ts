@@ -15,7 +15,7 @@ export class SearchresultComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.users = USER.followers.content;
+    this.users = USER.followers;
   }
   startloading() {
     this.loading = true;

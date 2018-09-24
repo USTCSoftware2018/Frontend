@@ -16,16 +16,17 @@ export class UserSigninfoService {
   constructor(private http: HttpService) {
   }
 
-  setUserInfobyInfo( iflogin: boolean , info: Simuser|undefined) {
+  setUserInfobyInfo( iflogin: boolean , info: any) {
     this.isLogin = iflogin;
     if ( ifSimuser(info)) {
       this.myInfo = info;
+      this.myInfo.stat = info['stat'];
       this.myInfo.followed = true;
     } else {
      this.myInfo = undefined;
     }
   }
-  setUserInfo( iflogin: boolean, info: Simuser|undefined) {
+  setUserInfo( iflogin: boolean, info: any) {
     this.isLogin = iflogin;
     this.myInfo = info;
   }
@@ -37,6 +38,6 @@ export class UserSigninfoService {
   }
 }
 
-function ifSimuser(info: Simuser|undefined): info is Simuser {
+function ifSimuser(info: any): info is Simuser {
   return (<Simuser>info).id !== undefined;
 }

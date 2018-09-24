@@ -135,7 +135,7 @@ export class HttpService {
     this.fire('users/', 'get', null, callback);
   }
 
-  get_user_by_id(id: number, callback: callbackFunc) {
+  get_user_by_id(id: number|string, callback: callbackFunc) {
     // get user by id
     this.fire(`users/${id}/`, 'get', null, callback);
   }

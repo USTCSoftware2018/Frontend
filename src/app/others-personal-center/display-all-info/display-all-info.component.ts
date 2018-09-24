@@ -46,7 +46,7 @@ export class DisplayAllInfoComponent implements OnInit {
     }
   }
   ifFollowing(otheruser: Simuser) {
-    const ii = this.user.following.content.findIndex(function(value) {
+    const ii = this.user.following.findIndex(function(value) {
       return value.id === otheruser.id;
     });
     if (ii === -1) {

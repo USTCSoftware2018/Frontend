@@ -21,11 +21,11 @@ export class ClassificationComponent implements OnInit {
   ngOnInit() {
     this.initInfo();
   }
-  gotoArchive = ( date: string) => {
-    this.routerjudge.gotoReportbyArchive(this.userid, date);
+  gotoArchive = ( archive_id: number) => {
+    this.routerjudge.gotoReportbyArchive(this.userid, archive_id);
   }
-  gotoLabel = (name: string) => {
-    this.routerjudge.gotoReportbyLabel(this.userid, name);
+  gotoLabel = (label_id: number) => {
+    this.routerjudge.gotoReportbyLabel(this.userid, label_id);
   }
   initInfo() {
     this.all_archive = this.classifyInfo.archives;

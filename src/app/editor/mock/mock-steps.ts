@@ -11,8 +11,8 @@ export let mockStep: EditorStepHeader[] = [
     },
     {
         id: '2',
-        desc: 'Add',
-        name: 'Add',
+        desc: 'Add Liquid',
+        name: 'Add Liquid',
         ico: '/assets/img/editor/icons/add.png',
         template: '- input Volume 0 μL @mid - input Name null @small - input container EP_tube @small -',
         yield_method: 'Add @Volume μL @Name to @container',
@@ -72,6 +72,14 @@ export let mockStep: EditorStepHeader[] = [
         ico: '/assets/img/editor/icons/T.png',
         template:  '- input Text null @big -',
         yield_method: '@Text',
+    },
+    {
+        id: '10',
+        desc: 'Add Solid',
+        name: 'Add Solid',
+        ico: '/assets/img/editor/icons/add.png',
+        template: '- input Volume 0 g @mid - input Name null @small - input container EP_tube @small -',
+        yield_method: 'Add @Volume g @Name to @container',
     },
 ];
 

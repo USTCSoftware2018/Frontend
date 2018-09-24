@@ -4,7 +4,7 @@
   <div  class="down" nz-col  nzSpan="4" align="center">
     <div nz-row>
       <div nz-col nzOffset="5" nzSpan="14">
-        <a><img class="avatar" src="{{otheruser.avatar_url}}"></a>
+        <a (click)="gotoIndex()"><img class="avatar" src="{{otheruser.avatar_url}}"></a>
       </div>
     </div>
   </div>
@@ -15,7 +15,7 @@
         <div nz-col nzSpan="16">
           <div nz-row>
             <div class="oname" nz-col nzSpan="24">
-              <a>{{otheruser.username}}</a>
+              <a (click)="gotoIndex()">{{otheruser.username}}</a>
             </div>
             <div nz-col  class="about-me" nzSpan="24">
               <pre>{{otheruser.description}}</pre>

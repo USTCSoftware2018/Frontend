@@ -1,5 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Report } from '../../Interface/userinfo';
+import {RouterjudgeService} from '../routerjudge.service';
 
 @Component({
   selector: 'app-report-card',
@@ -9,9 +10,11 @@ import { Report } from '../../Interface/userinfo';
 export class ReportCardComponent implements OnInit {
   @Input() report: Report;
 
-  constructor() { }
+  constructor(private routerjudge: RouterjudgeService) { }
 
   ngOnInit() {
   }
-
+  gotoIndex = () => {
+    this.routerjudge.gotoUserIndex(this.report.author.id);
+  }
 }

@@ -10,7 +10,6 @@ import {RouterjudgeService} from '../routerjudge.service';
 export class UserInfoProfileComponent implements OnInit {
   @Input() user: Simuser;
   @Input() ifmyself: boolean;
-  number_router: string;
   ifFollow: boolean;
   follow_or_unfollow: string;
   constructor(private routerjudge: RouterjudgeService) { }
@@ -26,7 +25,7 @@ export class UserInfoProfileComponent implements OnInit {
     this.routerjudge.gotoUserDetailInfo(this.user.id);
   }
   toggleFollow() {
-    this.ifFollow = this.ifFollow ? false : true;
+    this.ifFollow = !this.ifFollow;
     this.follow_or_unfollow = this.ifFollow ? 'Follow' : 'Unfollow';
   }
   /*

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Simuser, Assortment } from '../../../Interface/userinfo';
-import {SIMUSER, CLASSIFICATION} from '../../../Interface/mock-user';
+import { CLASSIFICATION } from '../../../Interface/mock-user';
 import {HttpService} from '../../../http.service';
 import {ApiResult} from '../../../Interface/ApiResult';
 

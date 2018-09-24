@@ -12,7 +12,7 @@ export class DetailinfoByarchiveComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.archive = params.get('data');
+      this.archive = params.get('date');
     });
   }
 

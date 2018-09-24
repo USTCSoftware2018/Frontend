@@ -28,7 +28,6 @@ export class EditorScrollComponent implements OnInit, DoCheck {
       }
       idx += 1;
     }
-    console.log(this.idxList);
   }
 
   public sentEvent(value: number) {

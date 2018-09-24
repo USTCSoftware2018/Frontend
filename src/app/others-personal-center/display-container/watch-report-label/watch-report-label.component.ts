@@ -22,7 +22,7 @@ export class WatchReportLabelComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.label = params.get('name');
+      this.label = params.get('label_id');
     });
   }
   reportShowMore() {
