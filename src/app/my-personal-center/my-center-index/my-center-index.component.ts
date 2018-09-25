@@ -14,6 +14,7 @@ export class MyCenterIndexComponent implements OnInit {
   favorites = [report1];
   constructor( private myinfo: UserSigninfoService) {
     this.user = this.myinfo.myInfo;
+    console.log(this.myinfo.myInfo);
   }
 
   ngOnInit() {

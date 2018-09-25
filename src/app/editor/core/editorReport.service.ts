@@ -24,6 +24,7 @@ export class EditorReportService {
   public parser (step: ReportStepsHeader ) {
     // 解析简单模版
     let temp = step.temp ? step.temp : this.stepsService.getTemp(step.id);
+    step.ico = step.ico ? step.ico : this.stepsService.getIco(step.id);
     const data = step.data;
 
     temp += ' - ';
@@ -68,6 +69,9 @@ export class EditorReportService {
     }
 
     // Remark 部分
+    if ((!step.remark || step.remark === '') && data['Notes']) {
+      step.remark = data['Notes'];
+    }
     const fld_remark: any = new Object();
     fld_remark.type = 'input';
     fld_remark.label = 'Notes';
@@ -269,14 +273,14 @@ export class EditorReportService {
             step.data[fld.label] = fld.value;
           }
         }
-        for (const attr of ['idx', 'temp', 'fields', 'desc']) {
+        for (const attr of ['idx', 'temp', 'fields', 'desc', 'ico']) {
           if (step[attr]) {
             delete step[attr];
           }
         }
       }
     }
-    console.log(JSON.stringify(_sent_report));
+    console.log(JSON.stringify(_sent_report)); // , null, ' '));
   }
 
   public loadReport (_tmp_obj: ReportHeader): void {

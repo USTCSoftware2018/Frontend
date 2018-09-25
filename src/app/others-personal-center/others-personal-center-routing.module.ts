@@ -19,11 +19,11 @@ const routes: Routes = [
         component: DisplayAllInfoComponent,
       },
       {
-        path: 'watch/:name',
+        path: 'label/:label_id',
         component: WatchReportLabelComponent,
       },
       {
-        path: 'archive/:data',
+        path: 'archive/:archive_id',
         component: WatchReportArchiveComponent,
       }]
   }

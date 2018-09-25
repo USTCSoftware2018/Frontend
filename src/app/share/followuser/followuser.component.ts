@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Otheruser} from '../likereport/likereport';
+import {Simuser} from '../../Interface/userinfo';
+import {RouterjudgeService} from '../routerjudge.service';
 
 @Component({
   selector: 'app-followuser',
@@ -7,17 +8,21 @@ import {Otheruser} from '../likereport/likereport';
   styleUrls: ['./followuser.component.less'],
 })
 export class FollowuserComponent implements OnInit {
-  @Input() otheruser: Otheruser;
-  @Input() isFollowing: boolean;
+  @Input() otheruser: Simuser;
   @Input() bkcolor: string;
+
   btncontent: String ;
-  constructor() { }
+  isFollow: boolean;
+  constructor(private routerjudge: RouterjudgeService) { }
 
   ngOnInit() {
-    this.btncontent = this.isFollowing ? 'unfollow' : 'follow';
+    this.btncontent = this.otheruser.followed ? 'unfollow' : 'follow';
+  }
+  gotoIndex = () => {
+    this.routerjudge.gotoUserIndex(this.otheruser.id);
   }
   changeFollow() {
-    this.isFollowing = this.isFollowing === true ? false : true;
-    this.btncontent = this.isFollowing ? 'unfollow' : 'follow';
+    this.isFollow = this.isFollow === true ? false : true;
+    this.btncontent = this.isFollow ? 'unfollow' : 'follow';
   }
 }

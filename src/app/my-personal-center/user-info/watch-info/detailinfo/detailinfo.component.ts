@@ -14,15 +14,4 @@ export class DetailinfoComponent implements OnInit {
 
   ngOnInit() {
   }
-  // 按钮点击follow
-  ifFollowing(otheruser: Simuser) {
-    const ii = this.user.following.content.findIndex(function(value) {
-      return value.id === otheruser.id;
-    });
-    if (ii === -1) {
-      return false;
-    } else {
-      return true;
-    }
-  }
 }

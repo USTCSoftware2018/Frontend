@@ -3,69 +3,82 @@ import { Simuser } from './userinfo';
 
 export const user1: Simuser = {
   id: 2,
-  name: 'Sindy',
+  username: 'Sindy',
   actual_name: 'Cindy',
-  about_me: 'about me',
+  description: 'about me',
   avatar_url: '//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-  followingnum: 42,
-  followednum: 233,
-  likenum: 1,
-  reportsnum: 1,
+  stat: {
+    following_count: 42,
+    follower_count: 233,
+    star_count: 1,
+    experience_count: 1,
+  },
   location: 'China',
   email: 'biohub@mail.ustc.edu.cn',
   organization: 'USTC',
-  ifFollow: true,
+  followed: true,
 };
 export const user2: Simuser = {
   id: 3,
-  name: 'Cindy',
+  username: 'Cindy',
   actual_name: 'Cindy',
-  about_me: 'about me balabalabalabalabalabalabalabalabalabala',
+  description: 'about me balabalabalabalabalabalabalabalabalabala',
   avatar_url: '//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-  followingnum: 42,
-  followednum: 233,
-  likenum: 1,
-  reportsnum: 1,
+  stat: {
+    following_count: 42,
+    follower_count: 233,
+    star_count: 1,
+    experience_count: 1,
+  },
   location: 'China',
   email: 'biohub@mail.ustc.edu.cn',
   organization: 'USTC',
-  ifFollow: true,
+  followed: true,
 };
 export const user3: Simuser = {
   id: 4,
-  name: 'Sindi',
+  username: 'Sindi',
   actual_name: 'Cindy',
-  about_me: 'about me',
+  description: 'about me',
   avatar_url: '../../../assets/img/test/img.jpg',
-  followingnum: 42,
-  followednum: 233,
-  likenum: 1,
-  reportsnum: 1,
+  stat: {
+    following_count: 42,
+    follower_count: 233,
+    star_count: 1,
+    experience_count: 1,
+  },
   location: 'China',
   email: 'biohub@mail.ustc.edu.cn',
   organization: 'USTC',
-  ifFollow: true,
+  followed: true,
 };
 const user4: Simuser = {
   id: 5,
-  name: 'Candy',
-  about_me: 'about me',
+  username: 'Candy',
+  description: 'about me',
   actual_name: 'Cindy',
   avatar_url: '../../../assets/img/test/img.jpg',
-  followingnum: 42,
-  followednum: 233,
-  likenum: 1,
-  reportsnum: 1,
+  stat: {
+    following_count: 42,
+    follower_count: 233,
+    star_count: 1,
+    experience_count: 1,
+  },
   location: 'China',
   email: 'biohub@mail.ustc.edu.cn',
   organization: 'USTC',
-  ifFollow: true,
+  followed: true,
 };
+const labels = [
+  { id: 1, name: 'ccc', report_count: 10},
+  { id: 2, name: 'ddd', report_count: 15},
+  { id: 2, name: 'ddd', report_count: 15},
+];
 export const report1: Report = {
   id: 1,
   title: 'research',
   author: user4,
-  labels: ['A', 'B', 'C'],
+  labels: labels,
   abstract: '1. Centifuge 1.5 mL bacterium solution at 11000 rpm, few sediment getted. Remove the supernatant. Repeat twice.\n' +
   '2. Add 250 μL Buﬀer P1, resuspend cells.\n' +
   '1. Centifuge 1.5 mL bacterium solution at 11000 rpm, few sediment getted. Remove the supernatant. Repeat twice.\n' +
@@ -75,17 +88,14 @@ export const report1: Report = {
 };
 
 const archives = [
-  {data: '2018-10-9', num: 12},
-  {data: '2018-10-10', num: 14},
+  { id: 1, date: '2018-10-9', num: 12},
+  { id: 2, date: '2018-10-10', num: 14},
 ];
 const popular_repots = [
-  {name: 'aaa', praises: 12},
-  {name: 'bbb', praises: 13},
+  {id: 1, title: 'aaa', praises: 12},
+  {id: 2, title: 'bbb', praises: 13},
 ];
-const labels = [
-  {name: 'ccc', num: 10},
-  {name: 'ddd', num: 15},
-];
+
 const assortment = {
   archives: archives,
   popular_reports: popular_repots,
@@ -94,12 +104,8 @@ const assortment = {
 export const USER: User = {
   id: 1,
   about_me: 'a student in ustc',
-  following: {
-    content: [ user1, user2],
-  },
-  followers: {
-    content: [user3, user4, user1 ],
-  },
+  following: [ user1, user2],
+  followers: [user3, user4, user1 ],
   likes: [{
     ouser: user1,
     report: report1,
@@ -108,17 +114,19 @@ export const USER: User = {
 };
 export const SIMUSER: Simuser = {
   id: 1,
-  name: 'Thomas Romero',
-  about_me: 'messages',
+  username: 'Thomas Romero',
+  description: 'messages',
   actual_name: 'Cindy',
   avatar_url: '//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-  followingnum: 42,
-  followednum: 233,
-  likenum: 1,
-  reportsnum: 1,
+  stat: {
+    following_count: 42,
+    follower_count: 233,
+    star_count: 1,
+    experience_count: 1,
+  },
   location: 'China',
   email: 'biohub@mail.ustc.edu.cn',
   organization: 'USTC',
-  ifFollow: true,
+  followed: true,
 };
 export const CLASSIFICATION: Assortment = assortment;

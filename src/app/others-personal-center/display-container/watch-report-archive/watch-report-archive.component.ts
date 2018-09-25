@@ -22,7 +22,7 @@ export class WatchReportArchiveComponent implements OnInit {
   type: string;
   ngOnInit() {
       this.route.paramMap.subscribe((params: ParamMap) => {
-        this.archive = params.get('data');
+        this.archive = params.get('archive_id');
         });
   }
   reportShowMore() {

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DetailinfoByarchieveComponent } from './detailinfo-byarchive.component';
+import { DetailinfoByarchiveComponent } from './detailinfo-byarchive.component';
 
-describe('DetailinfoByarchieveComponent', () => {
-  let component: DetailinfoByarchieveComponent;
-  let fixture: ComponentFixture<DetailinfoByarchieveComponent>;
+describe('DetailinfoByarchiveComponent', () => {
+  let component: DetailinfoByarchiveComponent;
+  let fixture: ComponentFixture<DetailinfoByarchiveComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DetailinfoByarchieveComponent ]
+      declarations: [ DetailinfoByarchiveComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DetailinfoByarchieveComponent);
+    fixture = TestBed.createComponent(DetailinfoByarchiveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

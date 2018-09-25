@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User, Assortment } from '../../../Interface/userinfo';
-import {SIMUSER, CLASSIFICATION} from '../../../Interface/mock-user';
+import { Simuser, Assortment } from '../../../Interface/userinfo';
+import { CLASSIFICATION } from '../../../Interface/mock-user';
 import {HttpService} from '../../../http.service';
 import {ApiResult} from '../../../Interface/ApiResult';
 
@@ -12,7 +12,7 @@ import {ApiResult} from '../../../Interface/ApiResult';
 })
 export class ProfilePageComponent implements OnInit {
   user: Assortment = CLASSIFICATION;
-  simuser = SIMUSER;
+  simuser: Simuser;
   yinyinyin: any;
   id: any;
   constructor(private http: HttpService) { }
@@ -22,11 +22,7 @@ export class ProfilePageComponent implements OnInit {
   InitProfile() {
     const __this = this;
     const callback = function(result: ApiResult) {
-      __this.simuser.name = result.data.username;
-      __this.simuser.location = result.data.location;
-      __this.simuser.email = result.data.email;
-      __this.simuser.organization = result.data.organization;
-      __this.simuser.avatar_url = result.data.avatar_url;
+      __this.simuser = result.data;
     };
     this.http.get_user_by_id(1, callback);
   }

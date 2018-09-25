@@ -38,7 +38,6 @@ export class EditorFieldTypeComponent implements OnInit, DoCheck {
 
   changeEnv() {
     if ( typeof this.fld.value === 'string' && this.fld.value.substr(0, 1) === '@') {
-      console.log(this.fld.value);
       this.envField = this.fld.value.substr(1);
     }
 
@@ -60,7 +59,6 @@ export class EditorFieldTypeComponent implements OnInit, DoCheck {
   }
 
   changeInToInput() {
-    console.log(this.fld.value);
     if (this.fld.value === 'input') {
       this.changed = true;
       this.fld.value = '';

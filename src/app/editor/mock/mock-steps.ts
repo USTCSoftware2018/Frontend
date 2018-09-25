@@ -1,100 +1,85 @@
 import {EditorStepHeader} from '../headers/steps';
 
-export let mockStep: EditorStepHeader[] = new Array<EditorStepHeader>();
-
-const mockStep_1 = new EditorStepHeader();
-mockStep_1.id = '1';
-mockStep_1.desc = 'Centifuge';
-mockStep_1.name = 'Centifuge';
-mockStep_1.ico = '/assets/img/editor/icons/centfuge.png';
-mockStep_1.template = '- input Speed 0 rpm @mid - input Time 0 s @small - input Temp 0 °C @small -';
-mockStep.push(mockStep_1);
-
-const mockStep_2 = new EditorStepHeader();
-mockStep_2.id = '2';
-mockStep_2.desc = 'Add';
-mockStep_2.name = 'Add';
-mockStep_2.ico = '/assets/img/editor/icons/add.png';
-mockStep_2.template = '- input Volume 0 ul @mid - input Name null @small - input container null @small -';
-mockStep.push(mockStep_2);
-
-const mockStep_3 = new EditorStepHeader();
-mockStep_3.id = '3';
-mockStep_3.desc = 'Discard';
-mockStep_3.name = 'Discard';
-mockStep_3.ico = '/assets/img/editor/icons/discard.png';
-mockStep_3.template = '- select Phase null @opt=上清/沉淀 -';
-mockStep.push(mockStep_3);
-
-const mockStep_4 = new EditorStepHeader();
-mockStep_4.id = '4';
-mockStep_4.desc = 'Mix';
-mockStep_4.name = 'Mix';
-mockStep_4.ico = '/assets/img/editor/icons/mix.png';
-mockStep_4.template = '- select Type null @opt=短暂离心/摇晃/翻转 -';
-mockStep.push(mockStep_4);
-
-const mockStep_5 = new EditorStepHeader();
-mockStep_5.id = '5';
-mockStep_5.desc = 'Move';
-mockStep_5.name = 'Move';
-mockStep_5.ico = '/assets/img/editor/icons/move.png';
-mockStep_5.template = '- input container1 null @small - input container2 null @small -';
-mockStep.push(mockStep_5);
-
-const mockStep_6 = new EditorStepHeader();
-mockStep_6.id = '6';
-mockStep_6.desc = 'Repeat';
-mockStep_6.name = 'Repeat';
-mockStep_6.ico = '/assets/img/editor/icons/repeat.png';
-mockStep_6.template = '- input count null @mid - input From null @small - input To null @small -';
-mockStep.push(mockStep_6);
-
-const mockStep_7 = new EditorStepHeader();
-mockStep_7.id = '7';
-mockStep_7.desc = 'Standing';
-mockStep_7.name = 'Standing';
-mockStep_7.ico = '/assets/img/editor/icons/standing.png';
-mockStep_7.template = '- input Time null  h @small - input Temp null °C @small - select ENV null @opt=水浴/室温/冰浴 -';
-mockStep.push(mockStep_7);
-
-const mockStep_8 = new EditorStepHeader();
-mockStep_8.id = '8';
-mockStep_8.desc = 'Preserve';
-mockStep_8.name = 'Preserve';
-mockStep_8.ico = '/assets/img/editor/icons/preserve.png';
-mockStep_8.template = '- input Time null  h @small - input Temp null °C @small -';
-mockStep.push(mockStep_8);
-
-const mockStep_9 = new EditorStepHeader();
-mockStep_9.id = '9';
-mockStep_9.desc = 'Incubate';
-mockStep_9.name = 'Incubate';
-mockStep_9.ico = '/assets/img/editor/icons/I.png';
-mockStep_9.template = '- input Num null -';
-mockStep.push(mockStep_9);
-
-const mockStep_10 = new EditorStepHeader();
-mockStep_10.id = '10';
-mockStep_10.desc = 'Cut';
-mockStep_10.name = 'Cut';
-mockStep_10.ico = '/assets/img/editor/icons/C.png';
-mockStep_10.template = '- input Obj null - input Num null -';
-mockStep.push(mockStep_10);
-
-const mockStep_11 = new EditorStepHeader();
-mockStep_11.id = '11';
-mockStep_11.desc = 'Weight';
-mockStep_11.name = 'Weight';
-mockStep_11.ico = '/assets/img/editor/icons/W.png';
-mockStep_11.template = '- input Obj null - input Num null -';
-mockStep.push(mockStep_11);
-
-const mockStep_12 = new EditorStepHeader();
-mockStep_12.id = '12';
-mockStep_12.desc = 'Test';
-mockStep_12.name = 'Test';
-mockStep_12.ico = '/assets/img/editor/icons/T.png';
-mockStep_12.template = '- input test @tmp -';
-mockStep.push(mockStep_12);
+export let mockStep: EditorStepHeader[] = [
+    {
+        id: '1',
+        desc: 'Centifuge',
+        name: 'Centifuge',
+        ico: '/assets/img/editor/icons/centfuge.png',
+        template: '- input Speed 0 rpm @mid - input Time 0 s @small - input Temp 25 °C @small -',
+        yield_method: '@Speed rpm centifuge for @Time s at @Temp degree.',
+    },
+    {
+        id: '2',
+        desc: 'Add Liquid',
+        name: 'Add Liquid',
+        ico: '/assets/img/editor/icons/add.png',
+        template: '- input Volume 0 μL @mid - input Name null @small - input container EP_tube @small -',
+        yield_method: 'Add @Volume μL @Name to @container',
+    },
+    {
+        id: '3',
+        desc: 'Remove',
+        name: 'Remove',
+        ico: '/assets/img/editor/icons/discard.png',
+        template: '- select option null @opt=supernatant/precipitation/filtrate -',
+        yield_method: 'Remove @option',
+    },
+    {
+        id: '4',
+        desc: 'Mix',
+        name: 'Mix',
+        ico: '/assets/img/editor/icons/mix.png',
+        template: '- select option null @opt=mix_up/mix_gently/shake/resuspend -',
+        yield_method: '@option',
+    },
+    {
+        id: '5',
+        desc: 'Move',
+        name: 'Move',
+        ico: '/assets/img/editor/icons/move.png',
+        template: '- input name solution @mid - input container1 null @small - input container2 null @small -',
+        yield_method: 'Move @name from @container1 to @container2',
+    },
+    {
+        id: '6',
+        desc: 'Repeat',
+        name: 'Repeat',
+        ico: '/assets/img/editor/icons/repeat.png',
+        template: '- input last null steps @small - input times null @small -',
+        yield_method: 'Repeat last @last step for @times times',
+    },
+    {
+        id: '7',
+        desc: 'Standing',
+        name: 'Standing',
+        ico: '/assets/img/editor/icons/standing.png',
+        template: '- input Time null min @small - input Temp 25 °C @small -',
+        yield_method: 'Standing @Time min at @Temp degree',
+    },
+    {
+        id: '8',
+        desc: 'Preserve',
+        name: 'Preserve',
+        ico: '/assets/img/editor/icons/preserve.png',
+        template:  '- input container EP_tupe @mid - input Time null h @small - input Temp 25 °C @small -',
+        yield_method: 'Preserve @container at @Temp degree for at most @Time h',
+    },
+    {
+        id: '9',
+        desc: 'Text',
+        name: 'Text',
+        ico: '/assets/img/editor/icons/T.png',
+        template:  '- input Text null @big -',
+        yield_method: '@Text',
+    },
+    {
+        id: '10',
+        desc: 'Add Solid',
+        name: 'Add Solid',
+        ico: '/assets/img/editor/icons/add.png',
+        template: '- input Volume 0 g @mid - input Name null @small - input container EP_tube @small -',
+        yield_method: 'Add @Volume g @Name to @container',
+    },
+];
 

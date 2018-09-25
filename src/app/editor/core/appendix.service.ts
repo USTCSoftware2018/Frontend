@@ -32,6 +32,16 @@ export class AppendixService {
     this.editor.report.result.push(_new_sub);
   }
 
+  reportAddTable() {
+    const _new_sub = new ReportResultHeader();  // 新建 subroutine
+    _new_sub.desc = '';
+    _new_sub.subType = subType.table;
+    _new_sub.list = [];
+    _new_sub.pic = [];
+    _new_sub.table = [];
+    this.editor.report.result.push(_new_sub);
+  }
+
   reportAddList() {
     const _new_sub = new ReportResultHeader();  // 新建 subroutine
     _new_sub.desc = '';

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError, of, observable } from 'rxjs';
 import { ApiResult } from './Interface/ApiResult';
 import { callbackFunc } from './Type/callbackFunc';
+import { create } from 'domain';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,8 @@ export class HttpService {
       ret = this.http.post(apiURL, params, this.httpOptions);
     } else if (method === 'options') {
       ret = this.http.options(apiURL, this.httpOptions);
+    } else if (method === 'patch') {
+      ret = this.http.patch(apiURL, params, this.httpOptions);
     } else {
       ret = this.http.get(apiURL, this.httpOptions);
     }
@@ -62,22 +65,14 @@ export class HttpService {
     );
   }
 
-  test_fire() {
-    const callback = function(result: ApiResult) {
-      console.log(result);
-    };
-    /*
-    this.user_login('test', 'a123456', callback);
-    this.get_all_users(callback);
-    this.get_user_by_id(3, callback);
-    this.follow_user_by_id(3, callback);
-    this.get_all_my_followers(callback);
-    this.get_all_my_followings(callback);
-    this.get_followers_by_id(2, callback);
-    this.get_followings_by_id(2, callback);
-    */
-    }
-user_login(username: string, password: string, callback: callbackFunc) {
+
+  ///////////////////// User //////////////////////////////////////////
+  get_simuser_by_id(id: number, callback: callbackFunc) {
+    // get stat by id
+    this.fire(`users/${id}/stat`, 'get', null, callback);
+  }
+
+  user_login(username: string, password: string, callback: callbackFunc) {
     // user login
     const params = {
       username: username,
@@ -110,12 +105,37 @@ user_login(username: string, password: string, callback: callbackFunc) {
     this.fire('users/register/', 'post', params, callback);
   }
 
+  update_profile(avatar_url: string, actualname: string, location: string, description: string, organization: string, 
+    // update self profile
+    // will be updated:
+    //   actualname: "aaa"
+    // will not be updated
+    //   actualname: null
+    email: string, callback: callbackFunc) {
+      const params = {
+        avatar_url: avatar_url,
+        actualname: actualname,
+        location: location,
+        description: description,
+        organization: organization,
+        email: email
+      };
+      this.fire('users/me/', 'patch', params, callback);
+    }
+
+    update_actualname(actualname: string, callback: callbackFunc) {
+      const params = {
+        actualname: actualname
+      };
+      this.fire('users/actualname/', 'post', params, callback);
+    }
+
   get_all_users(callback: callbackFunc) {
     // get all users
     this.fire('users/', 'get', null, callback);
   }
 
-  get_user_by_id(id: number, callback: callbackFunc) {
+  get_user_by_id(id: number|string, callback: callbackFunc) {
     // get user by id
     this.fire(`users/${id}/`, 'get', null, callback);
   }
@@ -124,7 +144,6 @@ user_login(username: string, password: string, callback: callbackFunc) {
     // get myself
     this.fire(`users/me/`, 'get', null, callback);
   }
-
 
   delete_user_by_id(id: number, callback: callbackFunc) {
     // delete user from the server
@@ -141,20 +160,41 @@ user_login(username: string, password: string, callback: callbackFunc) {
     this.fire(`users/${user_id}/unfollow/`, 'post', null, callback);
   }
 
-  get_all_my_followers(callback: callbackFunc) {
-    // get all my followers
-    this.fire(`users/me/followers/`, 'get', null, callback);
+  get_followers_by_id(user_id: number, callback: callbackFunc) {
+    // get someone's followers
+    this.fire(`users/${user_id}/followers/`, 'get', null, callback);
   }
 
-  // get all my followings
-  get_all_my_followings(callback: callbackFunc) {
-    // get all my followings
-    this.fire(`users/me/following/`, 'get', null, callback);
+  get_followings_by_id(user_id: number, callback: callbackFunc) {
+    // get someone's followings
+    this.fire(`users/${user_id}/following/`, 'get', null, callback);
   }
 
+
+
+/////////////////////////// Report //////////////////////////////////////////
+  get_report_list_by_userid(user_id: number, callback: callbackFunc) {
+    this.fire(`users/report-list/${user_id}`, 'get', null, callback);
+}
+
+
+
+
+
+
+
+
+
+
+///////////////////////// Editor /////////////////////////////////////////
   // get all my steps
   get_all_my_steps(callback: callbackFunc) {
-    this.fire(`editor/step/`, 'get', null, callback);
+    // this.fire('editor/step', 'get', null, callback);
+    this.fire('users/logout/', 'get', null, callback);
+  }
+
+  get_report_by_id(id: number, callback: callbackFunc) {
+    this.fire(`editor/report/${id}`, 'get', null, callback);
   }
 
   // get step by id
@@ -164,7 +204,7 @@ user_login(username: string, password: string, callback: callbackFunc) {
 
   create_step(step: object, callback: callbackFunc) {
     // create new step
-    this.fire(`editor/step/`, 'post', null, callback);
+    this.fire(`editor/step/`, 'post', step, callback);
   }
 
   delete_step(id: number, callback: callbackFunc) {
@@ -172,9 +212,9 @@ user_login(username: string, password: string, callback: callbackFunc) {
     this.fire(`editor/step/${id}`, 'delete', null, callback);
   }
 
-  update_step(id: number, callback: callbackFunc) {
+  update_step(id: number, step: object, callback: callbackFunc) {
     // update step
-    this.fire(`editor/step/${id}`, 'delete', null, callback);
+    this.fire(`editor/step/${id}`, 'delete', step, callback);
   }
 
   get_all_my_subroutines(callback: callbackFunc) {
@@ -188,7 +228,7 @@ user_login(username: string, password: string, callback: callbackFunc) {
 
   create_subroutine(subroutine: object, callback: callbackFunc) {
     // create new subroutine
-    this.fire(`editor/subroutine/`, 'post', null, callback);
+    this.fire(`editor/subroutine/`, 'post', subroutine, callback);
   }
 
   delete_subroutine(id: number, callback: callbackFunc) {
@@ -196,9 +236,9 @@ user_login(username: string, password: string, callback: callbackFunc) {
     this.fire(`editor/subroutine/${id}`, 'delete', null, callback);
   }
 
-  update_subroutine(id: number, callback: callbackFunc) {
+  update_subroutine(id: number, subroutine: object, callback: callbackFunc) {
     // update subroutine
-    this.fire(`editor/subroutine/${id}`, 'delete', null, callback);
+    this.fire(`editor/subroutine/${id}`, 'post', subroutine, callback);
   }
 
   get_all_my_reports(callback: callbackFunc) {
@@ -208,7 +248,7 @@ user_login(username: string, password: string, callback: callbackFunc) {
 
   create_report(report: object, callback: callbackFunc) {
     // create new display-all-info
-    this.fire(`editor/report/`, 'post', null, callback);
+    this.fire(`editor/report/`, 'post', report, callback);
   }
 
   delete_report(id: number, callback: callbackFunc) {
@@ -216,28 +256,14 @@ user_login(username: string, password: string, callback: callbackFunc) {
     this.fire(`editor/report/${id}`, 'delete', null, callback);
   }
 
-  update_report(id: number, callback: callbackFunc) {
+  update_report(id: number, report: object, callback: callbackFunc) {
     // update display-all-info
-    this.fire(`editor/report/${id}`, 'post', null, callback);
+    this.fire(`editor/report/${id}`, 'post', report, callback);
   }
 
-  create_report_html(html: string, callback: callbackFunc) {
-    // create new display-all-info html
-    this.fire(`editor/report/`, 'post', null, callback);
-  }
-
-  update_report_html(id: number, callback: callbackFunc) {
-    // update display-all-info html
-    this.fire(`editor/report/${id}`, 'post', null, callback);
-  }
-
-  get_report_html(id: number, callback: callbackFunc) {
-    // get display-all-info html
-    this.fire(`editor/report/${id}`, 'get', null, callback);
-  }
-
-  get_stat_by_id(id: number, callback: callbackFunc) {
-    // get stat by id
-    this.fire(`users/${id}/stat`, 'get', null, callback);
+  /////////////////////// Notificaiton /////////////////////////
+  get_all_my_notifications() {
+    // get all my notifications
   }
 }
+

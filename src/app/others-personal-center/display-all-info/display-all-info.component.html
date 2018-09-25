@@ -14,13 +14,13 @@
     </div>
   </nz-tab>
   <nz-tab nzTitle="Following">
-    <div  *ngFor="let otheruser of user.following.content">
-      <app-followuser [otheruser]="otheruser" [bkcolor]="'#F2F2F2'" [isFollowing]="ifFollowing(otheruser)"></app-followuser>
+    <div  *ngFor="let otheruser of user.following">
+      <app-followuser [otheruser]="otheruser" [bkcolor]="'#F2F2F2'" ></app-followuser>
     </div>
   </nz-tab>
   <nz-tab nzTitle="Followers">
-    <div  *ngFor="let otheruser of user.followers.content">
-      <app-followuser [otheruser]="otheruser" [isFollowing]="ifFollowing(otheruser)"  [bkcolor]="'#F2F2F2'"></app-followuser>
+    <div  *ngFor="let otheruser of user.followers">
+      <app-followuser [otheruser]="otheruser" [bkcolor]="'#F2F2F2'"></app-followuser>
     </div>
   </nz-tab>
 </nz-tabset>
