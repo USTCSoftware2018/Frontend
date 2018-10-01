@@ -68,16 +68,20 @@ export class HttpExampleComponent implements OnInit {
         description: 'description',
         organization: 'organization',
         email: 'email'
-    }}
-  ];
-
-  EditorList: Array<FuncEle> = [
+    }},
     {name: '获取steps', lable: 'get_all_my_steps', func: this.http.get_all_my_steps, templa: {}},
-    {name: '创建step', lable: 'create_step', func: this.http.create_step, templa: {
-      title: 'test'
+    {name: '创建step', lable: 'create_step', func: this.http.create_step, templa:  {
+      step: {
+        content_json: JSON.stringify({content_json: '123456', yield_method: 'yes'}),
+        yield_method: 'test'
+      }
     }},
     {name: '更新step', lable: 'update_step', func: this.http.update_step, templa: {
-      title: 'test'
+      id: 1,
+      step: {
+        content_json: JSON.stringify({content_json: '123456', yield_method: 'yes'}),
+        yield_method: 'test'
+      }
     }},
     {name: '删除step', lable: 'delet_step', func: this.http.delete_step, templa: {
       id: 1
@@ -85,44 +89,60 @@ export class HttpExampleComponent implements OnInit {
     {name: '根据id获取step', lable: 'get_step_by_id', func: this.http.get_step_by_id, templa: {
       id: 1
     }},
-    {name: '创建reports', lable: 'create_report', func: this.http.create_report, templa:
-    JSON.parse(`{"title":"11","introduction":"33","label":["22"],
-    "mdate":"","ndate":"","result":[{"desc":"11111","subType":"Text","list":[],"pic":[]},
-    {"desc":"","subType":"List","list":[{"str":"111"},{"str":"2222"},{}],"pic":[]}],
-    "subroutines":[{"id":"-1","desc":"","name":"Add","idx":0,"steps":[{"name":"Add","data":{"Volume":"111111","Name":"2","container":"3"},
-    "id":"2","remark":"444"}]},{"id":"1","name":"Incubate","idx":0,
-    "steps":[{"name":"Add","data":{"Name":"template","Volume":"0","container":""},"id":"2","remark":""},
-    {"name":"Add","data":{"Name":"buffer","Volume":"0","container":""},"id":"2","remark":""},
-    {"name":"Add","data":{"Name":"enzyme","Volume":"0","container":""},"id":"2","remark":""},
-    {"name":"Mix","data":{"Type":"摇晃"},"id":"4","remark":""},{"name":"Incubate","data":{"Num":"37"},"id":"9","remark":""}]}],
-    "id":0,"author":[]}
-    `)
-    },
-    {name: '更新report', lable: 'update_report', func: this.http.update_report, templa: {
-      id: 1,
-      string: '12234'
-    }},
-    {name: '通过report的id获取report', lable: 'get_report_by_id', func: this.http.get_report_by_id, templa: {
-      id: 1
-    }},
-    {name: '删除report', lable: 'delete_report', func: this.http.delete_report, templa: {
-      id: 1,
-      string: 'skdljsldj'
+    {name: '创建subroutine', lable: 'create_subroutine', func: this.http.create_subroutine, templa: {
+      subroutine: {
+        content_json: JSON.stringify({content_json: '123456', yield_method: 'yes'}),
+        yield_method: 'test'
+      }
     }},
     {name: '更新subroutine', lable: 'update_subroutine', func: this.http.update_subroutine, templa: {
       id: 1,
-      subroutine: 'hhh'
-    } },
-    {name: '创建subroutine', lable: 'create_subroutine', func: this.http.create_subroutine, templa: {
-      subroutine: 'hhh'
+      subroutine: {
+        content_json: JSON.stringify({content_json: '123456', yield_method: 'yes'}),
+        yield_method: 'test'
+        }
+      }
+    },
+    {name: '删除subroutine', lable: 'delete', func: this.http.delete_subroutine, templa: {
+      id: 1
     }},
     {name: '获取我的所有subroutine', lable: 'get_all_my_subroutine', func: this.http.get_all_my_subroutines, templa: {}},
     {name: '根据id获取subroutine', lable: 'get_subroutine_by_id', func: this.http.get_subroutine_by_id, templa: {
       id: 1
     }},
-    {name: '删除subroutine', lable: 'delete', func: this.http.delete_subroutine, templa: {
+    {name: '创建reports', lable: 'create_report', func: this.http.create_report, templa:
+    {
+      report: {
+        title: 'test example',
+        introduction: 'introduction',
+        label: ['aaa', 'bbb'],
+        result: 'balabala',
+        authors: ['test'],
+        subroutines: 'subroutine json'
+      }
+    }
+    },
+    {name: '通过report的id获取report', lable: 'get_report_by_id', func: this.http.get_report_by_id, templa: {
       id: 1
-    }}
+    }},
+    {name: '更新report', lable: 'update_report', func: this.http.update_report, templa: {
+      id: 1,
+      report: {
+        title: 'test example change',
+        introduction: 'introduction',
+        label: ['aaa', 'bbb'],
+        result: 'balabala',
+        authors: ['test'],
+        subroutines: 'subroutine json'
+      }
+    }},
+    {name: '删除report', lable: 'delete_report', func: this.http.delete_report, templa: {
+      id: 1,
+      string: 'skdljsldj'
+    }},
+  ];
+
+  EditorList: Array<FuncEle> = [
   ];
 
   constructor(private http: HttpService) { }

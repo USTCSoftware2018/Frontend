@@ -43,7 +43,7 @@ export class Archive {
   id: number;
   date: string;
   num: number;
-  reports: Array<Report>;
+  // reports: Array<Report>;
 }
 
 export class PopularReport {
@@ -56,7 +56,7 @@ export class Label {
   id: number;
   name: string;
   report_count: number;
-  reports: Array<Report>;
+  // reports: Array<Report>;
 }
 
 export class Assortment {
