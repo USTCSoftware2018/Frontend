@@ -74,7 +74,7 @@ const labels = [
   { id: 2, name: 'ddd', report_count: 15},
   { id: 2, name: 'ddd', report_count: 15},
 ];
-export const report1: Report = {
+export const  report1: Report = {
   id: 1,
   title: 'research',
   author: user4,
