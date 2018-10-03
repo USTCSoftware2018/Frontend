@@ -41,7 +41,7 @@
           </nz-input-group>
         </div>
         <div nz-col nzSpan="4" >
-            <i class="anticon anticon-plus-circle-o dynamic-button-step-bar"></i>
+            <i class="anticon anticon-plus-circle-o dynamic-button-step-bar" (click)="showProcessModel()"></i>
         </div>
       </div>
         
@@ -95,5 +95,46 @@
         <textarea nz-input [(ngModel)]="tempNewStepField" [ngModelOptions]="{standalone: true}"></textarea>
       </nz-form-control>
     </nz-form-item >
+  </form>
+</nz-modal>
+
+<nz-modal [(nzVisible)]="isVisibleProcess" nzTitle="New Process" (nzOnCancel)="handleCancelProcess()" (nzOnOk)="handleOkProcess()">
+  <form nz-form>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" >Name</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input nz-input  [(ngModel)]="tempNewProcessName" [ngModelOptions]="{standalone: true}"/>
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- <nz-form-item>
+    <nz-form-label [nzSpan]="6" >Value</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <textarea nz-input  [(ngModel)]="tempNewProcessValue" [ngModelOptions]="{standalone: true}"> </textarea>
+    </nz-form-control>
+  </nz-form-item> -->
+
+  <div nz-row>
+    <div nz-col nzSpan="10" class="left_new_process_bar">
+        <nz-list [nzDataSource]="steps" nzBordered nzSize="small"
+           [nzRenderItem]="item3">
+          <ng-template #item3 let-item>
+            <nz-list-item [nzContent]="item.name" (click)="addStepInSub(item.id)"></nz-list-item>
+          </ng-template>
+        </nz-list>
+    </div>
+
+    <div nz-col nzSpan="4" >
+        <i class="anticon anticon-swap left_new_process_bar" style="width: 100%;"></i>
+    </div>
+
+    <div nz-col nzSpan="10" >
+        <nz-list [nzDataSource]="tempNewProcessSteps" nzBordered nzSize="small"
+           [nzRenderItem]="item4">
+          <ng-template #item4 let-item><nz-list-item [nzContent]="getStepNameById(item)"></nz-list-item></ng-template>
+        </nz-list>
+    </div>
+  </div>
+
   </form>
 </nz-modal>
