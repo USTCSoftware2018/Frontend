@@ -28,7 +28,7 @@ text-align: center;" (click)="onSave()">Save</button>
       [nzBeforeUpload]="beforeUpload"
       (nzChange)="handleChange($event)">
       <nz-form-control class="myphoto" >
-        <img [src]="viewImage" style="width:9vw;border-radius: 4vw;"/>
+        <img [src]="personalmes.photo" style="width:9vw;border-radius: 4vw;"/>
       </nz-form-control>
       <button nz-button  style=" background: #3288FF;
              border-radius: 1vw;
@@ -48,7 +48,7 @@ padding:0 1vw;">Upload
         <nz-form-item>
             <p>Actualname</p>
           <nz-form-control nz-col nzSpan="8" class="zinput">
-            <input nz-input id="actualname" name="actualname" formControlName="actualname" required>
+            <input nz-input placeholder="{{personalmes.actualname}}" id="actualname" name="actualname" formControlName="actualname" required>
             <nz-form-explain *ngIf="usermes.get('actualname').dirty && usermes.get('actualname').errors&&issaved">
               <ng-container *ngIf="usermes.get('actualname').hasError('required')">
                 Please input your username!
@@ -65,25 +65,25 @@ padding:0 1vw;">Upload
       <nz-form-item>
           <p>Location</p>
         <nz-form-control>
-          <input nz-input placeholder="Newark"  id="location" name="location" formControlName="location" required>
+          <input nz-input placeholder="{{personalmes.location}}"  id="location" name="location" formControlName="location" required>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
             <p>Bio</p>
         <nz-form-control>
-            <textarea row="10" col="10" nz-input placeholder="Tell us a little bit about yourself" name="bio" formControlName="bio"></textarea>
+            <textarea row="10" col="10" nz-input placeholder="{{personalmes.description}}" name="description" formControlName="description"></textarea>
           </nz-form-control>
         </nz-form-item>
       <nz-form-item>
           <p>School or Company</p>
         <nz-form-control>
-          <input nz-input placeholder="University of Science and Technology of China" id="school" name="school" formControlName="school" required>
+          <input nz-input placeholder="{{personalmes.organization}}" id="organization" name="organization" formControlName="organization" required>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
           <p>Email Address</p>
         <nz-form-control>
-          <input nz-input placeholder="hustcw@ustc.edu.cn" id="email" name="email" formControlName="email" required>
+          <input nz-input placeholder="{{personalmes.email}}" id="email" name="email" formControlName="email" required>
           <nz-form-explain *ngIf="usermes.get('email').dirty&&usermes.get('email').errors&&issaved">
             <ng-container *ngIf="usermes.get('email').hasError('email')">
               The input is not valid E-mail!
