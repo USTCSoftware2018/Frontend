@@ -29,7 +29,6 @@ export class StepBarComponent implements OnInit, DoCheck, OnChanges {
   constructor(public stepsService: StepsService, public editorReportService: EditorReportService) { }
 
   ngOnInit() {
-    this.stepsService.mockData();
     this.steps = this.stepsService.steps;
     this.subs = this.stepsService.subs;
   }

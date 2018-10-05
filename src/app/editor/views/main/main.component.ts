@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { NzNotificationService } from 'ng-zorro-antd';
 import { EditorReportService } from '../../core/editorReport.service';
+import {StepsService} from '../../core/steps.service';
 
 @Component({
   selector: 'app-main',
@@ -11,11 +15,18 @@ export class MainComponent implements OnInit {
   editorHeight: string; // 判断高度
   innerWidth: number; // 屏幕宽度；
 
-  constructor(public editorReportService: EditorReportService) { }
+  id = +this.route.snapshot.paramMap.get('id');
+
+  constructor(public editorReportService: EditorReportService,
+              public notice: NzNotificationService,
+              public route: ActivatedRoute,
+              public stepsService: StepsService) { }
 
   ngOnInit() {
     this.onResize();
+    this.stepsService.mockData();
   }
+
 
   public onResize() {
     this.editorHeight = (window.innerHeight - 46) + 'px';

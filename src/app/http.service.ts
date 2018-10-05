@@ -107,7 +107,7 @@ export class HttpService {
     this.fire('users/register/', 'post', params, callback);
   }
 
-  update_profile(avatar_url: string, actualname: string, location: string, description: string, organization: string, 
+  update_profile(avatar_url: string, actualname: string, location: string, description: string, organization: string,
     // update self profile
     // will be updated:
     //   actualname: "aaa"

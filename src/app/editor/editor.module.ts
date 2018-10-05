@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { NzNotificationService } from 'ng-zorro-antd';
 
 import { SortablejsModule } from './angular-sortablejs/src/sortablejs.module';
 
@@ -59,6 +60,7 @@ import { TablePanelComponent } from './views/table-panel/table-panel.component';
     AppendixService,
     EditorEventService,
     RenderService,
+    NzNotificationService,
   ],
 })
 export class EditorModule { }

@@ -13,7 +13,8 @@ import {NotificationComponent} from '../core/notification/notification.component
 const appRoutes: Routes = [
   { path: 'try', component: EditorReportShowAreaComponent },
   { path: 'test-http', component: HttpExampleComponent },
-  { path: 'editor', component: EditorMainComponent},
+  { path: 'editor',  redirectTo: 'editor/0', pathMatch: 'full' },
+  { path: 'editor/:id', component: EditorMainComponent},
   { path: 'reportshow', component: ReportshowComponent},
   { path: 'reportdisplay', component: ReportshowotherComponent},
   { path: 'feeds', component: FeedsComponent},
