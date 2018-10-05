@@ -12,6 +12,8 @@ import { Simuser } from '../../Interface/userinfo';
 import { user1 } from '../../Interface/mock-user';
 import {UserInfoProfile} from '../../others-personal-center/display-container/personal-information/userinfoprofile';
 import {USERINFOPROFILE} from '../../others-personal-center/display-container/personal-information/mock-userinfoprofile';
+import {ApiResult} from '../../Interface/ApiResult';
+import {HttpService} from '../../http.service';
 
 @Component({
   selector: 'app-reportshow',
@@ -27,6 +29,15 @@ export class ReportshowComponent implements OnInit {
   selectedcomments: Socialcomments;
   user = USER;
   user1 = user1;
+  constructor(private http: HttpService) { }
+
+  Initlikecolor() {
+    const __this = this;
+    const callback = function(result: ApiResult) {
+      __this.socialcomments = result.data;
+    };
+    this.http.get_report_list_by_userid(1, callback);
+  }
 
   changecolor(): void {
     const Like = document.getElementById('change1');
@@ -50,7 +61,6 @@ export class ReportshowComponent implements OnInit {
     }
   }
 
-  constructor() { }
 
 
   ngOnInit() {
