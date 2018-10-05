@@ -18,6 +18,8 @@ import { FeedsComponent } from './core/feeds/feeds.component';
 import { ShareModule } from './share/share.module';
 import { HttpExampleComponent } from './http-example/http-example.component';
 import {NotificationComponent} from './core/notification/notification.component';
+import { RenderService } from './editor/render/render.service';
+import { MockRenderComponent } from './mock-render/mock-render.component';
 
 registerLocaleData(en);
 
@@ -29,7 +31,8 @@ registerLocaleData(en);
     ReportshowotherComponent,
     FeedsComponent,
     HttpExampleComponent,
-    NotificationComponent
+    NotificationComponent,
+    MockRenderComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ registerLocaleData(en);
     AppRoutingModule,
     EditorModule,
     ErrorModule,
+    RenderService,
     ReactiveFormsModule,
     ShareModule,
   ],

@@ -9,7 +9,7 @@ import { ReportHeader as Report  } from '../../headers/article';
 export class EditorReportShowAreaComponent implements OnInit {
 
   @ViewChild('root') myroot: ElementRef;
-  @Input() R = new Report();
+  @Input() R: Report;
 
   materials = ['hahah', 'aaaa', 'kjsdlkjs'];
   equipments = ['HAHAH', 'SKJDFOISJDFI', 'JFKLWEJFOIW'];
@@ -18,8 +18,9 @@ export class EditorReportShowAreaComponent implements OnInit {
   ngOnInit() {
     this.R.title = 'Transformation of MtrCAB and CysDes';
     this.R.author = ['Yitian Zhou'];
-    this.R.ndate = 'Jun. 13 2018';
+    this.R.mdate = 'Jun. 13 2018';
     this.R.introduction = 'Transformation of plasmid pSB1C3 containing MtrACB and CysDes to top10 E.coil strain.';
   }
+
 
 }

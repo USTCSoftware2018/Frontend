@@ -6,12 +6,13 @@ import { MainComponent as EditorMainComponent} from '../editor/views/main/main.c
 import { ReportshowotherComponent } from '../reportshows/reportshow/reportshowother/reportshowother.component';
 import { FeedsComponent } from '../core/feeds/feeds.component';
 import { HttpExampleComponent } from '../http-example/http-example.component';
-import { EditorReportShowAreaComponent } from '../editor/render/editor-report-show-area/editor-report-show-area.component';
 import {NotificationComponent} from '../core/notification/notification.component';
+import { MockRenderComponent } from '../mock-render/mock-render.component';
+
 
 
 const appRoutes: Routes = [
-  { path: 'try', component: EditorReportShowAreaComponent },
+  { path: 'render', component: MockRenderComponent },
   { path: 'test-http', component: HttpExampleComponent },
   { path: 'editor',  redirectTo: 'editor/0', pathMatch: 'full' },
   { path: 'editor/:id', component: EditorMainComponent},
