@@ -4,6 +4,7 @@ import { Observable, throwError, of, observable } from 'rxjs';
 import { ApiResult } from './Interface/ApiResult';
 import { callbackFunc } from './Type/callbackFunc';
 import { create } from 'domain';
+import { callbackify } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,8 @@ export class HttpService {
       ret = this.http.options(apiURL, this.httpOptions);
     } else if (method === 'patch') {
       ret = this.http.patch(apiURL, params, this.httpOptions);
+    } else if (method === 'delete') {
+      ret = this.http.delete(apiURL, this.httpOptions);
     } else {
       ret = this.http.get(apiURL, this.httpOptions);
     }
@@ -105,7 +108,7 @@ export class HttpService {
     this.fire('users/register/', 'post', params, callback);
   }
 
-  update_profile(avatar_url: string, actualname: string, location: string, description: string, organization: string, 
+  update_profile(avatar_url: string, actualname: string, location: string, description: string, organization: string,
     // update self profile
     // will be updated:
     //   actualname: "aaa"
@@ -174,7 +177,7 @@ export class HttpService {
 
 /////////////////////////// Report //////////////////////////////////////////
   get_report_list_by_userid(user_id: number, callback: callbackFunc) {
-    this.fire(`users/report-list/${user_id}`, 'get', null, callback);
+    this.fire(`users/reports/${user_id}`, 'get', null, callback);
 }
 
 
@@ -189,17 +192,12 @@ export class HttpService {
 ///////////////////////// Editor /////////////////////////////////////////
   // get all my steps
   get_all_my_steps(callback: callbackFunc) {
-    // this.fire('editor/step', 'get', null, callback);
-    this.fire('users/logout/', 'get', null, callback);
-  }
-
-  get_report_by_id(id: number, callback: callbackFunc) {
-    this.fire(`editor/report/${id}`, 'get', null, callback);
+    this.fire('editor/step/', 'get', null, callback);
   }
 
   // get step by id
   get_step_by_id(id: number, callback: callbackFunc) {
-    this.fire(`editor/step/${id}`, 'get', null, callback);
+    this.fire(`editor/step/${id}/`, 'get', null, callback);
   }
 
   create_step(step: object, callback: callbackFunc) {
@@ -209,12 +207,12 @@ export class HttpService {
 
   delete_step(id: number, callback: callbackFunc) {
     // delete step by id
-    this.fire(`editor/step/${id}`, 'delete', null, callback);
+    this.fire(`editor/step/${id}/`, 'delete', null, callback);
   }
 
   update_step(id: number, step: object, callback: callbackFunc) {
     // update step
-    this.fire(`editor/step/${id}`, 'delete', step, callback);
+    this.fire(`editor/step/${id}/`, 'patch', step, callback);
   }
 
   get_all_my_subroutines(callback: callbackFunc) {
@@ -223,7 +221,7 @@ export class HttpService {
   }
 
   get_subroutine_by_id(id: number, callback: callbackFunc) {
-    this.fire(`editor/subroutine/${id}`, 'get', null, callback);
+    this.fire(`editor/subroutine/${id}/`, 'get', null, callback);
   }
 
   create_subroutine(subroutine: object, callback: callbackFunc) {
@@ -233,17 +231,21 @@ export class HttpService {
 
   delete_subroutine(id: number, callback: callbackFunc) {
     // delete subroutine by id
-    this.fire(`editor/subroutine/${id}`, 'delete', null, callback);
+    this.fire(`editor/subroutine/${id}/`, 'delete', null, callback);
   }
 
   update_subroutine(id: number, subroutine: object, callback: callbackFunc) {
     // update subroutine
-    this.fire(`editor/subroutine/${id}`, 'post', subroutine, callback);
+    this.fire(`editor/subroutine/${id}/`, 'patch', subroutine, callback);
   }
 
-  get_all_my_reports(callback: callbackFunc) {
+  get_report_list_by_user_id(user_id: number, callback: callbackFunc) {
     // get all my reports in editor
-    this.fire(`editor/report/`, 'get', null, callback);
+    this.fire(`users/reports/${user_id}`, 'get', null, callback);
+  }
+
+  get_report_by_id(id: number, callback: callbackFunc) {
+    this.fire(`editor/report/${id}`, 'get', null, callback);
   }
 
   create_report(report: object, callback: callbackFunc) {
@@ -258,12 +260,24 @@ export class HttpService {
 
   update_report(id: number, report: object, callback: callbackFunc) {
     // update display-all-info
-    this.fire(`editor/report/${id}`, 'post', report, callback);
+    this.fire(`editor/report/${id}`, 'patch', report, callback);
+  }
+
+  star(id: number, callback: callbackFunc) {
+    const params = {
+      id: id
+    };
+    this.fire(`star`, 'post', params, callback);
   }
 
   /////////////////////// Notificaiton /////////////////////////
-  get_all_my_notifications() {
+  get_all_my_notifications(callback: callbackFunc) {
     // get all my notifications
+    this.fire(`notices/`, 'get', null, callback);
+  }
+
+  get_popular_reports_by_system(callback: callbackFunc) {
+    this.fire(`users/popular-reports-list`, 'get', null, callback);
   }
 }
 

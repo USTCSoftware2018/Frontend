@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import {EditorStepHeader, EditorSubroutineHeader} from '../headers/steps';
 import {GetDataService} from '../getData/getData.service';
+import { NzNotificationService } from 'ng-zorro-antd';
 
 @Injectable()
 export class StepsService {
@@ -17,7 +18,7 @@ export class StepsService {
     return this._subs;
   }
 
-  constructor(public getDataService: GetDataService) {}
+  constructor(public getDataService: GetDataService, public notice: NzNotificationService) {}
 
   public mockData() {
     this._steps = this.getDataService.getStepsMock();
@@ -37,7 +38,6 @@ export class StepsService {
   public addSteps(stepName: string, stepYield: string, stepTemp: {value: string}[]) {
     // 没有定义
     const newStep = new EditorStepHeader();
-    newStep.id = (this.steps.length + 1).toString();
     newStep.desc = stepName;
     newStep.name = stepName;
     newStep.ico = '/assets/img/editor/icons/' + stepName[0].toUpperCase() + '.png';
@@ -47,14 +47,43 @@ export class StepsService {
       arr.push(st.value);
     }
     newStep.template = '- ' + arr.join(' - ') + ' -';
-    newStep.yield_method = stepName;
-    // this._steps.push(JSON.parse(JSON.stringify(newStep)));
-    this._steps = [ ...this._steps, newStep];
-    // console.log(this.steps);
+    newStep.yield_method = stepYield;
+    this.getDataService.saveNewStep(newStep, (rst) => {
+      if (rst['status'] === 200) {
+        newStep.id = rst['data']['id'];
+        this._steps = [ ...this._steps, newStep];
+      } else {
+        this.notice.blank('Add Step Failed', rst['data']['detail']);
+      }
+    });
   }
 
-  public addSubroutine() {
-    // 没有定义
+  public addSubroutine(name: string, stepsLists: string[]) {
+    // 新建新的过程
+    const newSub = new EditorSubroutineHeader();
+    newSub.name = name;
+    newSub.steps = stepsLists;
+    newSub.default = [];
+    newSub.steps.forEach(element => {
+      newSub.default.push({});
+    });
+
+    this.getDataService.saveNewSubroutine(newSub, (rst) => {
+      if (rst['status'] === 200) {
+        newSub.id = rst['data']['id'];
+        this._subs = [ ...this._subs, newSub];
+        console.log(newSub);
+      } else {
+        this.notice.blank('Add Subroutine Failed', rst['data']['detail']);
+      }
+    });
+  }
+
+  public getPersonalModel() {
+    this.getDataService.getMySteps( rst => {
+      if (rst['status'] === 200) {
+      }
+    });
   }
 
   public getTemp(stepId: string) {
