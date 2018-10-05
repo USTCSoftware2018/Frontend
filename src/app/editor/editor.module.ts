@@ -27,6 +27,7 @@ import { InfoPanelComponent } from './views/info-panel/info-panel.component';
 import { EditorScrollComponent } from './views/editor-scroll/editor-scroll.component';
 import { EditorReportShowAreaComponent } from './render/editor-report-show-area/editor-report-show-area.component';
 import { TablePanelComponent } from './views/table-panel/table-panel.component';
+import { ReportRenderComponent } from './report-render/report-render.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { TablePanelComponent } from './views/table-panel/table-panel.component';
     EditorScrollComponent,
     EditorReportShowAreaComponent,
     TablePanelComponent,
+    ReportRenderComponent,
   ],
   providers: [
     StepsService,

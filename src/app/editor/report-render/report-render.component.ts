@@ -1,15 +1,15 @@
 import { Component, ViewChild, ElementRef, OnInit, Input} from '@angular/core';
-import { ReportHeader as Report  } from '../../headers/article';
-@Component({
-  selector: 'app-editor-report-show-area',
-  templateUrl: './editor-report-show-area.component.html',
-  styleUrls: ['./editor-report-show-area.component.less']
-})
+import { ReportHeader } from '../headers/article';
 
-export class EditorReportShowAreaComponent implements OnInit {
+@Component({
+  selector: 'app-report-render',
+  templateUrl: './report-render.component.html',
+  styleUrls: ['./report-render.component.less']
+})
+export class ReportRenderComponent implements OnInit {
 
   @ViewChild('root') myroot: ElementRef;
-  @Input() R: Report;
+  @Input() R: ReportHeader;
 
   materials = ['hahah', 'aaaa', 'kjsdlkjs'];
   equipments = ['HAHAH', 'SKJDFOISJDFI', 'JFKLWEJFOIW'];

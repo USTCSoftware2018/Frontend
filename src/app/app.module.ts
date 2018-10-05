@@ -43,11 +43,13 @@ registerLocaleData(en);
     AppRoutingModule,
     EditorModule,
     ErrorModule,
-    RenderService,
     ReactiveFormsModule,
     ShareModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    RenderService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
