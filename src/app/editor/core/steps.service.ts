@@ -23,6 +23,7 @@ export class StepsService {
   public mockData() {
     this._steps = this.getDataService.getStepsMock();
     this._subs = this.getDataService.getProcessMock();
+    this.getPersonalModel();
   }
 
   public findStep(stepId: string) {
@@ -82,8 +83,17 @@ export class StepsService {
   public getPersonalModel() {
     this.getDataService.getMySteps( rst => {
       if (rst['status'] === 200) {
+        rst['data'].forEach(element => {
+          const tmpStep = (JSON.parse(element['content_json']) as EditorStepHeader);
+          tmpStep.id = element['id'].toString();
+          console.log(tmpStep);
+          this._steps = [...this._steps, tmpStep];
+        });
+      } else {
+        this.notice.blank('Retrive Steps failed.', rst['data']['detail']);
       }
     });
+
   }
 
   public getTemp(stepId: string) {
