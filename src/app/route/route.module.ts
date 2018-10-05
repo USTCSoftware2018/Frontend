@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from '../error/error404/error404.component';
 import { ReportshowComponent} from '../reportshows/reportshow/reportshow.component';
 import { MainComponent as EditorMainComponent} from '../editor/views/main/main.component';
-import { ReportshowotherComponent } from '../reportshows/reportshow/reportshowother/reportshowother.component';
+import { ReportshowotherComponent } from '../reportshows/reportshowother/reportshowother.component';
 import { FeedsComponent } from '../core/feeds/feeds.component';
 import { HttpExampleComponent } from '../http-example/http-example.component';
 import { EditorReportShowAreaComponent } from '../editor/render/editor-report-show-area/editor-report-show-area.component';
