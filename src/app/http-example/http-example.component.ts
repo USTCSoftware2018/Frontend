@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpService } from '../http.service';
 import { ApiResult } from '../Interface/ApiResult';
 import { FuncEle } from '../Interface/FunctionElement';
-
-
 
 @Component({
   selector: 'app-http-example',

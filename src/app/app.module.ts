@@ -20,6 +20,7 @@ import { HttpExampleComponent } from './http-example/http-example.component';
 import {NotificationComponent} from './core/notification/notification.component';
 import { RenderService } from './editor/render/render.service';
 import { MockRenderComponent } from './mock-render/mock-render.component';
+import { ReportRenderComponent } from './editor/report-render/report-render.component';
 
 registerLocaleData(en);
 
@@ -32,7 +33,8 @@ registerLocaleData(en);
     FeedsComponent,
     HttpExampleComponent,
     NotificationComponent,
-    MockRenderComponent
+    MockRenderComponent,
+    ReportRenderComponent,
   ],
   imports: [
     BrowserModule,
