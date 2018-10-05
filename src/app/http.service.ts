@@ -4,6 +4,7 @@ import { Observable, throwError, of, observable } from 'rxjs';
 import { ApiResult } from './Interface/ApiResult';
 import { callbackFunc } from './Type/callbackFunc';
 import { create } from 'domain';
+import { callbackify } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -238,9 +239,9 @@ export class HttpService {
     this.fire(`editor/subroutine/${id}/`, 'patch', subroutine, callback);
   }
 
-  get_all_my_reports(callback: callbackFunc) {
+  get_report_list_by_user_id(user_id: number, callback: callbackFunc) {
     // get all my reports in editor
-    this.fire(`editor/report/`, 'get', null, callback);
+    this.fire(`users/reports/${user_id}`, 'get', null, callback);
   }
 
   get_report_by_id(id: number, callback: callbackFunc) {
@@ -259,12 +260,24 @@ export class HttpService {
 
   update_report(id: number, report: object, callback: callbackFunc) {
     // update display-all-info
-    this.fire(`editor/report/${id}`, 'post', report, callback);
+    this.fire(`editor/report/${id}`, 'patch', report, callback);
+  }
+
+  star(id: number, callback: callbackFunc) {
+    const params = {
+      id: id
+    };
+    this.fire(`star`, 'post', params, callback);
   }
 
   /////////////////////// Notificaiton /////////////////////////
-  get_all_my_notifications() {
+  get_all_my_notifications(callback: callbackFunc) {
     // get all my notifications
+    this.fire(`notices/`, 'get', null, callback);
+  }
+
+  get_popular_reports_by_system(callback: callbackFunc) {
+    this.fire(`users/popular-reports-list`, 'get', null, callback);
   }
 }
 

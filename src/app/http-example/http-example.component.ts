@@ -122,6 +122,11 @@ export class HttpExampleComponent implements OnInit {
       }
     }
     },
+    {name: '通过用户id拿到report列表', lable: 'get_report_list_by_user_id', func: this.http.get_report_list_by_user_id, templa:
+    {
+      id: 1
+    }
+  },
     {name: '通过report的id获取report', lable: 'get_report_by_id', func: this.http.get_report_by_id, templa: {
       id: 1
     }},
@@ -137,9 +142,13 @@ export class HttpExampleComponent implements OnInit {
       }
     }},
     {name: '删除report', lable: 'delete_report', func: this.http.delete_report, templa: {
-      id: 1,
-      string: 'skdljsldj'
+      id: 1
     }},
+    {name: '系统推荐热门文章', lable: 'get_popular_reports_by_system', func: this.http.get_popular_reports_by_system, templa: {}},
+    {name: '获取通知信息', lable: 'get_notificaiton', func: this.http.get_all_my_notifications, templa: {}},
+    {name: '点赞', lable: 'star', func: this.http.star, templa: {
+      id: 1
+    }}
   ];
 
   EditorList: Array<FuncEle> = [
