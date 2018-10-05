@@ -1,27 +1,24 @@
-<div nz-row>
-  <div nz-col nzSpan="3" nzOffset="1">
-    <span class="spanArea">Title:</span>
-  </div>
-  <div nz-col nzSpan="9">
-      <input nz-input placeholder="Basic usage" [(ngModel)]="editor.report.title">
-  </div>
-</div>
 
-<div nz-row>
-  <div nz-col nzSpan="3" nzOffset="1" style="vertical-align: middle;height: 40px;top:5px;">
-    <span class="spanArea">Labels:</span>
-  </div>
-  <div nz-col nzSpan="16" style="margin-top: 5px;margin-bottom: 5px;">
-    <nz-select nzMode="tags" style="width: 100%;" nzPlaceHolder="Tag Mode" [(ngModel)]="editor.report.label">
-    </nz-select>
-  </div>
-</div>
+<form nz-form>
+  <nz-form-item>
+    <nz-form-label nzSpan="2">Title</nz-form-label>
+    <nz-form-control [nzSpan]="18">
+      <input [ngModelOptions]="{standalone: true}" nz-input placeholder="Basic usage" [(ngModel)]="editor.report.title">
+    </nz-form-control>
+  </nz-form-item >
 
-<div nz-row>
-  <div nz-col nzSpan="3" nzOffset="1">
-    <span class="spanArea">Abstract:</span>
-  </div>
-  <div nz-col nzSpan="16">
-        <textarea nz-input placeholder="Abstract here" [nzAutosize]="{ minRows: 4, maxRows: 6 }" [(ngModel)]="editor.report.introduction"></textarea>
-  </div>
-</div>
+  <nz-form-item>
+    <nz-form-label nzSpan="2">Labels</nz-form-label>
+    <nz-form-control [nzSpan]="18">
+      <nz-select [ngModelOptions]="{standalone: true}" nzMode="tags" style="width: 100%;" nzPlaceHolder="Tag Mode" [(ngModel)]="editor.report.label">
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item >
+
+  <nz-form-item>
+    <nz-form-label nzSpan="2">Abstract</nz-form-label>
+    <nz-form-control [nzSpan]="18">
+      <textarea nz-input [ngModelOptions]="{standalone: true}" placeholder="Abstract here" [nzAutosize]="{ minRows: 4, maxRows: 6 }" [(ngModel)]="editor.report.introduction"></textarea>
+    </nz-form-control>
+  </nz-form-item >
+</form>

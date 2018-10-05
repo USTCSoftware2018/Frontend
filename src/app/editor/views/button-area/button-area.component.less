@@ -3,45 +3,31 @@
 @size-lg: 55px;
 @size-md: 50px;
 
-// #FixedButton {
-//     position: fixed;
-//     top:80%;
-
-//     margin-left: 20px;
-
-//     @media (min-width: @screen-lg-min) {
-//         img {
-//             height: 70px;
-//         }
-//     }
-
-//     @media (max-width: @screen-lg-min) {
-//         img {
-//             height: 60px;
-//         }
-//     }
-// }
-
-// buttons
-
 #sideButtons {
     align-content: center;
 }
 
+// #LuckyButton_0 {
+//     position: fixed;
+//     top:80%;
+//     .get_right();
+//     background: #FFFFFF;
+//     border-radius: 100px;
+// }
+
 #LuckyButton_0 {
     position: fixed;
     top:80%;
-    .get_right();
-    background: #FFFFFF;
-    border-radius: 100px;
+    .LuckButton();
+    .getSize();
 }
 
 .mainButton {
     position: relative;
     margin: 0 0 0 0;
     padding: 8px;
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
 }
 
 #LuckyButton_1 {
@@ -85,18 +71,18 @@
 }
 
 .get_right {
-    @media screen and (max-width: 4800px) {
+    //@media screen and (max-width: 4800px) {
         right: 3%;
-    }
+    //}
 
 
-    @media screen and (max-width: 1200px) {
-        right: 2%;
-    }
+    // @media screen and (max-width: 1200px) {
+    //     right: 2%;
+    // }
 
-    @media screen and (max-width: 950px) {
-        right: 3%;
-    }
+    // @media screen and (max-width: 950px) {
+    //     right: 3%;
+    // }
 }
 
 .getSize {

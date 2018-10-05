@@ -101,7 +101,7 @@ export class StepsService {
           this._subs = [...this._subs, tmpSub];
         });
       } else {
-        this.notice.blank('Retrive Process failed.', rst['data']['detail']);
+        this.notice.blank('Retrive Subroutine failed.', rst['data']['detail']);
       }
     });
   }
