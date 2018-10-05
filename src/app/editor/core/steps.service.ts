@@ -86,7 +86,6 @@ export class StepsService {
         rst['data'].forEach(element => {
           const tmpStep = (JSON.parse(element['content_json']) as EditorStepHeader);
           tmpStep.id = element['id'].toString();
-          console.log(tmpStep);
           this._steps = [...this._steps, tmpStep];
         });
       } else {
@@ -94,6 +93,17 @@ export class StepsService {
       }
     });
 
+    this.getDataService.getMySubs( rst => {
+      if (rst['status'] === 200) {
+        rst['data'].forEach(element => {
+          const tmpSub = (JSON.parse(element['content_json']) as EditorSubroutineHeader);
+          tmpSub.id = element['id'].toString();
+          this._subs = [...this._subs, tmpSub];
+        });
+      } else {
+        this.notice.blank('Retrive Process failed.', rst['data']['detail']);
+      }
+    });
   }
 
   public getTemp(stepId: string) {
