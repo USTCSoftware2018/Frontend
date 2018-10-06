@@ -243,7 +243,6 @@ export class EditorReportService {
     this.report.subroutines = [];
     this.parseAll();
     setTimeout( () => this.event.refresh.emit(State.ready), 1000); // 假装载入一会
-    console.log(this.report);
   }
 
   public saveReport (): void {
@@ -295,6 +294,8 @@ export class EditorReportService {
       _sent_report['id'] =  parseInt(_sent_report['id'], 10);
     }
 
+    console.log(_sent_report);
+
     this.getDataService.saveMyReport(_sent_report, rst => {
       if (rst['status'] === 200) {
         this.report.id = rst['data']['id'].toString();
@@ -311,7 +312,6 @@ export class EditorReportService {
   public loadReport (reportId: number): void {
     this.getDataService.getMyReport(reportId, rst => {
       if (rst['status'] === 200) {
-        console.log(rst);
         const tmp: ReportHeader = new ReportHeader();
         tmp.id = rst['data']['id'].toString();
         tmp.title = rst['data']['title'];
@@ -324,7 +324,11 @@ export class EditorReportService {
         tmp.result = (JSON.parse(rst['data']['result']) as ReportResultHeader[]);
         tmp.introduction = rst['data']['introduction'];
         this.report = tmp;
+
         this.parseAll();
+
+        console.log(tmp);
+
         this._state = true;
         this.event.refresh.emit(State.ready);
       } else {

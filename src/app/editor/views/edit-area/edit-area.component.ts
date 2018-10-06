@@ -55,7 +55,6 @@ export class EditAreaComponent implements OnInit {
 
   private getReady() {
     this.currentReport = this.editorReportService.report;
-    console.log(this.currentReport);
     this.event.eventEmit.subscribe((value: any) => {
       if (value === 0) {
         this.scroll.nativeElement.scrollTop = 0;
@@ -63,7 +62,6 @@ export class EditAreaComponent implements OnInit {
         this.scroll.nativeElement.scrollTop = this.scroll.nativeElement.scrollHeight;
       } else {
         const subsDoms = this.subDom.nativeElement.querySelectorAll('.subs_flag');
-        console.log(subsDoms);
         this.scroll.nativeElement.scrollTop = subsDoms[value - 1].offsetTop;
       }
    });

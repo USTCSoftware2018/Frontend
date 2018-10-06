@@ -73,7 +73,6 @@ export class StepsService {
       if (rst['status'] === 200) {
         newSub.id = rst['data']['id'];
         this._subs = [ ...this._subs, newSub];
-        console.log(newSub);
       } else {
         this.notice.blank('Add Subroutine Failed', rst['data']['detail']);
       }
