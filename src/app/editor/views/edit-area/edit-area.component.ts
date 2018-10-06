@@ -4,7 +4,7 @@ import { EditorReportService } from '../../core/editorReport.service';
 import { SortablejsOptions } from '../../angular-sortablejs/src/sortablejs-options';
 
 import { EditorEventService } from '../../core/editor-event.service';
-import { ScrollStrategyOptions } from '@angular/cdk/overlay';
+import {State} from '../../headers/status';
 
 
 
@@ -13,11 +13,14 @@ import { ScrollStrategyOptions } from '@angular/cdk/overlay';
   templateUrl: './edit-area.component.html',
   styleUrls: ['./edit-area.component.less'],
 })
-export class EditAreaComponent implements OnInit, OnChanges {
+export class EditAreaComponent implements OnInit {
 
   editorHeight: string; // 判断高度
   currentReport: ReportHeader;
   flag: string;
+  state: State;
+
+  timer: any;
 
   @ViewChild('scrolss') scroll: ElementRef;
   @ViewChild('subDom') subDom: ElementRef;
@@ -30,17 +33,29 @@ export class EditAreaComponent implements OnInit, OnChanges {
               public event: EditorEventService,
               public element: ElementRef) { }
 
-  ngOnChanges() {
-  }
-
   ngOnInit() {
     this.onResize();
     this.flag = 'inactive';
-    this.editorReportService.initReport();
-    // this.editorReportService.loadReport(new ReportHeader());
-    this.currentReport = this.editorReportService.report;
-    this.editorReportService.parseAll(); // 编译
+    this.state = State.loading;
 
+    this.timer = setTimeout( () => this.state = State.error, 20000);
+
+    this.event.refresh.subscribe( (value: State) => {
+      clearTimeout(this.timer);
+      if (value === State.loading) {
+        this.state = State.loading;
+      } else if (value === State.ready) {
+        this.state = State.ready;
+        this.getReady();
+      } else {
+        this.state = State.error;
+      }
+    });
+  }
+
+  private getReady() {
+    this.currentReport = this.editorReportService.report;
+    console.log(this.currentReport);
     this.event.eventEmit.subscribe((value: any) => {
       if (value === 0) {
         this.scroll.nativeElement.scrollTop = 0;
