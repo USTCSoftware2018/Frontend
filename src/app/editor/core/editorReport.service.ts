@@ -1,8 +1,10 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable} from '@angular/core';
 import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, ReportResultHeader, subType } from '../headers/article';
-import {objs} from '../mock/mock-load';
 import {StepsService} from './steps.service';
-
+import {GetDataService} from '../getData/getData.service';
+import { NzNotificationService } from 'ng-zorro-antd';
+import { EditorEventService } from '../core/editor-event.service';
+import {State} from '../headers/status';
 
 @Injectable()
 export class EditorReportService {
@@ -19,7 +21,10 @@ export class EditorReportService {
   }
 
 
-  constructor(public stepsService: StepsService) { }
+  constructor(public stepsService: StepsService,
+              public getDataService: GetDataService,
+              public notice: NzNotificationService,
+              public event: EditorEventService) { }
 
   public parser (step: ReportStepsHeader ) {
     // 解析简单模版
@@ -236,7 +241,8 @@ export class EditorReportService {
     this.report.ndate = '';
     this.report.result = [];
     this.report.subroutines = [];
-    // this.mockReport();
+    this.parseAll();
+    setTimeout( () => this.event.refresh.emit(State.ready), 1000); // 假装载入一会
   }
 
   public saveReport (): void {
@@ -280,14 +286,55 @@ export class EditorReportService {
         }
       }
     }
-    console.log(JSON.stringify(_sent_report)); // , null, ' '));
+    _sent_report['result'] = JSON.stringify(_sent_report['result']);
+    _sent_report['subroutines'] = JSON.stringify(_sent_report['subroutines']);
+    _sent_report['authors'] = null;
+
+    if (_sent_report['id'] && _sent_report['id'] !== 0) {
+      _sent_report['id'] =  parseInt(_sent_report['id'], 10);
+    }
+
+    console.log(_sent_report);
+
+    this.getDataService.saveMyReport(_sent_report, rst => {
+      if (rst['status'] === 200) {
+        this.report.id = rst['data']['id'].toString();
+        this.report.mdate = rst['data']['mtime'];
+        this.report.ndate = rst['data']['ntime'];
+        this.report.author = rst['data']['author'];
+        this.notice.success('Add Report Successful', '');
+      } else {
+        this.notice.blank('Add Report Failed', rst['data']['detail']);
+      }
+    });
   }
 
-  public loadReport (_tmp_obj: ReportHeader): void {
-    _tmp_obj = JSON.parse(objs);
-    this._state = true;
-    this.report = _tmp_obj;
-    this.parseAll();
-    console.log(this.report);
+  public loadReport (reportId: number): void {
+    this.getDataService.getMyReport(reportId, rst => {
+      if (rst['status'] === 200) {
+        const tmp: ReportHeader = new ReportHeader();
+        tmp.id = rst['data']['id'].toString();
+        tmp.title = rst['data']['title'];
+        tmp.mdate = rst['data']['mtime'];
+        tmp.ndate = rst['data']['ntime'];
+        tmp.author = rst['data']['author'];
+        tmp.label = rst['data']['label'];
+        tmp.envs = rst['data']['envs'] ? rst['data']['envs'] : [];
+        tmp.subroutines = (JSON.parse(rst['data']['subroutines']) as ReportSubroutineHeader[]);
+        tmp.result = (JSON.parse(rst['data']['result']) as ReportResultHeader[]);
+        tmp.introduction = rst['data']['introduction'];
+        this.report = tmp;
+
+        this.parseAll();
+
+        console.log(tmp);
+
+        this._state = true;
+        this.event.refresh.emit(State.ready);
+      } else {
+        this.notice.blank('Load Report Failed', rst['data']['detail']);
+        this.event.refresh.emit(State.error);
+      }
+    });
   }
 }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  ReportHeader, ReportSubroutineHeader, ReportResultHeader, subType } from '../headers/article';
-import { EditorSubroutineHeader } from '../headers/steps';
+import { ReportResultHeader, subType } from '../headers/article';
 
 import { EditorEventService } from '../core/editor-event.service';
 import {EditorReportService} from './editorReport.service';

@@ -255,12 +255,12 @@ export class HttpService {
 
   delete_report(id: number, callback: callbackFunc) {
     // delete display-all-info by id
-    this.fire(`editor/report/${id}`, 'delete', null, callback);
+    this.fire(`editor/report/${id}/`, 'delete', null, callback);
   }
 
   update_report(id: number, report: object, callback: callbackFunc) {
     // update display-all-info
-    this.fire(`editor/report/${id}`, 'patch', report, callback);
+    this.fire(`editor/report/${id}/`, 'patch', report, callback);
   }
 
   star(id: number, callback: callbackFunc) {

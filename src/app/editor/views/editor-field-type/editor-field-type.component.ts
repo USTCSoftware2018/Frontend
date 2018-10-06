@@ -17,8 +17,6 @@ export class EditorFieldTypeComponent implements OnInit, DoCheck {
   constructor(public editor: EditorReportService) { }
 
   ngOnInit() {
-
-
     for (const key of this.fld.attr) {
       const keystring: string = key;
       this.changeEnv();

@@ -1,5 +1,5 @@
 @colour_write: #FFFFFF;
-@screen-lg-min: 900px; // 屏幕宽度
+@screen-lg-min: 1000px; // 屏幕宽度
 @left-margin: 15px; // 与左边的间距
 
 @up-margin-lg: 15px;
@@ -14,8 +14,6 @@
         background-color: @colour_write;
         width: 100%;
         height: 50px;
-
-
     }
 }
 
@@ -26,7 +24,6 @@
         background-color: @colour_write;
         width: 100%;
         height: 50px;
-        text-align: center;
     }
 }
 
@@ -35,6 +32,12 @@
     width: 100%;
     margin-left: @left-margin;
     overflow-y: scroll;
+}
+
+.coreAreaLoading {
+    .coreArea();
+    text-align: center;
+    padding-top :200px; 
 }
 
 ::-webkit-scrollbar  {
@@ -64,25 +67,27 @@
 }
 
 .buttonMixin {
-    height: 23px;
+    height: 20px;
     font-family: Arial-BoldMT;
     color: #FFFFFF;
     border-radius: 10px;
     text-align: center;
-
-    margin-right: 3px;
-    margin-left: 2px;
-
-    span {
-        top: 50%;
-    }
-
+    cursor: pointer;
     @media (min-width: @screen-lg-min) {
-        font-size: 18px;
-    }
-    
-    @media (max-width: @screen-lg-min) {
+        margin-right: 1px;
+        margin-left: 1px;
         font-size: 15px;
+        span {
+            top: 50%;
+        }
+    }   
+    @media (max-width: @screen-lg-min) {
+        margin-right: 1px;
+        margin-left: 1px;
+        font-size: 12px;
+        span {
+            margin-top:40px;
+        }
     }
 }
 

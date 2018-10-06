@@ -25,6 +25,12 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.onResize();
     this.stepsService.mockData();
+
+    if (this.id === 0) {
+      this.editorReportService.initReport();
+    } else {
+      this.editorReportService.loadReport( this.id);
+    }
   }
 
 

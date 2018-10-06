@@ -1,32 +1,56 @@
 <div class="editAreaMenu" nz-row>
   <!-- 进度条 -->
-  <div nz-col nzSm="8" nzMd="12" nzLg="12" nzXl="16" class="VertAlign">
-      <app-editor-scroll></app-editor-scroll>
+  <div nz-col nzSm="12" nzMd="16" nzLg="16" nzXl="16" class="VertAlign">
+      <app-editor-scroll *ngIf="state === 1"></app-editor-scroll>
   </div>
 
   <!-- Save 按钮 -->
-  <div nz-col nzSm="4" nzMd="3" nzLg="3" nzXl="2" class="VertAlign">
+  <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign">
     <div id="editAreaMenuButton_1" (click)="editorReportService.saveReport()"><span>Save</span></div>
   </div>
 
   <!-- Preview 按钮 -->
-  <div nz-col nzSm="4" nzMd="3" nzLg="3" nzXl="2" class="VertAlign">
+  <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign">
       <div id="editAreaMenuButton_2"><span>Preview</span></div>
   </div>
 
   <!-- Export 按钮 -->
-  <div nz-col nzSm="4" nzMd="3" nzLg="3" nzXl="2" class="VertAlign">
+  <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign">
       <div id="editAreaMenuButton_3"><span>Export</span></div>
   </div>
 
   <!-- Submit 按钮 -->
-  <div nz-col nzSm="4" nzMd="3" nzLg="3" nzXl="2" class="VertAlign">
+  <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign">
       <div id="editAreaMenuButton_4"><span>Submit</span></div>
   </div>
 
 </div>
 
-<div class="coreArea" (window:resize)="onResize()" [ngStyle]="{'height': editorHeight}" #scrolss>
+<div class="coreAreaLoading" 
+    (window:resize)="onResize()"
+    [ngStyle]="{'height': editorHeight}"
+    *ngIf="state === 0">
+    <nz-spin nzTip='Loading...' [nzSize]="'large'">
+    </nz-spin>
+</div>
+
+<div class="coreAreaLoading" 
+    (window:resize)="onResize()"
+    [ngStyle]="{'height': editorHeight}"
+    *ngIf="state === 2">
+    <nz-spin nzTip='uh... Something bad happened' [nzSize]="'large'" [nzIndicator]="Error">
+    </nz-spin>
+    <ng-template #Error>
+        <i class="anticon anticon-frown-o" style="font-size: 50px;color:#F04536;margin-bottom: 10px;"></i>
+
+    </ng-template>
+</div>
+
+<div class="coreArea" 
+    (window:resize)="onResize()" 
+    [ngStyle]="{'height': editorHeight}" 
+    #scrolss
+    *ngIf="state === 1">
     <!-- 各个文章 subroutines -->
     <div>
         <app-subroutine [type]="'Info'"></app-subroutine>

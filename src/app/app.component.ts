@@ -10,13 +10,20 @@ declare var $: any;
   styleUrls: ['./app.component.less']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'igem-frontend';
   constructor( private http: HttpService,
-               private myinfo: UserSigninfoService) {
-    this.http.user_logout(() => {});
-    this.http.user_login('miaowashuang', 'yjw123456', this.callback);
+               private myinfo: UserSigninfoService) {}
+
+  ngOnInit() {
+    try {
+       this.http.user_logout(() => {});
+    } finally {
+      // this.http.user_login('miaowashuang', 'yjw123456', this.callback);
+      this.http.user_login('test', 'a123456', this.callback);
+    }
   }
+
   callback = (result: ApiResult) => {
     this.myinfo.setUserInfobyInfo(result.success, result.data);
     if (result.success) {
