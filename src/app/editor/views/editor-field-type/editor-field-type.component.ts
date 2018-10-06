@@ -23,7 +23,7 @@ export class EditorFieldTypeComponent implements OnInit, DoCheck {
       if (keystring.length >= 5 && keystring.substr(0, 5) === '@opt=') {
         const opts: string = keystring.substr(5);
         this.options = opts.split('/').filter((elem) => elem !== '');
-        if (this.fld.value !== undefined && this.fld.value !== '' && !this.isInArray(this.fld.value, this.options)) {
+        if (typeof this.fld.value !== 'undefined' && this.fld.value !== '' && !this.isInArray(this.fld.value, this.options)) {
           this.options.push(this.fld.value);
         }
       }
