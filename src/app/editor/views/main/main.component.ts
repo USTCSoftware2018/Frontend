@@ -29,10 +29,9 @@ export class MainComponent implements OnInit {
     if (this.id === 0) {
       this.editorReportService.initReport();
     } else {
-      this.editorReportService.loadReport( this.id);
+      this.editorReportService.loadReport(this.id);
     }
   }
-
 
   public onResize() {
     this.editorHeight = (window.innerHeight - 46) + 'px';

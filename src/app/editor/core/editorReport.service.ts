@@ -40,7 +40,7 @@ export class EditorReportService {
     for (const token of tokens) {
       if (token === '-') {
         _fields.push(_field);
-        _field = new Object();
+        _field = {};
         _field.attr = [];
         states = 0;
       } else if (states === 0) {
@@ -62,15 +62,16 @@ export class EditorReportService {
     }
     _fields = _fields.filter( (elem) => Object.keys(elem).length > 1 );
 
-    // 绑定数据
     for (const fld of _fields) {
+      let tmpValue: string;
       if (typeof data[fld.label] !== 'undefined') {
-        fld.value = data[fld.label];
+        tmpValue = data[fld.label];
       } else if (fld.default === 'null' || typeof fld.default === 'undefined') {
-        fld.value = '';
+        tmpValue = '';
       } else {
-        fld.value = fld.default;
+        tmpValue = fld.default;
       }
+      fld.value = tmpValue;
     }
 
     // Remark 部分
@@ -138,7 +139,6 @@ export class EditorReportService {
     _new_step.id = _step_temp.id;
     _new_step.name = _step_temp.name;
     this.parser(_new_step);
-    console.log(_new_step);
     _new_sub.steps.push(_new_step);
 
     this.report.subroutines.push(_new_sub);
@@ -297,8 +297,6 @@ export class EditorReportService {
       _sent_report['id'] =  parseInt(_sent_report['id'], 10);
     }
 
-    console.log(_sent_report);
-
     this.getDataService.saveMyReport(_sent_report, rst => {
       if (rst['status'] === 200) {
         this.report.id = rst['data']['id'].toString();
@@ -327,11 +325,7 @@ export class EditorReportService {
         tmp.result = (JSON.parse(rst['data']['result']) as ReportResultHeader[]);
         tmp.introduction = rst['data']['introduction'];
         this.report = tmp;
-
         this.parseAll();
-
-        console.log(tmp);
-
         this._state = true;
         this.event.refresh.emit(State.ready);
       } else {
