@@ -10,9 +10,32 @@
     <div [ngSwitch]="type" style="margin-top: 3px;overflow: hidden;" [@subPanel]="subState">
       <div *ngSwitchCase="'Steps'" class="ABlockOfSub" >
         <!-- Steps -->
-        <div *ngFor="let step of sub.steps">
-          <app-step-panel [step]="step"></app-step-panel>
-        </div>
+        <!-- <div *ngFor="let step of sub.steps"> -->
+          <!-- <app-step-panel [step]="step"></app-step-panel> -->
+        <!-- </div> -->
+
+        <nz-collapse>
+            <nz-collapse-panel *ngFor="let step of sub.steps" [nzHeader]="step.name" >
+                <div nz-row>
+                    <ng-container *ngFor="let fld of step.fields">
+                      <ng-container [ngSwitch]="fld.attr[0]">
+                        <div *ngSwitchCase="'@big'" nz-col nzSpan="24" class="field_class">
+                          <app-editor-field-type [fld]="fld" [size]="'@big'"></app-editor-field-type>
+                        </div>
+                        <div *ngSwitchCase="'@mid'" nz-col nzSpan="24" class="field_class">
+                          <app-editor-field-type [fld]="fld" [size]="'@mid'"></app-editor-field-type>
+                        </div>
+                        <div *ngSwitchCase="'@small'" nz-col [nzSpan]="smallWindows? 24 : 12" class="field_class">
+                          <app-editor-field-type [fld]="fld" [size]="changeAttr()"></app-editor-field-type>
+                        </div>
+                        <div *ngSwitchDefault nz-col [nzSpan]="24" class="field_class">
+                          <app-editor-field-type [fld]="fld" [size]="'@mid'"></app-editor-field-type>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+                  </div>
+            </nz-collapse-panel>
+          </nz-collapse>
       </div>
 
       <div *ngSwitchCase="'Info'" class="ABlockOfSub" >

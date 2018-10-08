@@ -24,7 +24,8 @@ export class UserInfoProfileComponent implements OnInit {
     } else {
       this.follow_or_unfollow = 'follow';
       this.ifFollow = true;
-    this.ifFollow = this.user.ifFollow;
+    }
+    // this.ifFollow = this.user.ifFollow;
     this.ifFollow = this.user.followed;
     this.follow_or_unfollow = this.ifFollow ? 'Follow' : 'Unfollow';
     // 根据是否是自己设置点击四个字母跳转

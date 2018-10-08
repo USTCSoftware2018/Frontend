@@ -36,11 +36,16 @@ export class SubroutineComponent implements OnInit {
     'border-color': '#979797',
   };
 
+  smallWindows: boolean; // 判断屏幕是不是太小
+
+  panelState: string;
+
   constructor(public editorReportService: EditorReportService) { }
 
   ngOnInit() {
     this.subState = 'active';
     this.subShow = 'true';
+    this.getWindowsWidth();
   }
 
   getTitle() {
@@ -60,6 +65,19 @@ export class SubroutineComponent implements OnInit {
   startDelete(idx: any) {
     this.subShow = 'void';
     this.editorReportService.reportDeleteSubroutine(idx);
+  }
+
+
+  getWindowsWidth() {
+    this.smallWindows =  window.innerWidth < 800;
+  }
+
+  changeAttr(): string {
+    if (this.smallWindows) {
+      return '@mid';
+    } else {
+      return '@small';
+    }
   }
 
 }
