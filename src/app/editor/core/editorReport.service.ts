@@ -1,8 +1,10 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable} from '@angular/core';
 import {  ReportHeader, ReportSubroutineHeader, ReportStepsHeader, ReportResultHeader, subType } from '../headers/article';
-import {objs} from '../mock/mock-load';
 import {StepsService} from './steps.service';
-
+import {GetDataService} from '../getData/getData.service';
+import { NzNotificationService } from 'ng-zorro-antd';
+import { EditorEventService } from '../core/editor-event.service';
+import {State} from '../headers/status';
 
 @Injectable()
 export class EditorReportService {
@@ -19,7 +21,10 @@ export class EditorReportService {
   }
 
 
-  constructor(public stepsService: StepsService) { }
+  constructor(public stepsService: StepsService,
+              public getDataService: GetDataService,
+              public notice: NzNotificationService,
+              public event: EditorEventService) { }
 
   public parser (step: ReportStepsHeader ) {
     // 解析简单模版
@@ -35,7 +40,7 @@ export class EditorReportService {
     for (const token of tokens) {
       if (token === '-') {
         _fields.push(_field);
-        _field = new Object();
+        _field = {};
         _field.attr = [];
         states = 0;
       } else if (states === 0) {
@@ -57,15 +62,16 @@ export class EditorReportService {
     }
     _fields = _fields.filter( (elem) => Object.keys(elem).length > 1 );
 
-    // 绑定数据
     for (const fld of _fields) {
-      if (data[fld.label]) {
-        fld.value = data[fld.label];
-      } else if (fld.default === 'null' || fld.default === undefined) {
-        fld.value = '';
+      let tmpValue: string;
+      if (typeof data[fld.label] !== 'undefined') {
+        tmpValue = data[fld.label];
+      } else if (fld.default === 'null' || typeof fld.default === 'undefined') {
+        tmpValue = '';
       } else {
-        fld.value = fld.default;
+        tmpValue = fld.default;
       }
+      fld.value = tmpValue;
     }
 
     // Remark 部分
@@ -145,7 +151,6 @@ export class EditorReportService {
     _new_sub.id = _sub_temp.id;
     _new_sub.desc = _sub_temp.desc;
     _new_sub.name = _sub_temp.name;
-    // _new_sub.idx =  (this.display-all-info.subroutines[this.display-all-info.subroutines.length - 1] || {idx: 0}).idx + 1;
     _new_sub.idx = 0;
     _new_sub.steps = [];
 
@@ -235,8 +240,10 @@ export class EditorReportService {
     this.report.mdate = '';
     this.report.ndate = '';
     this.report.result = [];
+    this.report.envs = {};
     this.report.subroutines = [];
-    // this.mockReport();
+    this.parseAll();
+    setTimeout( () => this.event.refresh.emit(State.ready), 1000); // 假装载入一会
   }
 
   public saveReport (): void {
@@ -280,14 +287,51 @@ export class EditorReportService {
         }
       }
     }
-    console.log(JSON.stringify(_sent_report)); // , null, ' '));
+    _sent_report['result'] = JSON.stringify(_sent_report['result']);
+    _sent_report['subroutines'] = JSON.stringify(_sent_report['subroutines']);
+    _sent_report['envs'] = _sent_report['envs'] ? JSON.stringify(_sent_report['envs']) : JSON.stringify({}) ;
+    _sent_report['authors'] = _sent_report['author'];
+
+    delete _sent_report['author'];
+    if (_sent_report['id'] && _sent_report['id'] !== 0) {
+      _sent_report['id'] =  parseInt(_sent_report['id'], 10);
+    }
+
+    this.getDataService.saveMyReport(_sent_report, rst => {
+      if (rst['status'] === 200) {
+        this.report.id = rst['data']['id'].toString();
+        this.report.mdate = rst['data']['mtime'];
+        this.report.ndate = rst['data']['ntime'];
+        this.report.author = [rst['data']['authors']];
+        this.notice.success('Add Report Successful', '');
+      } else {
+        this.notice.blank('Add Report Failed', rst['data']['detail']);
+      }
+    });
   }
 
-  public loadReport (_tmp_obj: ReportHeader): void {
-    _tmp_obj = JSON.parse(objs);
-    this._state = true;
-    this.report = _tmp_obj;
-    this.parseAll();
-    console.log(this.report);
+  public loadReport (reportId: number): void {
+    this.getDataService.getMyReport(reportId, rst => {
+      if (rst['status'] === 200) {
+        const tmp: ReportHeader = new ReportHeader();
+        tmp.id = rst['data']['id'].toString();
+        tmp.title = rst['data']['title'];
+        tmp.mdate = rst['data']['mtime'];
+        tmp.ndate = rst['data']['ntime'];
+        tmp.author = [rst['data']['author']];
+        tmp.label = rst['data']['label'];
+        tmp.envs = JSON.parse(rst['data']['envs']);
+        tmp.subroutines = (JSON.parse(rst['data']['subroutines']) as ReportSubroutineHeader[]);
+        tmp.result = (JSON.parse(rst['data']['result']) as ReportResultHeader[]);
+        tmp.introduction = rst['data']['introduction'];
+        this.report = tmp;
+        this.parseAll();
+        this._state = true;
+        this.event.refresh.emit(State.ready);
+      } else {
+        this.notice.blank('Load Report Failed', rst['data']['detail']);
+        this.event.refresh.emit(State.error);
+      }
+    });
   }
 }

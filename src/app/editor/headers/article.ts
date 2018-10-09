@@ -46,7 +46,11 @@ export class ReportResultHeader {
     subType: subType;
     desc?: string;
     list?: ReportListHeader[];
+<<<<<<< HEAD
     remark?: string; // 弃用
+=======
+    remark?: string; // 废弃
+>>>>>>> dd603690428981cc5dce2da400dab9cec05ddaef
     pic?: Array<ReportGraphHeader>;
     table?: any[];
 }

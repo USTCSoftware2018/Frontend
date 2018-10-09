@@ -1,27 +1,31 @@
-<!-- <textarea class="panelResult" [(ngModel)]="sub.remark"  -->
-      <!-- placeholder="Subroutines after this will be considered as a port of Result"> </textarea> -->
-<div class="list-group list-group-flush" [sortablejs]="editor.report.result">
-  <div *ngFor="let ret of editor.report.result;let i = index" class="list-group-item">
-    <div nz-row>
-      <div nz-col nzSpan="20" nzOffset="0">
-        <div [ngSwitch]="ret.subType">
-          <div *ngSwitchCase="'Text'" class="panelArea">
-              <app-text-panel [ret]="ret"></app-text-panel>
-          </div>
-          <div *ngSwitchCase="'Pictures'"  class="panelArea">
-              <app-pict-panel [ret]="ret"></app-pict-panel>
-          </div>
-          <div *ngSwitchCase="'List'"  class="panelArea">
-              <app-list-panel [ret]="ret"></app-list-panel>
-          </div>
-          <div *ngSwitchCase="'Table'"  class="panelArea">
-            <app-table-panel [ret]="ret"></app-table-panel>
-        </div>
-        </div>
+
+<nz-collapse>
+  <nz-collapse-panel *ngFor="let ret of editor.report.result;let i = index" 
+                    [nzHeader]="header" >
+    <div [ngSwitch]="ret.subType">
+      <div *ngSwitchCase="'Text'" class="panelArea">
+          <app-text-panel [ret]="ret"></app-text-panel>
       </div>
-      <div nz-col nzSpan="2" nzOffset="2">
-        <i class="anticon anticon-minus-circle-o dynamic-delete-button-result" (click)="delResult(i)"></i>
+      <div *ngSwitchCase="'Pictures'"  class="panelArea">
+          <app-pict-panel [ret]="ret"></app-pict-panel>
+      </div>
+      <div *ngSwitchCase="'List'"  class="panelArea">
+          <app-list-panel [ret]="ret"></app-list-panel>
+      </div>
+      <div *ngSwitchCase="'Table'"  class="panelArea">
+        <app-table-panel [ret]="ret"></app-table-panel>
       </div>
     </div>
-  </div>
-</div>
+
+    <ng-template #header>
+      <div nz-row>
+        <div nz-col nzSpan="4">
+          <span>{{ret.subType}}</span>
+        </div>
+        <div nz-col nzSpan="3" nzOffset="17">
+          <span class="nextDeleteButton" (click)="delResult(i)">delete</span>
+        </div>
+      </div>
+    </ng-template>
+  </nz-collapse-panel>
+</nz-collapse>

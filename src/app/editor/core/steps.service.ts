@@ -23,6 +23,7 @@ export class StepsService {
   public mockData() {
     this._steps = this.getDataService.getStepsMock();
     this._subs = this.getDataService.getProcessMock();
+    this.getPersonalModel();
   }
 
   public findStep(stepId: string) {
@@ -72,7 +73,6 @@ export class StepsService {
       if (rst['status'] === 200) {
         newSub.id = rst['data']['id'];
         this._subs = [ ...this._subs, newSub];
-        console.log(newSub);
       } else {
         this.notice.blank('Add Subroutine Failed', rst['data']['detail']);
       }
@@ -82,6 +82,25 @@ export class StepsService {
   public getPersonalModel() {
     this.getDataService.getMySteps( rst => {
       if (rst['status'] === 200) {
+        rst['data'].forEach(element => {
+          const tmpStep = (JSON.parse(element['content_json']) as EditorStepHeader);
+          tmpStep.id = element['id'].toString();
+          this._steps = [...this._steps, tmpStep];
+        });
+      } else {
+        this.notice.blank('Retrive Steps failed.', rst['data']['detail']);
+      }
+    });
+
+    this.getDataService.getMySubs( rst => {
+      if (rst['status'] === 200) {
+        rst['data'].forEach(element => {
+          const tmpSub = (JSON.parse(element['content_json']) as EditorSubroutineHeader);
+          tmpSub.id = element['id'].toString();
+          this._subs = [...this._subs, tmpSub];
+        });
+      } else {
+        this.notice.blank('Retrive Subroutine failed.', rst['data']['detail']);
       }
     });
   }

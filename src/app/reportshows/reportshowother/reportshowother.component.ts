@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Report } from '../reportshow';
-import { REPORTS } from '../mock-reports';
-import { Socialcomments } from '../socialinfo';
-import {SOLICIALINFO, SOCIALCOMMENTS, ME} from '../mock-Socialinfo';
-import { User } from '../user';
-import { USER } from '../mock-user';
-import { ShareModule } from '../../../share/share.module';
-import { Simuser } from '../../../Interface/userinfo';
-import { user1 } from '../../../Interface/mock-user';
-import {UserInfoProfile} from '../../../others-personal-center/display-container/personal-information/userinfoprofile';
-import {USERINFOPROFILE} from '../../../others-personal-center/display-container/personal-information/mock-userinfoprofile';
+import { Report } from '../reportshow/reportshow';
+import { REPORTS } from '../reportshow/mock-reports';
+import { Socialcomments } from '../reportshow/socialinfo';
+import {SOLICIALINFO, SOCIALCOMMENTS, ME} from '../reportshow/mock-Socialinfo';
+import { User } from '../reportshow/user';
+import { USER } from '../reportshow/mock-user';
+import { ShareModule } from '../../share/share.module';
+import { Simuser } from '../../Interface/userinfo';
+import { user1 } from '../../Interface/mock-user';
 import {variable} from '@angular/compiler/src/output/output_ast';
 import {isLineBreak} from 'codelyzer/angular/sourceMappingVisitor';
+import {ReportshowsModule} from '../reportshows.module';
 
 @Component({
   selector: 'app-reportshowother',

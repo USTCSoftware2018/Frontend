@@ -2,7 +2,7 @@ import { EditorSubroutineHeader } from '../headers/steps';
 
 export let mockSub: Array<EditorSubroutineHeader> = [
     {
-        id: '1',
+        id: '-1',
         name: 'Gel Extraction',
         desc: 'Gel Extraction',
         steps: ['9', '2', '2', '5', '1', '3', '2',
@@ -29,7 +29,7 @@ export let mockSub: Array<EditorSubroutineHeader> = [
         ],
     },
     {
-        id: '2',
+        id: '-2',
         name: 'purification of PCR product',
         desc: 'purification of PCR product',
         steps: ['2', '2', '4', '5', '1', '3', '2', '1',
@@ -55,7 +55,7 @@ export let mockSub: Array<EditorSubroutineHeader> = [
         ],
     },
     {
-        id: '3',
+        id: '-3',
         name: 'Plasmid Extraction',
         desc: 'Plasmid Extraction',
         steps: ['2', '1', '3', '6', '2', '4', '2', '4', '7', '2',
