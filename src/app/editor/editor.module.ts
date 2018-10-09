@@ -29,8 +29,11 @@ import { EditorScrollComponent } from './views/editor-scroll/editor-scroll.compo
 import { EditorReportShowAreaComponent } from './render/editor-report-show-area/editor-report-show-area.component';
 import { TablePanelComponent } from './views/table-panel/table-panel.component';
 
+import { RouteEditorModule } from './route-editor/route-editor.module';
+
 @NgModule({
   imports: [
+    RouteEditorModule,
     CommonModule,
     NgZorroAntdModule,
     FormsModule,

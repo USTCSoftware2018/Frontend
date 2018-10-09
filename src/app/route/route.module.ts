@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from '../error/error404/error404.component';
 import { ReportshowComponent} from '../reportshows/reportshow/reportshow.component';
-import { MainComponent as EditorMainComponent} from '../editor/views/main/main.component';
 import { ReportshowotherComponent } from '../reportshows/reportshowother/reportshowother.component';
 import { FeedsComponent } from '../core/feeds/feeds.component';
 import { HttpExampleComponent } from '../http-example/http-example.component';
@@ -13,8 +12,7 @@ import {NotificationComponent} from '../core/notification/notification.component
 const appRoutes: Routes = [
   { path: 'try', component: EditorReportShowAreaComponent },
   { path: 'test-http', component: HttpExampleComponent },
-  { path: 'editor',  redirectTo: 'editor/0', pathMatch: 'full' },
-  { path: 'editor/:id', component: EditorMainComponent},
+  { path: 'editor',  loadChildren: '../editor/editor.module#EditorModule' },
   { path: 'reportshow', component: ReportshowComponent},
   { path: 'reportdisplay', component: ReportshowotherComponent},
   { path: 'feeds', component: FeedsComponent},

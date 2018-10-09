@@ -23,7 +23,7 @@ export class EditorFieldTypeComponent implements OnInit, DoCheck {
       if (keystring.length >= 5 && keystring.substr(0, 5) === '@opt=') {
         const opts: string = keystring.substr(5);
         this.options = opts.split('/').filter((elem) => elem !== '');
-        if (this.fld.value !== undefined && this.fld.value !== '' && !this.isInArray(this.fld.value, this.options)) {
+        if (typeof this.fld.value !== 'undefined' && this.fld.value !== '' && !this.isInArray(this.fld.value, this.options)) {
           this.options.push(this.fld.value);
         }
       }
@@ -37,12 +37,13 @@ export class EditorFieldTypeComponent implements OnInit, DoCheck {
   changeEnv() {
     if ( typeof this.fld.value === 'string' && this.fld.value.substr(0, 1) === '@') {
       this.envField = this.fld.value.substr(1);
-    }
-
-    try {
-      this.fld.value = this.editor.report.envs[this.envField];
-    } catch (err) {
-      // 不知道在这里写什么
+      const backValue = this.fld.value;
+      try {
+        this.fld.value = this.editor.report.envs[this.envField];
+      } catch (err) {
+        // 不知道在这里写什么
+        this.fld.value = backValue;
+      }
     }
   }
 
