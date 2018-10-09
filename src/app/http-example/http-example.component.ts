@@ -146,7 +146,11 @@ export class HttpExampleComponent implements OnInit {
     {name: '获取通知信息', lable: 'get_notificaiton', func: this.http.get_all_my_notifications, templa: {}},
     {name: '点赞', lable: 'star', func: this.http.star, templa: {
       id: 1
+    }},
+    {name: '根据用户id拿到此用户的所有label', lable: 'get_labels_by_user_id', func: this.http.get_labels_by_user_id, templa: {
+      id: 1
     }}
+
   ];
 
   EditorList: Array<FuncEle> = [

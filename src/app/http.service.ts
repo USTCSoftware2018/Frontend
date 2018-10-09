@@ -279,5 +279,12 @@ export class HttpService {
   get_popular_reports_by_system(callback: callbackFunc) {
     this.fire(`users/popular-reports-list`, 'get', null, callback);
   }
+
+
+  get_labels_by_user_id(user_id: number, callback: callbackFunc) {
+    this.fire(`users/labels/${user_id}/`, 'get', null, callback);
+  }
+
+
 }
 
