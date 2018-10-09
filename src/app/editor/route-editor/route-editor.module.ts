@@ -7,6 +7,7 @@ import { MainComponent } from '../views/main/main.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '0', pathMatch: 'full'},
+  {path: 'test', redirectTo: '16', pathMatch: 'full'},
   {path: ':id', component: MainComponent},
 ];
 
