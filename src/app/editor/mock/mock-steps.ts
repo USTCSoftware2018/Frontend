@@ -2,7 +2,7 @@ import {EditorStepHeader} from '../headers/steps';
 
 export let mockStep: EditorStepHeader[] = [
     {
-        id: '-1',
+        id: '1',
         desc: 'Centifuge',
         name: 'Centifuge',
         ico: '/assets/img/editor/icons/centfuge.png',
@@ -10,7 +10,7 @@ export let mockStep: EditorStepHeader[] = [
         yield_method: '@Speed rpm centifuge for @Time s at @Temp degree.',
     },
     {
-        id: '-2',
+        id: '2',
         desc: 'Add Liquid',
         name: 'Add Liquid',
         ico: '/assets/img/editor/icons/add.png',
@@ -18,7 +18,7 @@ export let mockStep: EditorStepHeader[] = [
         yield_method: 'Add @Volume μL @Name to @container',
     },
     {
-        id: '-3',
+        id: '3',
         desc: 'Remove',
         name: 'Remove',
         ico: '/assets/img/editor/icons/discard.png',
@@ -26,7 +26,7 @@ export let mockStep: EditorStepHeader[] = [
         yield_method: 'Remove @option',
     },
     {
-        id: '-4',
+        id: '4',
         desc: 'Mix',
         name: 'Mix',
         ico: '/assets/img/editor/icons/mix.png',
@@ -34,7 +34,7 @@ export let mockStep: EditorStepHeader[] = [
         yield_method: '@option',
     },
     {
-        id: '-5',
+        id: '5',
         desc: 'Move',
         name: 'Move',
         ico: '/assets/img/editor/icons/move.png',
@@ -42,7 +42,7 @@ export let mockStep: EditorStepHeader[] = [
         yield_method: 'Move @name from @container1 to @container2',
     },
     {
-        id: '-6',
+        id: '6',
         desc: 'Repeat',
         name: 'Repeat',
         ico: '/assets/img/editor/icons/repeat.png',
@@ -50,7 +50,7 @@ export let mockStep: EditorStepHeader[] = [
         yield_method: 'Repeat last @last step for @times times',
     },
     {
-        id: '-7',
+        id: '7',
         desc: 'Standing',
         name: 'Standing',
         ico: '/assets/img/editor/icons/standing.png',
@@ -58,7 +58,7 @@ export let mockStep: EditorStepHeader[] = [
         yield_method: 'Standing @Time min at @Temp degree',
     },
     {
-        id: '-8',
+        id: '8',
         desc: 'Preserve',
         name: 'Preserve',
         ico: '/assets/img/editor/icons/preserve.png',
@@ -66,7 +66,7 @@ export let mockStep: EditorStepHeader[] = [
         yield_method: 'Preserve @container at @Temp degree for at most @Time h',
     },
     {
-        id: '-9',
+        id: '9',
         desc: 'Text',
         name: 'Text',
         ico: '/assets/img/editor/icons/T.png',
@@ -74,7 +74,7 @@ export let mockStep: EditorStepHeader[] = [
         yield_method: '@Text',
     },
     {
-        id: '-10',
+        id: '10',
         desc: 'Add Solid',
         name: 'Add Solid',
         ico: '/assets/img/editor/icons/add.png',
