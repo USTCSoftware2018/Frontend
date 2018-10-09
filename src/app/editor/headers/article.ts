@@ -44,9 +44,9 @@ export class ReportSubroutineHeader {
 
 export class ReportResultHeader {
     subType: subType;
-    desc?: string; // 废弃
+    desc?: string;
     list?: ReportListHeader[];
-    remark?: string;
+    remark?: string; // 弃用
     pic?: Array<ReportGraphHeader>;
     table?: any[];
 }

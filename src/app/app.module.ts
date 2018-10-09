@@ -21,6 +21,7 @@ import {NotificationComponent} from './core/notification/notification.component'
 import { RenderService } from './editor/render/render.service';
 import { MockRenderComponent } from './mock-render/mock-render.component';
 import { ReportRenderComponent } from './editor/report-render/report-render.component';
+import { StepsService } from './editor/core/steps.service';
 
 registerLocaleData(en);
 
@@ -51,6 +52,7 @@ registerLocaleData(en);
   providers: [
     { provide: NZ_I18N, useValue: en_US },
     RenderService,
+    StepsService
   ],
   bootstrap: [AppComponent]
 })
