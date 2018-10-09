@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { NzNotificationService } from 'ng-zorro-antd';
 import { EditorReportService } from '../../core/editorReport.service';
+import { UserSigninfoService } from '../../../user-signinfo.service';
 import {StepsService} from '../../core/steps.service';
 
 @Component({
@@ -20,13 +21,18 @@ export class MainComponent implements OnInit {
   constructor(public editorReportService: EditorReportService,
               public notice: NzNotificationService,
               public route: ActivatedRoute,
-              public stepsService: StepsService) { }
+              public router: Router,
+              public stepsService: StepsService,
+              public user: UserSigninfoService) { }
 
   ngOnInit() {
     this.onResize();
+    if ( !this.user.isLogin) {
+      this.notice.blank('Redirect to login page.', 'Please login first.');
+      this.router.navigate(['authentication', 'signin']);
+    }
     this.stepsService.mockData();
-
-    if (this.id === 0) {
+    if (typeof this.id === 'undefined' || this.id === 0) {
       this.editorReportService.initReport();
     } else {
       this.editorReportService.loadReport(this.id);
