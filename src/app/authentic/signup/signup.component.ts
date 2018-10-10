@@ -68,9 +68,11 @@ export class SignupComponent implements OnInit {
       this.message.error(result.data.username + '.' + result.data.email);
     }
   }
+  // form value
   get username() { return this.validateForm.get('username'); }
   get password() { return this.validateForm.get('password'); }
   get email() { return this.validateForm.get('email'); }
+  // control panda's hands
   startShake() {
     this.shake = true;
   }

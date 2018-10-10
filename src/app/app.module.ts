@@ -19,6 +19,10 @@ import { FeedsComponent } from './core/feeds/feeds.component';
 import { ShareModule } from './share/share.module';
 import { HttpExampleComponent } from './http-example/http-example.component';
 import {NotificationComponent} from './core/notification/notification.component';
+import { RenderService } from './editor/render/render.service';
+import { MockRenderComponent } from './mock-render/mock-render.component';
+import { ReportRenderComponent } from './editor/report-render/report-render.component';
+import { StepsService } from './editor/core/steps.service';
 
 registerLocaleData(en);
 
@@ -30,7 +34,9 @@ registerLocaleData(en);
     ReportshowotherComponent,
     FeedsComponent,
     HttpExampleComponent,
-    NotificationComponent
+    NotificationComponent,
+    MockRenderComponent,
+    ReportRenderComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +50,11 @@ registerLocaleData(en);
     ReactiveFormsModule,
     ShareModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    RenderService,
+    StepsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {HttpService} from './http.service';
 import { UserSigninfoService } from './user-signinfo.service';
 import {ApiResult} from './Interface/ApiResult';
+import {NzMessageService} from 'ng-zorro-antd';
+import { Router } from '@angular/router';
 
 declare var $: any;
 @Component({
@@ -13,23 +15,28 @@ declare var $: any;
 export class AppComponent implements OnInit {
   title = 'igem-frontend';
   constructor( private http: HttpService,
-               private myinfo: UserSigninfoService) {}
+               private myinfo: UserSigninfoService,
+               private message: NzMessageService,
+               private router: Router,
+  ) {}
 
   ngOnInit() {
-    try {
-       this.http.user_logout(() => {});
-    } finally {
-      // this.http.user_login('miaowashuang', 'yjw123456', this.callback);
-      this.http.user_login('test', 'a123456', this.callback);
-    }
+    this.http.get_myself(this.callback);
   }
 
   callback = (result: ApiResult) => {
-    this.myinfo.setUserInfobyInfo(result.success, result.data);
     if (result.success) {
-      console.log('log in success');
-    } else {
-      console.log('fail');
+      this.message.success('Successlly signin');
+      this.myinfo.setUserInfobyInfo(result.success, result.data);
+      // this.router.navigateByUrl('/explore');
     }
   }
+  // callback = (result: ApiResult) => {
+  //   this.myinfo.setUserInfobyInfo(result.success, result.data);
+  //   if (result.success) {
+  //     console.log('log in success');
+  //   } else {
+  //     console.log('fail');
+  //   }
+  // }
 }

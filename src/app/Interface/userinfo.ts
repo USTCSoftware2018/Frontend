@@ -32,12 +32,11 @@ export class Like {
   report: Report;
 }
 export class User {
-  id: Number;
-  about_me: String;
-  following: Simuser[];
-  followers: Simuser[];
-  likes: Like[];
-  reports: Report[];
+  id: number;
+  following?: Simuser[];
+  followers?: Simuser[];
+  likes?: Like[];
+  reports?: Report[];
 }
 export class Archive {
   id: number;
@@ -55,7 +54,7 @@ export class PopularReport {
 export class Label {
   id: number;
   name: string;
-  report_count: number;
+  report_count?: number;
   // reports: Array<Report>;
 }
 

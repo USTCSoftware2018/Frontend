@@ -51,6 +51,7 @@ export class ReportResultHeader {
     table?: any[];
 }
 
+
 export class ReportHeader {
     // 元数据部分
     id: number; // 约定 id 是 0 就新建

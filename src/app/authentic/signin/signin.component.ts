@@ -23,7 +23,7 @@ export class SigninComponent implements OnInit {
               private message: NzMessageService,
               private router: Router,
               private userinfo: UserSigninfoService) { }
-  // define validater to signin form
+  // define validator to signin form
   ngOnInit(): void {
     this.validateForm = new FormGroup({
       'username': new FormControl(null,

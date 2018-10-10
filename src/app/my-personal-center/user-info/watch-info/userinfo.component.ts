@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserSigninfoService } from '../../../user-signinfo.service';
-import { Simuser, User, Assortment} from '../../../Interface/userinfo';
-import { USER, SIMUSER, CLASSIFICATION} from '../../../Interface/mock-user';
+import { Simuser, Assortment } from '../../../Interface/userinfo';
+import { CLASSIFICATION } from '../../../Interface/mock-user';
+import { HttpService } from '../../../http.service';
+import {UserSigninfoService} from '../../../user-signinfo.service';
+
 
 @Component({
   selector: 'app-userinfo',
@@ -9,14 +11,16 @@ import { USER, SIMUSER, CLASSIFICATION} from '../../../Interface/mock-user';
   styleUrls: ['./userinfo.component.less']
 })
 export class UserinfoComponent implements OnInit {
-  user: User = USER;
-  simuser: Simuser = SIMUSER;
+  simuser: Simuser;
   classification: Assortment = CLASSIFICATION;
-  constructor(private myinfo: UserSigninfoService) {
+  constructor(
+    private http: HttpService,
+    private userinfo: UserSigninfoService
+  ) {
   }
 
   ngOnInit() {
-    this.simuser = this.myinfo.myInfo;
+    this.simuser = this.userinfo.myInfo;
+    // this.http get classification;
   }
-
 }

@@ -5,12 +5,13 @@ import { ReportshowComponent} from '../reportshows/reportshow/reportshow.compone
 import { ReportshowotherComponent } from '../reportshows/reportshowother/reportshowother.component';
 import { FeedsComponent } from '../core/feeds/feeds.component';
 import { HttpExampleComponent } from '../http-example/http-example.component';
-import { EditorReportShowAreaComponent } from '../editor/render/editor-report-show-area/editor-report-show-area.component';
 import {NotificationComponent} from '../core/notification/notification.component';
+import { MockRenderComponent } from '../mock-render/mock-render.component';
+
 
 
 const appRoutes: Routes = [
-  { path: 'try', component: EditorReportShowAreaComponent },
+  { path: 'render', component: MockRenderComponent },
   { path: 'test-http', component: HttpExampleComponent },
   { path: 'editor',  loadChildren: '../editor/editor.module#EditorModule' },
   { path: 'reportshow', component: ReportshowComponent},
@@ -22,7 +23,7 @@ const appRoutes: Routes = [
   { path: 'authentication', loadChildren: '../authentic/authentic.module#AuthenticModule', data: {preload: true}},
   { path: 'search', loadChildren: '../biosearch/biosearch.module#BiosearchModule', data: {preload: true}},
   { path: 'explore', loadChildren: '../explore/explore.module#ExploreModule', data: {preload: true}},
-  { path: 'userprofile/:id', loadChildren: '../others-personal-center/others-personal-center.module#OthersPersonalCenterModule',
+  { path: 'userprofile/:user_id', loadChildren: '../others-personal-center/others-personal-center.module#OthersPersonalCenterModule',
     data: {preload: true}},
   { path: 'reportshows', loadChildren: '../reportshows/reportshows.module#ReportshowsModule', data: {preload: true}},
   { path: '', redirectTo: '/index', pathMatch: 'full' },
