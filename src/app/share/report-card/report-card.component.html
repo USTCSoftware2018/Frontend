@@ -2,9 +2,15 @@
          nzHoverable="true" [nzActions]="[actionLike,actionCollection]">
   <div class="report-info-container">
     <div class="report-info">
-      <a (click)="gotoIndex()"><nz-avatar [nzSrc]="report.author.avatar_url"></nz-avatar></a>
-      <span>&nbsp;&nbsp;</span>
-      <span class="report-title">{{report.title}}</span>
+      <div nz-row>
+        <div nz-col nzSpan="8">
+          <a (click)="gotoIndex()"><nz-avatar [nzSrc]="report.author.avatar_url"></nz-avatar></a>
+          <span>&nbsp;&nbsp;</span>
+        </div>
+        <div nz-col nzSpan="16" class="report-title-container">
+          <span class="report-title">{{report.title}}</span>
+        </div>
+      </div>
       <div class="report-abstract-container">
         <p class="report-abstract">{{report.abstract}}</p>
       </div>
@@ -17,7 +23,4 @@
 </ng-template>
 <ng-template #actionCollection>
   <i class="anticon anticon-tag-o"></i>
-</ng-template>
-<ng-template #actionEllipsis>
-  <i class="anticon anticon-ellipsis"></i>
 </ng-template>

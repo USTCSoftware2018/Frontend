@@ -249,18 +249,18 @@ export class HttpService {
   }
 
   create_report(report: object, callback: callbackFunc) {
-    // create new display-all-info
+    // create new watch-all-info
     this.fire(`editor/report/`, 'post', report, callback);
   }
 
   delete_report(id: number, callback: callbackFunc) {
-    // delete display-all-info by id
-    this.fire(`editor/report/${id}`, 'delete', null, callback);
+    // delete watch-all-info by id
+    this.fire(`editor/report/${id}/`, 'delete', null, callback);
   }
 
   update_report(id: number, report: object, callback: callbackFunc) {
-    // update display-all-info
-    this.fire(`editor/report/${id}`, 'patch', report, callback);
+    // update watch-all-info
+    this.fire(`editor/report/${id}/`, 'patch', report, callback);
   }
 
   star(id: number, callback: callbackFunc) {

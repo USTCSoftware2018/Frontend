@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { Simuser, Assortment } from '../../../Interface/userinfo';
 
 @Component({
   selector: 'app-personal-information',
@@ -6,8 +7,8 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./personal-information.component.less']
 })
 export class PersonalInformationComponent implements OnInit {
-  @Input() userinfo;  // 这是左上角的数据
-  @Input() classification; // 这是左下角的数据
+  @Input() userinfo: Simuser;  // 这是左上角的simuser数据
+  @Input() classification: Assortment; // 这是左下角的分类数据
   constructor() { }
 
   ngOnInit() {

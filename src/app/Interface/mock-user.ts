@@ -103,7 +103,6 @@ const assortment = {
 };
 export const USER: User = {
   id: 1,
-  about_me: 'a student in ustc',
   following: [ user1, user2],
   followers: [user3, user4, user1 ],
   likes: [{
