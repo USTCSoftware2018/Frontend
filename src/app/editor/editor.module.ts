@@ -59,6 +59,7 @@ import { RouteEditorModule } from './route-editor/route-editor.module';
     GetDataService,
     AppendixService,
     NzNotificationService,
+    EditorEventService,
   ],
 })
 export class EditorModule { }
