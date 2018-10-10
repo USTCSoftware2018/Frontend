@@ -7,7 +7,7 @@
 </div>
 <div nz-row>
   <div nz-col nzSpan="20" [nzOffset]="2">
-    <span style="width: 100%;font-size: 1vw"><i class="anticon anticon-environment-o" style="color:#3C7BBB"></i>&nbsp;&nbsp;location:</span> <span class="detail" style="font-size: 1vw">{{user?.location}}</span><br>
+    <span style="width: 100%;font-size: 1vw"><i class="anticon anticon-environment-o" style="color:#3C7BBB"></i>&nbsp;&nbsp;location:</span><span class="detail" style="font-size: 1vw">{{user?.location}}</span><br>
     <span style="width: 100%;font-size: 1vw"><i class="anticon anticon-mail" style="color:#3C7BBB"></i>&nbsp;&nbsp;email: </span> <span class="detail" style="font-size: 1vw">{{user?.email}}</span><br>
     <span style="width: 100%;font-size: 1vw"><i class="anticon anticon-usergroup-add" style="color:#3C7BBB"></i>&nbsp;&nbsp;organization: </span> <span class="detail" style="font-size: 1vw">{{user?.organization}}</span><br>
   </div>
@@ -30,19 +30,19 @@
 </div>
 <div nz-row align="center" class="number-info">
   <div nz-col nzSpan="6" (click)="gotoDetailInfo()">
-    <div class="number">{{user?.stat.experience_count}}</div>
+    <div class="number">{{user?.stat?.following_count}}</div>
     <div>reports</div>
   </div>
   <div nz-col nzSpan="6" (click)="gotoDetailInfo()">
-    <div class="number">{{user?.stat.following_count}}</div>
+    <div class="number">{{user?.stat?.following_count}}</div>
     <div>following</div>
   </div>
   <div nz-col nzSpan="6" (click)="gotoDetailInfo()">
-    <div class="number">{{user?.stat.follower_count}}</div>
+    <div class="number">{{user?.stat?.follower_count}}</div>
     <div>followers</div>
   </div>
   <div nz-col nzSpan="6" (click)="gotoDetailInfo()">
-    <div class="number">{{user?.stat.star_count}}</div>
+    <div class="number">{{user?.stat?.star_count}}</div>
     <div>praises</div>
   </div>
 </div>

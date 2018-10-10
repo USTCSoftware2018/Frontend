@@ -3,7 +3,7 @@
   <div class="content">
     <div *ngFor="let label of all_labels">
       <a (click)="gotoLabel(label.id)">{{label.name}}</a>
-      <span class="small-word">{{label.num}}&nbsp;reports</span>
+      <span class="small-word">{{label.report_count}}&nbsp;reports</span>
     </div>
   </div>
   <div class="pulldown">

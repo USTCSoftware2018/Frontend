@@ -7,10 +7,7 @@
     </div>
     -->
     <div *ngFor="let report of user.reports">
-      <app-others-report [report]="report" [bkcolor]="'#F2F2F2'"></app-others-report>
-    </div>
-    <div class="pulldown">
-      <a (click)="reportShowMore()"><i class="anticon anticon-down"></i></a>
+      <app-my-report [report]="report" [bkcolor]="'#F2F2F2'"></app-my-report>
     </div>
   </nz-tab>
   <nz-tab nzTitle="Following">

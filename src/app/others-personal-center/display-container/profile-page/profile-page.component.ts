@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Simuser, Assortment } from '../../../Interface/userinfo';
-import { CLASSIFICATION } from '../../../Interface/mock-user';
-import {HttpService} from '../../../http.service';
-import {ApiResult} from '../../../Interface/ApiResult';
+import {CLASSIFICATION} from '../../../Interface/mock-user';
+import { HttpService } from '../../../http.service';
+import { ApiResult } from '../../../Interface/ApiResult';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 
 
 @Component({
@@ -11,19 +12,31 @@ import {ApiResult} from '../../../Interface/ApiResult';
   styleUrls: ['./profile-page.component.less']
 })
 export class ProfilePageComponent implements OnInit {
-  user: Assortment = CLASSIFICATION;
+  classification: Assortment = CLASSIFICATION;
   simuser: Simuser;
-  yinyinyin: any;
-  id: any;
-  constructor(private http: HttpService) { }
+  user_id: number;
+  constructor(
+    private http: HttpService,
+    private route: ActivatedRoute) { }
   ngOnInit() {
+    this.simuser = new Simuser();
+    this.getid();
     this.InitProfile();
   }
-  InitProfile() {
-    const __this = this;
-    const callback = function(result: ApiResult) {
-      __this.simuser = result.data;
+  getid = () => {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.user_id = +params.get('user_id');
+    });
+  }
+  InitProfile = () => {
+    const user_id = this.user_id
+    const callback = (result: ApiResult) => {
+      if (result.success) {
+        this.simuser = result.data;
+        this.simuser.stat = result.data.stat;
+        console.log(this.simuser);
+      }
     };
-    this.http.get_user_by_id(1, callback);
+    this.http.get_user_by_id(user_id, callback);
   }
 }

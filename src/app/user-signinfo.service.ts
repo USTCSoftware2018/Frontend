@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Simuser } from './Interface/userinfo';
 import {HttpService} from './http.service';
-import { user1} from './Interface/mock-user';
+
 
 @Injectable({
   providedIn: 'root'
@@ -29,12 +29,6 @@ export class UserSigninfoService {
   setUserInfo( iflogin: boolean, info: any) {
     this.isLogin = iflogin;
     this.myInfo = info;
-  }
-  getUserInfo() {
-    return this.myInfo;
-  }
-  judgeIfLogin() {
-  return this.isLogin;
   }
 }
 

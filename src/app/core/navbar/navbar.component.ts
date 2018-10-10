@@ -1,4 +1,4 @@
-import {Component, OnInit, HostListener, AfterViewChecked, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit, AfterViewChecked, ChangeDetectorRef} from '@angular/core';
 import { Simuser } from '../../Interface/userinfo';
 import { UserSigninfoService } from '../../user-signinfo.service';
 import { HttpService } from '../../http.service';
@@ -21,11 +21,6 @@ export class NavbarComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
-  }
-  @HostListener('window: scroll', [])
-  print() {
-    console.log(this.ifLogin);
-    console.log(this.myinfo.isLogin);
   }
   ngAfterViewChecked() {
     const iflogin = this.myinfo.isLogin;
