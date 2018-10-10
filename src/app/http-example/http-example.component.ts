@@ -155,7 +155,9 @@ export class HttpExampleComponent implements OnInit {
     }},
     {name: '拿到自己所有点赞过的报告', lable: 'get_all_my_favorite_reports', func: this.http.get_all_my_favorite_reports, templa: {}},
     {name: '拿到我的feeds', lable: 'get_all_my_feeds', func: this.http.get_all_my_feeds, templa: {}},
-    {name: '拿到活跃用户active user', lable: 'get_active_users', func: this.http.get_active_users, templa: {}}
+    {name: '拿到活跃用户active user', lable: 'get_active_users', func: this.http.get_active_users, templa: {}},
+    {name: '拿到我的所有collection', lable: 'get_all_my_collections', func: this.http.get_all_my_collections, templa: {
+    }}
   ];
 
   EditorList: Array<FuncEle> = [

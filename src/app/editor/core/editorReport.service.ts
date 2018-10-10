@@ -123,7 +123,7 @@ export class EditorReportService {
   public reportAddStep(stepid: string) {
     const _step_temp = this.stepsService.findStep(stepid);
     const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
-    _new_sub.id = '-1';
+    _new_sub.id = '0';
     _new_sub.desc = '';
     _new_sub.name = _step_temp.name;
     // _new_sub.idx =  (this.watch-all-info.subroutines[this.watch-all-info.subroutines.length - 1] || {idx: 0}).idx + 1;
@@ -139,6 +139,7 @@ export class EditorReportService {
     _new_step.id = _step_temp.id;
     _new_step.name = _step_temp.name;
     this.parser(_new_step);
+    console.log(_new_step);
     _new_sub.steps.push(_new_step);
 
     this.report.subroutines.push(_new_sub);
@@ -148,7 +149,7 @@ export class EditorReportService {
     const _sub_temp = this.stepsService.findSubroutine(subid);
 
     const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
-    _new_sub.id = _sub_temp.id;
+    _new_sub.id = _sub_temp.id ? _sub_temp.id : '0';
     _new_sub.desc = _sub_temp.desc;
     _new_sub.name = _sub_temp.name;
     // _new_sub.idx =  (this.watch-all-info.subroutines[this.watch-all-info.subroutines.length - 1] || {idx: 0}).idx + 1;
@@ -160,7 +161,8 @@ export class EditorReportService {
     for (const step_id of _sub_temp.steps) { // 建立每一个 steps
       const _step_temp = this.stepsService.findStep(step_id);
       const _new_step = new ReportStepsHeader();
-      _new_step.name = _step_temp.id;
+      _new_step.id = step_id;
+      _new_step.name = _step_temp.name;
       _new_step.ico = _step_temp.ico;
       _new_step.data = _sub_temp.default[idx];
       idx ++;

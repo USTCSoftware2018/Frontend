@@ -306,6 +306,10 @@ export class HttpService {
     this.fire('active-users/', 'get', null, callback);
   }
 
+  get_all_my_collections(callback: callbackFunc) {
+    this.fire(`users/collections/`, 'get', null, callback);
+  }
+
 
 }
 
