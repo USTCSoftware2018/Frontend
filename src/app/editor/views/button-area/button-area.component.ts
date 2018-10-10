@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition} from '@angular/animations';
 import {AppendixService} from '../../core/appendix.service';
 import {EditorReportService} from '../../core/editorReport.service';
+import {State} from '../../headers/status';
+import {EditorEventService} from '../../core/editor-event.service';
 @Component({
   selector: 'app-button-area',
   templateUrl: './button-area.component.html',
@@ -33,10 +35,24 @@ export class ButtonAreaComponent implements OnInit {
   isVisible = false;
   varibleField: string;
   constructor(public append: AppendixService,
-              public editor: EditorReportService ) { }
+              public editor: EditorReportService,
+              public event: EditorEventService) { }
 
   ngOnInit() {
     this.flag = 'active';
+    let tmpString = '';
+
+    this.event.refresh.subscribe( (value: number) => {
+      if (value === State.ready) {
+        console.log('value:', value);
+        for (const k in this.editor.report.envs) {
+          if (k) {
+            tmpString += k + ' = ' + this.editor.report.envs[k] + '\n';
+          }
+        }
+        this.varibleField = tmpString;
+      }
+    });
   }
 
 

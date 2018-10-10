@@ -1,8 +1,8 @@
 <div class="clearfix">
     <nz-upload
-      nzAction="https://api.biohub.tech/api/editor/graph/"
       nzListType="picture-card"
       [(nzFileList)]="ret.pic"
+      [nzCustomRequest]="picHttpMethod"
       [nzShowButton]="ret.pic.length < 5"
       [nzPreview]="handlePreview">
         <i class="anticon anticon-plus"></i>
@@ -13,4 +13,6 @@
         <img [src]="previewImage" [ngStyle]="{ 'width': '100%' }" />
       </ng-template>
     </nz-modal>
+
+    <!-- <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx"> -->
 </div>

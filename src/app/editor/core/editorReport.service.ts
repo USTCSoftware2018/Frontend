@@ -40,7 +40,7 @@ export class EditorReportService {
     for (const token of tokens) {
       if (token === '-') {
         _fields.push(_field);
-        _field = new Object();
+        _field = {};
         _field.attr = [];
         states = 0;
       } else if (states === 0) {
@@ -62,15 +62,16 @@ export class EditorReportService {
     }
     _fields = _fields.filter( (elem) => Object.keys(elem).length > 1 );
 
-    // 绑定数据
     for (const fld of _fields) {
-      if (data[fld.label]) {
-        fld.value = data[fld.label];
-      } else if (fld.default === 'null' || fld.default === undefined) {
-        fld.value = '';
+      let tmpValue: string;
+      if (typeof data[fld.label] !== 'undefined') {
+        tmpValue = data[fld.label];
+      } else if (fld.default === 'null' || typeof fld.default === 'undefined') {
+        tmpValue = '';
       } else {
-        fld.value = fld.default;
+        tmpValue = fld.default;
       }
+      fld.value = tmpValue;
     }
 
     // Remark 部分
@@ -151,6 +152,7 @@ export class EditorReportService {
     _new_sub.desc = _sub_temp.desc;
     _new_sub.name = _sub_temp.name;
     // _new_sub.idx =  (this.watch-all-info.subroutines[this.watch-all-info.subroutines.length - 1] || {idx: 0}).idx + 1;
+
     _new_sub.idx = 0;
     _new_sub.steps = [];
 
@@ -240,6 +242,7 @@ export class EditorReportService {
     this.report.mdate = '';
     this.report.ndate = '';
     this.report.result = [];
+    this.report.envs = {};
     this.report.subroutines = [];
     this.parseAll();
     setTimeout( () => this.event.refresh.emit(State.ready), 1000); // 假装载入一会
@@ -288,20 +291,20 @@ export class EditorReportService {
     }
     _sent_report['result'] = JSON.stringify(_sent_report['result']);
     _sent_report['subroutines'] = JSON.stringify(_sent_report['subroutines']);
-    _sent_report['authors'] = null;
+    _sent_report['envs'] = _sent_report['envs'] ? JSON.stringify(_sent_report['envs']) : JSON.stringify({}) ;
+    _sent_report['authors'] = _sent_report['author'];
 
+    delete _sent_report['author'];
     if (_sent_report['id'] && _sent_report['id'] !== 0) {
       _sent_report['id'] =  parseInt(_sent_report['id'], 10);
     }
-
-    console.log(_sent_report);
 
     this.getDataService.saveMyReport(_sent_report, rst => {
       if (rst['status'] === 200) {
         this.report.id = rst['data']['id'].toString();
         this.report.mdate = rst['data']['mtime'];
         this.report.ndate = rst['data']['ntime'];
-        this.report.author = rst['data']['author'];
+        this.report.author = [rst['data']['authors']];
         this.notice.success('Add Report Successful', '');
       } else {
         this.notice.blank('Add Report Failed', rst['data']['detail']);
@@ -317,18 +320,14 @@ export class EditorReportService {
         tmp.title = rst['data']['title'];
         tmp.mdate = rst['data']['mtime'];
         tmp.ndate = rst['data']['ntime'];
-        tmp.author = rst['data']['author'];
+        tmp.author = [rst['data']['author']];
         tmp.label = rst['data']['label'];
-        tmp.envs = rst['data']['envs'] ? rst['data']['envs'] : [];
+        tmp.envs = JSON.parse(rst['data']['envs']);
         tmp.subroutines = (JSON.parse(rst['data']['subroutines']) as ReportSubroutineHeader[]);
         tmp.result = (JSON.parse(rst['data']['result']) as ReportResultHeader[]);
         tmp.introduction = rst['data']['introduction'];
         this.report = tmp;
-
         this.parseAll();
-
-        console.log(tmp);
-
         this._state = true;
         this.event.refresh.emit(State.ready);
       } else {

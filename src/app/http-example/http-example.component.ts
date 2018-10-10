@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpService } from '../http.service';
 import { ApiResult } from '../Interface/ApiResult';
 import { FuncEle } from '../Interface/FunctionElement';
-
-
 
 @Component({
   selector: 'app-http-example',
@@ -148,7 +146,16 @@ export class HttpExampleComponent implements OnInit {
     {name: '获取通知信息', lable: 'get_notificaiton', func: this.http.get_all_my_notifications, templa: {}},
     {name: '点赞', lable: 'star', func: this.http.star, templa: {
       id: 1
-    }}
+    }},
+    {name: '取消点赞', lable: 'unstar', func: this.http.unstar, templa: {
+      id: 1
+    }},
+    {name: '根据用户id拿到此用户的所有label', lable: 'get_labels_by_user_id', func: this.http.get_labels_by_user_id, templa: {
+      id: 1
+    }},
+    {name: '拿到自己所有点赞过的报告', lable: 'get_all_my_favorite_reports', func: this.http.get_all_my_favorite_reports, templa: {}},
+    {name: '拿到我的feeds', lable: 'get_all_my_feeds', func: this.http.get_all_my_feeds, templa: {}},
+    {name: '拿到活跃用户active user', lable: 'get_active_users', func: this.http.get_active_users, templa: {}}
   ];
 
   EditorList: Array<FuncEle> = [

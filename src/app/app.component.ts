@@ -31,4 +31,12 @@ export class AppComponent implements OnInit {
       // this.router.navigateByUrl('/explore');
     }
   }
+  // callback = (result: ApiResult) => {
+  //   this.myinfo.setUserInfobyInfo(result.success, result.data);
+  //   if (result.success) {
+  //     console.log('log in success');
+  //   } else {
+  //     console.log('fail');
+  //   }
+  // }
 }

@@ -44,12 +44,13 @@ export class ReportSubroutineHeader {
 
 export class ReportResultHeader {
     subType: subType;
-    desc?: string; // 废弃
+    desc?: string;
     list?: ReportListHeader[];
-    remark?: string;
+    remark?: string; // 废弃
     pic?: Array<ReportGraphHeader>;
     table?: any[];
 }
+
 
 export class ReportHeader {
     // 元数据部分
