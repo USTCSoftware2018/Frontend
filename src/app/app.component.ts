@@ -13,11 +13,6 @@ declare var $: any;
 export class AppComponent implements OnInit {
   title = 'igem-frontend';
   constructor( private http: HttpService,
-<<<<<<< HEAD
-               private myinfo: UserSigninfoService) {
-    // this.http.user_logout(() => {});
-    // this.http.user_login('miaowashuang', 'yjw123456', this.callback);
-=======
                private myinfo: UserSigninfoService) {}
 
   ngOnInit() {
@@ -36,7 +31,6 @@ export class AppComponent implements OnInit {
     } else {
       console.log('fail');
     }
->>>>>>> dd603690428981cc5dce2da400dab9cec05ddaef
   }
   // callback = (result: ApiResult) => {
   //   this.myinfo.setUserInfobyInfo(result.success, result.data);

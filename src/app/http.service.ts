@@ -255,12 +255,12 @@ export class HttpService {
 
   delete_report(id: number, callback: callbackFunc) {
     // delete display-all-info by id
-    this.fire(`editor/report/${id}/`, 'delete', null, callback);
+    this.fire(`editor/report/${id}`, 'delete', null, callback);
   }
 
   update_report(id: number, report: object, callback: callbackFunc) {
     // update display-all-info
-    this.fire(`editor/report/${id}/`, 'patch', report, callback);
+    this.fire(`editor/report/${id}`, 'patch', report, callback);
   }
 
   star(id: number, callback: callbackFunc) {
@@ -270,10 +270,17 @@ export class HttpService {
     this.fire(`star`, 'post', params, callback);
   }
 
+  unstar(id: number, callback: callbackFunc) {
+    const params = {
+      id: id
+    };
+    this.fire(`star`, 'delete', params, callback);
+  }
+
   /////////////////////// Notificaiton /////////////////////////
   get_all_my_notifications(callback: callbackFunc) {
     // get all my notifications
-    this.fire(`notices/`, 'get', null, callback);
+    this.fire(`notices/my/`, 'get', null, callback);
   }
 
   get_popular_reports_by_system(callback: callbackFunc) {
@@ -283,6 +290,20 @@ export class HttpService {
 
   get_labels_by_user_id(user_id: number, callback: callbackFunc) {
     this.fire(`users/labels/${user_id}/`, 'get', null, callback);
+  }
+
+  // create_label(label)
+
+  get_all_my_favorite_reports(callback: callbackFunc) {
+    this.fire(`users/favorites`, 'get', null, callback);
+  }
+
+  get_all_my_feeds(callback: callbackFunc) {
+    this.fire(`notices/feeds/`, 'get', null, callback);
+  }
+
+  get_active_users(callback: callbackFunc) {
+    this.fire('active-users/', 'get', null, callback);
   }
 
 

@@ -34,10 +34,6 @@ export class ReportRenderComponent implements OnInit {
         this.stepList.push(step);
       }
     }
-    console.log(this.stepList);
-    setTimeout(() => {
-      console.log(this.stepList);
-    }, 10000);
   }
 
   getSentence_by_step_id(id: string, obj: any) {

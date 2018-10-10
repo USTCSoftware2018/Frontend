@@ -27,10 +27,7 @@ import { InfoPanelComponent } from './views/info-panel/info-panel.component';
 import { EditorScrollComponent } from './views/editor-scroll/editor-scroll.component';
 import { TablePanelComponent } from './views/table-panel/table-panel.component';
 
-<<<<<<< HEAD
-=======
 import { RouteEditorModule } from './route-editor/route-editor.module';
->>>>>>> dd603690428981cc5dce2da400dab9cec05ddaef
 
 @NgModule({
   imports: [
