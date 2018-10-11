@@ -334,6 +334,9 @@ export class HttpService {
     this.fire(`users/uncollect/`, 'post', params, callback);
   }
 
+  get_archives_by_user_id(id: number, callback: callbackFunc) {
+    this.fire(`users/reports/archives/${id}/`, 'get', null, callback);
+  }
 
 }
 
