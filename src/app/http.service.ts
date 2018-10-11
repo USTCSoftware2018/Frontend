@@ -342,5 +342,9 @@ export class HttpService {
     this.fire(`users/reports/archives/${id}/`, 'get', null, callback);
   }
 
+  query_archive(id: number, callback: callbackFunc) {
+    this.fire(`editor/archive/${id}/`, 'get', null, callback);
+  }
+
 }
 
