@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { report1} from '../../Interface/mock-user';
 import { UserSigninfoService } from '../../user-signinfo.service';
 import {Simuser, Report} from '../../Interface/userinfo';
 import {HttpService} from '../../http.service';
@@ -13,7 +12,7 @@ import {ApiResult} from '../../Interface/ApiResult';
 export class MyCenterIndexComponent implements OnInit {
   user: Simuser;
   collections: Report[];
-  favorites = [report1];
+  favorites: Report[];
   constructor(private myinfo: UserSigninfoService,
               private http: HttpService,
               ) {
@@ -21,6 +20,8 @@ export class MyCenterIndexComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.get_collections();
+    this.get_favortites();
   }
   get_collections = () => {
     const callback = (result: ApiResult) => {
@@ -29,5 +30,13 @@ export class MyCenterIndexComponent implements OnInit {
       }
     };
     this.http.get_all_my_collections(callback);
+  }
+  get_favortites = () => {
+    const callback = (result: ApiResult) => {
+      if (result.success) {
+        this.collections = result.data.results;
+      }
+    };
+    this.http.get_all_my_favorite_reports(callback);
   }
 }
