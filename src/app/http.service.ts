@@ -177,7 +177,7 @@ export class HttpService {
 
 /////////////////////////// Report //////////////////////////////////////////
   get_report_list_by_userid(user_id: number, callback: callbackFunc) {
-    this.fire(`users/reports/${user_id}`, 'get', null, callback);
+    this.fire(`users/reports/${user_id}/`, 'get', null, callback);
 }
 
 
@@ -284,11 +284,11 @@ export class HttpService {
   }
 
   check_new_notifications(callback: callbackFunc) {
-    this.fire(`notices/has_new_notifications`, 'get', null, callback)
+    this.fire(`notices/has_new_notifications/`, 'get', null, callback)
   }
 
   get_popular_reports_by_system(callback: callbackFunc) {
-    this.fire(`users/popular-reports-list`, 'get', null, callback);
+    this.fire(`users/popular-reports-list/`, 'get', null, callback);
   }
 
 
@@ -299,7 +299,7 @@ export class HttpService {
   // create_label(label)
 
   get_all_my_favorite_reports(callback: callbackFunc) {
-    this.fire(`users/favorites`, 'get', null, callback);
+    this.fire(`users/favorites/`, 'get', null, callback);
   }
 
   get_all_my_feeds(callback: callbackFunc) {
@@ -307,7 +307,7 @@ export class HttpService {
   }
 
   check_new_feeds(callback: callbackFunc) {
-    this.fire(`notices/has_new_feeds`, 'get', null, callback)
+    this.fire(`notices/has_new_feeds/`, 'get', null, callback)
   }
 
   get_active_users(callback: callbackFunc) {
