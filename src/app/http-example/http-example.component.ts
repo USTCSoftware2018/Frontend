@@ -158,6 +158,8 @@ export class HttpExampleComponent implements OnInit {
     {name: '新feeds个数', lable: 'check_new_feeds', func: this.http.check_new_feeds, templa: {}},
     {name: '新通知个数', lable: 'check_new_notifications', func: this.http.check_new_notifications, templa: {}},
     {name: '拿到活跃用户active user', lable: 'get_active_users', func: this.http.get_active_users, templa: {}},
+    {name: '增加report到collection', lable: 'add_to_collection', func: this.http.add_to_collection, templa: {id: 16, collection: 'chemistry'}},
+    {name: '取消report的collection', lable: 'remove_from_collection', func: this.http.remove_from_collection, templa: {id: 16, collection: 'chemistry'}},
     {name: '拿到我的所有collection', lable: 'get_all_my_collections', func: this.http.get_all_my_collections, templa: {
     }}
   ];

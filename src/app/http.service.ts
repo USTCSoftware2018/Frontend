@@ -318,6 +318,22 @@ export class HttpService {
     this.fire(`users/collections/`, 'get', null, callback);
   }
 
+  add_to_collection(id: number, collection: string, callback: callbackFunc) {
+    const params = {
+      id: id,
+      collection: collection
+    }
+    this.fire(`users/collect/`, 'post', params, callback);
+  }
+
+  remove_from_collection(id: number, collection: string, callback: callbackFunc) {
+    const params = {
+      id: id,
+      collection: collection
+    }
+    this.fire(`users/uncollect/`, 'post', params, callback);
+  }
+
 
 }
 
