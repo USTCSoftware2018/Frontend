@@ -298,6 +298,10 @@ export class HttpService {
 
   // create_label(label)
 
+  query_label(label_id: number, callback: callbackFunc) {
+    this.fire(`editor/label/${label_id}/`, 'get', null, callback);
+  }
+
   get_all_my_favorite_reports(callback: callbackFunc) {
     this.fire(`users/favorites/`, 'get', null, callback);
   }

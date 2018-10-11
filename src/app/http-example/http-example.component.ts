@@ -162,7 +162,8 @@ export class HttpExampleComponent implements OnInit {
     {name: '取消report的collection', lable: 'remove_from_collection', func: this.http.remove_from_collection, templa: {id: 16, collection: 'chemistry'}},
     {name: '拿到我的所有collection', lable: 'get_all_my_collections', func: this.http.get_all_my_collections, templa: {
     }},
-    {name: '根据用户id拿到此用户所有archive', lable: 'get_archives_by_user_id', func: this.http.get_archives_by_user_id, templa: {id: 1}}
+    {name: '根据用户id拿到此用户所有archive', lable: 'get_archives_by_user_id', func: this.http.get_archives_by_user_id, templa: {id: 1}},
+    {name: '获取label详情', lable: 'query_label', func: this.http.query_label, templa: {id: 1}}
   ];
 
   EditorList: Array<FuncEle> = [
