@@ -14,7 +14,7 @@
   <div align="center">
 
     <div *ngIf="!ifmyself">
-    <button nz-button nzType="primary" class="rectangle3" (click)="toggleFollow()">{{follow_or_unfollow}}</button>
+    <button (click)="toggleFollow()" nz-button nzType="primary" class="rectangle3" (click)="toggleFollow()">{{follow_or_unfollow}}</button>
     </div>
     <!--
     <nz-modal [(nzVisible)]="user?.isVisible" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">

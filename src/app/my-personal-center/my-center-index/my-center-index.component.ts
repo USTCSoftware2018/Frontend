@@ -22,5 +22,12 @@ export class MyCenterIndexComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  get_collections = () => {
+    const callback = (result: ApiResult) => {
+      if (result.success) {
+        this.collections = result.data.results;
+      }
+    };
+    this.http.get_all_my_collections(callback);
+  }
 }
