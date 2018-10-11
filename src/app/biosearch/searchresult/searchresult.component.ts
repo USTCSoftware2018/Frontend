@@ -37,4 +37,5 @@ export class SearchresultComponent implements OnInit {
   endloading() {
     this.loading = true;
   }
+  get search_info() { return this.searchForm.get('search_info'); }
 }

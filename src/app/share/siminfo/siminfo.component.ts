@@ -10,7 +10,6 @@ import {RouterjudgeService} from '../routerjudge.service';
 export class SiminfoComponent implements OnInit {
   @Input() user: Simuser;
   @Input() ifmyself: boolean;
-  number_router: string;
   constructor(private routerjudge: RouterjudgeService) { }
   gotoIndex = () => {
     this.routerjudge.gotoUserIndex(this.user.id);
@@ -19,12 +18,6 @@ export class SiminfoComponent implements OnInit {
     this.routerjudge.gotoUserDetailInfo(this.user.id);
   }
   ngOnInit() {
-    // 根据是否是自己设置点击四个字母跳转
-    if (this.ifmyself) {
-      this.number_router = '/mypersonalcenter/detailinfo';
-    } else {
-      this.number_router = '/infocenter';
-    }
   }
 
 }

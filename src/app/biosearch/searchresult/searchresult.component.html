@@ -7,23 +7,23 @@
                class="login-form" (ngSubmit)="submitForm()">
           <nz-form-item >
           <nz-form-control  nzOffset="1" nzSpan="22" nzHasFeedback>
-            <nz-input-group nzPrefixIcon="anticon anticon-user">
-              <input nz-input class="search-input" type="text" nz-input formControlName="search_info" placeholder="input search text">
+            <nz-input-group>
+              <input nz-input class="search-input" type="text" nzSize="large" formControlName="search_info" placeholder="input search text">
             </nz-input-group>
-            <nz-form-explain *ngIf="username.dirty && username.errors || username.pending ">
-              <ng-container *ngIf="username.hasError('required')">
-                Please enter your username or e-mail!
+            <nz-form-explain *ngIf="search_info.dirty && search_info.errors || search_info.pending ">
+              <ng-container *ngIf="search_info.hasError('required')">
+                Please enter your search_info or e-mail!
               </ng-container>
-              <ng-container *ngIf="username.hasError('minlength')">
+              <ng-container *ngIf="search_info.hasError('minlength')">
                 too short (minimum is 4 characters)!
               </ng-container>
-              <ng-container *ngIf="username.hasError('maxlength')">
+              <ng-container *ngIf="search_info.hasError('maxlength')">
                 too long (maximum is 20 characters)!
               </ng-container>
-              <ng-container *ngIf="username.hasError('forbiddenName')">
-                Username is invalid!
+              <ng-container *ngIf="search_info.hasError('forbiddenName')">
+                search_info is invalid!
               </ng-container>
-              <ng-container *ngIf="username.hasError('forbiddenEmail')">
+              <ng-container *ngIf="search_info.hasError('forbiddenEmail')">
                 Email is invalid!
               </ng-container>
             </nz-form-explain>

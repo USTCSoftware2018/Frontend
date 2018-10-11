@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { report1} from '../../Interface/mock-user';
 import { UserSigninfoService } from '../../user-signinfo.service';
-import {Simuser} from '../../Interface/userinfo';
+import {Simuser, Report} from '../../Interface/userinfo';
 import {HttpService} from '../../http.service';
 import {ApiResult} from '../../Interface/ApiResult';
 
@@ -12,7 +12,7 @@ import {ApiResult} from '../../Interface/ApiResult';
 })
 export class MyCenterIndexComponent implements OnInit {
   user: Simuser;
-  collections = [report1];
+  collections: Report[];
   favorites = [report1];
   constructor(private myinfo: UserSigninfoService,
               private http: HttpService,

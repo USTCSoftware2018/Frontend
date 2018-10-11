@@ -283,6 +283,10 @@ export class HttpService {
     this.fire(`notices/my/`, 'get', null, callback);
   }
 
+  check_new_notifications(callback: callbackFunc) {
+    this.fire(`notices/has_new_notifications`, 'get', null, callback)
+  }
+
   get_popular_reports_by_system(callback: callbackFunc) {
     this.fire(`users/popular-reports-list`, 'get', null, callback);
   }
@@ -300,6 +304,10 @@ export class HttpService {
 
   get_all_my_feeds(callback: callbackFunc) {
     this.fire(`notices/feeds/`, 'get', null, callback);
+  }
+
+  check_new_feeds(callback: callbackFunc) {
+    this.fire(`notices/has_new_feeds`, 'get', null, callback)
   }
 
   get_active_users(callback: callbackFunc) {

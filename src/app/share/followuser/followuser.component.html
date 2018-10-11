@@ -12,7 +12,6 @@
   <!-- information -->
   <div nz-col nzSpan="20">
       <div nz-row>
-        {{ isFollow }}
         <div nz-col nzSpan="16">
           <div nz-row>
             <div class="oname" nz-col nzSpan="24">
@@ -37,7 +36,7 @@
         </div>
 
         <div nz-col class="obtn"  nzSpan="8" align="center">
-          <button nz-button [nzType]="isFollow?'primary':'default'"  (click)="changeFollow()">{{btncontent}}</button>
+          <button nz-button [nzType]="isFollow?'default':'primary'"  (click)="toggleFollow()">{{btncontent}}</button>
         </div>
       </div>
 
