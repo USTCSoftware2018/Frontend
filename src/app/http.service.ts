@@ -267,14 +267,14 @@ export class HttpService {
     const params = {
       id: id
     };
-    this.fire(`star`, 'post', params, callback);
+    this.fire(`users/favorites/`, 'post', params, callback);
   }
 
   unstar(id: number, callback: callbackFunc) {
     const params = {
       id: id
     };
-    this.fire(`star`, 'delete', params, callback);
+    this.fire(`users/favorites/unstar/`, 'post', params, callback);
   }
 
   /////////////////////// Notificaiton /////////////////////////
