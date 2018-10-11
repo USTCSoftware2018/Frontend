@@ -14,6 +14,7 @@ import { MyReportComponent } from './my-report/my-report.component';
 import { WatchReportByClassificationComponent } from './watch-report-by-classification/watch-report-by-classification.component';
 import { RouterModule} from '@angular/router';
 import { ClassificationComponent } from './classification/classification.component';
+import { IgemerCardComponent } from './igemer-card/igemer-card.component';
 
 
 registerLocaleData(en);
@@ -35,6 +36,7 @@ registerLocaleData(en);
     MyReportComponent,
     WatchReportByClassificationComponent,
     ClassificationComponent,
+    IgemerCardComponent,
   ],
   // 公用导出组件放在exports数组内
   providers: [
@@ -52,6 +54,7 @@ registerLocaleData(en);
     MyReportComponent,
     WatchReportByClassificationComponent,
     ClassificationComponent,
+    IgemerCardComponent
   ]
 })
 export class ShareModule { }
