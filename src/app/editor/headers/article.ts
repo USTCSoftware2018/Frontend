@@ -6,6 +6,7 @@ export class ReportStepsHeader {
     name: string; // 类型 对应 EditorSubroutine 中的id
     data: any;
     ico: string;
+    yield_method?: string;
 
     temp?: string; // 删除
     fields?: any; // 删除
@@ -60,6 +61,7 @@ export class ReportHeader {
     mdate: string;  // 修改时间 后端
     ndate: string;  // 创建时间 后端
     introduction: string;   // 介绍
+    material?: string[];
     envs: {};
     result: ReportResultHeader[]; // 结果部分
     label: string[];    // 标签部分
