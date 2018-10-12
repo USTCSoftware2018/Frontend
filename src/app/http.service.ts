@@ -177,7 +177,7 @@ export class HttpService {
 
 /////////////////////////// Report //////////////////////////////////////////
   get_report_list_by_userid(user_id: number, callback: callbackFunc) {
-    this.fire(`users/reports/${user_id}`, 'get', null, callback);
+    this.fire(`users/reports/${user_id}/`, 'get', null, callback);
 }
 
 
@@ -267,14 +267,14 @@ export class HttpService {
     const params = {
       id: id
     };
-    this.fire(`star`, 'post', params, callback);
+    this.fire(`users/favorites/`, 'post', params, callback);
   }
 
   unstar(id: number, callback: callbackFunc) {
     const params = {
       id: id
     };
-    this.fire(`star`, 'delete', params, callback);
+    this.fire(`users/favorites/unstar/`, 'post', params, callback);
   }
 
   /////////////////////// Notificaiton /////////////////////////
@@ -284,11 +284,11 @@ export class HttpService {
   }
 
   check_new_notifications(callback: callbackFunc) {
-    this.fire(`notices/has_new_notifications`, 'get', null, callback)
+    this.fire(`notices/has_new_notifications/`, 'get', null, callback)
   }
 
   get_popular_reports_by_system(callback: callbackFunc) {
-    this.fire(`users/popular-reports-list`, 'get', null, callback);
+    this.fire(`users/popular-reports-list/`, 'get', null, callback);
   }
 
 
@@ -298,8 +298,12 @@ export class HttpService {
 
   // create_label(label)
 
+  query_label(label_id: number, callback: callbackFunc) {
+    this.fire(`editor/label/${label_id}/`, 'get', null, callback);
+  }
+
   get_all_my_favorite_reports(callback: callbackFunc) {
-    this.fire(`users/favorites`, 'get', null, callback);
+    this.fire(`users/favorites/`, 'get', null, callback);
   }
 
   get_all_my_feeds(callback: callbackFunc) {
@@ -307,7 +311,7 @@ export class HttpService {
   }
 
   check_new_feeds(callback: callbackFunc) {
-    this.fire(`notices/has_new_feeds`, 'get', null, callback)
+    this.fire(`notices/has_new_feeds/`, 'get', null, callback)
   }
 
   get_active_users(callback: callbackFunc) {
@@ -318,6 +322,29 @@ export class HttpService {
     this.fire(`users/collections/`, 'get', null, callback);
   }
 
+  add_to_collection(id: number, collection: string, callback: callbackFunc) {
+    const params = {
+      id: id,
+      collection: collection
+    }
+    this.fire(`users/collect/`, 'post', params, callback);
+  }
+
+  remove_from_collection(id: number, collection: string, callback: callbackFunc) {
+    const params = {
+      id: id,
+      collection: collection
+    }
+    this.fire(`users/uncollect/`, 'post', params, callback);
+  }
+
+  get_archives_by_user_id(id: number, callback: callbackFunc) {
+    this.fire(`users/reports/archives/${id}/`, 'get', null, callback);
+  }
+
+  query_archive(id: number, callback: callbackFunc) {
+    this.fire(`editor/archive/${id}/`, 'get', null, callback);
+  }
 
 }
 
