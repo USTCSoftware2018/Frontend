@@ -3,9 +3,33 @@
        [nzXl]="{span:18, offset:3}" [nzXXl]="{span:16, offset:4}">
     <div nz-row>
       <div nz-col nzOffset="2" nzSpan="20">
-        <nz-input-group nzSize="large" nzSuffixIcon="anticon anticon-search">
-          <input class="search-input" type="text" nz-input placeholder="input search text">
-        </nz-input-group>
+        <form nz-form nzLayout="vertical" [formGroup]="searchForm"
+                (ngSubmit)="submitForm()">
+          <nz-form-item >
+          <nz-form-control  nzOffset="1" nzSpan="22" nzHasFeedback>
+            <nz-input-group >
+              <input nz-input class="search-input" type="text" formControlName="search_info" placeholder="input search text">
+            </nz-input-group>
+            <!-- <nz-form-explain *ngIf="search_info.dirty && search_info.errors || search_info.pending ">-->
+              <!--<ng-container *ngIf="search_info.hasError('required')">-->
+                <!--Please enter your search_info or e-mail!-->
+              <!--</ng-container>-->
+              <!--<ng-container *ngIf="search_info.hasError('minlength')">-->
+                <!--too short (minimum is 4 characters)!-->
+              <!--</ng-container>-->
+              <!--<ng-container *ngIf="search_info.hasError('maxlength')">-->
+                <!--too long (maximum is 20 characters)!-->
+              <!--</ng-container>-->
+              <!--<ng-container *ngIf="search_info.hasError('forbiddenName')">-->
+                <!--search_info is invalid!-->
+              <!--</ng-container>-->
+              <!--<ng-container *ngIf="search_info.hasError('forbiddenEmail')">-->
+                <!--Email is invalid!-->
+              <!--</ng-container>-->
+            <!--</nz-form-explain>-->
+          </nz-form-control>
+          </nz-form-item>
+        </form>
       </div>
 
       <div nz-col nzSpan="24">

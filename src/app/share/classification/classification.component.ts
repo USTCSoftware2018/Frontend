@@ -4,6 +4,8 @@ import {Archive} from '../../Interface/userinfo';
 import {PopularReport} from '../../Interface/userinfo';
 import {Label} from '../../Interface/userinfo';
 import {RouterjudgeService} from '../routerjudge.service';
+import {HttpService} from '../../http.service';
+import {ApiResult} from '../../Interface/ApiResult';
 
 @Component({
   selector: 'app-classification',
@@ -12,24 +14,29 @@ import {RouterjudgeService} from '../routerjudge.service';
 })
 export class ClassificationComponent implements OnInit {
   @Input() userid: number;
-  @Input() classifyInfo: Assortment;
-  all_archive: Archive[] = [];
-  all_labels: Label[] = [];
-  all_pop_report: PopularReport[] = [];
-  constructor(private routerjudge: RouterjudgeService) { }
+  @Input() all_archive: Archive[];
+  @Input() all_labels: Label[];
+  @Input() all_pop_report: PopularReport[];
+  constructor(
+    private routerjudge: RouterjudgeService,
+    private http: HttpService
+  ) { }
 
   ngOnInit() {
-    this.initInfo();
+    this.get_labels();
+  }
+  get_labels = () => {
+    const callback = (result: ApiResult) => {
+      if (result.success) {
+        this.all_labels = result.data;
+      }
+    };
+    this.http.get_labels_by_user_id(this.userid, callback);
   }
   gotoArchive = ( archive_id: number) => {
     this.routerjudge.gotoReportbyArchive(this.userid, archive_id);
   }
   gotoLabel = (label_id: number) => {
     this.routerjudge.gotoReportbyLabel(this.userid, label_id);
-  }
-  initInfo() {
-    this.all_archive = this.classifyInfo.archives;
-    this.all_pop_report = this.classifyInfo.popular_reports;
-    this.all_labels = this.classifyInfo.labels;
   }
 }

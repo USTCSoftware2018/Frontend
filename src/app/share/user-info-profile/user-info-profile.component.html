@@ -13,8 +13,8 @@
   </div>
   <div align="center">
 
-    <div *ngIf="!ifmyself">
-    <button nz-button nzType="primary" class="rectangle3" (click)="toggleFollow()">{{follow_or_unfollow}}</button>
+    <div *ngIf="!ismyself">
+    <button (click)="toggleFollow()" [nzType]="isFollow?'default':'primary'" nz-button nzType="primary" class="rectangle3">{{btncontent}}</button>
     </div>
     <!--
     <nz-modal [(nzVisible)]="user?.isVisible" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
@@ -22,7 +22,7 @@
     </nz-modal>
     </div>
     -->
-    <div *ngIf="ifmyself">
+    <div *ngIf="ismyself">
       <button nz-button nzType="primary" class="rectangle3" routerLink="/mypersonalcenter/userset">Edit</button>
     </div>
   </div>
@@ -30,7 +30,7 @@
 </div>
 <div nz-row align="center" class="number-info">
   <div nz-col nzSpan="6" (click)="gotoDetailInfo()">
-    <div class="number">{{user?.stat?.following_count}}</div>
+    <div class="number">{{user?.stat?.experience_count}}</div>
     <div>reports</div>
   </div>
   <div nz-col nzSpan="6" (click)="gotoDetailInfo()">

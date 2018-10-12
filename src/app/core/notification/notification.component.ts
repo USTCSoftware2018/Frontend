@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Simuser, Report } from '../../Interface/userinfo';
-import { user1, user2, report1 } from '../../Interface/mock-user';
-import { NOTIS } from './mock-notification';
+import { Simuser } from '../../Interface/userinfo';
 import { LikeNotification, FollowNotification } from './notification';
+import {UserSigninfoService} from '../../user-signinfo.service';
+import {HttpService} from '../../http.service';
+import {ApiResult} from '../../Interface/ApiResult';
 
 @Component({
   selector: 'app-notification',
@@ -11,9 +12,22 @@ import { LikeNotification, FollowNotification } from './notification';
 })
 export class NotificationComponent implements OnInit {
 
-  user = user1;
-  notifications = NOTIS;
-  constructor() { }
+  user: Simuser;
+  notifications: (LikeNotification|FollowNotification)[];
+  constructor(
+    private user_info: UserSigninfoService,
+    private http: HttpService,
+  ) { }
   ngOnInit() {
+    this.user = this.user_info.myInfo;
+    this.get_notification();
+  }
+  get_notification = () => {
+    const callback = (result: ApiResult) => {
+      if (result.success) {
+        this.notifications = result.data.results;
+      }
+    }
+    this.http.get_all_my_notifications(callback);
   }
 }

@@ -4,7 +4,11 @@
        [nzXl]="{span:18, offset:3}" [nzXXl]="{span:18, offset:3}">
     <div nz-row nzGutter="10">
       <div nz-col nzSpan="7" class="body">
-        <app-personal-information [userinfo]="simuser" [classification]="classification"></app-personal-information>
+        <app-personal-information [userinfo]="simuser"
+                                  [labels]="labels"
+                                  [archive]="archive"
+                                  [popular_reports]="popular_reports">
+        </app-personal-information>
       </div>
       <div nz-col nzSpan="17" class="body right">
         <router-outlet></router-outlet>

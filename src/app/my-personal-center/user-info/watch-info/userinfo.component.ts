@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Simuser, Assortment } from '../../../Interface/userinfo';
-import { CLASSIFICATION } from '../../../Interface/mock-user';
+import {Component, OnInit} from '@angular/core';
+import {Simuser, Label, Archive, Report} from '../../../Interface/userinfo';
 import { HttpService } from '../../../http.service';
 import {UserSigninfoService} from '../../../user-signinfo.service';
+import {ApiResult} from '../../../Interface/ApiResult';
 
 
 @Component({
@@ -12,7 +12,9 @@ import {UserSigninfoService} from '../../../user-signinfo.service';
 })
 export class UserinfoComponent implements OnInit {
   simuser: Simuser;
-  classification: Assortment = CLASSIFICATION;
+  labels: Label[];
+  archive: Archive[];
+  popular_reports: Report[] = [];
   constructor(
     private http: HttpService,
     private userinfo: UserSigninfoService
@@ -21,6 +23,20 @@ export class UserinfoComponent implements OnInit {
 
   ngOnInit() {
     this.simuser = this.userinfo.myInfo;
-    // this.http get classification;
+    this.get_classification();
+  }
+  get_classification = () => {
+    const callback_labels = (result: ApiResult) => {
+      if (result.success) {
+        this.labels = result.data;
+      }
+    };
+    const callback_archive = (result: ApiResult) => {
+      if (result.success) {
+        this.archive = result.data;
+      }
+    };
+    this.http.get_labels_by_user_id(this.simuser.id, callback_labels);
+    this.http.get_archives_by_user_id(this.simuser.id, callback_archive);
   }
 }

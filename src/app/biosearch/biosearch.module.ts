@@ -4,6 +4,7 @@ import { BiosearchRoutingModule } from './biosearch-routing.module';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import en from '@angular/common/locales/en';
 import {ShareModule} from '../share/share.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(en);
 import { SearchboxComponent } from './searchbox/searchbox.component';
@@ -14,7 +15,9 @@ import { SearchresultComponent} from './searchresult/searchresult.component';
     CommonModule,
     BiosearchRoutingModule,
     NgZorroAntdModule,
-    ShareModule
+    ShareModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     SearchboxComponent,

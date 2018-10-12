@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { USER } from '../../Interface/mock-user';
 import { Simuser } from '../../Interface/userinfo';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-searchresult',
@@ -8,6 +13,7 @@ import { Simuser } from '../../Interface/userinfo';
   styleUrls: ['./searchresult.component.less']
 })
 export class SearchresultComponent implements OnInit {
+  searchForm: FormGroup;
   users: Simuser[];
   reports = USER.reports;
   loading: boolean;
@@ -16,6 +22,14 @@ export class SearchresultComponent implements OnInit {
 
   ngOnInit() {
     this.users = USER.followers;
+    this.searchForm = new FormGroup({
+      'search_info': new FormControl(null,
+        [Validators.required, Validators.minLength(4), Validators.maxLength(20),
+          ]),
+    });
+  }
+  submitForm() {
+
   }
   startloading() {
     this.loading = true;
@@ -23,4 +37,5 @@ export class SearchresultComponent implements OnInit {
   endloading() {
     this.loading = true;
   }
+  get search_info() { return this.searchForm.get('search_info'); }
 }

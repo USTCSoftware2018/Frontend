@@ -8,6 +8,7 @@ import en from '@angular/common/locales/en';
 import { IndexComponent } from './index/index.component';
 import { PopularReportComponent } from './popular-report/popular-report.component';
 import {en_US, NZ_I18N} from 'ng-zorro-antd';
+import { PopularIgemersComponent } from './popular-igemers/popular-igemers.component';
 registerLocaleData(en);
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ registerLocaleData(en);
   ],
   declarations: [
     PopularReportComponent,
-    IndexComponent
+    IndexComponent,
+    PopularIgemersComponent
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
 })

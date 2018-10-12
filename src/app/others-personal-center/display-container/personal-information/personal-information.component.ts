@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { Simuser, Assortment } from '../../../Interface/userinfo';
+import {Simuser, Assortment, Label, Archive, Report} from '../../../Interface/userinfo';
+import {ApiResult} from '../../../Interface/ApiResult';
+import {LiteralArray} from '@angular/compiler';
 
 @Component({
   selector: 'app-personal-information',
@@ -8,7 +10,9 @@ import { Simuser, Assortment } from '../../../Interface/userinfo';
 })
 export class PersonalInformationComponent implements OnInit {
   @Input() userinfo: Simuser;  // 这是左上角的simuser数据
-  @Input() classification: Assortment; // 这是左下角的分类数据
+  @Input() labels: Label ;
+  @Input() archive: Archive[];
+  @Input() popular_reports: Report[] = [];
   constructor() { }
 
   ngOnInit() {

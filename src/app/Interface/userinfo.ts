@@ -26,6 +26,8 @@ export class Report {
   abstract: String;
   commentsnum: Number;
   likesnum: Number;
+  iscollected?: boolean;
+  isliked?: boolean;
 }
 export class Like {
   ouser: Simuser;
