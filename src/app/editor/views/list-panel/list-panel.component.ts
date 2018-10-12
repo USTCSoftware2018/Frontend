@@ -14,9 +14,9 @@ export class ListPanelComponent implements OnInit {
   ngOnInit() {
     if (this.ret.list === undefined ) {
       this.ret.list =  new Array<ReportListHeader>();
+      const  _tmp = new ReportListHeader();
+      this.ret.list.push(_tmp);
     }
-    const  _tmp = new ReportListHeader();
-    this.ret.list.push(_tmp);
   }
 
   pushList() {

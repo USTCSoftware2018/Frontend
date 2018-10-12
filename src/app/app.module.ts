@@ -36,7 +36,6 @@ registerLocaleData(en);
     HttpExampleComponent,
     NotificationComponent,
     MockRenderComponent,
-    ReportRenderComponent,
   ],
   imports: [
     BrowserModule,
