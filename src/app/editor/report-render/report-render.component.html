@@ -1,6 +1,6 @@
 <div>
   <link rel="stylesheet" type="text/css" href="assets/css/editor-style.css">
-  <div class="render_body" *ngIf="renderService.state === 1">
+  <div class="render_body" *ngIf="renderService.state === 1" id="content">
     <div class="render_header"></div>
     <h1 class="render_title">{{ renderService.report?.title }}</h1>
       <!-- Sub Title -->
@@ -21,8 +21,8 @@
       <div *ngFor="let result of renderService.report?.result">
         <div [ngSwitch]="result.subType">
           <div *ngSwitchCase="'Pictures'">
-            <img *ngFor="let picture of result.pic" [src]="picture.url" 
-                  class="render_result_pic">
+            <img *ngFor="let picture of result.pic" [src]="picture.url"
+                  class="render_result_pic" >
           </div>
           <div *ngSwitchCase="'Text'">
             <p class="render_result_text"> {{ result.desc }}</p>

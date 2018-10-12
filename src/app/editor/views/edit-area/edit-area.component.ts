@@ -2,6 +2,7 @@ import { Component, OnInit,  ElementRef, ViewChild, OnChanges  } from '@angular/
 import { ReportHeader } from '../../headers/article';
 import { EditorReportService } from '../../core/editorReport.service';
 import { SortablejsOptions } from '../../angular-sortablejs/src/sortablejs-options';
+import {EventService} from '../../report-render/event.service';
 
 import { EditorEventService } from '../../core/editor-event.service';
 import {State} from '../../headers/status';
@@ -33,7 +34,8 @@ export class EditAreaComponent implements OnInit {
 
   constructor(public editorReportService: EditorReportService,
               public event: EditorEventService,
-              public element: ElementRef) { }
+              public element: ElementRef,
+              public downloadService: EventService) { }
 
   ngOnInit() {
     this.onResize();
@@ -84,5 +86,9 @@ export class EditAreaComponent implements OnInit {
 
   public getId() {
     return this.currentReport.id;
+  }
+
+  public downloadPdf() {
+    this.downloadService.downloadEvent.emit(0);
   }
 }
