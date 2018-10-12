@@ -1,38 +1,38 @@
-<div nz-row class="card">
-  <label>Labels</label>
-  <div class="content">
-    <div *ngFor="let label of all_labels">
-      <a (click)="gotoLabel(label.id)">{{label.name}}</a>
-      <span class="small-word">{{label.report_count}}&nbsp;reports</span>
+<nz-collapse [nzBordered]="false">
+  <nz-collapse-panel [nzHeader]="labelTemplate" class="card" [nzActive]="true" nzShowArrow="false">
+    <div class="content" nz-row>
+      <div nz-col *ngFor="let label of all_labels">
+        <a (click)="gotoLabel(label.id)">{{label.name}}</a>
+        <span class="small-word">{{label.report_count}}&nbsp;reports</span>
+      </div>
+      <ng-template #labelTemplate>
+        <label>Labels</label>
+      </ng-template>
     </div>
-  </div>
-  <div class="pulldown">
-    <i class="anticon anticon-caret-down"></i>
-  </div>
-</div>
-<nz-divider></nz-divider>
-<div nz-row class="card">
-  <label>Archive</label>
-  <div class="content">
-    <div *ngFor="let archive of all_archive">
-      <a (click)="gotoArchive(archive.id)">{{archive.date}}</a>
-      <span  class="small-word">{{archive.num}}&nbsp;reports</span>
+  </nz-collapse-panel>
+
+  <nz-collapse-panel [nzHeader]="archiveTemplate" class="card" [nzActive]="true" nzShowArrow="false">
+    <div class="content" nz-row>
+      <div nz-col *ngFor="let archive of all_archive">
+        <a (click)="gotoLabel(archive.id)">{{archive.date}}</a>
+        <span class="small-word">{{archive.num}}&nbsp;reports</span>
+      </div>
+      <ng-template #archiveTemplate>
+        <label>Archive</label>
+      </ng-template>
     </div>
-  </div>
-  <div class="pulldown">
-    <i class="anticon anticon-caret-down"></i>
-  </div>
-</div>
-<nz-divider></nz-divider>
-<div nz-row class="card">
-  <label>Popular reports</label>
-  <div class="content">
-    <div *ngFor="let pop_report of all_pop_report">
-      <a>{{pop_report.title}}</a>
-      <span  class="small-word">{{pop_report.praises}}&nbsp;reports</span>
+  </nz-collapse-panel>
+
+  <nz-collapse-panel [nzHeader]="popreportTemplate" class="card" [nzActive]="true" nzShowArrow="false">
+    <div class="content" nz-row>
+      <div nz-col *ngFor="let pop_report of all_pop_report">
+        <a >{{pop_report.title}}</a>
+        <span class="small-word">{{pop_report.praises}}&nbsp;reports</span>
+      </div>
+      <ng-template #popreportTemplate>
+        <label>Popular reports</label>
+      </ng-template>
     </div>
-  </div>
-  <div class="pulldown">
-    <i class="anticon anticon-caret-down"></i>
-  </div>
-</div>
+  </nz-collapse-panel>
+  <div style="height: 20px"></div>
+</nz-collapse>

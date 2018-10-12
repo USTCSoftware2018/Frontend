@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Simuser, Assortment } from '../../../Interface/userinfo';
-import { CLASSIFICATION } from '../../../Interface/mock-user';
 import { HttpService } from '../../../http.service';
 import {UserSigninfoService} from '../../../user-signinfo.service';
+import {ApiResult} from '../../../Interface/ApiResult';
 
 
 @Component({
@@ -12,7 +12,7 @@ import {UserSigninfoService} from '../../../user-signinfo.service';
 })
 export class UserinfoComponent implements OnInit {
   simuser: Simuser;
-  classification: Assortment = CLASSIFICATION;
+  classification: Assortment;
   constructor(
     private http: HttpService,
     private userinfo: UserSigninfoService
@@ -21,6 +21,5 @@ export class UserinfoComponent implements OnInit {
 
   ngOnInit() {
     this.simuser = this.userinfo.myInfo;
-    // this.http get classification;
   }
 }

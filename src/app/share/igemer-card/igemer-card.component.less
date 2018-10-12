@@ -55,21 +55,19 @@
   0% { visibility: hidden; opacity: 0}
   100% { visibility: visible; opacity:1}
 }
-.follow-anticon{
+.follow-anticon, .more-anticon{
   position: absolute;
-  top: @width/2;
-  left:30px;
+  top: @width/2.5;
   font-size: 30px;
-  color: #9B9B9B;
+  color: #BBBBBB;
 }
-.follow-anticon:hover, .more-anticon:hover{
-  color: #FFFFFF;
-  cursor:pointer;
+.follow-anticon{
+  left:30px;
 }
 .more-anticon{
-  position: absolute;
-  top: @width/2;
-  right:30px;
-  font-size: 30px;
-  color: #9B9B9B;
+  right: 30px;
+}
+.follow-anticon:hover, .more-anticon:hover{
+  color:  #FFFFFF;
+  cursor:pointer;
 }

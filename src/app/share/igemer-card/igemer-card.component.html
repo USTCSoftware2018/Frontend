@@ -16,7 +16,7 @@
 <ng-template #AvatarTemplate>
   <img class="igemer-avatar" src="{{igemer.avatar_url}}">
   <div class="cover-hover">
-    <i class="follow-anticon anticon anticon-eye-o"></i>
-    <i class="more-anticon anticon anticon-ellipsis"></i>
+    <i (click)="toggleFollow()" class="follow-anticon anticon anticon-eye-o"></i>
+    <i (click)="gotoIndex()" class="more-anticon anticon anticon-ellipsis"></i>
   </div>
 </ng-template>
