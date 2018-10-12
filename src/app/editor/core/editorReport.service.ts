@@ -138,10 +138,9 @@ export class EditorReportService {
     _new_step.temp = _step_temp.template;
     _new_step.id = _step_temp.id;
     _new_step.name = _step_temp.name;
+    _new_step.yield_method = _step_temp.yield_method;
     this.parser(_new_step);
-    console.log(_new_step);
     _new_sub.steps.push(_new_step);
-
     this.report.subroutines.push(_new_sub);
   }
 
@@ -170,6 +169,7 @@ export class EditorReportService {
       _new_step.temp = _step_temp.template;
       _new_step.id = _step_temp.id;
       _new_step.name = _step_temp.name;
+      _new_step.yield_method = _step_temp.yield_method;
       this.parser(_new_step);
       _new_sub.steps.push(_new_step);
     }
@@ -291,6 +291,17 @@ export class EditorReportService {
         }
       }
     }
+    for (const ret of _sent_report['result']) {
+      if (ret.subType === 'Pictures') {
+        const tmpPics = [];
+        for (const pic of ret.pic) {
+          if (pic.status === 'done') {
+            tmpPics.push(pic);
+          }
+        }
+        ret.pic = tmpPics;
+      }
+    }
     _sent_report['result'] = JSON.stringify(_sent_report['result']);
     _sent_report['subroutines'] = JSON.stringify(_sent_report['subroutines']);
     _sent_report['envs'] = _sent_report['envs'] ? JSON.stringify(_sent_report['envs']) : JSON.stringify({}) ;
@@ -300,7 +311,7 @@ export class EditorReportService {
     if (_sent_report['id'] && _sent_report['id'] !== 0) {
       _sent_report['id'] =  parseInt(_sent_report['id'], 10);
     }
-
+    console.log(_sent_report);
     this.getDataService.saveMyReport(_sent_report, rst => {
       if (rst['status'] === 200) {
         this.report.id = rst['data']['id'].toString();

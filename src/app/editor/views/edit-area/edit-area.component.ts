@@ -22,6 +22,8 @@ export class EditAreaComponent implements OnInit {
 
   timer: any;
 
+  isPreview: boolean; // 预览相关
+
   @ViewChild('scrolss') scroll: ElementRef;
   @ViewChild('subDom') subDom: ElementRef;
 
@@ -70,5 +72,17 @@ export class EditAreaComponent implements OnInit {
   public onResize() {
     // 更新大小
     this.editorHeight = (window.innerHeight - 110) + 'px'; // raw 110
+  }
+
+  public changeIsPreview () {
+    if (this.state === State.ready) {
+      this.state = State.preview;
+    } else if (this.state === State.preview) {
+      this.state = State.ready;
+    }
+  }
+
+  public getId() {
+    return this.currentReport.id;
   }
 }

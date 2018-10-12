@@ -10,18 +10,28 @@
   </div>
 
   <!-- Preview 按钮 -->
-  <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign">
-      <div id="editAreaMenuButton_2"><span>Preview</span></div>
+  <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign" *ngIf="state !== 3">
+      <div id="editAreaMenuButton_2" (click)="changeIsPreview()"><span>Preview</span></div>
   </div>
 
+    <!-- Editor 按钮 -->
+    <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign" *ngIf="state === 3">
+        <div id="editAreaMenuButton_2" (click)="changeIsPreview()"><span>Edit</span></div>
+    </div>
+
   <!-- Export 按钮 -->
-  <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign">
-      <div id="editAreaMenuButton_3"><span>Export</span></div>
+  <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign" *ngIf="state === 3">
+      <div id="editAreaMenuButton_3" ><span>Export</span></div>
   </div>
+
+    <!-- Export 按钮 -->
+    <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign" *ngIf="state !== 3">
+        <div id="editAreaMenuButton_3_n" ><span>Export</span></div>
+    </div>
 
   <!-- Submit 按钮 -->
   <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign">
-      <div id="editAreaMenuButton_4"><span>Submit</span></div>
+      <div id="editAreaMenuButton_4" (click)="editorReportService.saveReport()"><span>Submit</span></div>
   </div>
 
 </div>
@@ -65,4 +75,9 @@
     <div>
         <app-subroutine [type]="'Result'"></app-subroutine>
     </div>
+
+</div>
+
+<div class="coreAreaPreview" *ngIf="state === 3">
+    <app-report-render [reportId]="getId()"></app-report-render>
 </div>

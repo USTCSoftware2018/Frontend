@@ -26,6 +26,7 @@ import { RemarkPanelComponent } from './views/remark-panel/remark-panel.componen
 import { InfoPanelComponent } from './views/info-panel/info-panel.component';
 import { EditorScrollComponent } from './views/editor-scroll/editor-scroll.component';
 import { TablePanelComponent } from './views/table-panel/table-panel.component';
+import {ReportRenderComponent} from './report-render/report-render.component';
 
 import { RouteEditorModule } from './route-editor/route-editor.module';
 
@@ -52,6 +53,7 @@ import { RouteEditorModule } from './route-editor/route-editor.module';
     InfoPanelComponent,
     EditorScrollComponent,
     TablePanelComponent,
+    ReportRenderComponent,
   ],
   providers: [
     StepsService,
@@ -61,5 +63,8 @@ import { RouteEditorModule } from './route-editor/route-editor.module';
     NzNotificationService,
     EditorEventService,
   ],
+  exports: [
+    ReportRenderComponent,
+  ]
 })
 export class EditorModule { }
