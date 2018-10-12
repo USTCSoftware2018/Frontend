@@ -39,4 +39,5 @@ export class MyCenterIndexComponent implements OnInit {
     };
     this.http.get_all_my_favorite_reports(callback);
   }
+
 }

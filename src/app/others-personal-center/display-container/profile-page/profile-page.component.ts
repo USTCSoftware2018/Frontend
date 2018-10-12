@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Simuser, Assortment } from '../../../Interface/userinfo';
-import {CLASSIFICATION} from '../../../Interface/mock-user';
+import {Component, OnInit} from '@angular/core';
+import {Simuser, Archive, Label, Report} from '../../../Interface/userinfo';
 import { HttpService } from '../../../http.service';
 import { ApiResult } from '../../../Interface/ApiResult';
 import {ActivatedRoute, ParamMap} from '@angular/router';
@@ -12,7 +11,9 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
   styleUrls: ['./profile-page.component.less']
 })
 export class ProfilePageComponent implements OnInit {
-  classification: Assortment = CLASSIFICATION;
+  labels: Label[];
+  archive: Archive[];
+  popular_reports: Report[] = [];
   simuser: Simuser;
   user_id: number;
   constructor(
@@ -22,6 +23,7 @@ export class ProfilePageComponent implements OnInit {
     this.simuser = new Simuser();
     this.getid();
     this.InitProfile();
+    this.get_classification();
   }
   getid = () => {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -38,5 +40,19 @@ export class ProfilePageComponent implements OnInit {
       }
     };
     this.http.get_user_by_id(user_id, callback);
+  }
+  get_classification = () => {
+    const callback_labels = (result: ApiResult) => {
+      if (result.success) {
+        this.labels = result.data;
+      }
+    };
+    const callback_archive = (result: ApiResult) => {
+      if (result.success) {
+        this.archive = result.data;
+      }
+    };
+    this.http.get_labels_by_user_id(this.simuser.id, callback_labels);
+    this.http.get_archives_by_user_id(this.simuser.id, callback_archive);
   }
 }

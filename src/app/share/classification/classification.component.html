@@ -2,8 +2,10 @@
   <nz-collapse-panel [nzHeader]="labelTemplate" class="card" [nzActive]="true" nzShowArrow="false">
     <div class="content" nz-row>
       <div nz-col *ngFor="let label of all_labels">
-        <a (click)="gotoLabel(label.id)">{{label.name}}</a>
-        <span class="small-word">{{label.report_count}}&nbsp;reports</span>
+        <div class="classify-container">
+          <a (click)="gotoLabel(label.id)">{{label.name}}</a>
+        </div>
+          <span class="small-word">{{label.report_count}}&nbsp;reports</span>
       </div>
       <ng-template #labelTemplate>
         <label>Labels</label>
@@ -14,8 +16,10 @@
   <nz-collapse-panel [nzHeader]="archiveTemplate" class="card" [nzActive]="true" nzShowArrow="false">
     <div class="content" nz-row>
       <div nz-col *ngFor="let archive of all_archive">
-        <a (click)="gotoLabel(archive.id)">{{archive.date}}</a>
-        <span class="small-word">{{archive.num}}&nbsp;reports</span>
+        <div class="classify-container">
+          <a (click)="gotoLabel(archive.id)">{{archive.date}}</a>
+        </div>
+          <span class="small-word">{{archive.num}}&nbsp;reports</span>
       </div>
       <ng-template #archiveTemplate>
         <label>Archive</label>
@@ -26,7 +30,9 @@
   <nz-collapse-panel [nzHeader]="popreportTemplate" class="card" [nzActive]="true" nzShowArrow="false">
     <div class="content" nz-row>
       <div nz-col *ngFor="let pop_report of all_pop_report">
-        <a >{{pop_report.title}}</a>
+        <div class="classify-container">
+          <a>{{pop_report.title}}</a>
+        </div>
         <span class="small-word">{{pop_report.praises}}&nbsp;reports</span>
       </div>
       <ng-template #popreportTemplate>

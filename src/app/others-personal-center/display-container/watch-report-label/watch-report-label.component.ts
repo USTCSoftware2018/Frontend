@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Report, User} from '../../../Interface/userinfo';
+import {Label, Report, User} from '../../../Interface/userinfo';
 import {USER} from '../../../Interface/mock-user';
 import {ActivatedRoute} from '@angular/router';
 import {ParamMap} from '@angular/router';
+import {ApiResult} from '../../../Interface/ApiResult';
+import {HttpService} from '../../../http.service';
 
 @Component({
   selector: 'app-watch-report-label',
@@ -11,19 +13,31 @@ import {ParamMap} from '@angular/router';
 })
 export class WatchReportLabelComponent implements OnInit {
   user: User = USER;
-  label: string; // 要展示的哪种标签的report
+  label: Label;
+  label_reports: Report[];
   reports_onshow = [];
   reports_unshow = [];
   i = 0;
   t: Report;
   constructor(
     private route: ActivatedRoute,
+    private http: HttpService
   ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.label = params.get('label_id');
+      this.label.id = +params.get('label_id');
     });
+    this.get_label_reports();
+  }
+  get_label_reports() {
+    const label_callback = (result: ApiResult) => {
+      if (result.success) {
+        this.label_reports = result.data.reports;
+        this.label.name = result.data.name;
+      }
+    };
+    this.http.query_label(this.label.id, label_callback);
   }
   reportShowMore() {
     this.reports_unshow.reverse();

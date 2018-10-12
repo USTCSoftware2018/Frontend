@@ -1,20 +1,19 @@
-<div class="content">
-  <div nz-row class="up-nav">
-    <div nz-col nzSpan="4" class="report-word">
-      {{big_label}}
+<div class="content" >
+  <div nz-row nzType="flex" nzAlign="middle">
+    <div nz-col nzSpan="20" class="report-word">
+      <div class="label_container">
+        <span>{{big_label}}</span>
+        <i class="icon anticon anticon-right"></i>
+        <span class="label">&nbsp;&nbsp;&nbsp;&nbsp;{{label.name}}</span>
+      </div>
     </div>
-    <div nz-col nzOffset="1" nzSpan="1" class="icon">
-      <i class="anticon anticon-right"></i>
-    </div>
-    <div nz-col nzSpan="4" class="label">
-      {{label}}
-    </div>
-    <div nz-col nzOffset="15" nzSpan="3" class="sort">
-      <i class="anticon anticon-swap"><div class="rotate">&nbsp;sort</div></i>
+    <div nz-col nzSpan="4" class="sort">
+      <i class="rotate anticon anticon-swap"></i><span>&nbsp;sort</span>
     </div>
   </div>
+  <nz-divider></nz-divider>
   <div nz-row class="report">
-    <div *ngFor="let report of user.reports">
+    <div *ngFor="let report of classification_reports">
       <app-others-report [report]="report" [bkcolor]="'#F2F2F2'"></app-others-report>
     </div>
   </div>

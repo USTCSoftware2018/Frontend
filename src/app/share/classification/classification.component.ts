@@ -14,9 +14,9 @@ import {ApiResult} from '../../Interface/ApiResult';
 })
 export class ClassificationComponent implements OnInit {
   @Input() userid: number;
-  all_archive: Archive[] = [];
-  all_labels: Label[];
-  all_pop_report: PopularReport[] = [];
+  @Input() all_archive: Archive[];
+  @Input() all_labels: Label[];
+  @Input() all_pop_report: PopularReport[];
   constructor(
     private routerjudge: RouterjudgeService,
     private http: HttpService

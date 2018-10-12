@@ -5,7 +5,11 @@
        <div nz-col nzSpan="7" >
          <app-siminfo [user]="simuser" ></app-siminfo>
          <nz-divider></nz-divider>
-         <app-classification [userid]="simuser.id"></app-classification>
+         <app-classification [userid]="simuser.id"
+                             [all_labels]="labels"
+                             [all_archive]="archive"
+                             [all_pop_report]="popular_reports">
+         </app-classification>
        </div>
        <div nz-col nzSpan="17" >
          <router-outlet></router-outlet>

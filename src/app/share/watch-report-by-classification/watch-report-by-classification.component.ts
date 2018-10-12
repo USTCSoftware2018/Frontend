@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {Report, User} from '../../Interface/userinfo';
-import {USER} from '../../Interface/mock-user';
+import { Report, Label} from '../../Interface/userinfo';
 
 @Component({
   selector: 'app-watch-report-by-classification',
@@ -8,9 +7,9 @@ import {USER} from '../../Interface/mock-user';
   styleUrls: ['./watch-report-by-classification.component.less']
 })
 export class WatchReportByClassificationComponent implements OnInit {
-  user: User = USER;
+  @Input() classification_reports: Report[];
   @Input() big_label: string;
-  @Input() label: string; // 要展示的哪种归档的report
+  @Input() label: Label; // 要展示的哪种归档的report
   reports_onshow = [];
   reports_unshow = [];
   i = 0;
@@ -30,11 +29,11 @@ export class WatchReportByClassificationComponent implements OnInit {
 
   initReports(): void {
 
-    if (this.user.reports.length <= 6) {
-      this.reports_onshow = this.user.reports.slice(0, this.user.reports.length);
+    if (this.classification_reports.length <= 6) {
+      this.reports_onshow = this.classification_reports.slice(0, this.classification_reports.length);
     } else {
-      this.reports_onshow = this.user.reports.slice(0, 6);
-      this.reports_unshow = this.user.reports.slice(6, this.user.reports.length);
+      this.reports_onshow = this.classification_reports.slice(0, 6);
+      this.reports_unshow = this.classification_reports.slice(6, this.classification_reports.length);
     }
   }
 }

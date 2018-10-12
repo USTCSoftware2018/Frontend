@@ -4,7 +4,11 @@
   </div>
   <nz-divider></nz-divider>
   <div nz-row>
-    <app-classification [userid]="userinfo.id" [classifyInfo]="classification"></app-classification>
+    <app-classification [userid]="userinfo.id"
+                        [all_labels]="labels"
+                        [all_archive]="archive"
+                        [all_pop_report]="popular_reports">
+    </app-classification>
   </div>
 </div>
 
