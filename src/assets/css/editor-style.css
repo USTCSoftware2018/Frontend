@@ -2,9 +2,10 @@
     text-align:justify;
     background-color: #ffffff;
     font-family: 'Times New Roman', Times, serif;
+    margin-top: 5px;
     padding-left: 10%;
     padding-right: 10%;
-
+    margin-bottom: 10px;
 }
 
 .render_title {
@@ -132,7 +133,7 @@
 }
 
 .render_footer {
-    padding-bottom: 30px;
+    margin-top: 20px;
 }
 
 .render_header {
