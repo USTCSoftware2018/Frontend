@@ -13,40 +13,43 @@ import {ApiResult} from '../../../Interface/ApiResult';
 })
 export class UserBasicComponent implements OnInit {
   loading = false;
-  viewImage="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png";
+  viewImage = '//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png';
   issaved = false;
-  usermes=this.fb.group({
+  usermes = this.fb.group({
 
     photo: [''],
-    actualname: ['',[Validators.required,
+    actualname: ['', [ Validators.required,
       Validators.minLength(4),
       forbiddenNameValidator(/Peng/)
     ]],
-    description:[''],
+    description: [''],
     location: ['', [Validators.required]],
     organization: [''],
     email: ['', [Validators.email]],
   });
   personalmes = {
-    photo:'',
-    actualname:'',
-    description:'',
+    photo: '',
+    actualname: '',
+    description: '',
     location: '',
     organization: '',
     email: '',
-  }
+  };
+
   beforeUpload = (file: File) => {
     const isLt2M = file.size / 1024 / 1024 < 2;
     if (!isLt2M) {
       this.message.error('Image must smaller than 2MB!');
     }
     return isLt2M;
-  };
+  }
+
   private getBase64(img: File, callback: (img: {}) => void): void {
     const reader = new FileReader();
     reader.addEventListener('load', () => callback(reader.result));
     reader.readAsDataURL(img);
   }
+
   handleChange(info: { file: UploadFile }): void {
     if (info.file.status === 'uploading') {
       this.loading = true;
@@ -60,20 +63,28 @@ export class UserBasicComponent implements OnInit {
       });
     }
   }
-  onSave(){
-    this.issaved=true;
+
+  onSave() {
+    this.issaved = true;
     console.log(this.usermes.value);
-    this.http.update_profile(this.usermes.value.photo,this.usermes.value.actualname,this.usermes.value.location,this.usermes.value.description,this.usermes.value.organization,this.usermes.value.email,this.callback);
+    this.http.update_profile( this.usermes.value.photo,
+                              this.usermes.value.actualname,
+                              this.usermes.value.location,
+                              this.usermes.value.description,
+                              this.usermes.value.organization,
+                              this.usermes.value.email,
+                              this.callback);
   }
   callback = (result: ApiResult) => {
     console.log(result);
     if (result.success) {
       this.message.success('Update sucessfully');
-    }else {
+    } else {
       this.message.error('Fail to Update.' + result.data.detail);
     }
   }
-  get_simuser = (result:ApiResult) => {
+
+  get_simuser = (result: ApiResult) => {
    console.log(result);
     this.personalmes.photo = result.data.avatar_url;
    this.personalmes.actualname = result.data.actualname;
@@ -83,10 +94,10 @@ export class UserBasicComponent implements OnInit {
     this.personalmes.email = result.data.email;
   }
 
-  constructor(private fb:FormBuilder,private message: NzMessageService,private http:HttpService) { }
+  constructor(private fb: FormBuilder, private message: NzMessageService, private http: HttpService) { }
 
   ngOnInit() {
-   this.http.get_simuser_by_id(1,this.get_simuser);
+   this.http.get_simuser_by_id(1, this.get_simuser);
   }
 
 }

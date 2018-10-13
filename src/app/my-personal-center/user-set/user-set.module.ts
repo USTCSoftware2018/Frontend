@@ -14,6 +14,7 @@ import { ReportAllComponent } from './report-all/report-all.component';
 import { ReportDraftComponent } from './report-draft/report-draft.component';
 import { ForbiddenNameDirective } from './formvalidate/forbidden-name.directive';
 import {RouterModule} from '@angular/router';
+import { UserVariableComponent } from './user-variable/user-variable.component';
 
 registerLocaleData(en);
 
@@ -32,7 +33,8 @@ registerLocaleData(en);
     UserReportComponent,
     ReportAllComponent,
     ReportDraftComponent,
-    ForbiddenNameDirective
+    ForbiddenNameDirective,
+    UserVariableComponent
   ],
   exports: [
     UserBasicComponent,
