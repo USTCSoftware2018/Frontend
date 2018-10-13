@@ -9,8 +9,8 @@ import {
 
 class Result {
   filters: any[];
-    ranks: any;
-    data: any;
+  ranks: any;
+  data: any;
 }
 @Component({
   selector: 'app-searchresult',
@@ -19,7 +19,8 @@ class Result {
 })
 export class SearchresultComponent implements OnInit {
   searchForm: FormGroup;
-  users: Simuser[] = USER.followers;
+  User = USER;
+  users: Simuser[];
   reports: Report[] = [];
   loading: boolean;
   result: Result;
@@ -31,12 +32,14 @@ export class SearchresultComponent implements OnInit {
   ngOnInit() {
     this.result = new Result();
     this.result.filters = ['a', 'b', 'c', 'd', 'e'];
-    this.reports = USER.reports;
+    this.users = this.User.followers;
+    this.reports = this.User.reports;
     this.searchForm = new FormGroup({
       'search_info': new FormControl( null,
       ),
     });
-    // this.initPrefix();
+    this.initPrefix();
+    console.log(this.users);
   }
   initPrefix = () => {
     for ( let ii  = 32; ii < 126; ii++) {
