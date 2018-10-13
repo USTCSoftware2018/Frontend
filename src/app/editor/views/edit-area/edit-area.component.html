@@ -21,7 +21,7 @@
 
   <!-- Export 按钮 -->
   <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign" *ngIf="state === 3">
-      <div id="editAreaMenuButton_3" ><span>Export</span></div>
+      <div id="editAreaMenuButton_3"  (click)="downloadPdf()"><span>Export</span></div>
   </div>
 
     <!-- Export 按钮 -->
@@ -79,5 +79,5 @@
 </div>
 
 <div class="coreAreaPreview" *ngIf="state === 3">
-    <app-report-render [reportId]="getId()"></app-report-render>
+    <app-report-render [reportId]="getId()" #preview></app-report-render>
 </div>
