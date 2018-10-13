@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router} from '@angular/router';
 import {UserSigninfoService} from '../user-signinfo.service';
-import {ShareModule} from './share.module';
+
 
 @Injectable({
   providedIn: 'root'
@@ -48,5 +48,9 @@ export class RouterjudgeService {
   // 点击archive
   gotoReportbyArchive = ( id: number, archive_id: number) => {
     this.goToJudge(id, '/mypersonalcenter/detailinfo/archive/' + archive_id, '/userprofile/' + id + '/archive/' + archive_id);
+  }
+  // 点击报告名
+  gotoReportDisplay = ( id: number, report_id: number) => {
+    this.goToJudge(id, '/report/my/' + report_id, '/' + id + '/' + report_id);
   }
 }

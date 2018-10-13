@@ -36,7 +36,7 @@
         </div>
 
         <div nz-col class="obtn"  nzSpan="8" align="center">
-          <button nz-button [nzType]="isFollow?'default':'primary'"  (click)="toggleFollow()">{{btncontent}}</button>
+          <button *ngIf="btnshow" nz-button [nzType]="isFollow?'default':'primary'"  (click)="toggleFollow()">{{btncontent}}</button>
         </div>
       </div>
 

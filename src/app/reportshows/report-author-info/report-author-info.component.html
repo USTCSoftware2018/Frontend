@@ -1,0 +1,39 @@
+<div nz-row class="report-info-container">
+
+  <div nz-col nzSm="12" nzXs="12" nzMd="24" nzLg="24" nzXl="24" nzXXl="24" class="report-info">
+
+    <div class="report-sim-info">
+      <a class="report-title">{{report.title}}</a>
+      <span class="report-label">labels:&nbsp;&nbsp;&nbsp;</span>
+      <a class="report-label" *ngFor="let label of report.labels">{{label.name}}&nbsp;&nbsp;&nbsp;</a>
+      <div class="report-abstract">
+        <p>{{report.abstract}}</p>
+      </div>
+      <i class="num anticon anticon-like"></i><span class="num">{{report.likesnum}}&nbsp;&nbsp;&nbsp;</span>
+      <i class="num anticon anticon-message"></i><span class="num">{{report.commentsnum}}&nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+    <nz-divider></nz-divider>
+
+    <div class="author-info">
+      <div>
+        <a class="author-name">{{user?.username}}</a>
+        <button nz-button nzType="primary" nzSize="small">following</button>
+      </div>
+      <div>
+        <a><nz-avatar nzSize="large" [nzSrc]="user?.avatar_url"></nz-avatar></a>
+      </div>
+    </div>
+
+    <nz-divider></nz-divider>
+
+    <div class="star-button" align="center">
+      <button nz-button nzType="primary" nzSize="large" nzShape="circle">
+        <i class="anticon anticon-like"></i>
+      </button>
+    </div>
+
+    <nz-divider></nz-divider>
+
+  </div>
+</div>
