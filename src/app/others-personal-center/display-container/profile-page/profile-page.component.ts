@@ -52,7 +52,7 @@ export class ProfilePageComponent implements OnInit {
         this.archive = result.data;
       }
     };
-    this.http.get_labels_by_user_id(this.simuser.id, callback_labels);
-    this.http.get_archives_by_user_id(this.simuser.id, callback_archive);
+    this.http.get_labels_by_user_id(this.user_id, callback_labels);
+    this.http.get_archives_by_user_id(this.user_id, callback_archive);
   }
 }

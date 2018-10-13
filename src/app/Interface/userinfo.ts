@@ -17,6 +17,7 @@ export class Stat {
   follower_count: number;
   star_count: number;
   experience_count: number;
+  report_count: number;
 }
 export class Report {
   id: number;

@@ -20,7 +20,7 @@ export class DetailinfoBylabelComponent implements OnInit {
   ngOnInit() {
     this.label = new Label();
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.label.id = +params.get('name');
+      this.label.id = +params.get('label_id');
     });
     this.get_label_reports();
   }

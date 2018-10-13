@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {HttpService} from './http.service';
 import { UserSigninfoService } from './user-signinfo.service';
 import {ApiResult} from './Interface/ApiResult';
@@ -15,7 +15,7 @@ declare var $: any;
 export class AppComponent implements OnInit {
   title = 'igem-frontend';
   constructor( private http: HttpService,
-               private myinfo: UserSigninfoService,
+               private userinfo: UserSigninfoService,
                private message: NzMessageService,
                private router: Router,
   ) {}
@@ -23,20 +23,11 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.http.get_myself(this.callback);
   }
-
   callback = (result: ApiResult) => {
     if (result.success) {
       this.message.success('Successlly signin');
-      this.myinfo.setUserInfobyInfo(result.success, result.data);
+      this.userinfo.setUserInfobyInfo(result.success, result.data);
       // this.router.navigateByUrl('/explore');
     }
   }
-  // callback = (result: ApiResult) => {
-  //   this.myinfo.setUserInfobyInfo(result.success, result.data);
-  //   if (result.success) {
-  //     console.log('log in success');
-  //   } else {
-  //     console.log('fail');
-  //   }
-  // }
 }

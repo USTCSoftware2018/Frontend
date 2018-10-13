@@ -4,7 +4,7 @@
       <div class="label_container">
         <span>{{big_label}}</span>
         <i class="icon anticon anticon-right"></i>
-        <span class="label">&nbsp;&nbsp;&nbsp;&nbsp;{{label.name}}</span>
+        <span class="label">&nbsp;&nbsp;&nbsp;&nbsp;{{label?.name}}{{label?.date}}</span>
       </div>
     </div>
     <div nz-col nzSpan="4" class="sort">
@@ -14,7 +14,7 @@
   <nz-divider></nz-divider>
   <div nz-row class="report">
     <div *ngFor="let report of classification_reports">
-      <app-others-report [report]="report" [bkcolor]="'#F2F2F2'"></app-others-report>
+      <app-my-report [report]="report" [bkcolor]="'#F2F2F2'"></app-my-report>
     </div>
   </div>
 </div>

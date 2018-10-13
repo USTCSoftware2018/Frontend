@@ -4,32 +4,22 @@
     <div nz-row>
       <div nz-col nzOffset="2" nzSpan="20">
         <form nz-form nzLayout="vertical" [formGroup]="searchForm"
-                (ngSubmit)="submitForm()">
+                (ngSubmit)="submitForm()" class="search-input" class="search-input">
           <nz-form-item >
-          <nz-form-control  nzOffset="1" nzSpan="22" nzHasFeedback>
-            <nz-input-group >
-              <input nz-input class="search-input" type="text" formControlName="search_info" placeholder="input search text">
+          <nz-form-control nzSpan="24">
+            <nz-input-group>
+              <nz-mention #mentions [nzSuggestions]="suggestions" [nzPrefix]="prefix">
+                <input nz-input class="search-content" nzMentionTrigger
+                       type="text" formControlName="search_info" placeholder="input search text">
+              </nz-mention>
             </nz-input-group>
-            <!-- <nz-form-explain *ngIf="search_info.dirty && search_info.errors || search_info.pending ">-->
-              <!--<ng-container *ngIf="search_info.hasError('required')">-->
-                <!--Please enter your search_info or e-mail!-->
-              <!--</ng-container>-->
-              <!--<ng-container *ngIf="search_info.hasError('minlength')">-->
-                <!--too short (minimum is 4 characters)!-->
-              <!--</ng-container>-->
-              <!--<ng-container *ngIf="search_info.hasError('maxlength')">-->
-                <!--too long (maximum is 20 characters)!-->
-              <!--</ng-container>-->
-              <!--<ng-container *ngIf="search_info.hasError('forbiddenName')">-->
-                <!--search_info is invalid!-->
-              <!--</ng-container>-->
-              <!--<ng-container *ngIf="search_info.hasError('forbiddenEmail')">-->
-                <!--Email is invalid!-->
-              <!--</ng-container>-->
-            <!--</nz-form-explain>-->
           </nz-form-control>
           </nz-form-item>
         </form>
+        <div class="input-tags">
+          <span class="tag-label">filters:&nbsp;&nbsp;&nbsp;</span>
+          <nz-tag *ngFor="let filter of result.filters">{{filter}}</nz-tag>
+        </div>
       </div>
 
       <div nz-col nzSpan="24">

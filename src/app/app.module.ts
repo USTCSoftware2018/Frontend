@@ -12,9 +12,6 @@ import { AppRoutingModule } from './route/route.module';
 import { EditorModule } from './editor/editor.module';
 import { ErrorModule } from './error/error.module';
 import { Error404Component } from './error/error404/error404.component';
-import { ReportshowComponent } from './reportshows/reportshow/reportshow.component';
-import { UserSetModule } from './my-personal-center/user-set/user-set.module';
-import { ReportshowotherComponent } from './reportshows/reportshowother/reportshowother.component';
 import { FeedsComponent } from './core/feeds/feeds.component';
 import { ShareModule } from './share/share.module';
 import { HttpExampleComponent } from './http-example/http-example.component';
@@ -30,8 +27,6 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     NavbarComponent,
-    ReportshowComponent,
-    ReportshowotherComponent,
     FeedsComponent,
     HttpExampleComponent,
     NotificationComponent,

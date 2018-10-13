@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { USER } from '../../Interface/mock-user';
-import { Simuser } from '../../Interface/userinfo';
+import { Simuser, Report } from '../../Interface/userinfo';
 import {
   FormGroup,
   FormControl,
   Validators,
 } from '@angular/forms';
 
+class Result {
+  filters: any[];
+    ranks: any;
+    data: any;
+}
 @Component({
   selector: 'app-searchresult',
   templateUrl: './searchresult.component.html',
@@ -14,19 +19,31 @@ import {
 })
 export class SearchresultComponent implements OnInit {
   searchForm: FormGroup;
-  users: Simuser[];
-  reports = USER.reports;
+  users: Simuser[] = USER.followers;
+  reports: Report[] = [];
   loading: boolean;
+  result: Result;
+  suggestions = ['aaaaa', 'bbbbb', 'ccccc', 'ddddd', 'abcdefghi'];
+  prefix: string[] = [];
   constructor() {
   }
 
   ngOnInit() {
-    this.users = USER.followers;
+    this.result = new Result();
+    this.result.filters = ['a', 'b', 'c', 'd', 'e'];
+    this.reports = USER.reports;
     this.searchForm = new FormGroup({
-      'search_info': new FormControl(null,
-        [Validators.required, Validators.minLength(4), Validators.maxLength(20),
-          ]),
+      'search_info': new FormControl( null,
+      ),
     });
+    // this.initPrefix();
+  }
+  initPrefix = () => {
+    for ( let ii  = 32; ii < 126; ii++) {
+      const char = String.fromCharCode(ii);
+      this.prefix.push(char);
+    }
+    console.log(this.prefix);
   }
   submitForm() {
 

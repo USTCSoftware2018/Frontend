@@ -19,14 +19,14 @@
     </div>
 
     <div class="nav-right">
-      <li class="nav-item" *ngIf="ifLogin" nz-popover nzPlacement="bottom" nzTitle="Notification"
+      <li class="nav-item down" *ngIf="ifLogin" nz-popover nzPlacement="bottom" nzTitle="Notification"
           [nzContent]="notification_content" [routerLink]="['/notification']" routerLinkActive="selected">
-        <nz-badge [nzDot]="true">
+        <nz-badge [nzDot]="new_notification">
               <nz-avatar nzSize="small" nzIcon="anticon anticon-notification" [nzShape]="'square'"></nz-avatar>
         </nz-badge>
       </li>
       <li class="nav-item" *ngIf="ifLogin" [routerLink]="['/feeds']" routerLinkActive="selected">
-         <nz-badge [nzDot]="false" >
+         <nz-badge [nzDot]="new_feeds" >
               <nz-avatar nzSize="small" nzIcon="anticon anticon-mail" [nzShape]="'square'"></nz-avatar>
         </nz-badge>
       </li>
@@ -59,9 +59,9 @@
         </a>
       </div>
     </ng-template>
-    <ng-template #notification_content>
-      <div>
-        <p> Someone like your report </p>
+    <ng-template #notification_content class="down">
+      <div class="notification-container">
+        <p class="notification"> {{notification_msg}} </p>
       </div>
     </ng-template>
 </div>

@@ -10,7 +10,7 @@ import {LiteralArray} from '@angular/compiler';
 })
 export class PersonalInformationComponent implements OnInit {
   @Input() userinfo: Simuser;  // 这是左上角的simuser数据
-  @Input() labels: Label ;
+  @Input() labels: Label[];
   @Input() archive: Archive[];
   @Input() popular_reports: Report[] = [];
   constructor() { }

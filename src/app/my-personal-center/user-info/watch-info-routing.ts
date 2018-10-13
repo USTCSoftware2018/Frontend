@@ -9,7 +9,7 @@ export const userinfo_route: Route = {
   children: [
     { path: '', redirectTo: 'index'} ,
     { path: 'index', component: DetailinfoComponent},
-    { path: 'label/:name', component: DetailinfoBylabelComponent},
-    { path: 'archive/:date', component: DetailinfoByarchiveComponent},
+    { path: 'label/:label_id', component: DetailinfoBylabelComponent, },
+    { path: 'archive/:archive_id', component: DetailinfoByarchiveComponent},
     ]
 };
