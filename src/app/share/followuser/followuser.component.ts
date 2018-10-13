@@ -34,7 +34,7 @@ export class FollowuserComponent implements OnInit {
   }
   // 判断是否显示follow btn
   setBtnShow() {
-    if (this.userinfo.isLogin){
+    if (this.userinfo.isLogin) {
       this.btnshow = false;
     } else {
       this.btnshow = this.otheruser.id === this.userinfo.myInfo.id ? true : false;
@@ -50,7 +50,7 @@ export class FollowuserComponent implements OnInit {
       this.isFollow = this.old_follow_bl;
       this.btncontent = this.old_follow_msg;
     }
-  };
+  }
   unfollow_callback = (result: ApiResult) => {
     if (!result.success) {
       this.message.error( 'Fail to follow' + this.otheruser.username);
