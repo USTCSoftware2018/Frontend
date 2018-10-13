@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Report, Label} from '../../Interface/userinfo';
+import { Report, Label, Archive} from '../../Interface/userinfo';
 
 @Component({
   selector: 'app-watch-report-by-classification',
@@ -9,7 +9,7 @@ import { Report, Label} from '../../Interface/userinfo';
 export class WatchReportByClassificationComponent implements OnInit {
   @Input() classification_reports: Report[];
   @Input() big_label: string;
-  @Input() label: Label; // 要展示的哪种归档的report
+  @Input() label: any; // 要展示的哪种归档的report
   reports_onshow = [];
   reports_unshow = [];
   i = 0;

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReportshowComponent } from './reportshow/reportshow.component';
 import { ReportshowsRoutingModule } from './reportshows-routing.module';
 import {ShareModule} from '../share/share.module';
+import {ReportshowotherComponent} from './reportshowother/reportshowother.component';
 
 @NgModule({
   imports: [
@@ -10,6 +11,9 @@ import {ShareModule} from '../share/share.module';
     ReportshowsRoutingModule,
     ShareModule
   ],
-  declarations: [ReportshowComponent]
+  declarations: [
+    ReportshowComponent,
+    ReportshowotherComponent
+  ]
 })
 export class ReportshowsModule { }

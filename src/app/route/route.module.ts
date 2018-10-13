@@ -14,8 +14,6 @@ const appRoutes: Routes = [
   { path: 'render', component: MockRenderComponent },
   { path: 'test-http', component: HttpExampleComponent },
   { path: 'editor',  loadChildren: '../editor/editor.module#EditorModule' },
-  { path: 'reportshow', component: ReportshowComponent},
-  { path: 'reportdisplay', component: ReportshowotherComponent},
   { path: 'feeds', component: FeedsComponent},
   { path: 'notification', component: NotificationComponent},
   { path: 'mypersonalcenter',
@@ -25,7 +23,7 @@ const appRoutes: Routes = [
   { path: 'explore', loadChildren: '../explore/explore.module#ExploreModule', data: {preload: true}},
   { path: 'userprofile/:user_id', loadChildren: '../others-personal-center/others-personal-center.module#OthersPersonalCenterModule',
     data: {preload: true}},
-  { path: 'reportshows', loadChildren: '../reportshows/reportshows.module#ReportshowsModule', data: {preload: true}},
+  { path: 'report', loadChildren: '../reportshows/reportshows.module#ReportshowsModule', data: {preload: true}},
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: Error404Component}
 ];
@@ -34,7 +32,7 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true }
+      // { enableTracing: true},
     )
   ],
   exports: [

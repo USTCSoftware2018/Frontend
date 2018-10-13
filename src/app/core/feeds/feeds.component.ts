@@ -10,7 +10,7 @@ import {ApiResult} from '../../Interface/ApiResult';
   styleUrls: ['./feeds.component.less']
 })
 export class FeedsComponent implements OnInit {
-  feeds: (LikeFeed|FollowFeed|UploadFeed)[];
+  feeds: any[];
   constructor(
     private http: HttpService
   ) { }

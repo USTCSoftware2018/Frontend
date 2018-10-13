@@ -57,13 +57,14 @@ export class SignupComponent implements OnInit {
       this.validateForm.controls[ i ].markAsDirty();
       this.validateForm.controls[ i ].updateValueAndValidity();
     }
-    this.http.user_register(reginfo.username, reginfo.password, reginfo.email, this.judgeRegister);
+    this.http.user_register(reginfo.username, reginfo.password, reginfo.email, this.registeCallback);
   }
-  judgeRegister = (result: ApiResult) => {
+  registeCallback = (result: ApiResult) => {
     console.log(result);
     if (result.success) {
       this.message.success('Sign up sucessfully. Start to sign in now!');
-      this.router.navigateByUrl('/authentication/signin');
+      this.router.navigateByUrl('/explore');
+      this.userinfo.setUserInfobyInfo(true, result.data);
     } else {
       this.message.error(result.data.username + '.' + result.data.email);
     }
