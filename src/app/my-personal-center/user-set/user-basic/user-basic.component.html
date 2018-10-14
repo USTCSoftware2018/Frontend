@@ -1,4 +1,69 @@
-<div class="userset0" [formGroup]="usermes" >
+<div>
+  <h2 class="account_title">Account</h2>
+  <p>Personal Informations</p>
+  <nz-divider></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="18">
+      <form nz-form nzLayout="vertical" [formGroup]="usermes">
+        <!-- Actual Name -->
+        <nz-form-item>
+          <nz-form-label>Actual Name</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="{{personalmes.actualname}}" 
+                   id="actualname" name="actualname" formControlName="actualname" required>
+          </nz-form-control>
+          <nz-form-explain *ngIf="usermes.get('actualname').dirty && usermes.get('actualname').errors&&issaved">
+            <ng-container *ngIf="usermes.get('actualname').hasError('required')">
+              Please input your username!
+            </ng-container>
+            <ng-container *ngIf="usermes.get('actualname').hasError('minlength')">
+              mingLength more than 4!
+            </ng-container>
+            <ng-container *ngIf="usermes.get('actualname').hasError('forbiddenName')">
+              forbiddenname!
+            </ng-container>
+          </nz-form-explain>
+        </nz-form-item >
+        <!-- Actual Name -->
+        <nz-form-item>
+          <nz-form-label>Location</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="{{personalmes.location}}"  id="location" name="location" formControlName="location">
+          </nz-form-control>
+        </nz-form-item>
+        <!-- School or Organization -->
+        <nz-form-item>
+          <nz-form-label>School or Organization</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="{{personalmes.organization}}" id="organization" name="organization" formControlName="organization">
+          </nz-form-control>
+        </nz-form-item>
+        <!-- School or Organization -->
+        <nz-form-item>
+          <nz-form-label>Description</nz-form-label>
+          <nz-form-control>
+            <textarea nz-input rows="4" placeholder="{{personalmes.description}}" name="description" formControlName="description"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-row style="margin-bottom:8px;">
+          <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary">Update Profile</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+    <div nz-col nzSpan="6" class="PicSide">
+      <img [src]="personalmes.photo" class="profile_pic"/>
+      <nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/">
+      <button nz-button style="width:100%; margin-top: 20px;">
+        <i class="anticon anticon-upload"></i><span>Update</span>
+      </button>
+      </nz-upload>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="userset0" [formGroup]="usermes" >
   <div class="cardtitle">BASIC INFORMATION</div>
   <div class="savebutton">
     <button nz-button nzType="primary" style="
@@ -98,5 +163,5 @@ padding:0 1vw;">Upload
 
   </div>
 
-</div>
+</div> -->
 

@@ -1,6 +1,33 @@
-<div nz-row nzType="flex" nzJustify="space-around" style="background-color:#F2F2F2;margin-top:80px;height:1000px;">
-  <div nz-col [nzXs]="{ span: 4 }" [nzLg]="{ span: 4 }"  >
-    <nz-affix [nzOffsetTop]="70">
+<div nz-row>
+  <nz-layout nz-col [nzLg]="{span:18,offset:3}"
+                    [nzMd]="{span:20,offset:2}" 
+                    [nzXs]="{span:20,offset:2}" 
+                    class="userset_body">
+    <nz-sider [nzWidth]="180" class="userset_sider">
+      <ul nz-menu [nzMode]="'inline'">
+        <li nz-menu-item routerLink="./user-basic" routerLinkActive="active" class="userset_list" >
+          <i class="anticon anticon-user"></i>
+          <span>Account</span>
+        </li>
+        <li nz-menu-item routerLink="./user-account" routerLinkActive="active" class="userset_list" >
+          <i class="anticon anticon-safety"></i>
+          <span>Password</span>
+        </li>
+        <li nz-menu-item routerLink="./user-variable" routerLinkActive="active" class="userset_list">
+          <i class="anticon anticon-file"></i>
+          <span>Variables</span>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-content class="userset_content">
+      <router-outlet></router-outlet>
+    </nz-content>
+  </nz-layout>
+</div>
+
+<!-- <div nz-row style="background-color:#F2F2F2;margin-top:55px;">
+  <div nz-col [nzXs]="{ span: 6, offset:2 }" [nzXl]="{ span: 4,offset: 4 }">
+    <nz-affix>
       <div nz-row>
         <ul nz-col  nz-menu [nzMode]="'inline'" style="width: 240px;" [nzInlineCollapsed]="isCollapsed">
           <li nz-menu-item nz-tooltip nzPlacement="right" [nzTitle]="isCollapsed ? 'Navigation One' : ''">
@@ -10,7 +37,7 @@
           </span>
           </li>
         </ul>
-      </div>
+      </div> -->
       <!--<div class="collapsenav">-->
         <!--<nz-sider [nzCollapsed]="isCollapsed" [nzCollapsedWidth]='0' [nzWidth]="0" >-->
           <!--<ul class="navi2">-->
@@ -30,9 +57,9 @@
           <!--<img *ngIf="!isCollapsed" src="https://github.com/USTCSoftware2018/Art/blob/master/%E8%A1%A5%E5%85%852.png?raw=true" (click)="toggleCollapsed()" style="width: 5vw;margin-top:0.65vw;">-->
         <!--</div>-->
       <!--</div>-->
-   </nz-affix>
+   <!-- </nz-affix>
   </div>
-  <div nz-col [nzXs]="{ span: 15 }" [nzLg]="{ span: 15 }">
+  <div nz-col [nzXs]="12" [nzXl]="12">
     <router-outlet></router-outlet>
   </div>
-</div>
+</div> -->

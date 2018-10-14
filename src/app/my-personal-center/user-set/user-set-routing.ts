@@ -5,6 +5,7 @@ import {UserReportComponent} from './user-report/user-report.component';
 import {UserNavComponent} from './user-nav/user-nav.component';
 import {UserBasicComponent} from './user-basic/user-basic.component';
 import {UserAccountComponent} from './user-account/user-account.component';
+import {UserVariableComponent} from './user-variable/user-variable.component';
 
 export const userset_route: Route = {
   path: 'userset',
@@ -21,6 +22,10 @@ export const userset_route: Route = {
     {
       path: 'user-account',
       component: UserAccountComponent
+    },
+    {
+      path: 'user-variable',
+      component: UserVariableComponent,
     },
     {
       path: 'user-watch-all-info',

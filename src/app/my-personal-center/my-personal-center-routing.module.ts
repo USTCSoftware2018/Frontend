@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'index'},
   userset_route,
   userinfo_route,
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -10,7 +10,7 @@
 
 .render_title {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 7px;
 }
 
 .render_attr {
@@ -19,9 +19,11 @@
 }
 
 .render_sub_key {
-    font-size:1.4em;
+    font-size:1.3em;
+    font-weight: 600;
     color: black;
-    margin-bottom: 5px;
+    margin-top:5px;
+    margin-bottom: 10px;
 }
 
 .render_sub_value {
@@ -37,6 +39,7 @@
     margin-right: auto;
     margin-left: auto;
     display: block;
+    margin-bottom: 5px;
 }
 
 .render_result_text {
@@ -49,6 +52,7 @@
 
 .render_result_list {
     padding-left: 50px;
+    margin-bottom: 5px;
 }
 
 .render_result_list_item {
@@ -74,6 +78,7 @@
     border-top-color: #000000;
     border-top-style: solid;
     border-top-width: 2px;
+    margin-bottom: 5px;
 }
 
 .render_result_table_row {

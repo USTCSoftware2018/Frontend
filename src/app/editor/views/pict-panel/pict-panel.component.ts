@@ -15,6 +15,7 @@ export class PictPanelComponent implements OnInit, OnChanges {
   previewImage = '';
   previewVisible = false;
 
+  // public picUrl = 'http://139.199.13.162:8080/api/editor/graph/';
   public picUrl = 'https://api.biohub.tech/api/editor/graph/';
 
   constructor(public http: HttpClient,
