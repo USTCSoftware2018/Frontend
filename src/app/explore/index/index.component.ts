@@ -21,7 +21,7 @@ export class IndexComponent implements OnInit {
       ['#18bbff', '#00486b']
     ];
    function settheme() {
-        victor(theme[2]).set();
+        victor(theme[0]).set();
    }
    settheme();
   }

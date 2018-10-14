@@ -71,7 +71,7 @@ export class ReportCardComponent implements OnInit {
     // 点击先直接修改
     this.old_collected_bl = this.isliked;
     this.iscolloected = !this.old_collected_bl;
-    // 根据现在是否点赞进行请求
+    // 根据现在是否收藏进行请求
     if (!this.old_liked_bl) {
       this.http.star(this.report.id, this.collected_callback);
     } else {
