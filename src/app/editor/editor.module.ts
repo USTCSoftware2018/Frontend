@@ -60,7 +60,6 @@ import { RouteEditorModule } from './route-editor/route-editor.module';
     EditorReportService,
     GetDataService,
     AppendixService,
-    NzNotificationService,
     EditorEventService,
   ],
   exports: [

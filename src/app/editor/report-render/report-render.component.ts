@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, OnInit, Input, OnChanges} from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, Input, OnChanges, OnDestroy} from '@angular/core';
 import { ReportHeader, ReportStepsHeader } from '../headers/article';
 import { EventService } from './event.service';
 import {RenderServiceService} from './render-service.service';
@@ -11,7 +11,7 @@ import * as $ from 'jquery';
   templateUrl: './report-render.component.html',
   styleUrls: ['./report-render.component.less']
 })
-export class ReportRenderComponent implements OnInit, OnChanges {
+export class ReportRenderComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() reportId: number;
 
@@ -27,6 +27,11 @@ export class ReportRenderComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
+  }
+
+  ngOnDestroy () {
+    this.renderService.renderReport = null;
+    this.renderService.state = 0;
   }
 
   public downloadPDF() {
