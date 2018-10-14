@@ -15,7 +15,6 @@ import { ReportDraftComponent } from './report-draft/report-draft.component';
 import { ForbiddenNameDirective } from './formvalidate/forbidden-name.directive';
 import {RouterModule} from '@angular/router';
 import { UserVariableComponent } from './user-variable/user-variable.component';
-
 registerLocaleData(en);
 
 @NgModule({
