@@ -6,7 +6,7 @@
     <!-- right part -->
     <div nz-col nzSm="24" nzXs="24" nzMd="18" nzLg="18" nzXl="18" nzXXl="18" class="report-content">
       <div class="report-action" align="center">
-        <button nz-button nzType="primary" >Edit</button>
+        <button [routerLink]="'/editor/'+ report_id" nz-button nzType="primary" >Edit</button>
         <nz-dropdown>
            <button (click)="downloadReport()" nz-button nz-dropdown nzType="primary"><i class="anticon anticon-down"></i>Download</button>
           <ul nz-menu>
@@ -35,7 +35,7 @@
 
           <div *ngIf="userinfo.isLogin" nz-row nzType="flex" nzAlign="top" class="input-comment">
             <div nz-col nzSpan="3">
-              <a><nz-avatar nzSize="large" [nzSrc]="user?.avatar_url"></nz-avatar></a>
+              <a><nz-avatar nzSize="large" [nzSrc]="report_author?.avatar_url"></nz-avatar></a>
             </div>
             <div nz-col nzSpan="21">
               <textarea rows="4" nz-input></textarea>
