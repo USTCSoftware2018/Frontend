@@ -3,8 +3,12 @@
        [nzLg]="{span:22, offset:1}" [nzXl]="{span:20, offset:2}"
        [nzXXl]="{span:20, offset:2}" class="report-container">
 
+    <div nz-col nzSm="24" nzXs="24" nzMd="24"
+         nzLg="0" nzXl="0" nzXXl="0">
+      <app-report-author-info [isMyself]="true" [user]="report_author" [report]="report_sim_info"></app-report-author-info>
+    </div>
     <!-- right part -->
-    <div nz-col nzSm="24" nzXs="24" nzMd="18" nzLg="18" nzXl="18" nzXXl="18" class="report-content">
+    <div nz-col nzSm="24" nzXs="24" nzMd="24" nzLg="17" nzXl="18" nzXXl="18" class="report-content">
       <div class="report-action" align="center">
         <button [routerLink]="'/editor/'+ report_id" nz-button nzType="primary" >Edit</button>
         <nz-dropdown>
@@ -62,14 +66,10 @@
     </div>
 
     <!-- left part-->
-    <div nz-col nzSm="0" nzXs="0" nzMd="6" nzLg="6" nzXl="6" nzXXl="6">
+    <div nz-col nzSm="0" nzXs="0" nzMd="0" nzLg="7" nzXl="6" nzXXl="6">
       <nz-affix nzOffsetTop="45">
-        <app-report-author-info [user]="report_author" [report]="report_sim_info"></app-report-author-info>
+        <app-report-author-info [isMyself]="true" [user]="report_author" [report]="report_sim_info"></app-report-author-info>
       </nz-affix>
-    </div>
-    <div nz-col nzSm="24" nzXs="24" nzMd="0"
-         nzLg="0" nzXl="0" nzXXl="0">
-        <app-report-author-info [user]="report_author" [report]="report_sim_info"></app-report-author-info>
     </div>
 
   </div>
