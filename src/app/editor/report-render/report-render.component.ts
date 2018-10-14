@@ -30,7 +30,7 @@ export class ReportRenderComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy () {
-    this.renderService.renderReport = null;
+    // this.renderService.renderReport = null;
     this.renderService.state = 0;
   }
 

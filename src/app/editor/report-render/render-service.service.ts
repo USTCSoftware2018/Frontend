@@ -56,7 +56,7 @@ export class RenderServiceService {
     });
   }
 
-  renderReport() {
+  public renderReport() {
     if ( this.report.material) {
       this.extraContent['material'] = this.report.material.join(',');
     }
