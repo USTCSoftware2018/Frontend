@@ -164,7 +164,15 @@ export class HttpExampleComponent implements OnInit {
     }},
     {name: '根据用户id拿到此用户所有archive', lable: 'get_archives_by_user_id', func: this.http.get_archives_by_user_id, templa: {id: 1}},
     {name: '获取label详情', lable: 'query_label', func: this.http.query_label, templa: {id: 1}},
-    {name: '获取archive详情', lable: 'query_archive', func: this.http.query_archive, templa: {id: 1}}
+    {name: '获取archive详情', lable: 'query_archive', func: this.http.query_archive, templa: {id: 1}},
+    {name: '新增评论', lable: 'create_comment', func: this.http.create_comment, templa: {
+      to_report: 16,
+      message: 'hello, world',
+      to_comment: -1
+    }},
+    {name: '获得report评论', lable: 'get_report_comment', func: this.http.get_report_comment, templa: {
+      report_pk: 16
+    }}
   ];
 
   EditorList: Array<FuncEle> = [
