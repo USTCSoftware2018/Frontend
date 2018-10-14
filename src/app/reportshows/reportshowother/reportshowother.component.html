@@ -33,7 +33,7 @@
             <p>Comments({{report_sim_info.commentsnum}})
           </div>
 
-          <div *ngIf="userinfo.isLogin" nz-row nzType="flex" nzAlign="top" class="input-comment">
+          <div *ngIf="isLogin" nz-row nzType="flex" nzAlign="top" class="input-comment">
             <div nz-col nzSpan="3">
               <a><nz-avatar nzSize="large" [nzSrc]="report_author?.avatar_url"></nz-avatar></a>
             </div>

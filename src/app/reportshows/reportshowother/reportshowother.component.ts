@@ -1,10 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {ApplicationInitStatus, Component, OnInit} from '@angular/core';
 import { Simuser, Report, ReportComment } from '../../Interface/userinfo';
 import { user1, report1 } from '../../Interface/mock-user';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {UserSigninfoService} from '../../user-signinfo.service';
 import { COMMENT} from '../../Interface/mock-user';
 import {EventService} from '../../editor/report-render/event.service';
+import {HttpService} from '../../http.service';
+import {ApiResult} from '../../Interface/ApiResult';
 
 @Component({
   selector: 'app-reportshowother',
@@ -12,9 +14,8 @@ import {EventService} from '../../editor/report-render/event.service';
   styleUrls: ['./reportshowother.component.less']
 })
 export class ReportshowotherComponent implements OnInit {
-
   report_id: number;
-  report_author: Simuser = user1;
+  report_author: Simuser;
   report_sim_info: Report = report1;
   report_comments: ReportComment[] = [COMMENT, COMMENT];
   isLogin: boolean;
@@ -24,12 +25,12 @@ export class ReportshowotherComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private userinfo: UserSigninfoService,
     private dowload_report: EventService,
+    private http: HttpService,
   ) { }
 
   ngOnInit() {
     this.report_author = new Simuser();
     this.getReportId();
-    this.report_author = this.userinfo.myInfo;
     this.isLogin = this.userinfo.isLogin;
   }
   getReportId = () => {
@@ -37,7 +38,17 @@ export class ReportshowotherComponent implements OnInit {
       this.report_id = +params.get('report_id');
     });
   }
-  downloadReport = () =>{
+  getUserId = () => {
+    this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
+      this.report_author.id = +params.get('user_id');
+    });
+  }
+  getUser = () => {
+    const callback = (result: ApiResult) => {
+    };
+    this.http.get_user_by_id(this.report_author.id, callback);
+  }
+  downloadReport = () => {
     this.dowload_report.downloadEvent.emit(0);
   }
 }

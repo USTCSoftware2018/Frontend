@@ -34,7 +34,7 @@ export class ReportshowComponent implements OnInit {
       this.report_id = +params.get('report_id');
     });
   }
-  downloadReport = () =>{
+  downloadReport = () => {
     this.dowload_report.downloadEvent.emit(0);
   }
 }
