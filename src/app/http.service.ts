@@ -345,6 +345,21 @@ export class HttpService {
   query_archive(id: number, callback: callbackFunc) {
     this.fire(`editor/archive/${id}/`, 'get', null, callback);
   }
+///////////////////// Comment ///////////////////////////////
+  create_comment(to_report: number, message: string, to_comment: number, callback: callbackFunc) {
+    // to_comment = -1 if there is none
+    const params = {
+      to_report: to_report,
+      message: message,
+      to_comment: to_comment
+    }
+    this.fire(`editor/comment/`, 'post', params, callback)
+  }
+
+  get_report_comment(report_pk: number, callback: callbackFunc) {
+    this.fire(`editor/comment/get_report_comment/${report_pk}/`, 'get', null, callback)
+  }
 
 }
+
 
