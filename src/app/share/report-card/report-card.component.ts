@@ -17,4 +17,7 @@ export class ReportCardComponent implements OnInit {
   gotoIndex = () => {
     this.routerjudge.gotoUserIndex(this.report.author.id);
   }
+  gotoReport = (report_id: number) => {
+    this.routerjudge.gotoReportDisplay(this.report.author.id, this.report.id);
+  }
 }

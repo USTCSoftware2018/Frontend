@@ -1,4 +1,4 @@
-import {User, Report, Assortment} from './userinfo';
+import {User, Report, Assortment, ReportComment} from './userinfo';
 import { Simuser } from './userinfo';
 
 export const user1: Simuser = {
@@ -134,3 +134,8 @@ export const SIMUSER: Simuser = {
   followed: true,
 };
 export const CLASSIFICATION: Assortment = assortment;
+export const COMMENT: ReportComment = {
+  user: user1,
+  content: '233333',
+  date: '2018.10.1'
+}

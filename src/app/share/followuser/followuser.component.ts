@@ -33,11 +33,11 @@ export class FollowuserComponent implements OnInit {
     this.setBtnShow();
   }
   // 判断是否显示follow btn
-  setBtnShow() {
-    if (this.userinfo.isLogin) {
+  setBtnShow = () => {
+    if (!this.userinfo.isLogin) {
       this.btnshow = false;
     } else {
-      this.btnshow = this.otheruser.id === this.userinfo.myInfo.id ? true : false;
+      this.btnshow = this.otheruser.id === this.userinfo.myInfo.id ? false : true;
     }
   }
   gotoIndex = () => {

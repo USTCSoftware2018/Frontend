@@ -72,3 +72,8 @@ export class Collection {
   name: string;
   reports: Array<Report>;
 }
+export class ReportComment {
+  user: Simuser;
+  date: string;
+  content: string;
+}
