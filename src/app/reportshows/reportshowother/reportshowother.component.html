@@ -1,87 +1,76 @@
-<!--<div class="d-bk" nz-row >-->
-  <!--<div nz-col nzSm="24" nzXs="24" [nzMd]="{span:22,offset:1}" [nzLg]="{span:20, offset:2}" [nzXl]="{span:18, offset:3}" [nzXXl]="{span:18, offset:3}">-->
-    <!--<div nz-row nzGutter="10">-->
-      <!--<div nz-col nzSpan="7" >-->
-        <!--<div  class="box-position">-->
-          <!--<div class="box-bk1 box-position" style="overflow: auto;overflow-x: hidden">-->
-            <!--<app-user-info-profile [user]="user1"></app-user-info-profile>-->
-          <!--</div>-->
+<div nz-row class="d-bk">
+  <div nz-col nzSm="24" nzXs="24" [nzMd]="{span:22,offset:1}"
+       [nzLg]="{span:22, offset:1}" [nzXl]="{span:20, offset:2}"
+       [nzXXl]="{span:20, offset:2}" class="report-container">
 
-          <!--<div class="box-position" style="height: 10px;color: #f2f2f2;background-color: #f2f2f2">-->
-          <!--</div>-->
+    <!-- right part -->
+    <div nz-col nzSm="24" nzXs="24" nzMd="18" nzLg="18" nzXl="18" nzXXl="18" class="report-content">
+      <div class="report-action" align="center">
+        <button [routerLink]="'/editor/'+ report_id" nz-button nzType="primary" >Edit</button>
+        <nz-dropdown>
+          <button (click)="downloadReport()" nz-button nz-dropdown nzType="primary"><i class="anticon anticon-down"></i>Download</button>
+          <ul nz-menu>
+            <li nz-menu-item>
+              <a>pdf</a>
+            </li>
+          </ul>
+        </nz-dropdown>
+        <button nz-button nzType="primary" >Delete</button>
+      </div>
 
-          <!--<div class="box-bk box-position" style="height: 350px;">-->
-            <!--<div class="box-bk card-border fontsize-title box-position">-->
-              <!--<b>Related report</b>-->
-            <!--</div>-->
-            <!--<div class="box-bk card-border box-position" *ngFor="let report of reports">-->
-              <!--<u><b>{{report.title}}</b></u>-->
-              <!--<h5 class="begin">{{report.begin}}</h5>-->
-              <!--<a><strong style="color: black">topics : </strong>{{report.topics}}</a>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div nz-col nzSpan="17" >-->
-        <!--<div nz-col [nzOffset]="1" id="mainbox1" class="box-bk2 fontSize mainbox-position1 card-border" style="overflow: auto">-->
-          <!--<div class="ant-row-flex ant-row-flex-top ant-row-flex-center" style="float: right">-->
-            <!--<button nz-button [nzType]="'primary'" [nzSize]="'default'" class="ant-btn ant-btn-primary button-style1" style="float: right;">-->
-              <!--<span> Edit </span>-->
-            <!--</button>-->
-            <!--<button nz-button [nzType]="'primary'" [nzSize]="'default'" class="ant-btn ant-btn-primary button-style1" style="float: right;">-->
-              <!--<i class="anticon anticon-down ng-star-inserted" style="display: inline-block;"></i><span>Download</span>-->
-            <!--</button>-->
-            <!--<button nz-button [nzType]="'primary'" [nzSize]="'default'" class="ant-btn ant-btn-primary button-style1" style="float: right;">-->
-              <!--<span> Delete </span>-->
-            <!--</button>-->
-          <!--</div>-->
-        <!--</div>-->
+      <nz-divider></nz-divider>
 
-        <!--<div nz-col [nzOffset]="1" id="mainbox2" class="box-bk2 fontSize mainbox-position2 card-border">-->
-          <!--<div  style="width: 100%"><h3>{{Report.title}}</h3></div>-->
-          <!--<div class="font-style">topics : {{Report.topics}}</div>-->
-          <!--<div class="time-style">{{Report.time}}</div>-->
-          <!--<div>-->
-            <!--<p class="article">{{Report.begin}}</p>-->
-          <!--</div>-->
-          <!--<img src="{{me.myhead}}" style="border-radius: 50%;border: 1px solid #979797;width: 3vw;height: 3vw;float: left;align-self: center">-->
-          <!--<textarea class="comment-bk comment-style mycomment-style ant-row-flex-top" rows="2" placeholder="Say somethig"></textarea>-->
-        <!--</div>-->
+      <div class="report">
+        <app-report-render [reportId]="report_id"></app-report-render>
+      </div>
 
-        <!--<div nz-col [nzOffset]="1" id="mainbox3" class="box-bk2 fontSize mainbox-position2 card-border">-->
-          <!--<div class="box-bk1 box-position ant-col-12 ant-row-flex-top" style="width: 100%;margin-top: 10px">-->
-            <!--<p>-->
-              <!--<span class="iconstyle ant-col-3">&nbsp;{{ socialinfo.likenum }}&nbsp;<i id="change1" class="handpoint anticon anticon-like-o" (click)="changecolor()"></i></span>-->
-              <!--<span class="iconstyle ant-col-3">&nbsp;{{ socialinfo.commentnum }}&nbsp;<i class="handpoint anticon anticon-message"></i></span>-->
-            <!--</p>-->
-          <!--</div>-->
-          <!--<br>-->
-          <!--<br>-->
-          <!--<div class="comment-bk comment-style ant-row-flex-top" *ngFor="let comment of socialcomments">-->
-            <!--<div nz-row style="overflow: auto;margin-bottom: 1vw">-->
-              <!--<img src="{{comment.userimg}}" style="border-radius: 50%;border: 1px solid #979797;width: 2vw;height: 2vw;">-->
-              <!--<span ><strong>&nbsp;&nbsp;{{comment.username}}</strong></span>-->
-              <!--<span>&nbsp;&nbsp;replied to&nbsp;&nbsp;</span>-->
-              <!--<img src="{{comment.oppimg}}" style="border-radius: 50%;border: 1px solid #979797;width: 2vw;height: 2vw;">-->
-              <!--<span ><strong>&nbsp;&nbsp;{{comment.oppname}}</strong></span>-->
-            <!--</div>-->
-            <!--<div style="padding-bottom: 1vw">-->
-              <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{comment.comments}}-->
-              <!--<p>-->
-                <!--<span class="iconstyle2 ant-col-2">&nbsp;{{ comment.likenum }}&nbsp;-->
-                  <!--<i class="handpoint anticon"-->
-                     <!--[class.likeo]="comment.likeo"-->
-                     <!--[class.like]="!comment.likeo"-->
-                     <!--[class.anticon-like-o]="comment.likeo"-->
-                     <!--[class.anticon-like]="!comment.likeo"-->
-                     <!--(click)="changecolor2(comment)">-->
-                  <!--</i>-->
-                <!--</span>-->
-              <!--</p>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
+      <nz-divider></nz-divider>
+
+      <div class="comments-container">
+        <div class="comments">
+
+          <div class="comments-title">
+            <p>Comments({{report_sim_info.commentsnum}})
+          </div>
+
+          <div *ngIf="userinfo.isLogin" nz-row nzType="flex" nzAlign="top" class="input-comment">
+            <div nz-col nzSpan="3">
+              <a><nz-avatar nzSize="large" [nzSrc]="report_author?.avatar_url"></nz-avatar></a>
+            </div>
+            <div nz-col nzSpan="21">
+              <textarea rows="4" nz-input></textarea>
+              <div class="submit-btn">
+                <button nz-button nzType="primary">Post a comment</button>
+              </div>
+            </div>
+          </div>
+
+          <nz-divider></nz-divider>
+
+          <div nz-row *ngFor="let comment of report_comments" class="every-comment">
+            <div nz-col nzSpan="3">
+              <a><nz-avatar nzSize="large" [nzSrc]="comment.user.avatar_url"></nz-avatar></a>
+            </div>
+            <div nz-col nzSpan="21">
+              <a class="comment-user">{{comment.user.username}}</a>
+              <span class="comments-date">&nbsp;&nbsp;&nbsp;{{comment.date}}</span>
+              <p class="comment-content">{{comment.content}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- left part-->
+    <div nz-col nzSm="0" nzXs="0" nzMd="6" nzLg="6" nzXl="6" nzXXl="6">
+      <nz-affix nzOffsetTop="45">
+        <app-report-author-info [user]="report_author" [report]="report_sim_info"></app-report-author-info>
+      </nz-affix>
+    </div>
+    <div nz-col nzSm="24" nzXs="24" nzMd="0"
+         nzLg="0" nzXl="0" nzXXl="0">
+      <app-report-author-info [user]="report_author" [report]="report_sim_info"></app-report-author-info>
+    </div>
+
+  </div>
+</div>

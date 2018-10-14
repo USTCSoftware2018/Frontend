@@ -10,7 +10,8 @@ const routes: Routes = [
   },
   {
     path: ':user_id/:report_id',
-    component: ReportshowotherComponent
+    component: ReportshowotherComponent,
+    data: { 'report': Report }
   }
 ];
 
