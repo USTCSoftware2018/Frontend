@@ -4,6 +4,7 @@ import { user1, report1 } from '../../Interface/mock-user';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {UserSigninfoService} from '../../user-signinfo.service';
 import { COMMENT} from '../../Interface/mock-user';
+import {EventService} from '../../editor/report-render/event.service';
 
 @Component({
   selector: 'app-reportshow',
@@ -19,7 +20,8 @@ export class ReportshowComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private userinfo: UserSigninfoService
+    private userinfo: UserSigninfoService,
+    private dowload_report: EventService,
   ) { }
   ngOnInit() {
     this.report_author = new Simuser();
@@ -31,5 +33,8 @@ export class ReportshowComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
       this.report_id = +params.get('report_id');
     });
+  }
+  downloadReport = () =>{
+    this.dowload_report.downloadEvent.emit(0);
   }
 }

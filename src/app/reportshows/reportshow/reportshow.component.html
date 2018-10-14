@@ -8,7 +8,7 @@
       <div class="report-action" align="center">
         <button nz-button nzType="primary" >Edit</button>
         <nz-dropdown>
-           <button nz-button nz-dropdown nzType="primary"><i class="anticon anticon-down"></i>Download</button>
+           <button (click)="downloadReport()" nz-button nz-dropdown nzType="primary"><i class="anticon anticon-down"></i>Download</button>
           <ul nz-menu>
             <li nz-menu-item>
               <a>pdf</a>
