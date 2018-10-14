@@ -21,12 +21,23 @@ export class DisplayAllInfoComponent implements OnInit {
   i = 0;
   t: Report;
 
+  /* for pending */
+  count:number;
+  pending_show:boolean;
+  pending_wrong_show:boolean;
+  /* for pending */
+
   constructor(
     private userinfo: UserSigninfoService,
     private http: HttpService,
     private router:  ActivatedRoute
   ) { }
   ngOnInit() {
+    /* for pending */
+    this.count = 0;
+    this.pending_show = true;
+    this.pending_wrong_show = false;
+    /* for pending */
     this.user = new User();
     this.getid();
     this.http.get_followers_by_id(this.user_id, this.followersCB);
@@ -49,12 +60,42 @@ export class DisplayAllInfoComponent implements OnInit {
     }
   }*/
   followersCB = (result: ApiResult) => {
-    this.user.followers = result.data.results;
+    if(result.success) {
+      this.user.followers = result.data.results;
+      /* for pending */
+      this.count++;
+    }else {
+      this.pending_wrong_show=true;
+    }
+    if(this.count==3){
+      this.pending_show=false;
+    }
+    /* for pending */
   }
   followingCB = (result: ApiResult) => {
-    this.user.following = result.data.results;
+    if(result.success) {
+      this.user.following = result.data.results;
+      /* for pending */
+      this.count++;
+    }else {
+      this.pending_wrong_show=true;
+    }
+    if(this.count==3){
+      this.pending_show=false;
+    }
+    /* for pending */
   }
   reportsCB = (result: ApiResult) => {
-    this.user.reports = result.data.results;
+    if(result.success) {
+      this.user.reports = result.data.results;
+      /* for pending */
+      this.count++;
+    }else {
+      this.pending_wrong_show=true;
+    }
+    if(this.count==3){
+      this.pending_show=false;
+    }
+    /* for pending */
   }
 }

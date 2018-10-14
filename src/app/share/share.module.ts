@@ -16,6 +16,7 @@ import { RouterModule} from '@angular/router';
 import { ClassificationComponent } from './classification/classification.component';
 import { IgemerCardComponent } from './igemer-card/igemer-card.component';
 import { PendingComponent } from './pending/pending.component';
+import { WrongPendingComponent } from './wrong-pending/wrong-pending.component';
 
 
 registerLocaleData(en);
@@ -39,6 +40,7 @@ registerLocaleData(en);
     ClassificationComponent,
     IgemerCardComponent,
     PendingComponent,
+    WrongPendingComponent,
   ],
   // 公用导出组件放在exports数组内
   providers: [
@@ -57,7 +59,8 @@ registerLocaleData(en);
     WatchReportByClassificationComponent,
     ClassificationComponent,
     IgemerCardComponent,
-    PendingComponent
+    PendingComponent,
+    WrongPendingComponent
   ]
 })
 export class ShareModule { }
