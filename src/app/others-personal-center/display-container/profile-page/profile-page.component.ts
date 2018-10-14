@@ -18,9 +18,9 @@ export class ProfilePageComponent implements OnInit {
   user_id: number;
 
   /* for pending */
-  count:number;
-  pending_show:boolean;
-  pending_wrong_show:boolean;
+  count: number;
+  pending_show: boolean;
+  pending_wrong_show: boolean;
   /* for pending */
 
   constructor(
@@ -59,11 +59,11 @@ export class ProfilePageComponent implements OnInit {
         this.labels = result.data;
         /* for pending */
         this.count++;
-      }else {
-        this.pending_wrong_show=true;
+      } else {
+        this.pending_wrong_show = true;
       }
-      if(this.count==2){
-        this.pending_show=false;
+      if (this.count === 2) {
+        this.pending_show = false;
       }
       /* for pending */
     };
@@ -72,11 +72,11 @@ export class ProfilePageComponent implements OnInit {
         this.archive = result.data;
         /* for pending */
         this.count++;
-      }else {
-        this.pending_wrong_show=true;
+      } else {
+        this.pending_wrong_show = true;
       }
-      if(this.count==2){
-        this.pending_show=false;
+      if (this.count === 2) {
+        this.pending_show = false;
       }
       /* for pending */
     };

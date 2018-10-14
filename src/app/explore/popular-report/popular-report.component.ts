@@ -12,9 +12,9 @@ import {ApiResult} from '../../Interface/ApiResult';
 export class PopularReportComponent implements OnInit {
   reports: Report[];
   /* for pending */
-  count:number;
-  pending_show:boolean;
-  pending_wrong_show:boolean;
+  count: number;
+  pending_show: boolean;
+  pending_wrong_show: boolean;
   /* for pending */
   constructor(
     private http: HttpService,
@@ -35,14 +35,14 @@ export class PopularReportComponent implements OnInit {
         this.reports = result.data.results;
         /* for pending */
         this.count++;
-      }else {
-        this.pending_wrong_show=true;
+      } else {
+        this.pending_wrong_show = true;
       }
-      if(this.count==1){
-        this.pending_show=false;
+      if (this.count === 1) {
+        this.pending_show = false;
       }
       /* for pending */
-      console.log(result)
+      console.log(result);
     };
     this.http.get_popular_reports_by_system(callback);
   }
