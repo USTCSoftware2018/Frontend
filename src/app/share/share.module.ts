@@ -18,6 +18,8 @@ import { IgemerCardComponent } from './igemer-card/igemer-card.component';
 import { PendingComponent } from './pending/pending.component';
 import { WrongPendingComponent } from './wrong-pending/wrong-pending.component';
 
+import { DBsearchresultComponent } from './dbsearchresult/dbsearchresult.component';
+
 
 registerLocaleData(en);
 
@@ -40,6 +42,7 @@ registerLocaleData(en);
     ClassificationComponent,
     IgemerCardComponent,
     PendingComponent,
+    DBsearchresultComponent,
     WrongPendingComponent,
   ],
   // 公用导出组件放在exports数组内
@@ -60,6 +63,7 @@ registerLocaleData(en);
     ClassificationComponent,
     IgemerCardComponent,
     PendingComponent,
+    DBsearchresultComponent,
     WrongPendingComponent
   ]
 })
