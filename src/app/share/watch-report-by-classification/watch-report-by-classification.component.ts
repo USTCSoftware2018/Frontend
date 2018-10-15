@@ -10,6 +10,10 @@ export class WatchReportByClassificationComponent implements OnInit {
   @Input() classification_reports: Report[];
   @Input() big_label: string;
   @Input() label: any; // 要展示的哪种归档的report
+  /* for pending */
+  @Input() pending_show: boolean;
+  @Input() pending_wrong_show: boolean;
+  /* for pending */
   reports_onshow = [];
   reports_unshow = [];
   i = 0;
