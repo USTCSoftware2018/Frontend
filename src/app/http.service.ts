@@ -3,8 +3,6 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError, of, observable } from 'rxjs';
 import { ApiResult } from './Interface/ApiResult';
 import { callbackFunc } from './Type/callbackFunc';
-import { create } from 'domain';
-import { callbackify } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -345,6 +343,21 @@ export class HttpService {
   query_archive(id: number, callback: callbackFunc) {
     this.fire(`editor/archive/${id}/`, 'get', null, callback);
   }
+///////////////////// Comment ///////////////////////////////
+  create_comment(to_report: number, message: string, to_comment: number, callback: callbackFunc) {
+    // to_comment = -1 if there is none
+    const params = {
+      to_report: to_report,
+      message: message,
+      to_comment: to_comment
+    }
+    this.fire(`editor/comment/`, 'post', params, callback)
+  }
+
+  get_report_comment(report_pk: number, callback: callbackFunc) {
+    this.fire(`editor/comment/get_report_comment/${report_pk}/`, 'get', null, callback)
+  }
 
 }
+
 

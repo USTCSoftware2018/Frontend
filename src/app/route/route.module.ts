@@ -24,7 +24,7 @@ const appRoutes: Routes = [
   { path: 'userprofile/:user_id', loadChildren: '../others-personal-center/others-personal-center.module#OthersPersonalCenterModule',
     data: {preload: true}},
   { path: 'report', loadChildren: '../reportshows/reportshows.module#ReportshowsModule', data: {preload: true}},
-  { path: '', redirectTo: '/index', pathMatch: 'full' },
+  { path: '', redirectTo: '/explore', pathMatch: 'full' },
   { path: '**', component: Error404Component}
 ];
 
