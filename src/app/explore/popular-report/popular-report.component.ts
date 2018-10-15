@@ -4,12 +4,7 @@ import { report1 } from '../../Interface/mock-user';
 import {HttpService} from '../../http.service';
 import {ApiResult} from '../../Interface/ApiResult';
 import {NzMessageService, NzModalService} from 'ng-zorro-antd';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+
 
 @Component({
   selector: 'app-popular-report',
@@ -18,10 +13,6 @@ import {
 })
 export class PopularReportComponent implements OnInit {
   reports: Report[];
-  collect_report = new Report();
-  iscollect: boolean;
-  isOkLoading: boolean;
-  collectForm: FormGroup;
   /* for pending */
   count: number;
   pending_show: boolean;
@@ -29,9 +20,6 @@ export class PopularReportComponent implements OnInit {
   /* for pending */
   constructor(
     private http: HttpService,
-    private modalService: NzModalService,
-    private fb: FormBuilder,
-    private message: NzMessageService
     ) { }
 
   ngOnInit() {
@@ -41,9 +29,6 @@ export class PopularReportComponent implements OnInit {
     this.pending_wrong_show = false;
     /* for pending */
     this.getPopularReports();
-    this.collectForm = this.fb.group({
-      collection: [ null, [ Validators.required, Validators.maxLength(20) ] ],
-    });
   }
 
   private getPopularReports = () => {
@@ -61,45 +46,5 @@ export class PopularReportComponent implements OnInit {
       /* for pending */
     };
     this.http.get_popular_reports_by_system(callback);
-  }
-  showCollect = (event: Collect) => {
-    this.collect_report = event.report;
-    if ( !event.iscollected ) {
-      this.iscollect = true;
-    } else {
-      this.modalService.confirm({
-        nzTitle: 'Uncollect' + event.report.title,
-        nzContent: 'Are you sure to cancle the collection',
-        nzOkText: 'OK',
-        nzCancelText: 'Cancel',
-        nzOnOk: () => {
-        }
-      });
-    }
-  }
-  notShow() {
-    this.iscollect = false;
-  }
-  collectReport() {
-    const collectinfo = this.collectForm.value;
-    const callback = (result: ApiResult) => {
-      if (result.success) {
-        this.isOkLoading = true;
-        this.iscollect = false;
-        this.message.success('Successly collect the report.');
-      }
-    };
-    this.isOkLoading = false;
-    this.http.add_to_collection(this.collect_report.id , collectinfo.collection, callback);
-  }
-  // form variable
-  get collection() {
-    return this.collectForm.get('collection');
-  }
-  submitForm(): void {
-    for (const i in this.collectForm.controls) {
-      this.collectForm.controls[ i ].markAsDirty();
-      this.collectForm.controls[ i ].updateValueAndValidity();
-    }
   }
 }

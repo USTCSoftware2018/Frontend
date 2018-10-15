@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import {CommonModule, registerLocaleData} from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntdModule, NZ_I18N, en_US, zh_CN } from 'ng-zorro-antd';
 import en from '@angular/common/locales/en';
 
@@ -27,6 +28,8 @@ registerLocaleData(en);
     CommonModule,
     NgZorroAntdModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     PandaComponent,

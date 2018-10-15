@@ -81,3 +81,11 @@ export class Collect {
   report: Report;
   iscollected: boolean;
 }
+export class Notification {
+  id: number;
+  has_read: boolean;
+  message: string;
+  category: string;
+  created: string;
+  target: any;
+}

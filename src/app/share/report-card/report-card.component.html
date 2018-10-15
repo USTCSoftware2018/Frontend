@@ -22,5 +22,27 @@
   <a (click)="toggleLiked()"><i class="anticon"[class.anticon-like-o]="!isliked" [class.anticon-like]="isliked"></i></a>
 </ng-template>
 <ng-template #actionCollection>
-  <a (click)="toggleCollected()"><i class="anticon" [class.anticon-tag-o]="!iscolloected" [class.anticon-tag]="iscolloected"></i></a>
+  <a (click)="showCollect()"><i class="anticon" [class.anticon-tag-o]="!iscollected" [class.anticon-tag]="iscollected"></i></a>
 </ng-template>
+
+<nz-modal [(nzVisible)]="collecting" nzTitle="Collect a Report" nzOkText="Collect" [nzOkLoading]="isOkLoading"
+          nzCancelText="Cancel" (nzOnOk)="collectReport()" (nzOnCancel)="notShow()">
+  <form nz-form [formGroup]="collectForm" (ngSubmit)="submitForm()" nzHasFeedback>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="collection">Group name</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-input-group >
+          <input type="text" nz-input formControlName="collection" placeholder="Collect Group">
+        </nz-input-group>
+        <nz-form-explain *ngIf="collectForm.dirty && (collection.errors || collection.pending)">
+          <ng-container *ngIf="collection.hasError('required')">
+            Please enter the group name!
+          </ng-container>
+          <ng-container *ngIf="collection.hasError('maxlength')">
+            too long(no more than 20 letters)!
+          </ng-container>
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-modal>
