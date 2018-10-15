@@ -7,6 +7,20 @@
         <ng-template #CollectionTemplate>
           <a>Collections</a>
         </ng-template>
+
+        <!-- for pending -->
+        <div *ngIf="pending_show&&!pending_wrong_show">
+          <div class="pending-position">
+            <app-pending></app-pending>
+          </div>
+        </div>
+        <div *ngIf="pending_wrong_show">
+          <div class="pending-position">
+            <app-wrong-pending></app-wrong-pending>
+          </div>
+        </div>
+        <!-- for pending  -->
+
         <div *ngFor="let report of collections">
           <app-others-report [bkcolor]="'#F2F2F2'" [report]="report"></app-others-report>
         </div>
@@ -16,6 +30,18 @@
         <ng-template #FavoriteTemplate>
           <a>Favorite</a>
         </ng-template>
+        <!-- for pending -->
+        <div *ngIf="pending_show&&!pending_wrong_show">
+          <div class="pending-position">
+            <app-pending></app-pending>
+          </div>
+        </div>
+        <div *ngIf="pending_wrong_show">
+          <div class="pending-position">
+            <app-wrong-pending></app-wrong-pending>
+          </div>
+        </div>
+        <!-- for pending  -->
         <div *ngFor="let report of favorite">
           <app-others-report [bkcolor]="'#F2F2F2'" [report]="report"></app-others-report>
         </div>

@@ -9,7 +9,6 @@ import {RouterjudgeService} from '../routerjudge.service';
 })
 export class ReportCardComponent implements OnInit {
   @Input() report: Report;
-
   constructor(private routerjudge: RouterjudgeService) { }
 
   ngOnInit() {

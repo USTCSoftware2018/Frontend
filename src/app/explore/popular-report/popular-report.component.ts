@@ -11,11 +11,21 @@ import {ApiResult} from '../../Interface/ApiResult';
 })
 export class PopularReportComponent implements OnInit {
   reports: Report[];
+  /* for pending */
+  count:number;
+  pending_show:boolean;
+  pending_wrong_show:boolean;
+  /* for pending */
   constructor(
     private http: HttpService,
     ) { }
 
   ngOnInit() {
+    /* for pending */
+    this.count = 0;
+    this.pending_show = true;
+    this.pending_wrong_show = false;
+    /* for pending */
     this.getPopularReports();
   }
 
@@ -23,7 +33,15 @@ export class PopularReportComponent implements OnInit {
     const callback = (result: ApiResult) => {
       if (result.success) {
         this.reports = result.data.results;
+        /* for pending */
+        this.count++;
+      }else {
+        this.pending_wrong_show=true;
       }
+      if(this.count==1){
+        this.pending_show=false;
+      }
+      /* for pending */
       console.log(result)
     };
     this.http.get_popular_reports_by_system(callback);

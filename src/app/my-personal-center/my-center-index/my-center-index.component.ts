@@ -13,6 +13,11 @@ export class MyCenterIndexComponent implements OnInit {
   user: Simuser;
   collections: Report[];
   favorites: Report[];
+  /* for pending */
+  count:number;
+  pending_show:boolean;
+  pending_wrong_show:boolean;
+  /* for pending */
   constructor(private myinfo: UserSigninfoService,
               private http: HttpService,
               ) {
@@ -20,6 +25,11 @@ export class MyCenterIndexComponent implements OnInit {
   }
 
   ngOnInit() {
+    /* for pending */
+    this.count = 0;
+    this.pending_show = true;
+    this.pending_wrong_show = false;
+    /* for pending */
     this.get_collections();
     this.get_favortites();
   }
@@ -27,7 +37,15 @@ export class MyCenterIndexComponent implements OnInit {
     const callback = (result: ApiResult) => {
       if (result.success) {
         this.collections = result.data.results;
+        /* for pending */
+        this.count++;
+      }else {
+        this.pending_wrong_show=true;
       }
+      if(this.count==2){
+        this.pending_show=false;
+      }
+      /* for pending */
     };
     this.http.get_all_my_collections(callback);
   }
@@ -35,7 +53,15 @@ export class MyCenterIndexComponent implements OnInit {
     const callback = (result: ApiResult) => {
       if (result.success) {
         this.collections = result.data.results;
+        /* for pending */
+        this.count++;
+      }else {
+        this.pending_wrong_show=true;
       }
+      if(this.count==2){
+        this.pending_show=false;
+      }
+      /* for pending */
     };
     this.http.get_all_my_favorite_reports(callback);
   }

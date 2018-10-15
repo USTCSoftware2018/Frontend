@@ -9,6 +9,7 @@ import { Simuser, Report } from '../../Interface/userinfo';
 export class ReportAuthorInfoComponent implements OnInit {
   @Input() user: Simuser;
   @Input() report: Report;
+  @Input() isMyself: boolean;
   constructor() { }
 
   ngOnInit() {

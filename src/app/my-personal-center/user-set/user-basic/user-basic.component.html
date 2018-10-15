@@ -9,7 +9,7 @@
         <nz-form-item>
           <nz-form-label>Actual Name</nz-form-label>
           <nz-form-control>
-            <input nz-input placeholder="{{personalmes.actualname}}" 
+            <input nz-input placeholder="{{personalmes.actualname}}"
                    id="actualname" name="actualname" formControlName="actualname" required>
           </nz-form-control>
           <nz-form-explain *ngIf="usermes.get('actualname').dirty && usermes.get('actualname').errors&&issaved">

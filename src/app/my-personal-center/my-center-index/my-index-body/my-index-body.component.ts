@@ -9,6 +9,10 @@ import { Report } from '../../../Interface/userinfo';
 export class MyIndexBodyComponent implements OnInit {
   @Input() collections: Report[];
   @Input() favorite: Report[];
+  /* for pending */
+  @Input() pending_show:boolean;
+  @Input() pending_wrong_show:boolean;
+  /* for pending */
   constructor() { }
 
   ngOnInit() {
