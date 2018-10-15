@@ -1,5 +1,5 @@
-import { Component, OnInit, Input} from '@angular/core';
-import { Report } from '../../Interface/userinfo';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Collect, Report} from '../../Interface/userinfo';
 import {RouterjudgeService} from '../routerjudge.service';
 import {ApiResult} from '../../Interface/ApiResult';
 import {NzMessageService} from 'ng-zorro-antd';
@@ -12,8 +12,9 @@ import {HttpService} from '../../http.service';
 })
 export class ReportCardComponent implements OnInit {
   @Input() report: Report;
-  @Input() iscolloected: boolean;
-  @Input() isliked: boolean;
+  @Output() togglecollect = new EventEmitter<Collect>();
+  iscolloected: boolean;
+  isliked: boolean;
   old_liked_bl: boolean;
   old_collected_bl: boolean;
   constructor(
@@ -23,6 +24,8 @@ export class ReportCardComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.iscolloected = this.report.iscollected;
+    this.isliked = this.report.isliked;
   }
   gotoIndex = () => {
     this.routerjudge.gotoUserIndex(this.report.author.id);
@@ -55,27 +58,20 @@ export class ReportCardComponent implements OnInit {
     }
   }
   // 收藏回调函数定义
-  collected_callback = (result: ApiResult) => {
-    if (!result.success) {
-      this.message.error( 'Fail to unfollow' + this.report.title);
-      this.isliked = this.old_liked_bl;
-    }
-  }
-  uncollected_callback = (result: ApiResult) => {
-    if (!result.success) {
-      this.message.error( 'Fail to like' + this.report.title);
-      this.isliked = this.old_liked_bl;
-    }
-  }
   toggleCollected = () => {
     // 点击先直接修改
-    this.old_collected_bl = this.isliked;
+    this.old_collected_bl = this.iscolloected;
     this.iscolloected = !this.old_collected_bl;
-    // 根据现在是否收藏进行请求
-    if (!this.old_liked_bl) {
-      this.http.star(this.report.id, this.collected_callback);
-    } else {
-      this.http.unstar(this.report.id, this.uncollected_callback);
-    }
+    // 发出收藏请求
+    this.togglecollect.emit(
+      { report: this.report,
+        iscollected: this.old_collected_bl,
+      });
+    // // 根据现在是否收藏进行请求
+    // if (!this.old_liked_bl) {
+    //   this.http.star(this.report.id, this.collected_callback);
+    // } else {
+    //   this.http.unstar(this.report.id, this.uncollected_callback);
+    // }
   }
 }

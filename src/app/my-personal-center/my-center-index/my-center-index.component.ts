@@ -36,7 +36,7 @@ export class MyCenterIndexComponent implements OnInit {
   get_collections = () => {
     const callback = (result: ApiResult) => {
       if (result.success) {
-        this.collections = result.data.results;
+        this.collections = result.data;
         /* for pending */
         this.count++;
       } else {
