@@ -19,6 +19,7 @@ import { PendingComponent } from './pending/pending.component';
 import { WrongPendingComponent } from './wrong-pending/wrong-pending.component';
 
 
+
 registerLocaleData(en);
 
 @NgModule({

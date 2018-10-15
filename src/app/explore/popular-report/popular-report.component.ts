@@ -26,6 +26,7 @@ export class PopularReportComponent implements OnInit {
   count: number;
   pending_show: boolean;
   pending_wrong_show: boolean;
+  /* for pending */
   constructor(
     private http: HttpService,
     private modalService: NzModalService,
@@ -87,7 +88,7 @@ export class PopularReportComponent implements OnInit {
         this.iscollect = false;
         this.message.success('Successly collect the report.');
       }
-    }
+    };
     this.isOkLoading = false;
     this.http.add_to_collection(this.collect_report.id , collectinfo.collection, callback);
   }
