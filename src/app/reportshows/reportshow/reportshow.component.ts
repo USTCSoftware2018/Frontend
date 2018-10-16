@@ -23,7 +23,7 @@ import {
 export class ReportshowComponent implements OnInit {
   report_id: number;
   report: Report = report1;
-  report_comments: ReportComment[] = [COMMENT, COMMENT];
+  report_comments: ReportComment[];
   isLogin: boolean;
   commentForm: FormGroup;
   get comment() {
@@ -41,6 +41,7 @@ export class ReportshowComponent implements OnInit {
   ngOnInit() {
     this.getReportId();
     this.isLogin = this.userinfo.isLogin;
+    this.getComments();
     this.commentForm = this.fb.group(
       {
         comment: [null, [Validators.required]],
@@ -54,7 +55,12 @@ export class ReportshowComponent implements OnInit {
   }
   // 评论表单
   getComments = () => {
-    const callback = () => {
+    const callback = (result: ApiResult) => {
+      if (result.success) {
+        this.report_comments = result.data;
+      } else {
+        this.message.error('Something wrong.');
+      }
     };
     this.http.get_report_comment(this.report_id, callback);
   }

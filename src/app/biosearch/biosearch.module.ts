@@ -7,7 +7,6 @@ import {ShareModule} from '../share/share.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(en);
-import { SearchboxComponent } from './searchbox/searchbox.component';
 import { SearchresultComponent} from './searchresult/searchresult.component';
 
 @NgModule({
@@ -20,7 +19,6 @@ import { SearchresultComponent} from './searchresult/searchresult.component';
     ReactiveFormsModule
   ],
   declarations: [
-    SearchboxComponent,
     SearchresultComponent
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],

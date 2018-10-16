@@ -76,8 +76,8 @@
             </div>
             <div nz-col nzSpan="21">
               <a class="comment-user">{{comment.user.username}}</a>
-              <span class="comments-date">&nbsp;&nbsp;&nbsp;{{comment.date}}</span>
-              <p class="comment-content">{{comment.content}}</p>
+              <span class="comments-date">&nbsp;&nbsp;&nbsp;{{comment.time|date:'longDate'}}</span>
+              <p class="comment-content">{{comment.text}}</p>
             </div>
           </div>
         </div>

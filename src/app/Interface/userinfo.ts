@@ -66,16 +66,19 @@ export class Assortment {
   popular_reports: PopularReport[];
   labels: Label[];
 }
-
 export class Collection {
   id: number;
+  text: string;
   name: string;
+  to_report: number;
   reports: Report[];
 }
 export class ReportComment {
   user: Simuser;
-  date: string;
-  content: string;
+  time: string;
+  text: string;
+  to_report?: number;
+  reply_to?: any;
 }
 export class Collect {
   report: Report;

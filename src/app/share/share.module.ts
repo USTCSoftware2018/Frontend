@@ -7,7 +7,6 @@ import en from '@angular/common/locales/en';
 import { PandaComponent } from './panda/panda.component';
 import { OthersReportComponent } from './others-report/others-report.component';
 import { SiminfoComponent } from './siminfo/siminfo.component';
-import { LikereportComponent } from './likereport/likereport.component';
 import { FollowuserComponent } from './followuser/followuser.component';
 import { UserInfoProfileComponent } from './user-info-profile/user-info-profile.component';
 import { ReportCardComponent } from './report-card/report-card.component';
@@ -35,7 +34,6 @@ registerLocaleData(en);
     PandaComponent,
     OthersReportComponent,
     SiminfoComponent,
-    LikereportComponent,
     FollowuserComponent,
     UserInfoProfileComponent,
     ReportCardComponent,
@@ -56,7 +54,6 @@ registerLocaleData(en);
     NgZorroAntdModule,
     OthersReportComponent,
     SiminfoComponent,
-    LikereportComponent,
     FollowuserComponent,
     UserInfoProfileComponent,
     ReportCardComponent,
