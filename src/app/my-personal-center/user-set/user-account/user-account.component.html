@@ -4,57 +4,51 @@
   <nz-divider></nz-divider>
   <div nz-row>
     <div nz-col nzSpan="18">
-      <form nz-form [formGroup]="useraccount" nzLayout="vertical" hasFeedback>
+      <form nz-form [formGroup]="useraccount" nzLayout="vertical" >
         <nz-form-item>
           <nz-form-label>Old password</nz-form-label>
-          <nz-form-control>
+          <nz-form-control  nzHasFeedback>
             <input nz-input nz-input type="password" id="oldpassword" formControlName="oldpassword" required>
           </nz-form-control>
-          <nz-form-explain *ngIf="useraccount.get('oldpassword').dirty&&useraccount.get('oldpassword').hasError('required')">
-            <nz-alert nzType="error" nzMessage="Please input your password!">
-            </nz-alert>
+          <nz-form-explain class="error-explain" *ngIf="useraccount.get('oldpassword').dirty&&useraccount.get('oldpassword').hasError('required')">
+            Please input your password!
           </nz-form-explain>
         </nz-form-item>
         <nz-form-item>
           <nz-form-label>New password</nz-form-label>
-          <nz-form-control>
+          <nz-form-control nzHasFeedback>
             <input nz-input type="password" id="newpassword" formControlName="newpassword" >
           </nz-form-control>
-          <nz-form-explain *ngIf="useraccount.get('newpassword').dirty || useraccount.get('newpassword').errors || useraccount.get('newpassword').pending ">
+          <nz-form-explain class="error-explain" *ngIf="useraccount.get('newpassword').dirty || useraccount.get('newpassword').errors || useraccount.get('newpassword').pending ">
             <ng-container *ngIf="useraccount.get('newpassword').hasError('forbiddenAlpha')">
-              <nz-alert nzType="error" nzMessage="Password must contain at least one alphanumeric characters!">
-              </nz-alert>
+              Password must contain at least one alphanumeric characters!
             </ng-container>
             <ng-container *ngIf="useraccount.get('newpassword').hasError('forbiddenNumeric')
                                   &&!useraccount.get('newpassword').hasError('forbiddenAlpha')">
-              <nz-alert nzType="error" nzMessage="Password must contain at least one numeric characters!">
-              </nz-alert>
+              Password must contain at least one numeric characters!
             </ng-container>
             <ng-container *ngIf="useraccount.get('newpassword').hasError('minlength')
                                   &&!useraccount.get('newpassword').hasError('forbiddenNumeric')
                                   &&!useraccount.get('newpassword').hasError('forbiddenAlpha')">
-              <nz-alert nzType="error" nzMessage="too short (minimum is 8 characters)!">
-              </nz-alert>
+              too short (minimum is 8 characters)!
             </ng-container>
             <ng-container *ngIf="useraccount.get('newpassword').hasError('maxlength')
                                   &&!useraccount.get('newpassword').hasError('minlength')
                                   &&!useraccount.get('newpassword').hasError('forbiddenNumeric')
                                   &&!useraccount.get('newpassword').hasError('forbiddenAlpha')">
-              <nz-alert nzType="error" nzMessage="too long (maximum is 30 characters)!">
-              </nz-alert>
+              too long (maximum is 30 characters)!
             </ng-container>
           </nz-form-explain>
         </nz-form-item>
         <nz-form-item>
           <nz-form-label>Comfirm password</nz-form-label>
-          <nz-form-control>
+          <nz-form-control nzHasFeedback>
             <input nz-input type="password" id="confirmpassword" formControlName="confirmpassword">
             <!-- <input nz-input type="password" id="confirmpassword" formControlName="confirmpassword" [(ngModel)]="useraccount.confirmpassword"> -->
           </nz-form-control>
-          <nz-form-explain *ngIf="useraccount.get('confirmpassword').dirty || useraccount.get('confirmpassword').errors || useraccount.get('confirmpassword').pending ">
+          <nz-form-explain class="error-explain" *ngIf="useraccount.get('confirmpassword').dirty || useraccount.get('confirmpassword').errors || useraccount.get('confirmpassword').pending ">
             <ng-container *ngIf="useraccount.hasError('forbiddenUnSame')">
-              <nz-alert nzType="error" nzMessage="Confirm password and new password must be the same!">
-              </nz-alert>
+              Confirm password and new password must be the same!
             </ng-container>
             <!--
             <ng-container *ngIf="useraccount.get('confirmpassword').hasError('forbiddenAlpha')">

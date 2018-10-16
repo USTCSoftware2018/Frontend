@@ -22,7 +22,9 @@ export class UserBasicComponent implements OnInit {
       Validators.minLength(4),
       forbiddenNameValidator(/Peng/)
     ]],
-    description: [''],
+    description: ['', [
+      Validators.maxLength(200),
+    ]],
     location: ['', [Validators.required]],
     organization: [''],
     email: ['', [Validators.email]],
