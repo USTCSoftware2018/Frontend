@@ -1,5 +1,4 @@
-<nz-card class="report-card" nzLoading="false"
-         nzHoverable="true" [nzActions]="[actionLike,actionCollection]">
+<nz-card class="report-card" nzLoading="false" [nzActions]="[actionLike,actionCollection]">
   <div class="report-info-container">
     <div class="report-info">
       <div nz-row>
@@ -19,10 +18,10 @@
 </nz-card>
 
 <ng-template #actionLike>
-  <a (click)="toggleLiked()"><i class="anticon"[class.anticon-like-o]="!isliked" [class.anticon-like]="isliked"></i></a>
+  <a style="cursor: pointer" (click)="toggleLiked()"><i class="anticon"[class.anticon-like-o]="!isliked" [class.anticon-like]="isliked"></i></a>
 </ng-template>
 <ng-template #actionCollection>
-  <a (click)="showCollect()"><i class="anticon" [class.anticon-tag-o]="!iscollected" [class.anticon-tag]="iscollected"></i></a>
+  <a style="cursor: pointer" (click)="showCollect()"><i class="anticon" [class.anticon-tag-o]="!iscollected" [class.anticon-tag]="iscollected"></i></a>
 </ng-template>
 
 <nz-modal [(nzVisible)]="collecting" nzTitle="Collect a Report" nzOkText="Collect" [nzOkLoading]="isOkLoading"

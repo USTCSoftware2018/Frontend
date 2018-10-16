@@ -20,7 +20,12 @@
         <div class="author-info">
           <div>
             <a class="author-name">{{user?.username}}</a>
-            <button nz-button nzType="primary" nzSize="small">following</button>
+            <button *ngIf="isMyself" nz-button routerLink="/mypersonalcenter/userset" nzType="primary" nzSize="small">
+              edit
+            </button>
+            <button *ngIf="!isMyself" nz-button (click)="toggleFollow()" [nzType]="isFollow?'default':'primary'" nzSize="small">
+              {{btncontent}}
+            </button>
           </div>
           <div>
             <a><nz-avatar nzSize="large" [nzSrc]="user?.avatar_url"></nz-avatar></a>
@@ -35,11 +40,13 @@
 
       <div nz-col nzSm="12" nzXs="24" nzMd="12" nzLg="24" nzXl="24" nzXXl="24">
         <div class="action-button" align="center">
-          <button nz-button nzType="primary" nzSize="large" nzShape="circle">
-            <i class="anticon anticon-like"></i>
+          <button (click)="toggleLiked()" *ngIf="!isMyself" nz-button [nzType]="isliked ? 'default' : 'primary'"
+                  nzSize="large" nzShape="circle">
+            <i class="anticon " [class.anticon-like-o] = "isliked" [class.anticon-like] = "!isliked"></i>
           </button>
-          <button nz-button nzType="primary" nzSize="large" nzShape="circle">
-            <i class="anticon anticon-tag"></i>
+          <button (click)="showCollect()" nz-button [nzType]="isliked ? 'default' : 'primary'"
+                  nzSize="large" nzShape="circle">
+            <i class="anticon " [class.anticon-tag-o] = "iscollected" [class.anticon-tag] = "!iscollected"></i>
           </button>
         </div>
       </div>
@@ -51,5 +58,26 @@
 </div>
 
 
+<nz-modal [(nzVisible)]="collecting" nzTitle="Collect a Report" nzOkText="Collect" [nzOkLoading]="isOkLoading"
+          nzCancelText="Cancel" (nzOnOk)="collectReport()" (nzOnCancel)="notShow()">
+  <form nz-form [formGroup]="collectForm" (ngSubmit)="submitForm()" nzHasFeedback>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="collection">Group name</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-input-group >
+          <input type="text" nz-input formControlName="collection" placeholder="Collect Group">
+        </nz-input-group>
+        <nz-form-explain *ngIf="collectForm.dirty && (collection.errors || collection.pending)">
+          <ng-container *ngIf="collection.hasError('required')">
+            Please enter the group name!
+          </ng-container>
+          <ng-container *ngIf="collection.hasError('maxlength')">
+            too long(no more than 20 letters)!
+          </ng-container>
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-modal>
 
 
