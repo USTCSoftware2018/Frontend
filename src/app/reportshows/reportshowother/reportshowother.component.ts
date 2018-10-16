@@ -65,26 +65,10 @@ export class ReportshowotherComponent implements OnInit {
     };
     this.http.get_report_comment(this.report_id, callback);
   }
-  /*
-  get_favortites = () => {
-    const callback = (result: ApiResult) => {
-      if (result.success) {
-        this.favorites = result.data;
-    };
-    this.http.get_all_my_favorite_reports(callback);
-  }
-  */
   get_report_by_id = () => {
-    console.log('xxxxxxxxxx');
     const callback = (result: ApiResult) => {
-      console.log('wwwwwwww');
       if (result.success) {
         this.report = result.data;
-        console.log('!!!!!!!!!!!!!!');
-        console.log(result);
-        console.log('!!!!!!!!!!!!!!');
-        console.log(result.data);
-        console.log('!!!!!!!!!!!!!!');
       }
     };
     this.http.get_report_simple(this.report_id, callback);

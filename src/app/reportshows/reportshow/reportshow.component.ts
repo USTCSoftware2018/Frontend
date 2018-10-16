@@ -22,7 +22,7 @@ import {
 })
 export class ReportshowComponent implements OnInit {
   report_id: number;
-  report: Report = report1;
+  report: Report;
   report_comments: ReportComment[];
   isLogin: boolean;
   commentForm: FormGroup;
@@ -39,7 +39,9 @@ export class ReportshowComponent implements OnInit {
     private fb: FormBuilder
   ) { }
   ngOnInit() {
+    this.report = new Report();
     this.getReportId();
+    this.get_report_by_id();
     this.isLogin = this.userinfo.isLogin;
     this.getComments();
     this.commentForm = this.fb.group(
@@ -63,6 +65,14 @@ export class ReportshowComponent implements OnInit {
       }
     };
     this.http.get_report_comment(this.report_id, callback);
+  }
+  get_report_by_id = () => {
+    const callback = (result: ApiResult) => {
+      if (result.success) {
+        this.report = result.data;
+      }
+    };
+    this.http.get_report_simple(this.report_id, callback);
   }
   submitForm = () => {
     for (const i in this.commentForm.controls) {
