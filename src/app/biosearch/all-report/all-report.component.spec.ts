@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LikereportComponent } from './likereport.component';
+import { AllReportComponent } from './all-report.component';
 
-describe('LikereportComponent', () => {
-  let component: LikereportComponent;
-  let fixture: ComponentFixture<LikereportComponent>;
+describe('AllReportComponent', () => {
+  let component: AllReportComponent;
+  let fixture: ComponentFixture<AllReportComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LikereportComponent ]
+      declarations: [ AllReportComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LikereportComponent);
+    fixture = TestBed.createComponent(AllReportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

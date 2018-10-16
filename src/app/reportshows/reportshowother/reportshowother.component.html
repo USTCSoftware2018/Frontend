@@ -38,13 +38,32 @@
 
           <div *ngIf="isLogin" nz-row nzType="flex" nzAlign="top" class="input-comment">
             <div nz-col nzSpan="3">
-              <a><nz-avatar nzSize="large" [nzSrc]="me?.avatar_url"></nz-avatar></a>
+              <a><nz-avatar nzSize="large" [nzSrc]="report.author?.avatar_url"></nz-avatar></a>
             </div>
             <div nz-col nzSpan="21">
-              <textarea rows="4" nz-input></textarea>
-              <div class="submit-btn">
-                <button nz-button nzType="primary">Post a comment</button>
-              </div>
+              <form nz-form [formGroup]="commentForm" (ngSubmit)="submitForm()" >
+                <nz-form-item>
+                  <nz-form-control nzSpan="24">
+                    <nz-input-group >
+                      <textarea rows="4" nz-input formControlName="comment"></textarea>
+                    </nz-input-group>
+                    <nz-form-explain *ngIf="comment.dirty && (commentForm.errors || comment.pending)">
+                      <ng-container *ngIf="comment.hasError('required')">
+                        Please enter the group name!
+                      </ng-container>
+                      <ng-container *ngIf="comment.hasError('maxlength')">
+                        too long(no more than 20 letters)!
+                      </ng-container>
+                    </nz-form-explain>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-control nzSpan="24" class="submit-btn">
+                    <button type="submit" nz-button [nzType]="'primary'"
+                            [disabled]="!commentForm.valid">Post a comment</button>
+                  </nz-form-control>
+                </nz-form-item>
+              </form>
             </div>
           </div>
 
@@ -56,8 +75,8 @@
             </div>
             <div nz-col nzSpan="21">
               <a class="comment-user">{{comment.user.username}}</a>
-              <span class="comments-date">&nbsp;&nbsp;&nbsp;{{comment.date}}</span>
-              <p class="comment-content">{{comment.content}}</p>
+              <span class="comments-date">&nbsp;&nbsp;&nbsp;{{comment.time | date: 'longDate'}}</span>
+              <p class="comment-content">{{comment.text}}</p>
             </div>
           </div>
         </div>
@@ -67,7 +86,7 @@
     <!-- left part-->
     <div nz-col nzSm="0" nzXs="0" nzMd="0" nzLg="7" nzXl="6" nzXXl="6">
       <nz-affix nzOffsetTop="45">
-        <app-report-author-info [isMyself]="false" [user]="report.author" ] [report]="report"></app-report-author-info>
+        <app-report-author-info [isMyself]="false" [user]="report.author" [report]="report"></app-report-author-info>
       </nz-affix>
     </div>
   </div>

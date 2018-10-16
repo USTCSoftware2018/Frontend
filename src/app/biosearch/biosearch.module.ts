@@ -7,8 +7,10 @@ import {ShareModule} from '../share/share.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(en);
-import { SearchboxComponent } from './searchbox/searchbox.component';
 import { SearchresultComponent} from './searchresult/searchresult.component';
+import { AllDbComponent } from './all-db/all-db.component';
+import { AllUsersComponent } from './all-users/all-users.component';
+import { AllReportComponent } from './all-report/all-report.component';
 
 @NgModule({
   imports: [
@@ -20,8 +22,12 @@ import { SearchresultComponent} from './searchresult/searchresult.component';
     ReactiveFormsModule
   ],
   declarations: [
-    SearchboxComponent,
-    SearchresultComponent
+    SearchresultComponent,
+  ],
+  entryComponents: [
+    AllDbComponent,
+    AllUsersComponent,
+    AllReportComponent
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   exports: [

@@ -11,7 +11,8 @@ const routes: Routes = [
   {
     path: 'others/:report_id',
     component: ReportshowotherComponent,
-  }
+  },
+  { path: '**', redirectTo: '/404', pathMatch: 'full'}
 ];
 
 @NgModule({

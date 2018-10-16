@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchboxComponent } from './searchbox.component';
+import { AllDbComponent } from './all-db.component';
 
-describe('SearchboxComponent', () => {
-  let component: SearchboxComponent;
-  let fixture: ComponentFixture<SearchboxComponent>;
+describe('AllDbComponent', () => {
+  let component: AllDbComponent;
+  let fixture: ComponentFixture<AllDbComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchboxComponent ]
+      declarations: [ AllDbComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchboxComponent);
+    fixture = TestBed.createComponent(AllDbComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

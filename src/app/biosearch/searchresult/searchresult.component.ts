@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { USER } from '../../Interface/mock-user';
 import { Simuser, Report } from '../../Interface/userinfo';
+import { SearchResult } from '../search-result';
 import {
   FormGroup,
   FormControl,
   Validators,
 } from '@angular/forms';
+import {HttpService} from '../../http.service';
+import {ApiResult} from '../../Interface/ApiResult';
 
-class Result {
-  filters: any[];
-  ranks: any;
-  data: any;
-}
+
 @Component({
   selector: 'app-searchresult',
   templateUrl: './searchresult.component.html',
@@ -23,15 +22,17 @@ export class SearchresultComponent implements OnInit {
   users: Simuser[];
   reports: Report[] = [];
   loading: boolean;
-  result: Result;
+  result: SearchResult;
   suggestions = ['aaaaa', 'bbbbb', 'ccccc', 'ddddd', 'abcdefghi'];
   prefix: string[] = [];
-  constructor() {
+  constructor(
+    private http: HttpService,
+  ) {
   }
 
   ngOnInit() {
-    this.result = new Result();
-    this.result.filters = ['a', 'b', 'c', 'd', 'e'];
+    this.result = new SearchResult();
+    this.result.filters = {label: 'a', people: 'b', time: { end: 'b', start: 'c'}};
     this.users = this.User.followers;
     this.reports = this.User.reports;
     this.searchForm = new FormGroup({
@@ -49,7 +50,13 @@ export class SearchresultComponent implements OnInit {
     console.log(this.prefix);
   }
   submitForm() {
-
+    const forminfo = this.searchForm.value;
+    const callback = (result: ApiResult) => {
+      this.result = result.data;
+    }
+    this.http.get_search_result(forminfo.search_info, callback);
+  }
+  getSearchResult() {
   }
   startloading() {
     this.loading = true;

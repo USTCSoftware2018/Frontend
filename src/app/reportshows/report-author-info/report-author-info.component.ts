@@ -155,7 +155,7 @@ export class ReportAuthorInfoComponent implements OnInit {
   notShow() {
     this.collecting = false;
   }
-  submitForm(): void {
+  submitForm = () => {
     for (const i in this.collectForm.controls) {
       this.collectForm.controls[ i ].markAsDirty();
       this.collectForm.controls[ i ].updateValueAndValidity();
