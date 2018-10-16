@@ -12,7 +12,7 @@ import {ApiResult} from '../../Interface/ApiResult';
 export class NotificationComponent implements OnInit {
 
   user: Simuser;
-  notifications: Notification[];
+  notifications: any[];
   constructor(
     private user_info: UserSigninfoService,
     private http: HttpService,
@@ -26,7 +26,7 @@ export class NotificationComponent implements OnInit {
       if (result.success) {
         this.notifications = result.data.results;
       }
-    }
+    };
     this.http.get_all_my_notifications(callback);
   }
 }
