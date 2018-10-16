@@ -9,8 +9,8 @@
         <nz-form-item>
           <nz-form-label>Actual Name</nz-form-label>
           <nz-form-control>
-            <input nz-input placeholder="{{personalmes.actualname}}"
-                   id="actualname" name="actualname" formControlName="actualname" required>
+            <input nz-input placeholder="Actual Name"
+                   id="actualname" name="actualname" formControlName="actualname">
           </nz-form-control>
           <nz-form-explain class="error-explain" *ngIf="usermes.get('actualname').dirty && usermes.get('actualname').errors ">
             <ng-container *ngIf="usermes.get('actualname').hasError('required')">
@@ -28,31 +28,31 @@
         <nz-form-item>
           <nz-form-label>Location</nz-form-label>
           <nz-form-control>
-            <input nz-input placeholder="{{personalmes.location}}"  id="location" name="location" formControlName="location" required>
+            <input nz-input placeholder="Location"  id="location" name="location" formControlName="location">
           </nz-form-control>
-          <nz-form-explain class="error-explain" *ngIf="usermes.get('location').dirty && usermes.get('location').errors ">
+          <!-- <nz-form-explain class="error-explain" *ngIf="usermes.get('location').dirty && usermes.get('location').errors ">
             <ng-container *ngIf="usermes.get('location').hasError('required')">
               Please input your location!
             </ng-container>
-          </nz-form-explain>
+          </nz-form-explain> -->
         </nz-form-item>
         <!-- School or Organization -->
         <nz-form-item>
           <nz-form-label>School or Organization</nz-form-label>
           <nz-form-control>
-            <input nz-input placeholder="{{personalmes.organization}}" id="organization" name="organization" formControlName="organization" required>
+            <input nz-input placeholder="Organization" id="organization" name="organization" formControlName="organization">
           </nz-form-control>
-          <nz-form-explain class="error-explain" *ngIf="usermes.get('organization').dirty && usermes.get('organization').errors ">
+          <!-- <nz-form-explain class="error-explain" *ngIf="usermes.get('organization').dirty && usermes.get('organization').errors ">
             <ng-container *ngIf="usermes.get('organization').hasError('required')">
               Please input your school or organization!
             </ng-container>
-          </nz-form-explain>
+          </nz-form-explain> -->
         </nz-form-item>
         <!-- School or Organization -->
         <nz-form-item>
           <nz-form-label>Description</nz-form-label>
           <nz-form-control>
-            <textarea nz-input rows="4" placeholder="{{personalmes.description}}" name="description" formControlName="description"></textarea>
+            <textarea nz-input rows="4" placeholder="description" name="description" formControlName="description"></textarea>
           </nz-form-control>
           <nz-form-explain class="error-explain" *ngIf="usermes.get('description').dirty && usermes.get('description').errors ">
             <ng-container *ngIf="usermes.get('description').hasError('maxlength')">
@@ -62,17 +62,19 @@
         </nz-form-item>
         <nz-form-item nz-row style="margin-bottom:8px;">
           <nz-form-control [nzSpan]="14" [nzOffset]="6">
-            <button nz-button nzType="primary" >Update Profile</button>
+            <button nz-button nzType="primary" (click)="onSave()">Update Profile</button>
           </nz-form-control>
         </nz-form-item>
       </form>
     </div>
     <div nz-col nzSpan="6" class="PicSide">
-      <img [src]="personalmes.photo" class="profile_pic"/>
-      <nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/">
-      <button nz-button style="width:100%; margin-top: 20px;">
-        <i class="anticon anticon-upload"></i><span>Update</span>
-      </button>
+      <div nz-row>
+        <img nz-col [src]="sim.myInfo.avatar_url" class="profile_pic"/>
+      </div>
+      <nz-upload [nzCustomRequest]="picHttpMethod">
+        <button nz-button style="width:100%; margin-top: 20px;">
+          <i class="anticon anticon-upload"></i><span>Update</span>
+        </button>
       </nz-upload>
     </div>
   </div>

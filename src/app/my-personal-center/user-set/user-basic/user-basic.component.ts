@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NzMessageService, UploadFile } from 'ng-zorro-antd';
-import { FormGroup, FormControl, Validators, ValidationErrors, FormBuilder } from '@angular/forms';
-import { Observable, Observer } from 'rxjs';
-import { forbiddenNameValidator } from '../formvalidate/forbidden-name.directive';
+import { Validators, FormBuilder } from '@angular/forms';
 import { HttpService } from '../../../http.service';
 import {ApiResult} from '../../../Interface/ApiResult';
+import {UserSigninfoService} from '../../../user-signinfo.service';
 
 @Component({
   selector: 'app-user-basic',
@@ -14,19 +14,17 @@ import {ApiResult} from '../../../Interface/ApiResult';
 export class UserBasicComponent implements OnInit {
   loading = false;
   viewImage = '//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png';
+
   issaved = false;
   usermes = this.fb.group({
-    photo: [''],
-    actualname: ['', [ Validators.required,
-      Validators.minLength(4),
-      forbiddenNameValidator(/Peng/)
+    photo: [this.sim.myInfo.avatar_url],
+    actualname: [this.sim.myInfo.actual_name, [ Validators.required,
+      Validators.minLength(4)
     ]],
-    description: ['', [
-      Validators.maxLength(200),
-    ]],
-    location: ['', [Validators.required]],
-    organization: [''],
-    email: ['', [Validators.email]],
+    description: [this.sim.myInfo.description, [ Validators.maxLength(200)]],
+    location: [this.sim.myInfo.location],
+    organization: [this.sim.myInfo.organization],
+    email: [this.sim.myInfo.email, [Validators.email]],
   });
   personalmes = {
     photo: '',
@@ -67,38 +65,54 @@ export class UserBasicComponent implements OnInit {
 
   onSave() {
     this.issaved = true;
-    console.log(this.usermes.value);
-    this.http.update_profile( this.usermes.value.photo,
-                              this.usermes.value.actualname,
-                              this.usermes.value.location,
-                              this.usermes.value.description,
-                              this.usermes.value.organization,
-                              this.usermes.value.email,
+    this.http.update_profile( this.usermes.value.photo || '' ,
+                              this.usermes.value.actualname || '',
+                              this.usermes.value.location || '',
+                              this.usermes.value.description || '',
+                              this.usermes.value.organization || '',
+                              this.usermes.value.email || '',
                               this.callback);
   }
   callback = (result: ApiResult) => {
     console.log(result);
     if (result.success) {
       this.message.success('Update sucessfully');
+      this.http.get_myself( ret => {
+        this.sim.setUserInfobyInfo(ret.success, ret.data);
+      });
     } else {
       this.message.error('Fail to Update.' + result.data.detail);
     }
   }
 
-  get_simuser = (result: ApiResult) => {
-   console.log(result);
-    this.personalmes.photo = result.data.avatar_url;
-   this.personalmes.actualname = result.data.actualname;
-    this.personalmes.location = result.data.location;
-    this.personalmes.description = result.data.description;
-    this.personalmes.organization = result.data.organization;
-    this.personalmes.email = result.data.email;
-  }
-
-  constructor(private fb: FormBuilder, private message: NzMessageService, private http: HttpService) { }
+  constructor(private fb: FormBuilder,
+              private message: NzMessageService,
+              private http: HttpService,
+              public sim: UserSigninfoService,
+              public httpclient: HttpClient ) { }
 
   ngOnInit() {
-   this.http.get_simuser_by_id(1, this.get_simuser);
+  }
+
+  public picHttpMethod = (item) => {
+
+    const httpOptions = {
+      withCredentials: true
+    };
+
+    const picUrl = 'https://api.biohub.tech/api/users/upload_avatar/';
+
+    const formData: FormData = new FormData();
+    formData.append('file', item.file, item.file.name);
+
+    return this.httpclient.post( picUrl, formData, httpOptions).subscribe(
+      ctx => { const new_url = ctx;
+        console.log(ctx);
+        this.http.get_myself( ret => {
+          this.sim.setUserInfobyInfo(ret.success, ret.data); }); },
+
+      error => { this.message.error('Upload Graph Failed'); }
+    );
   }
 
 }

@@ -124,6 +124,7 @@ export class HttpService {
         organization: organization,
         email: email
       };
+      console.log(params);
       this.fire('users/me/', 'patch', params, callback);
     }
 
