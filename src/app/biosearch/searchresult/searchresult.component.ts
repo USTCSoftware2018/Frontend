@@ -51,7 +51,7 @@ export class SearchresultComponent implements OnInit {
   submitForm() {
 
   }
-  getSearchResult(){
+  getSearchResult() {
   }
   startloading() {
     this.loading = true;
