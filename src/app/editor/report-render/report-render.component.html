@@ -52,13 +52,13 @@
       <!-- Subroutine -->
       <table class="render_step_table">
         <tr class="render_step_row">
-          <th class="render_step_th_p">Experiment Procedure</th>
-          <th class="render_step_th_r">Notes</th>
+          <th class="render_step_th_p" width="70%">Experiment Procedure</th>
+          <th class="render_step_th_r" width="30%">Notes</th>
         </tr>
         <tr *ngFor="let row of renderService.extraContent['s'];let ii = index"
             class="render_step_row">
-          <td class="render_step_td_p">{{ii+1}}.{{row.s}}</td>
-          <td class="render_step_td_r">{{row.n}}</td>
+          <td class="render_step_td_p" width="70%">{{ii+1}}.{{row.s}}</td>
+          <td class="render_step_td_r" width="30%">{{row.n}}</td>
         </tr>
       </table>
                   
