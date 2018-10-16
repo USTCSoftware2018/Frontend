@@ -10,7 +10,7 @@ import { callbackFunc } from './Type/callbackFunc';
 export class HttpService {
 
 
-  private global_url = 'https://api.biohub.tech/api';
+  private global_url = 'https://api-us.biohub.tech/api';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'

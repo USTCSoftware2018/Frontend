@@ -100,7 +100,7 @@ export class UserBasicComponent implements OnInit {
       withCredentials: true
     };
 
-    const picUrl = 'https://api.biohub.tech/api/users/upload_avatar/';
+    const picUrl = 'https://api-us.biohub.tech/api/users/upload_avatar/';
 
     const formData: FormData = new FormData();
     formData.append('file', item.file, item.file.name);
