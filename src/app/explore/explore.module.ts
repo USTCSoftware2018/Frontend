@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExploreRoutingModule } from './explore-routing.module';
 import { ShareModule } from '../share/share.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 
@@ -14,7 +15,9 @@ registerLocaleData(en);
   imports: [
     CommonModule,
     ExploreRoutingModule,
-    ShareModule
+    ShareModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     PopularReportComponent,

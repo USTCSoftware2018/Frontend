@@ -12,18 +12,18 @@ import {ApiResult} from '../../Interface/ApiResult';
 export class PopularIgemersComponent implements OnInit {
   igemers: Simuser[];
   /* for pending */
-  count:number;
-  pending_show:boolean;
-  pending_wrong_show:boolean;
+  count: number;
+  pending_show: boolean;
+  pending_wrong_show: boolean;
   /* for pending */
   constructor(
     private http: HttpService,
   ) { }
 
   ngOnInit() {
-    this.count=0;
-    this.pending_show=true;
-    this.pending_wrong_show=false;
+    this.count = 0;
+    this.pending_show = true;
+    this.pending_wrong_show = false;
     this.get_popular_iemers();
   }
   get_popular_iemers  = () => {
@@ -32,11 +32,11 @@ export class PopularIgemersComponent implements OnInit {
        this.igemers = result.data.results;
        /* for pending */
        this.count++;
-     }else {
-       this.pending_wrong_show=true;
+     } else {
+       this.pending_wrong_show = true;
      }
-      if(this.count==1){
-        this.pending_show=false;
+      if(this.count === 1) {
+        this.pending_show = false;
       }
      /* for pending */
     };

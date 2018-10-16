@@ -18,10 +18,11 @@ export class IndexComponent implements OnInit {
       ['#002c4a', '#005584'],
       ['#35ac03', '#3f4303'],
       ['#101C48', '#54ACB4'],
-      ['#18bbff', '#00486b']
+      ['#18bbff', '#00486b'],
+      ['#051622', '#2b8896']
     ];
    function settheme() {
-        victor(theme[2]).set();
+        victor(theme[4]).set();
    }
    settheme();
   }

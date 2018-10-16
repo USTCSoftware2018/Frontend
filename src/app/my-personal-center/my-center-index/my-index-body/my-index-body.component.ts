@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { Report } from '../../../Interface/userinfo';
+import {Collection, Report} from '../../../Interface/userinfo';
 
 @Component({
   selector: 'app-my-index-body',
@@ -7,11 +7,11 @@ import { Report } from '../../../Interface/userinfo';
   styleUrls: ['./my-index-body.component.less']
 })
 export class MyIndexBodyComponent implements OnInit {
-  @Input() collections: Report[];
+  @Input() collections: Collection[];
   @Input() favorite: Report[];
   /* for pending */
-  @Input() pending_show:boolean;
-  @Input() pending_wrong_show:boolean;
+  @Input() pending_show: boolean;
+  @Input() pending_wrong_show: boolean;
   /* for pending */
   constructor() { }
 

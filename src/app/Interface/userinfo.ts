@@ -70,10 +70,14 @@ export class Assortment {
 export class Collection {
   id: number;
   name: string;
-  reports: Array<Report>;
+  reports: Report[];
 }
 export class ReportComment {
   user: Simuser;
   date: string;
   content: string;
+}
+export class Collect {
+  report: Report;
+  iscollected: boolean;
 }
