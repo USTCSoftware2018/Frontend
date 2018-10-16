@@ -53,7 +53,7 @@ export let mockStep: EditorStepHeader[] = [
         id: '7',
         desc: 'Standing',
         name: 'Standing',
-        ico: '/assets/img/editor/icons/standing.png',
+        ico: 'assets/img/editor/icons/standing.png',
         template: '- input Time null min @small - input Temp 25 °C @small -',
         yield_method: 'Standing @Time min at @Temp degree',
     },
