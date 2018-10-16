@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { Report, ReportComment } from '../../Interface/userinfo';
+import { Simuser, Report, ReportComment } from '../../Interface/userinfo';
 import { report1 } from '../../Interface/mock-user';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {UserSigninfoService} from '../../user-signinfo.service';
@@ -16,10 +16,12 @@ import {NzMessageService} from 'ng-zorro-antd';
 })
 export class ReportshowotherComponent implements OnInit {
   report_id: number;
-  report: Report = report1;
+  // report: Report = report1;
+  report: Report;
   report_comments: ReportComment[];
   isLogin: boolean;
   commentForm: FormGroup;
+  me: Simuser;
   get comment() {
     return this.commentForm.get('comment');
   }
@@ -35,7 +37,10 @@ export class ReportshowotherComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.me = this.userinfo.myInfo;
+    this.report = new Report();
     this.getReportId();
+    this.get_report_by_id();
     this.isLogin = this.userinfo.isLogin;
     this.getComments();
     this.commentForm = this.fb.group(
@@ -59,6 +64,30 @@ export class ReportshowotherComponent implements OnInit {
       }
     };
     this.http.get_report_comment(this.report_id, callback);
+  }
+  /*
+  get_favortites = () => {
+    const callback = (result: ApiResult) => {
+      if (result.success) {
+        this.favorites = result.data;
+    };
+    this.http.get_all_my_favorite_reports(callback);
+  }
+  */
+  get_report_by_id = () => {
+    console.log('xxxxxxxxxx');
+    const callback = (result: ApiResult) => {
+      console.log('wwwwwwww');
+      if (result.success) {
+        this.report = result.data;
+        console.log('!!!!!!!!!!!!!!');
+        console.log(result);
+        console.log('!!!!!!!!!!!!!!');
+        console.log(result.data);
+        console.log('!!!!!!!!!!!!!!');
+      }
+    };
+    this.http.get_report_simple(this.report_id, callback);
   }
   submitForm = () => {
     for (const i in this.commentForm.controls) {

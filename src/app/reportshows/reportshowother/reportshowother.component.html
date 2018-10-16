@@ -5,7 +5,9 @@
 
     <div nz-col nzSm="24" nzXs="24" nzMd="24"
          nzLg="0" nzXl="0" nzXXl="0">
-      <app-report-author-info [isMyself]="false" [user]="report.author" [report]="report"></app-report-author-info>
+
+      <app-report-author-info [isMyself]="false" [user]="report?.author" [report]="report"></app-report-author-info>
+
     </div>
 
     <!-- right part -->
@@ -33,12 +35,12 @@
         <div class="comments">
 
           <div class="comments-title">
-            <p>Comments({{report.commentsnum}})
+            <p>Comments({{report?.commentsnum}})
           </div>
 
           <div *ngIf="isLogin" nz-row nzType="flex" nzAlign="top" class="input-comment">
             <div nz-col nzSpan="3">
-              <a><nz-avatar nzSize="large" [nzSrc]="report.author?.avatar_url"></nz-avatar></a>
+              <a><nz-avatar nzSize="large" [nzSrc]="me?.avatar_url"></nz-avatar></a>
             </div>
             <div nz-col nzSpan="21">
               <form nz-form [formGroup]="commentForm" (ngSubmit)="submitForm()" >
@@ -86,7 +88,9 @@
     <!-- left part-->
     <div nz-col nzSm="0" nzXs="0" nzMd="0" nzLg="7" nzXl="6" nzXXl="6">
       <nz-affix nzOffsetTop="45">
-        <app-report-author-info [isMyself]="false" [user]="report.author" [report]="report"></app-report-author-info>
+        <!--
+        <app-report-author-info [isMyself]="false" [user]="report?.author" [report]="report"></app-report-author-info>
+        -->
       </nz-affix>
     </div>
   </div>
