@@ -61,6 +61,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
         if (result.data.count > 0) {
           this.new_notification = true;
           this.notification_msg = result.data.latest.message;
+        } else {
+          this.new_notification = false;
+          this.notification_msg = '';
         }
       }
     }
@@ -71,6 +74,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
       if (result.success) {
         if (result.data.count > 0) {
           this.new_feeds = true;
+        } else {
+          this.new_feeds = false;
         }
       }
     };

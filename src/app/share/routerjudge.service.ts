@@ -51,6 +51,6 @@ export class RouterjudgeService {
   }
   // 点击报告名
   gotoReportDisplay = ( id: number, report_id: number) => {
-    this.goToJudge(id, '/report/my/' + report_id, '/report/' + id + '/' + report_id);
+    this.goToJudge(id, '/report/my/' + report_id, '/report/others/' + report_id);
   }
 }

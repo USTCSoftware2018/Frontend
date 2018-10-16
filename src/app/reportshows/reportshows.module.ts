@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { ReportshowComponent } from './reportshow/reportshow.component';
 import { ReportshowsRoutingModule } from './reportshows-routing.module';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {ReportshowotherComponent} from './reportshowother/reportshowother.component';
 import {EditorModule} from '../editor/editor.module';
@@ -16,7 +17,9 @@ registerLocaleData(en);
     CommonModule,
     ReportshowsRoutingModule,
     EditorModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ReportshowComponent,

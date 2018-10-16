@@ -21,4 +21,7 @@ export class OthersReportComponent implements OnInit {
   gotoLabel = (label_id: number) => {
     this.routerjudge.gotoReportbyLabel(this.report.author.id, label_id);
   }
+  gotoReport = (report_id: number) => {
+    this.routerjudge.gotoReportDisplay(this.report.author.id, report_id);
+  }
 }

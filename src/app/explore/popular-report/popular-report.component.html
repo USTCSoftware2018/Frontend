@@ -12,28 +12,8 @@
 <!-- for pending  -->
 <div *ngIf="!pending_show&&!pending_wrong_show">
   <div class="report-item">
-    <app-report-card *ngFor="let report of reports" [report]="report" (togglecollect)="showCollect($event)"></app-report-card>
+    <app-report-card *ngFor="let report of reports" [report]="report" ></app-report-card>
   </div>
 </div>
 
-<nz-modal [(nzVisible)]="iscollect" nzTitle="Collect a Report" nzOkText="Collect" [nzOkLoading]="isOkLoading"
-          nzCancelText="Cancel" (nzOnOk)="collectReport()" (nzOnCancel)="notShow()">
-  <form nz-form [formGroup]="collectForm" (ngSubmit)="submitForm()" nzHasFeedback>
-    <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="collection">Group name</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24">
-        <nz-input-group >
-          <input type="text" nz-input formControlName="collection" placeholder="Collect Group">
-        </nz-input-group>
-        <nz-form-explain *ngIf="collectForm.dirty && (collection.errors || collection.pending)">
-          <ng-container *ngIf="collection.hasError('required')">
-            Please enter the group name!
-          </ng-container>
-          <ng-container *ngIf="collection.hasError('maxlength')">
-            too long(no more than 20 letters)!
-          </ng-container>
-        </nz-form-explain>
-      </nz-form-control>
-    </nz-form-item>
-  </form>
-</nz-modal>
+

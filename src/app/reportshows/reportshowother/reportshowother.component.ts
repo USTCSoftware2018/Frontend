@@ -15,9 +15,8 @@ import {ApiResult} from '../../Interface/ApiResult';
 })
 export class ReportshowotherComponent implements OnInit {
   report_id: number;
-  report_author: Simuser;
   me: Simuser;
-  report_sim_info: Report = report1;
+  report: Report = report1;
   report_comments: ReportComment[] = [COMMENT, COMMENT];
   isLogin: boolean;
 
@@ -30,30 +29,14 @@ export class ReportshowotherComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.report_author = new Simuser();
     this.getReportId();
     this.isLogin = this.userinfo.isLogin;
     this.me = this.userinfo.myInfo;
-    this.getUser();
   }
   getReportId = () => {
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
       this.report_id = +params.get('report_id');
     });
-  }
-  getUser = () => {
-    const callback = (result: ApiResult) => {
-      if (result.success) {
-        this.report_author = result.data;
-      }
-    };
-    const getUserId = () => {
-      this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
-        this.report_author.id = +params.get('user_id');
-      });
-    }
-    getUserId();
-    this.http.get_user_by_id(this.report_author.id, callback);
   }
   downloadReport = () => {
     this.dowload_report.downloadEvent.emit(0);

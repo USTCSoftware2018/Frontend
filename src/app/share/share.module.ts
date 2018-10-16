@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import {CommonModule, registerLocaleData} from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntdModule, NZ_I18N, en_US, zh_CN } from 'ng-zorro-antd';
 import en from '@angular/common/locales/en';
 
@@ -17,8 +18,7 @@ import { ClassificationComponent } from './classification/classification.compone
 import { IgemerCardComponent } from './igemer-card/igemer-card.component';
 import { PendingComponent } from './pending/pending.component';
 import { WrongPendingComponent } from './wrong-pending/wrong-pending.component';
-import {DBsearchresultComponent} from './dbsearchresult/dbsearchresult.component';
-
+import { DBsearchresultComponent } from './dbsearchresult/dbsearchresult.component';
 
 
 registerLocaleData(en);
@@ -28,6 +28,8 @@ registerLocaleData(en);
     CommonModule,
     NgZorroAntdModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     PandaComponent,
@@ -63,7 +65,8 @@ registerLocaleData(en);
     ClassificationComponent,
     IgemerCardComponent,
     PendingComponent,
-    WrongPendingComponent
+    WrongPendingComponent,
+    DBsearchresultComponent
   ]
 })
 export class ShareModule { }

@@ -16,7 +16,6 @@ export class UserBasicComponent implements OnInit {
   viewImage = '//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png';
   issaved = false;
   usermes = this.fb.group({
-
     photo: [''],
     actualname: ['', [ Validators.required,
       Validators.minLength(4),
