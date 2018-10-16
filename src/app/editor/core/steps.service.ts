@@ -41,7 +41,7 @@ export class StepsService {
     const newStep = new EditorStepHeader();
     newStep.desc = stepName;
     newStep.name = stepName;
-    newStep.ico = '/assets/img/editor/icons/' + stepName[0].toUpperCase() + '.png';
+    newStep.ico = 'assets/img/editor/icons/' + stepName[0].toUpperCase() + '.png';
 
     const arr: string[] =  [];
     for (const st of stepTemp) {

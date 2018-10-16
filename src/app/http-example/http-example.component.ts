@@ -159,7 +159,8 @@ export class HttpExampleComponent implements OnInit {
     {name: '新通知个数', lable: 'check_new_notifications', func: this.http.check_new_notifications, templa: {}},
     {name: '拿到活跃用户active user', lable: 'get_active_users', func: this.http.get_active_users, templa: {}},
     {name: '增加report到collection', lable: 'add_to_collection', func: this.http.add_to_collection, templa: {id: 16, collection: 'chemistry'}},
-    {name: '取消report的collection', lable: 'remove_from_collection', func: this.http.remove_from_collection, templa: {id: 16, collection: 'chemistry'}},
+    {name: '取消report的collection', lable: 'remove_from_collection', func: this.http.remove_from_collection,
+              templa: {id: 16, collection: 'chemistry'}},
     {name: '拿到我的所有collection', lable: 'get_all_my_collections', func: this.http.get_all_my_collections, templa: {
     }},
     {name: '根据用户id拿到此用户所有archive', lable: 'get_archives_by_user_id', func: this.http.get_archives_by_user_id, templa: {id: 1}},
@@ -175,6 +176,9 @@ export class HttpExampleComponent implements OnInit {
     }},
     {name: '获得report-simple信息', lable: 'get_report_simple', func: this.http.get_report_simple, templa: {
       report_id: 16
+    }},
+    {name: '搜索引擎', lable: 'get_search_result', func: this.http.get_search_result, templa: {
+      s: 'content'
     }}
   ];
 

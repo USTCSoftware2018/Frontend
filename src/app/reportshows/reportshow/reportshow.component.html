@@ -5,7 +5,7 @@
 
     <div nz-col nzSm="24" nzXs="24" nzMd="24"
          nzLg="0" nzXl="0" nzXXl="0">
-      <app-report-author-info [isMyself]="true" [user]="report_author" [report]="report_sim_info"></app-report-author-info>
+      <app-report-author-info [isMyself]="true" [user]="report.author" [report]="report"></app-report-author-info>
     </div>
     <!-- right part -->
     <div nz-col nzSm="24" nzXs="24" nzMd="24" nzLg="17" nzXl="18" nzXXl="18" class="report-content">
@@ -19,7 +19,7 @@
             </li>
           </ul>
         </nz-dropdown>
-        <button nz-button nzType="primary" >Delete</button>
+        <button (click)="deleteReport()" nz-button nzType="primary" >Delete</button>
       </div>
 
       <nz-divider></nz-divider>
@@ -34,12 +34,12 @@
         <div class="comments">
 
           <div class="comments-title">
-            <p>Comments({{report_sim_info.commentsnum}})
+            <p>Comments({{report.commentsnum}})
           </div>
 
           <div *ngIf="isLogin" nz-row nzType="flex" nzAlign="top" class="input-comment">
             <div nz-col nzSpan="3">
-              <a><nz-avatar nzSize="large" [nzSrc]="report_author?.avatar_url"></nz-avatar></a>
+              <a><nz-avatar nzSize="large" [nzSrc]="report.author?.avatar_url"></nz-avatar></a>
             </div>
             <div nz-col nzSpan="21">
               <textarea rows="4" nz-input></textarea>
@@ -68,7 +68,7 @@
     <!-- left part-->
     <div nz-col nzSm="0" nzXs="0" nzMd="0" nzLg="7" nzXl="6" nzXXl="6">
       <nz-affix nzOffsetTop="45">
-        <app-report-author-info [isMyself]="true" [user]="report_author" [report]="report_sim_info"></app-report-author-info>
+        <app-report-author-info [isMyself]="true" [user]="report" [report]="report"></app-report-author-info>
       </nz-affix>
     </div>
 

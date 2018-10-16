@@ -9,6 +9,10 @@ import {
 import { HttpService} from '../../../http.service';
 import { ApiResult } from '../../../Interface/ApiResult';
 import { NzMessageService } from 'ng-zorro-antd';
+import { userAccountValidator,
+         forbiddenAlphaValidator,
+         forbiddenNumericValidator} from './forbidden-useraccount';
+
 
 @Component({
   selector: 'app-user-account',
@@ -16,11 +20,8 @@ import { NzMessageService } from 'ng-zorro-antd';
   styleUrls: ['./user-account.component.less']
 })
 export class UserAccountComponent implements OnInit {
-  useraccount = this.fb.group({
-    oldpassword: [''],
-    newpassword: [''],
-    confirmpassword: ['']
-  });
+  useraccount: FormGroup;
+
   callback = (result: ApiResult) => {
     console.log(result);
     if (result.success) {
@@ -37,6 +38,21 @@ export class UserAccountComponent implements OnInit {
     this.http.update_password(this.useraccount.value.oldpassword, this.useraccount.value.newpassword, this.callback);
   }
   ngOnInit() {
+    this.useraccount = new FormGroup({
+      oldpassword: new FormControl(),
+      newpassword: new FormControl(null, [
+        forbiddenAlphaValidator(),
+        forbiddenNumericValidator(),
+        Validators.minLength(8),
+        Validators.maxLength(30),
+      ]),
+      confirmpassword: new FormControl(null, [
+        forbiddenAlphaValidator(),
+        forbiddenNumericValidator(),
+        Validators.minLength(8),
+        Validators.maxLength(30),
+      ])
+    }, { validators: userAccountValidator });
   }
 
 }

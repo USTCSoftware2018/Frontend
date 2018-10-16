@@ -5,6 +5,9 @@ import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {UserSigninfoService} from '../../user-signinfo.service';
 import { COMMENT} from '../../Interface/mock-user';
 import {EventService} from '../../editor/report-render/event.service';
+import {HttpService} from '../../http.service';
+import {ApiResult} from '../../Interface/ApiResult';
+import {NzMessageService} from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-reportshow',
@@ -13,8 +16,7 @@ import {EventService} from '../../editor/report-render/event.service';
 })
 export class ReportshowComponent implements OnInit {
   report_id: number;
-  report_author: Simuser = user1;
-  report_sim_info: Report = report1;
+  report: Report = report1;
   report_comments: ReportComment[] = [COMMENT, COMMENT];
   isLogin: boolean;
   constructor(
@@ -22,11 +24,11 @@ export class ReportshowComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private userinfo: UserSigninfoService,
     private dowload_report: EventService,
+    private http: HttpService,
+    private message: NzMessageService,
   ) { }
   ngOnInit() {
-    this.report_author = new Simuser();
     this.getReportId();
-    this.report_author = this.userinfo.myInfo;
     this.isLogin = this.userinfo.isLogin;
   }
   getReportId = () => {
@@ -36,5 +38,16 @@ export class ReportshowComponent implements OnInit {
   }
   downloadReport = () => {
     this.dowload_report.downloadEvent.emit(0);
+  }
+  deleteReport() {
+    const callback = (result: ApiResult) => {
+      if (result.success) {
+        this.message.success('Success to delete the report.');
+        this.router.navigateByUrl('/explore');
+      } else {
+        this.message.error('Fail to delete the report.');
+      }
+    };
+    this.http.delete_report(this.report_id, callback);
   }
 }

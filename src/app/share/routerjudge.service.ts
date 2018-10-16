@@ -28,9 +28,9 @@ export class RouterjudgeService {
   goToJudge = (id: number, myurl: string, othersurl: string) => {
     const isme = this.ifMyself(id);
     if (isme) {
-      this.router.navigateByUrl('/').then(() => this.router.navigateByUrl(myurl));
+      this.router.navigateByUrl('/mypersonalcenter/detailinfo').then(() => this.router.navigateByUrl(myurl));
     } else {
-      this.router.navigateByUrl('/').then(() => this.router.navigateByUrl(othersurl));
+      this.router.navigateByUrl('/userprofile/' + id).then(() => this.router.navigateByUrl(othersurl));
     }
   }
   // 点击头像
@@ -51,6 +51,6 @@ export class RouterjudgeService {
   }
   // 点击报告名
   gotoReportDisplay = ( id: number, report_id: number) => {
-    this.goToJudge(id, '/report/my/' + report_id, '/report/' + id + '/' + report_id);
+    this.goToJudge(id, '/report/my/' + report_id, '/report/others/' + report_id);
   }
 }

@@ -9,7 +9,7 @@ const routes: Routes = [
   children: [
     { path: 'reports', component: PopularReportComponent},
     { path: 'igemers', component: PopularIgemersComponent},
-    { path: '', redirectTo: 'reports', pathMatch: 'full'},
+    { path: '', redirectTo: '/explore/reports'}
   ]},
 ];
 

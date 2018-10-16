@@ -36,14 +36,14 @@ export class MyCenterIndexComponent implements OnInit {
   get_collections = () => {
     const callback = (result: ApiResult) => {
       if (result.success) {
-        this.collections = result.data.results;
+        this.collections = result.data;
         /* for pending */
         this.count++;
-      }else {
-        this.pending_wrong_show=true;
+      } else {
+        this.pending_wrong_show = true;
       }
-      if(this.count==2){
-        this.pending_show=false;
+      if(this.count === 2) {
+        this.pending_show = false;
       }
       /* for pending */
     };
@@ -52,14 +52,14 @@ export class MyCenterIndexComponent implements OnInit {
   get_favortites = () => {
     const callback = (result: ApiResult) => {
       if (result.success) {
-        this.collections = result.data.results;
+        this.favorites = result.data;
         /* for pending */
         this.count++;
-      }else {
-        this.pending_wrong_show=true;
+      } else {
+        this.pending_wrong_show = true;
       }
-      if(this.count==2){
-        this.pending_show=false;
+      if(this.count === 2) {
+        this.pending_show = false;
       }
       /* for pending */
     };

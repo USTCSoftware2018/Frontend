@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Simuser } from '../../Interface/userinfo';
-import { LikeNotification, FollowNotification } from './notification';
+import { Simuser, Notification } from '../../Interface/userinfo';
 import {UserSigninfoService} from '../../user-signinfo.service';
 import {HttpService} from '../../http.service';
 import {ApiResult} from '../../Interface/ApiResult';
@@ -13,7 +12,7 @@ import {ApiResult} from '../../Interface/ApiResult';
 export class NotificationComponent implements OnInit {
 
   user: Simuser;
-  notifications: (LikeNotification|FollowNotification)[];
+  notifications: Notification[];
   constructor(
     private user_info: UserSigninfoService,
     private http: HttpService,

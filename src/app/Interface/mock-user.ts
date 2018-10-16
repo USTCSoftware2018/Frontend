@@ -42,7 +42,7 @@ export const user3: Simuser = {
   username: 'Sindi',
   actual_name: 'Cindy',
   description: 'about me',
-  avatar_url: '../../../assets/img/test/img.jpg',
+  avatar_url: 'assets/img/test/img.jpg',
   stat: {
     following_count: 42,
     follower_count: 233,
@@ -60,7 +60,7 @@ const user4: Simuser = {
   username: 'Candy',
   description: 'about me',
   actual_name: 'Cindy',
-  avatar_url: '../../../assets/img/test/img.jpg',
+  avatar_url: 'assets/img/test/img.jpg',
   stat: {
     following_count: 42,
     follower_count: 233,

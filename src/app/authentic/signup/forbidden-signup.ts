@@ -16,7 +16,7 @@ export function forbiddenUsernameValidator(): ValidatorFn {
   };
 }
 export function forbiddenEmailValidator(): ValidatorFn {
-  return (control: AbstractControl): {[key: string]: any} | null => {
+  return (control: AbstractControl): { [key: string]: any } | null => {
     let forbidden: Boolean;
     if (!email.test(control.value)) {
       forbidden = true;

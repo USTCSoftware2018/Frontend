@@ -21,8 +21,13 @@
         </div>
         <!-- for pending  -->
 
-        <div *ngFor="let report of collections">
-          <app-others-report [bkcolor]="'#F2F2F2'" [report]="report"></app-others-report>
+        <div style="text-align: justify">
+          <nz-collapse [nzBordered]="false">
+            <nz-collapse-panel  *ngFor = "let collection of collections" [nzHeader]="collection.name"
+                               [nzActive]="true">
+              <app-others-report  *ngFor="let report of collection.reports" [bkcolor]="'#F2F2F2'" [report]="report"></app-others-report>
+            </nz-collapse-panel>
+          </nz-collapse>
         </div>
       </nz-tab>
 

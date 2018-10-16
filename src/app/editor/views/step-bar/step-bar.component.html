@@ -32,12 +32,12 @@
     </nz-tab>
 
 
-    <nz-tab nzTitle="Process">
+    <nz-tab nzTitle="Protocol">
 
       <div nz-row>
         <div nz-col nzSpan="18" nzOffset="1">
           <nz-input-group nzSuffixIcon="anticon anticon-search">
-            <input type="text" nz-input placeholder="Input search process">
+            <input type="text" nz-input placeholder="Input search protocol">
           </nz-input-group>
         </div>
         <div nz-col nzSpan="4" >
@@ -66,7 +66,7 @@
     <nz-form-item>
       <nz-form-label [nzSpan]="6" >Name</nz-form-label>
       <nz-form-control [nzSpan]="14">
-        <input nz-input  [(ngModel)]="tempNewStepName" [ngModelOptions]="{standalone: true}"/>
+        <input nz-input  [(ngModel)]="tempNewStepName" [ngModelOptions]="{standalone: true}" maxlength="13"/>
       </nz-form-control>
     </nz-form-item>
     
@@ -92,18 +92,18 @@
     <nz-form-item>
       <nz-form-label [nzSpan]="6">Yield</nz-form-label>
       <nz-form-control [nzSpan]="14">
-        <textarea nz-input [(ngModel)]="tempNewStepField" [ngModelOptions]="{standalone: true}"></textarea>
+        <textarea nz-input [(ngModel)]="tempNewStepField" [ngModelOptions]="{standalone: true }"></textarea>
       </nz-form-control>
     </nz-form-item >
   </form>
 </nz-modal>
 
-<nz-modal [(nzVisible)]="isVisibleProcess" nzTitle="New Process" (nzOnCancel)="handleCancelProcess()" (nzOnOk)="handleOkProcess()">
+<nz-modal [(nzVisible)]="isVisibleProcess" nzTitle="New Protocol" (nzOnCancel)="handleCancelProcess()" (nzOnOk)="handleOkProcess()">
   <form nz-form>
   <nz-form-item>
     <nz-form-label [nzSpan]="6" >Name</nz-form-label>
     <nz-form-control [nzSpan]="14">
-      <input nz-input  [(ngModel)]="tempNewProcessName" [ngModelOptions]="{standalone: true}"/>
+      <input nz-input  [(ngModel)]="tempNewProcessName" [ngModelOptions]="{standalone: true}" maxlength="15"/>
     </nz-form-control>
   </nz-form-item>
 

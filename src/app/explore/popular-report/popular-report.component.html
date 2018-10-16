@@ -12,6 +12,8 @@
 <!-- for pending  -->
 <div *ngIf="!pending_show&&!pending_wrong_show">
   <div class="report-item">
-    <app-report-card *ngFor="let report of reports" [report]="report"></app-report-card>
+    <app-report-card *ngFor="let report of reports" [report]="report" ></app-report-card>
   </div>
 </div>
+
+
