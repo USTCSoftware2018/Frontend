@@ -1,14 +1,26 @@
-<nz-card class="igemer-card" nzLoading="false" [nzCover]="AvatarTemplate">
+<nz-card class="igemer-card" nzLoading="false" [nzCover]="AvatarTemplate" nzHoverable="true">
+  <!--
   <div class="igemer-info-container">
     <div>
+      <!--
       <a class="igemer-name">{{igemer.username}}</a>
       <div class="igemer-description-container">
         <p class="igemer-description">{{igemer.description}}</p>
       </div>
+      -->
       <!--<div class="igemer-name" nz-col nzSpan="24">-->
         <!--<a>{{igemer.username}}</a>-->
         <!--<p class="igemer-description">{{igemer.description}}</p>-->
-      <!--</div>-->
+      <!--</div>--
+    </div>
+  </div>
+  -->
+  <div class="name-description">
+    <div class="igemer-name-container">
+      <a class="igemer-name">{{igemer.username}}</a>
+    </div>
+    <div class="igemer-description-container">
+      <p class="igemer-description">{{igemer.description}}</p>
     </div>
   </div>
 </nz-card>
@@ -19,6 +31,8 @@
     <i (click)="toggleFollow()" class="follow-anticon anticon"
        [class.anticon-eye] = "isFollow" [class.anticon-eye-o] = "!isFollow"
     ></i>
+    <!--
     <i (click)="gotoIndex()" class="more-anticon anticon anticon-ellipsis"></i>
+    -->
   </div>
 </ng-template>

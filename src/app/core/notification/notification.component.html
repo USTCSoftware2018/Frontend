@@ -34,7 +34,7 @@
             <span class="title-bold">&nbsp;{{notification.target.title}}&nbsp;</span>
             <span class="title-light">&nbsp;by&nbsp;</span>
             <span class="title-light">&nbsp;you&nbsp;&nbsp;</span>
-            <span class="title-time">{{notification.created}}</span>
+            <span class="title-time">{{notification.created | date: 'longDate'}}</span>
           </div>
           <app-my-report [bkcolor]="'#FFFFFF'" [report]="notification.target"></app-my-report>
         </div>

@@ -16,8 +16,7 @@ import {NzMessageService} from 'ng-zorro-antd';
 })
 export class ReportshowComponent implements OnInit {
   report_id: number;
-  report_author: Simuser = user1;
-  report_sim_info: Report = report1;
+  report: Report = report1;
   report_comments: ReportComment[] = [COMMENT, COMMENT];
   isLogin: boolean;
   constructor(
@@ -29,9 +28,7 @@ export class ReportshowComponent implements OnInit {
     private message: NzMessageService,
   ) { }
   ngOnInit() {
-    this.report_author = new Simuser();
     this.getReportId();
-    this.report_author = this.userinfo.myInfo;
     this.isLogin = this.userinfo.isLogin;
   }
   getReportId = () => {

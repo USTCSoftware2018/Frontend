@@ -47,6 +47,7 @@ export class ReportAuthorInfoComponent implements OnInit {
     this.isFollow = this.user.followed;
     this.isliked = this.report.isliked;
     this.iscollected = this.report.iscollected;
+    this.btncontent = this.isFollow ? 'unfollow' : 'follow';
     this.collectForm = this.fb.group({
       collection: [ null, [ Validators.required, Validators.maxLength(20) ] ],
     });
@@ -57,7 +58,6 @@ export class ReportAuthorInfoComponent implements OnInit {
       this.message.error( 'Fail to unfollow' + this.user.username);
       this.isFollow = this.old_follow_bl;
       this.btncontent = this.old_follow_msg;
-      this.btncontent = this.isFollow ? 'unfollow' : 'follow';
     }
   }
   unfollow_callback = (result: ApiResult) => {
