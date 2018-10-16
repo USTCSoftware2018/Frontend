@@ -25,14 +25,15 @@ const appRoutes: Routes = [
     data: {preload: true}},
   { path: 'report', loadChildren: '../reportshows/reportshows.module#ReportshowsModule', data: {preload: true}},
   { path: '', redirectTo: '/explore', pathMatch: 'full' },
-  { path: '**', component: Error404Component}
+  { path: '404', component: Error404Component},
+  { path: '**', redirectTo: '/404' , pathMatch: 'full'}
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      // { enableTracing: true},
+      { enableTracing: true},
     )
   ],
   exports: [

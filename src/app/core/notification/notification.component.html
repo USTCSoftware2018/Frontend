@@ -16,7 +16,7 @@
           <div class="title-content">
             <span class="title-bold">&nbsp;&nbsp;&nbsp;&nbsp;{{notification.target.name}}</span>
             <span class="title-light">&nbsp;&nbsp;started&nbsp;following&nbsp;you&nbsp;&nbsp; </span>
-            <span class="title-time">{{notification.created}}</span>
+            <span class="title-time">{{notification.created| date: 'longDate'}}</span>
           </div>
           <app-followuser [bkcolor]="'#FFFFFF'" [otheruser]="notification.target"></app-followuser>
         </div>
