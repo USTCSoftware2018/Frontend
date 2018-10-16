@@ -18,7 +18,9 @@
         </form>
         <div class="input-tags">
           <span class="tag-label">filters:&nbsp;&nbsp;&nbsp;</span>
-          <nz-tag *ngFor="let filter of result.filters">{{filter}}</nz-tag>
+            <nz-tag [nzColor]="filtertype2color[filter.type]" *ngFor="let filter of result.filters">
+              {{filter.type + ' ' + filterrel2verb[filter.rel] + ' ' + filter.value}}
+            </nz-tag>
         </div>
       </div>
 
@@ -28,41 +30,31 @@
             <ng-template #AllTemplate>
               <nz-dropdown>
                 <a nz-dropdown>
-                  All <i class="anticon anticon-down"></i>
+                  All
                 </a>
-                <ul nz-menu nzSelectable>
-                  <li nz-menu-item>
-                    <a>1st menu item</a>
-                  </li>
-                  <li nz-menu-item>
-                    <a>2nd menu item</a>
-                  </li>
-                  <li nz-menu-item>
-                    <a>3rd menu item</a>
-                  </li>
-                </ul>
               </nz-dropdown>
             </ng-template>
-            <div ></div>
+              <app-dynamic-sort [title]="['USERS', 'REPORTS', 'DBS']" [ResultsTempate]="[usersTemplate, reportsTemplate, dbsTemplate]" >
+                <ng-template #usersTemplate>
+                  <app-followuser *ngFor="let user of users" [otheruser]="user" [bkcolor]="'#FFFFFF'" ></app-followuser>
+                </ng-template>
+                <ng-template #reportsTemplate>
+                  <app-others-report *ngFor="let report of reports" [report]="report"  [bkcolor]="'#FFFFFF'"></app-others-report>
+                </ng-template>
+                <ng-template #dbsTemplate>
+                  <div class="db-item">
+                    <app-dbsearchresult *ngFor="let db of dbs" [db]="db"></app-dbsearchresult>
+                  </div>
+                </ng-template>
+              </app-dynamic-sort>
           </nz-tab>
 
           <nz-tab nz-col nzSpan="4" [nzTitle]="ReportsTemplate">
             <ng-template #ReportsTemplate>
               <nz-dropdown>
                 <a nz-dropdown>
-                  Reports <i class="anticon anticon-down"></i>
+                  Reports
                 </a>
-                <ul nz-menu nzSelectable>
-                  <li nz-menu-item>
-                    <a>1st menu item</a>
-                  </li>
-                  <li nz-menu-item>
-                    <a>2nd menu item</a>
-                  </li>
-                  <li nz-menu-item>
-                    <a>3rd menu item</a>
-                  </li>
-                </ul>
               </nz-dropdown>
             </ng-template>
             <div *ngFor="let report of reports" class="content">
@@ -94,66 +86,57 @@
             </div>
           </nz-tab>
 
-          <nz-tab nz-col nzSpan="4" [nzTitle]="ThesisTemplate">
-            <ng-template #ThesisTemplate>
-              <nz-dropdown>
-              <a nz-dropdown>
-                Thesis <i class="anticon anticon-down"></i>
-              </a>
-              <ul nz-menu nzSelectable>
-                <li nz-menu-item>
-                  <a>1st menu item</a>
-                </li>
-                <li nz-menu-item>
-                  <a>2nd menu item</a>
-                </li>
-                <li nz-menu-item>
-                  <a>3rd menu item</a>
-                </li>
-              </ul>
-            </nz-dropdown>
-            </ng-template>
-          </nz-tab>
+          <!--<nz-tab nz-col nzSpan="4" [nzTitle]="ThesisTemplate">-->
+            <!--<ng-template #ThesisTemplate>-->
+              <!--<nz-dropdown>-->
+              <!--<a nz-dropdown>-->
+                <!--Thesis <i class="anticon anticon-down"></i>-->
+              <!--</a>-->
+              <!--<ul nz-menu nzSelectable>-->
+                <!--<li nz-menu-item>-->
+                  <!--<a>1st menu item</a>-->
+                <!--</li>-->
+                <!--<li nz-menu-item>-->
+                  <!--<a>2nd menu item</a>-->
+                <!--</li>-->
+                <!--<li nz-menu-item>-->
+                  <!--<a>3rd menu item</a>-->
+                <!--</li>-->
+              <!--</ul>-->
+            <!--</nz-dropdown>-->
+            <!--</ng-template>-->
+          <!--</nz-tab>-->
 
-          <nz-tab nz-col nzSpan="4" [nzTitle]="ProteinTemplate">
-            <ng-template #ProteinTemplate>
-                <nz-dropdown>
-                  <a nz-dropdown>
-                    Proteins <i class="anticon anticon-down"></i>
-                  </a>
-                  <ul nz-menu nzSelectable>
-                    <li nz-menu-item>
-                      <a>1st menu item</a>
-                    </li>
-                    <li nz-menu-item>
-                      <a>2nd menu item</a>
-                    </li>
-                    <li nz-menu-item>
-                      <a>3rd menu item</a>
-                    </li>
-                  </ul>
-                </nz-dropdown>
-            </ng-template>
-          </nz-tab>
+          <!--<nz-tab nz-col nzSpan="4" [nzTitle]="ProteinTemplate">-->
+            <!--<ng-template #ProteinTemplate>-->
+                <!--<nz-dropdown>-->
+                  <!--<a nz-dropdown>-->
+                    <!--Proteins <i class="anticon anticon-down"></i>-->
+                  <!--</a>-->
+                  <!--<ul nz-menu nzSelectable>-->
+                    <!--<li nz-menu-item>-->
+                      <!--<a>1st menu item</a>-->
+                    <!--</li>-->
+                    <!--<li nz-menu-item>-->
+                      <!--<a>2nd menu item</a>-->
+                    <!--</li>-->
+                    <!--<li nz-menu-item>-->
+                      <!--<a>3rd menu item</a>-->
+                    <!--</li>-->
+                  <!--</ul>-->
+                <!--</nz-dropdown>-->
+            <!--</ng-template>-->
+          <!--</nz-tab>-->
 
           <nz-tab nz-col nzSpan="4" [nzTitle]="BiobrickTemplate">
             <ng-template #BiobrickTemplate>
-              <nz-dropdown>
-                <a nz-dropdown>
-                  Biobricks <i class="anticon anticon-down"></i>
-                </a>
-                <ul nz-menu nzSelectable>
-                  <li nz-menu-item>
-                    <a>1st menu item</a>
-                  </li>
-                  <li nz-menu-item>
-                    <a>2nd menu item</a>
-                  </li>
-                  <li nz-menu-item>
-                    <a>3rd menu item</a>
-                  </li>
-                </ul>
-              </nz-dropdown>
+                <a>Biobricks</a>
+            </ng-template>
+          </nz-tab>
+
+          <nz-tab nz-col nzSpan="4" [nzTitle]="BlastTemplate">
+            <ng-template #BlastTemplate>
+                <a>Biobricks</a>
             </ng-template>
           </nz-tab>
         </nz-tabset>

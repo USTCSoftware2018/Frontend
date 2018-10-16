@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AllDbComponent } from './all-db.component';
+import { DynamicSortComponent } from './dynamic-sort.component';
 
-describe('AllDbComponent', () => {
-  let component: AllDbComponent;
-  let fixture: ComponentFixture<AllDbComponent>;
+describe('DynamicSortComponent', () => {
+  let component: DynamicSortComponent;
+  let fixture: ComponentFixture<DynamicSortComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AllDbComponent ]
+      declarations: [ DynamicSortComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AllDbComponent);
+    fixture = TestBed.createComponent(DynamicSortComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

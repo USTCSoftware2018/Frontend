@@ -1,0 +1,12 @@
+<nz-collapse [nzBordered]="false" style="text-align: justify">
+  <nz-collapse-panel [nzHeader]="title[0]" [nzActive]="true" [ngStyle]="panelStyle">
+    <ng-container [ngTemplateOutlet]="ResultsTempate[0]"></ng-container>
+  </nz-collapse-panel >
+  <nz-collapse-panel [nzHeader]="title[1]" [nzActive]="true" [ngStyle]="panelStyle">
+    <ng-container [ngTemplateOutlet]="ResultsTempate[1]"></ng-container>
+  </nz-collapse-panel>
+  <nz-collapse-panel [nzHeader]="title[2]" [nzActive]="true" [ngStyle]="panelStyle">
+    <ng-container [ngTemplateOutlet]="ResultsTempate[2]"></ng-container>
+  </nz-collapse-panel>
+</nz-collapse>
+

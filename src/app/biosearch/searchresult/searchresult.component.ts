@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { USER } from '../../Interface/mock-user';
 import { Simuser, Report } from '../../Interface/userinfo';
-import { SearchResult } from '../search-result';
+import { SearchResult, Data} from '../search-result';
+import {report1, user1, user2} from '../../Interface/mock-user';
 import {
   FormGroup,
   FormControl,
@@ -9,6 +10,8 @@ import {
 } from '@angular/forms';
 import {HttpService} from '../../http.service';
 import {ApiResult} from '../../Interface/ApiResult';
+import { DB } from '../search-result';
+import { RESULT, MOCKDB } from '../mock-search';
 
 
 @Component({
@@ -19,10 +22,25 @@ import {ApiResult} from '../../Interface/ApiResult';
 export class SearchresultComponent implements OnInit {
   searchForm: FormGroup;
   User = USER;
-  users: Simuser[];
-  reports: Report[] = [];
-  loading: boolean;
-  result: SearchResult;
+  users: Simuser[] = [user1, user2];
+  reports: Report[] = [report1];
+  dbs: DB[] = MOCKDB;
+  filtertype2color = {
+    'time': 'blue',
+    'title': 'cyan',
+    'name': 'greekblue',
+    'addr': 'gold',
+    'author': 'purple',
+  };
+  filterrel2verb = {
+    'eq': '=',
+    'gt': '>',
+    'lt': '<',
+    'is': 'is',
+    'like': 'like',
+    'in': 'in',
+  };
+  result: SearchResult = RESULT;
   suggestions = ['aaaaa', 'bbbbb', 'ccccc', 'ddddd', 'abcdefghi'];
   prefix: string[] = [];
   constructor(
@@ -31,8 +49,6 @@ export class SearchresultComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.result = new SearchResult();
-    this.result.filters = {label: 'a', people: 'b', time: { end: 'b', start: 'c'}};
     this.users = this.User.followers;
     this.reports = this.User.reports;
     this.searchForm = new FormGroup({
@@ -43,7 +59,7 @@ export class SearchresultComponent implements OnInit {
     console.log(this.users);
   }
   initPrefix = () => {
-    for ( let ii  = 32; ii < 126; ii++) {
+    for ( let ii  = 32; ii < 127; ii++) {
       const char = String.fromCharCode(ii);
       this.prefix.push(char);
     }
@@ -53,16 +69,29 @@ export class SearchresultComponent implements OnInit {
     const forminfo = this.searchForm.value;
     const callback = (result: ApiResult) => {
       this.result = result.data;
-    }
+    };
     this.http.get_search_result(forminfo.search_info, callback);
   }
-  getSearchResult() {
-  }
-  startloading() {
-    this.loading = true;
-  }
-  endloading() {
-    this.loading = true;
-  }
   get search_info() { return this.searchForm.get('search_info'); }
+  // 排序功能
+  searchResultSort(data: Data) {
+    const objSorted = Object.keys(data).sort(
+      function(a, b) {
+        return data[a].rank - data[b].rank;
+      }
+    );
+    return objSorted;
+  }
+  // private addComponent<T>(component: Type<any> , paramas: T) {
+  //   const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
+  //   this.vcRef.clear();
+  //   const dynamicComponent1 =  this.vcRef.createComponent(componentFactory);
+  //   (<any>dynamicComponent1.instance).data = paramas;
+  // }
+  // appendComponent() {
+  //   const sort_result = this.searchResultSort(this.result.filters);
+  //   console.log(sort_result);
+  //   // for ( const filter in sort_result ) {
+  //   // }
+  // }
 }

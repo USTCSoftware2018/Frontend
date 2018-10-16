@@ -8,9 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(en);
 import { SearchresultComponent} from './searchresult/searchresult.component';
-import { AllDbComponent } from './all-db/all-db.component';
-import { AllUsersComponent } from './all-users/all-users.component';
-import { AllReportComponent } from './all-report/all-report.component';
+import { DynamicSortComponent } from './dynamic-sort/dynamic-sort.component';
 
 @NgModule({
   imports: [
@@ -23,11 +21,9 @@ import { AllReportComponent } from './all-report/all-report.component';
   ],
   declarations: [
     SearchresultComponent,
+    DynamicSortComponent
   ],
   entryComponents: [
-    AllDbComponent,
-    AllUsersComponent,
-    AllReportComponent
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   exports: [

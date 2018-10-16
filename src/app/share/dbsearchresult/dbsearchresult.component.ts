@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DB } from '../../biosearch/search-result';
 
 @Component({
   selector: 'app-dbsearchresult',
@@ -6,21 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dbsearchresult.component.less']
 })
 export class DBsearchresultComponent implements OnInit {
-  dbsearchtip = {
-    count: 0,
-    src: '',
-    title: '',
-    url: '',
-  };
-
-  constructor() { }
+  @Input() db: DB;
+  img_src: string;
+  constructor() {}
 
   ngOnInit() {
-
-    this.dbsearchtip.count = 0;
-    this.dbsearchtip.title = 'iGEM Parts';
-    this.dbsearchtip.url = 'http://parts.igem.org/Special:Search?search=p12';
-    this.dbsearchtip.src = 'assets/img/searchresult/icon/' + this.dbsearchtip.title + '.png';
+    this.img_src = '../../../assets/img/searchresult/icon/' + this.db.title.replace(' ', '_') + '.png';
   }
 
 }

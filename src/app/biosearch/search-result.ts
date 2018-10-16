@@ -1,27 +1,25 @@
 import { User, Report } from '../Interface/userinfo';
 
-class Data {
-  users: User[];
-  reports: Report[];
-}
-class Ranks {
-  users: number;
-  db: number;
-  reports: number;
+export class Data {
+  type: string;
+  rank: number;
+  data: any[];
 }
 class Time {
   end: string;
   start: string;
 }
-class Filters {
-  label: string;
-  people: string;
-  time: Time;
+export class Filter {
+  type: string;
+  rel: string;
+  value: string;
 }
 export class SearchResult {
-  name: string;
-  data: Data;
-  ranks: Ranks;
-  filters: Filters;
-  debug: string;
+  filters: Filter[];
+  data: Data[];
+}
+export class DB {
+  count: number;
+  title: string;
+  url: string;
 }
