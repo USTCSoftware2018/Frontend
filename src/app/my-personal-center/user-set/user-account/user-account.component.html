@@ -4,10 +4,10 @@
   <nz-divider></nz-divider>
   <div nz-row>
     <div nz-col nzSpan="18">
-      <form nz-form [formGroup]="useraccount" nzLayout="vertical" >
+      <form nz-form [formGroup]="useraccount" nzLayout="vertical" nzHasFeedback>
         <nz-form-item>
           <nz-form-label>Old password</nz-form-label>
-          <nz-form-control  nzHasFeedback>
+          <nz-form-control>
             <input nz-input nz-input type="password" id="oldpassword" formControlName="oldpassword" required>
           </nz-form-control>
           <nz-form-explain class="error-explain" *ngIf="useraccount.get('oldpassword').dirty&&useraccount.get('oldpassword').hasError('required')">
@@ -16,7 +16,7 @@
         </nz-form-item>
         <nz-form-item>
           <nz-form-label>New password</nz-form-label>
-          <nz-form-control nzHasFeedback>
+          <nz-form-control>
             <input nz-input type="password" id="newpassword" formControlName="newpassword" >
           </nz-form-control>
           <nz-form-explain class="error-explain" *ngIf="useraccount.get('newpassword').dirty || useraccount.get('newpassword').errors || useraccount.get('newpassword').pending ">
@@ -42,7 +42,7 @@
         </nz-form-item>
         <nz-form-item>
           <nz-form-label>Comfirm password</nz-form-label>
-          <nz-form-control nzHasFeedback>
+          <nz-form-control>
             <input nz-input type="password" id="confirmpassword" formControlName="confirmpassword">
             <!-- <input nz-input type="password" id="confirmpassword" formControlName="confirmpassword" [(ngModel)]="useraccount.confirmpassword"> -->
           </nz-form-control>
