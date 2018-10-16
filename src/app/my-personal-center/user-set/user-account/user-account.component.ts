@@ -40,13 +40,13 @@ export class UserAccountComponent implements OnInit {
   ngOnInit() {
     this.useraccount = new FormGroup({
       oldpassword: new FormControl(),
-      newpassword: new FormControl(null,[
+      newpassword: new FormControl(null, [
         forbiddenAlphaValidator(),
         forbiddenNumericValidator(),
         Validators.minLength(8),
         Validators.maxLength(30),
       ]),
-      confirmpassword: new FormControl(null,[
+      confirmpassword: new FormControl(null, [
         forbiddenAlphaValidator(),
         forbiddenNumericValidator(),
         Validators.minLength(8),

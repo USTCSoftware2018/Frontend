@@ -69,7 +69,7 @@ export class PictPanelComponent implements OnInit, OnChanges {
           const picNew = {};
           picNew['uid'] = 'failed';
           picNew['name'] = item.file.name;
-          picNew['url'] = '/assets/img/editor/ico/A.ico';
+          picNew['url'] = 'assets/img/editor/ico/A.ico';
           picNew['status'] = 'error';
           this.ret.pic.splice(this.ret.pic.length - 1, 1);
           this.ret.pic = [...this.ret.pic, picNew];

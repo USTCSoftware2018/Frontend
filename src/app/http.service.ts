@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError, of, observable } from 'rxjs';
 import { ApiResult } from './Interface/ApiResult';
 import { callbackFunc } from './Type/callbackFunc';
@@ -26,7 +26,7 @@ export class HttpService {
     const apiURL = `${this.global_url}/${point}`;
     method = method.toLowerCase();
     let ret = new Observable;
-    if (method === 'get') {
+    if (method === 'get' && params !== null) {
       ret = this.http.get(apiURL, this.httpOptions);
     } else if (method === 'post') {
       ret = this.http.post(apiURL, params, this.httpOptions);
@@ -37,7 +37,10 @@ export class HttpService {
     } else if (method === 'delete') {
       ret = this.http.delete(apiURL, this.httpOptions);
     } else {
-      ret = this.http.get(apiURL, this.httpOptions);
+      ret = this.http.get(apiURL,
+      { headers: this.httpOptions.headers,
+        params: params as HttpParams,
+        withCredentials: true});
     }
     return ret;
   }
@@ -177,6 +180,9 @@ export class HttpService {
   get_report_list_by_userid(user_id: number, callback: callbackFunc) {
     this.fire(`users/reports/${user_id}/`, 'get', null, callback);
 }
+  get_report_simple(report_id: number, callback: callbackFunc) {
+    this.fire(`reports-simple/${report_id}`, 'get', null, callback);
+  }
 
 
 
@@ -282,7 +288,7 @@ export class HttpService {
   }
 
   check_new_notifications(callback: callbackFunc) {
-    this.fire(`notices/has_new_notifications/`, 'get', null, callback)
+    this.fire(`notices/has_new_notifications/`, 'get', null, callback);
   }
 
   get_popular_reports_by_system(callback: callbackFunc) {
@@ -309,7 +315,7 @@ export class HttpService {
   }
 
   check_new_feeds(callback: callbackFunc) {
-    this.fire(`notices/has_new_feeds/`, 'get', null, callback)
+    this.fire(`notices/has_new_feeds/`, 'get', null, callback);
   }
 
   get_active_users(callback: callbackFunc) {
@@ -324,14 +330,14 @@ export class HttpService {
     const params = {
       id: id,
       collection: collection
-    }
+    };
     this.fire(`users/collect/`, 'post', params, callback);
   }
 
   remove_from_collection(id: number, callback: callbackFunc) {
     const params = {
       id: id,
-    }
+    };
     this.fire(`users/uncollect/`, 'post', params, callback);
   }
 
@@ -349,14 +355,20 @@ export class HttpService {
       to_report: to_report,
       message: message,
       to_comment: to_comment
-    }
-    this.fire(`editor/comment/`, 'post', params, callback)
+    };
+    this.fire(`editor/comment/`, 'post', params, callback);
   }
 
   get_report_comment(report_pk: number, callback: callbackFunc) {
-    this.fire(`editor/comment/get_report_comment/${report_pk}/`, 'get', null, callback)
+    this.fire(`editor/comment/get_report_comment/${report_pk}/`, 'get', null, callback);
+  }
+
+  /////////////////////// Search Engine /////////////////////////
+
+  get_search_result(s: string, callback: callbackFunc) {
+    // const params = new HttpParams().set('s', s);
+    this.fire(`search/`, 'post', {'s': s}, callback);
   }
 
 }
-
 

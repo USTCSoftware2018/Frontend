@@ -20,7 +20,7 @@ export class DBsearchresultComponent implements OnInit {
     this.dbsearchtip.count = 0;
     this.dbsearchtip.title = 'iGEM Parts';
     this.dbsearchtip.url = 'http://parts.igem.org/Special:Search?search=p12';
-    this.dbsearchtip.src = '../../../assets/img/searchresult/icon/' + this.dbsearchtip.title + '.png';
+    this.dbsearchtip.src = 'assets/img/searchresult/icon/' + this.dbsearchtip.title + '.png';
   }
 
 }

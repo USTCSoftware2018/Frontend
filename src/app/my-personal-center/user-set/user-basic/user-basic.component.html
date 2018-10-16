@@ -4,11 +4,11 @@
   <nz-divider></nz-divider>
   <div nz-row>
     <div nz-col nzSpan="18">
-      <form nz-form nzLayout="vertical" [formGroup]="usermes">
+      <form nz-form nzLayout="vertical" [formGroup]="usermes" nzHasFeedback>
         <!-- Actual Name -->
         <nz-form-item>
           <nz-form-label>Actual Name</nz-form-label>
-          <nz-form-control nzHasFeedback>
+          <nz-form-control>
             <input nz-input placeholder="{{personalmes.actualname}}"
                    id="actualname" name="actualname" formControlName="actualname" required>
           </nz-form-control>
@@ -27,7 +27,7 @@
         <!-- Actual Name -->
         <nz-form-item>
           <nz-form-label>Location</nz-form-label>
-          <nz-form-control nzHasFeedback>
+          <nz-form-control>
             <input nz-input placeholder="{{personalmes.location}}"  id="location" name="location" formControlName="location" required>
           </nz-form-control>
           <nz-form-explain class="error-explain" *ngIf="usermes.get('location').dirty && usermes.get('location').errors ">
@@ -39,7 +39,7 @@
         <!-- School or Organization -->
         <nz-form-item>
           <nz-form-label>School or Organization</nz-form-label>
-          <nz-form-control nzHasFeedback>
+          <nz-form-control>
             <input nz-input placeholder="{{personalmes.organization}}" id="organization" name="organization" formControlName="organization" required>
           </nz-form-control>
           <nz-form-explain class="error-explain" *ngIf="usermes.get('organization').dirty && usermes.get('organization').errors ">
@@ -51,7 +51,7 @@
         <!-- School or Organization -->
         <nz-form-item>
           <nz-form-label>Description</nz-form-label>
-          <nz-form-control nzHasFeedback>
+          <nz-form-control>
             <textarea nz-input rows="4" placeholder="{{personalmes.description}}" name="description" formControlName="description"></textarea>
           </nz-form-control>
           <nz-form-explain class="error-explain" *ngIf="usermes.get('description').dirty && usermes.get('description').errors ">
@@ -61,7 +61,7 @@
           </nz-form-explain>
         </nz-form-item>
         <nz-form-item nz-row style="margin-bottom:8px;">
-          <nz-form-control [nzSpan]="14" [nzOffset]="6" nzHasFeedback>
+          <nz-form-control [nzSpan]="14" [nzOffset]="6">
             <button nz-button nzType="primary" >Update Profile</button>
           </nz-form-control>
         </nz-form-item>
