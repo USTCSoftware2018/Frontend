@@ -37,7 +37,7 @@ export class HttpService {
     } else if (method === 'delete') {
       ret = this.http.delete(apiURL, this.httpOptions);
     } else {
-      ret = this.http.request( 'GET' , apiURL,
+      ret = this.http.get(apiURL,
       { headers: this.httpOptions.headers,
         params: params as HttpParams,
         withCredentials: true});
@@ -363,8 +363,8 @@ export class HttpService {
   /////////////////////// Search Engine /////////////////////////
 
   get_search_result(s: string, callback: callbackFunc) {
-    const params = new HttpParams().set('s', s);
-    this.fire(`search`, 'get', params, callback);
+    // const params = new HttpParams().set('s', s);
+    this.fire(`search/`, 'post', {'s': s}, callback);
   }
 
 }
