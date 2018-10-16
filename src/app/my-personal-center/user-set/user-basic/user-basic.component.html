@@ -8,16 +8,16 @@
         <!-- Actual Name -->
         <nz-form-item>
           <nz-form-label>Actual Name</nz-form-label>
-          <nz-form-control>
+          <nz-form-control nzHasFeedback>
             <input nz-input placeholder="{{personalmes.actualname}}"
                    id="actualname" name="actualname" formControlName="actualname" required>
           </nz-form-control>
-          <nz-form-explain *ngIf="usermes.get('actualname').dirty && usermes.get('actualname').errors&&issaved">
+          <nz-form-explain class="error-explain" *ngIf="usermes.get('actualname').dirty && usermes.get('actualname').errors ">
             <ng-container *ngIf="usermes.get('actualname').hasError('required')">
               Please input your username!
             </ng-container>
             <ng-container *ngIf="usermes.get('actualname').hasError('minlength')">
-              mingLength more than 4!
+              too long (maximum is 4 characters)!
             </ng-container>
             <ng-container *ngIf="usermes.get('actualname').hasError('forbiddenName')">
               forbiddenname!
@@ -27,27 +27,42 @@
         <!-- Actual Name -->
         <nz-form-item>
           <nz-form-label>Location</nz-form-label>
-          <nz-form-control>
-            <input nz-input placeholder="{{personalmes.location}}"  id="location" name="location" formControlName="location">
+          <nz-form-control nzHasFeedback>
+            <input nz-input placeholder="{{personalmes.location}}"  id="location" name="location" formControlName="location" required>
           </nz-form-control>
+          <nz-form-explain class="error-explain" *ngIf="usermes.get('location').dirty && usermes.get('location').errors ">
+            <ng-container *ngIf="usermes.get('location').hasError('required')">
+              Please input your location!
+            </ng-container>
+          </nz-form-explain>
         </nz-form-item>
         <!-- School or Organization -->
         <nz-form-item>
           <nz-form-label>School or Organization</nz-form-label>
-          <nz-form-control>
-            <input nz-input placeholder="{{personalmes.organization}}" id="organization" name="organization" formControlName="organization">
+          <nz-form-control nzHasFeedback>
+            <input nz-input placeholder="{{personalmes.organization}}" id="organization" name="organization" formControlName="organization" required>
           </nz-form-control>
+          <nz-form-explain class="error-explain" *ngIf="usermes.get('organization').dirty && usermes.get('organization').errors ">
+            <ng-container *ngIf="usermes.get('organization').hasError('required')">
+              Please input your school or organization!
+            </ng-container>
+          </nz-form-explain>
         </nz-form-item>
         <!-- School or Organization -->
         <nz-form-item>
           <nz-form-label>Description</nz-form-label>
-          <nz-form-control>
+          <nz-form-control nzHasFeedback>
             <textarea nz-input rows="4" placeholder="{{personalmes.description}}" name="description" formControlName="description"></textarea>
           </nz-form-control>
+          <nz-form-explain class="error-explain" *ngIf="usermes.get('description').dirty && usermes.get('description').errors ">
+            <ng-container *ngIf="usermes.get('description').hasError('maxlength')">
+              too long (maximum is 200 characters)!
+            </ng-container>
+          </nz-form-explain>
         </nz-form-item>
         <nz-form-item nz-row style="margin-bottom:8px;">
-          <nz-form-control [nzSpan]="14" [nzOffset]="6">
-            <button nz-button nzType="primary">Update Profile</button>
+          <nz-form-control [nzSpan]="14" [nzOffset]="6" nzHasFeedback>
+            <button nz-button nzType="primary" >Update Profile</button>
           </nz-form-control>
         </nz-form-item>
       </form>
