@@ -180,6 +180,9 @@ export class HttpService {
   get_report_list_by_userid(user_id: number, callback: callbackFunc) {
     this.fire(`users/reports/${user_id}/`, 'get', null, callback);
 }
+  get_report_simple(report_id: number, callback: callbackFunc) {
+    this.fire(`reports-simple/${report_id}`, 'get', null, callback);
+  }
 
 
 
