@@ -14,8 +14,8 @@ export class PersonalInformationComponent implements OnInit {
   @Input() archive: Archive[];
   @Input() popular_reports: Report[] = [];
   /* for pending */
-  @Input() pending_show:boolean;
-  @Input() pending_wrong_show:boolean;
+  @Input() pending_show: boolean;
+  @Input() pending_wrong_show: boolean;
   /* for pending */
   constructor() { }
 
