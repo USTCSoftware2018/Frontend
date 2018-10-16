@@ -12,11 +12,13 @@ export class EditorFieldTypeComponent implements OnInit, DoCheck {
   @Input() size: string;
   options: string[];
   envField?: string;
+  backField?: string;
   changed: Boolean = false;
 
   constructor(public editor: EditorReportService) { }
 
   ngOnInit() {
+    this.backField = this.fld.value;
     for (const key of this.fld.attr) {
       const keystring: string = key;
       this.changeEnv();
@@ -36,13 +38,16 @@ export class EditorFieldTypeComponent implements OnInit, DoCheck {
 
   changeEnv() {
     if ( typeof this.fld.value === 'string' && this.fld.value.substr(0, 1) === '@') {
-      this.envField = this.fld.value.substr(1);
-      const backValue = this.fld.value;
+      this.backField = this.fld.value;
+    }
+    if ( typeof this.backField === 'string' && this.backField.substr(0, 1) === '@') {
+      this.envField = this.backField.substr(1);
+
       try {
         this.fld.value = this.editor.report.envs[this.envField];
       } catch (err) {
         // 不知道在这里写什么
-        this.fld.value = backValue;
+        this.fld.value = this.backField;
       }
     }
   }

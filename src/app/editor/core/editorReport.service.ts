@@ -124,11 +124,28 @@ export class EditorReportService {
     const _step_temp = this.stepsService.findStep(stepid);
     const _new_sub = new ReportSubroutineHeader();  // 新建 subroutine
     _new_sub.id = '0';
-    _new_sub.desc = '';
+    _new_sub.desc = _step_temp.desc;
     _new_sub.name = _step_temp.name;
     // _new_sub.idx =  (this.watch-all-info.subroutines[this.watch-all-info.subroutines.length - 1] || {idx: 0}).idx + 1;
     _new_sub.idx = 0;
     _new_sub.steps = [];
+
+    if ( _step_temp.desc === 'Table') {
+      _new_sub.subType = subType.table;
+      _new_sub.table = new Array<any>() ;
+      this.report.subroutines.push(_new_sub);
+      return;
+    } else if (_step_temp.desc === 'Picture') {
+      _new_sub.subType = subType.pictures;
+      this.report.subroutines.push(_new_sub);
+      _new_sub.pic = [];
+      return;
+    } else if (_step_temp.desc === 'List') {
+      _new_sub.subType = subType.list;
+      _new_sub.list =  new Array<any>();
+      this.report.subroutines.push(_new_sub);
+      return;
+    }
 
     const _new_step = new ReportStepsHeader();  // 新建 step
     _new_step.name = _step_temp.id;
@@ -271,7 +288,7 @@ export class EditorReportService {
       }
     }
     for (const sub of _sent_report.subroutines) {
-      for (const attr of ['subType', 'idx', 'desc', 'list', 'remark', 'pic', 'table']) {
+      for (const attr of [ 'idx', 'desc']) {
         if (sub[attr]) {
           delete sub[attr];
         }

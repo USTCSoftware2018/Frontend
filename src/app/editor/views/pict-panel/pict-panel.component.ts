@@ -16,7 +16,7 @@ export class PictPanelComponent implements OnInit, OnChanges {
   previewVisible = false;
 
   // public picUrl = 'http://139.199.13.162:8080/api/editor/graph/';
-  public picUrl = 'https://api.biohub.tech/api/editor/graph/';
+  public picUrl = 'https://api-us.biohub.tech/api/editor/graph/';
 
   constructor(public http: HttpClient,
               private msg: NzMessageService,
@@ -61,7 +61,7 @@ export class PictPanelComponent implements OnInit, OnChanges {
       ctx => { const picNew = {};
               picNew['uid'] = ctx['pk'];
               picNew['name'] = ctx['name'];
-              picNew['url'] = 'https://api.biohub.tech' + ctx['graph'];
+              picNew['url'] = 'https://api-us.biohub.tech' + ctx['graph'];
               picNew['status'] = 'done';
               this.ret.pic.splice(this.ret.pic.length - 1, 1);
               this.ret.pic = [...this.ret.pic, picNew]; },

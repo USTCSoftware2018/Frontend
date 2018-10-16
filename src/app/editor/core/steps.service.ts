@@ -43,6 +43,11 @@ export class StepsService {
     newStep.name = stepName;
     newStep.ico = 'assets/img/editor/icons/' + stepName[0].toUpperCase() + '.png';
 
+    if ( newStep.name === undefined || newStep.name === '' ) {
+      this.notice.blank('Add Step Failed', 'name can not be blank');
+      return ;
+    }
+
     const arr: string[] =  [];
     for (const st of stepTemp) {
       arr.push(st.value);
@@ -68,6 +73,11 @@ export class StepsService {
     newSub.steps.forEach(element => {
       newSub.default.push({});
     });
+
+    if ( newSub.name === undefined || newSub.name === '' ) {
+      this.notice.blank('Add Protocol Failed', 'name can not be blank');
+      return ;
+    }
 
     this.getDataService.saveNewSubroutine(newSub, (rst) => {
       if (rst['status'] === 200) {
@@ -98,6 +108,7 @@ export class StepsService {
           const tmpSub = (JSON.parse(element['content_json']) as EditorSubroutineHeader);
           tmpSub.id = element['id'].toString();
           this._subs = [...this._subs, tmpSub];
+          console.log(this._subs);
         });
       } else {
         this.notice.blank('Retrive Subroutine failed.', rst['data']['detail']);

@@ -65,13 +65,14 @@
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="collection">Group name</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24">
         <nz-input-group >
-          <input type="text" nz-input formControlName="collection" placeholder="Collect Group">
+          <input type="text" nz-input formControlName="collection" placeholder="Collect Group" required>
         </nz-input-group>
-        <nz-form-explain *ngIf="collectForm.dirty && (collection.errors || collection.pending)">
-          <ng-container *ngIf="collection.hasError('required')">
+
+        <nz-form-explain *ngIf="collectForm.get('collection').dirty && (collectForm.get('collection').errors || collectForm.get('collection').pending)">
+          <ng-container *ngIf="collectForm.hasError('required')">
             Please enter the group name!
           </ng-container>
-          <ng-container *ngIf="collection.hasError('maxlength')">
+          <ng-container *ngIf="collectForm.hasError('maxlength')">
             too long(no more than 20 letters)!
           </ng-container>
         </nz-form-explain>

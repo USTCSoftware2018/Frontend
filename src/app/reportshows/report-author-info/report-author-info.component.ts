@@ -1,21 +1,26 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
 import { Simuser, Report } from '../../Interface/userinfo';
 import {HttpService} from '../../http.service';
 import {ApiResult} from '../../Interface/ApiResult';
 import {NzMessageService, NzModalService} from 'ng-zorro-antd';
 import {
   AbstractControl,
-  FormBuilder,
+  FormBuilder, FormControl,
   FormGroup,
   Validators
 } from '@angular/forms';
+import {
+  forbiddenAlphaValidator,
+  forbiddenNumericValidator,
+  userAccountValidator
+} from '../../my-personal-center/user-set/user-account/forbidden-useraccount';
 
 @Component({
   selector: 'app-report-author-info',
   templateUrl: './report-author-info.component.html',
   styleUrls: ['./report-author-info.component.less']
 })
-export class ReportAuthorInfoComponent implements OnInit {
+export class ReportAuthorInfoComponent implements OnInit, OnChanges {
   @Input() user: Simuser;
   @Input() report: Report;
   @Input() isMyself: boolean;
@@ -33,23 +38,69 @@ export class ReportAuthorInfoComponent implements OnInit {
   uncollecting: boolean;
   isOkLoading: boolean;
   collectForm: FormGroup;
-  get collection() {
-    return this.collectForm.get('collection');
-  }
+
   constructor(
     private http: HttpService,
     private message: NzMessageService,
     private modalService: NzModalService,
     private fb: FormBuilder
   ) { }
+/*
+  this.useraccount = new FormGroup({
+    oldpassword: new FormControl(),
+    newpassword: new FormControl('', [
+      forbiddenAlphaValidator(),
+      forbiddenNumericValidator(),
+      Validators.minLength(7),
+      Validators.maxLength(30),
+    ]),
+    confirmpassword: new FormControl('', [
+      forbiddenAlphaValidator(),
+      forbiddenNumericValidator(),
+      Validators.minLength(7),
+      Validators.maxLength(30),
+    ])
+  }, { validators: userAccountValidator });
+}*/
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('change');
+    console.log(this.user);
+    console.log(this.report);
+    console.log(this.isMyself);
+    if (this.user !== undefined && this.report !== undefined && this.isMyself !== undefined) {
+      this.isFollow = this.user.followed;
+      this.isliked = this.report.isliked;
+      this.iscollected = this.report.iscollected;
+      this.btncontent = this.isFollow ? 'unfollow' : 'follow';
+      /*
+      this.collectForm = this.fb.group({
+        collection: [ null, [ Validators.required, Validators.maxLength(20) ] ],
+      });
+      */
+    }
+  }
   ngOnInit() {
-    this.isFollow = this.user.followed;
-    this.isliked = this.report.isliked;
-    this.iscollected = this.report.iscollected;
-    this.btncontent = this.isFollow ? 'unfollow' : 'follow';
-    this.collectForm = this.fb.group({
-      collection: [ null, [ Validators.required, Validators.maxLength(20) ] ],
+    console.log('init');
+    console.log(this.user);
+    console.log(this.report);
+    console.log(this.isMyself);
+    if (this.user !== undefined && this.report !== undefined && this.isMyself !== undefined) {
+      this.isFollow = this.user.followed;
+      this.isliked = this.report.isliked;
+      this.iscollected = this.report.iscollected;
+      this.btncontent = this.isFollow ? 'unfollow' : 'follow';
+      /*
+      this.collectForm = this.fb.group({
+        collection: [ null, [ Validators.required, Validators.maxLength(20) ] ],
+      });
+      */
+    }
+    this.collectForm = new FormGroup({
+      collection: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(20)
+      ])
     });
   }
   // 回调函数定义
@@ -161,4 +212,8 @@ export class ReportAuthorInfoComponent implements OnInit {
       this.collectForm.controls[ i ].updateValueAndValidity();
     }
   }
+  /*
+  get collection() {
+    return this.collectForm.get('collection');
+  }*/
 }

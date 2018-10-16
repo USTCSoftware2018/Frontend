@@ -28,11 +28,9 @@
         <nz-tabset nz-row style="text-align: center;">
           <nz-tab nz-col nzSpan="4" [nzTitle]="AllTemplate">
             <ng-template #AllTemplate>
-              <nz-dropdown>
-                <a nz-dropdown>
+                <a>
                   All
                 </a>
-              </nz-dropdown>
             </ng-template>
               <app-dynamic-sort [title]="['USERS', 'REPORTS', 'DBS']" [ResultsTempate]="[usersTemplate, reportsTemplate, dbsTemplate]" >
                 <ng-template #usersTemplate>
@@ -51,11 +49,7 @@
 
           <nz-tab nz-col nzSpan="4" [nzTitle]="ReportsTemplate">
             <ng-template #ReportsTemplate>
-              <nz-dropdown>
-                <a nz-dropdown>
-                  Reports
-                </a>
-              </nz-dropdown>
+              <a>Reports</a>
             </ng-template>
             <div *ngFor="let report of reports" class="content">
               <app-others-report [report]="report"  [bkcolor]="'#FFFFFF'"></app-others-report>
@@ -136,8 +130,32 @@
 
           <nz-tab nz-col nzSpan="4" [nzTitle]="BlastTemplate">
             <ng-template #BlastTemplate>
-                <a>Biobricks</a>
+                <a>Blast</a>
             </ng-template>
+            <div nz-row class="blust">
+              <div nz-col nzSpan="8">
+                <nz-card class="blast-long" [nzHoverable]="true">
+                  <p class="blast-title">Nucleotide BLAST</p>
+                  <p class="blast-info">nucleotide to nucleotide</p>
+                </nz-card>
+              </div>
+              <div nz-col nzSpan="8">
+                  <nz-card class="blast-short" [nzHoverable]="true">
+                    <p class="blast-title">blasx</p>
+                    <p class="blast-info">translated nucleotide to protein</p>
+                  </nz-card>
+                  <nz-card class="blast-short" [nzHoverable]="true">
+                    <p class="blast-title">tblastn</p>
+                    <p class="blast-info">protein to translated nucleotide</p>
+                  </nz-card>
+              </div>
+              <div nz-col nzSpan="8">
+                <nz-card class="blast-long" [nzHoverable]="true">
+                  <p class="blast-title">Protein BLAST</p>
+                  <p class="blast-info">protein to protein</p>
+                </nz-card>
+              </div>
+            </div>
           </nz-tab>
         </nz-tabset>
       </div>

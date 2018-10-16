@@ -53,8 +53,10 @@ export class SubroutineComponent implements OnInit {
       return this.sub.name;
     } else if ( this.type === 'Info' ) {
       return 'Info';
-    } else {
+    } else if (this.type === 'Result') {
       return 'Result';
+    } else {
+      return this.type;
     }
   }
 
