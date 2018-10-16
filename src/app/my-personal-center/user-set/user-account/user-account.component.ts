@@ -30,26 +30,26 @@ export class UserAccountComponent implements OnInit {
       this.message.error('Fail to Update.' + result.data.detail);
     }
   }
+
   constructor(private fb: FormBuilder, private http: HttpService, private message: NzMessageService) { }
 
   update_password(): void {
-    console.log(this.useraccount.value);
-    console.log(this.useraccount.value.oldpassword);
+
     this.http.update_password(this.useraccount.value.oldpassword, this.useraccount.value.newpassword, this.callback);
   }
   ngOnInit() {
     this.useraccount = new FormGroup({
       oldpassword: new FormControl(),
-      newpassword: new FormControl(null, [
+      newpassword: new FormControl('', [
         forbiddenAlphaValidator(),
         forbiddenNumericValidator(),
-        Validators.minLength(8),
+        Validators.minLength(7),
         Validators.maxLength(30),
       ]),
-      confirmpassword: new FormControl(null, [
+      confirmpassword: new FormControl('', [
         forbiddenAlphaValidator(),
         forbiddenNumericValidator(),
-        Validators.minLength(8),
+        Validators.minLength(7),
         Validators.maxLength(30),
       ])
     }, { validators: userAccountValidator });

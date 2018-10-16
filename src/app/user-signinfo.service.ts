@@ -21,6 +21,7 @@ export class UserSigninfoService {
     this.isLogin = iflogin;
     if ( ifSimuser(info)) {
       this.myInfo = info;
+
       this.myInfo.stat = info['stat'];
       this.myInfo.followed = true;
     } else {
@@ -33,7 +34,7 @@ export class UserSigninfoService {
     if (!this.isLogin) {
       return false;
     }
-    if (user_id === this.myInfo.id){
+    if (user_id === this.myInfo.id) {
       return true;
     }
     return false;
