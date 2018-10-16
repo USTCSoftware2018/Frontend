@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import { Simuser, Report, ReportComment } from '../../Interface/userinfo';
-import { user1, report1 } from '../../Interface/mock-user';
+import { Report, ReportComment } from '../../Interface/userinfo';
+import { report1 } from '../../Interface/mock-user';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {UserSigninfoService} from '../../user-signinfo.service';
-import { COMMENT} from '../../Interface/mock-user';
 import {EventService} from '../../editor/report-render/event.service';
 import {HttpService} from '../../http.service';
 import {ApiResult} from '../../Interface/ApiResult';

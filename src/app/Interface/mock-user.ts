@@ -134,8 +134,4 @@ export const SIMUSER: Simuser = {
   followed: true,
 };
 export const CLASSIFICATION: Assortment = assortment;
-export const COMMENT: ReportComment = {
-  user: user1,
-  content: '233333',
-  date: '2018.10.1'
-}
+
