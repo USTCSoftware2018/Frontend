@@ -172,6 +172,9 @@ export class HttpExampleComponent implements OnInit {
     }},
     {name: '获得report评论', lable: 'get_report_comment', func: this.http.get_report_comment, templa: {
       report_pk: 16
+    }},
+    {name: '获得report-simple信息', lable: 'get_report_simple', func: this.http.get_report_simple, templa: {
+      report_id: 16
     }}
   ];
 
