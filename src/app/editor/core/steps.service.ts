@@ -84,7 +84,7 @@ export class StepsService {
         newSub.id = rst['data']['id'];
         this._subs = [ ...this._subs, newSub];
       } else {
-        this.notice.blank('Add Protocol Failed', rst['data']['detail']);
+        this.notice.blank('Add Subroutine Failed', rst['data']['detail']);
       }
     });
   }

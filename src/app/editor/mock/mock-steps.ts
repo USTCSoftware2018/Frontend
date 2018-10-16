@@ -81,5 +81,29 @@ export let mockStep: EditorStepHeader[] = [
         template: '- input Volume 0 g @mid - input Name null @small - input container EP_tube @small -',
         yield_method: 'Add @Volume g @Name to @container',
     },
+    {
+        id: '11',
+        desc: 'Table',
+        name: 'Table',
+        ico: 'assets/img/editor/icons/T.png',
+        template: '',
+        yield_method: '',
+    },
+    {
+        id: '12',
+        desc: 'Picture',
+        name: 'Picture',
+        ico: 'assets/img/editor/icons/P.png',
+        template: '',
+        yield_method: '',
+    },
+    {
+        id: '13',
+        desc: 'List',
+        name: 'List',
+        ico: 'assets/img/editor/icons/L.png',
+        template: '',
+        yield_method: '',
+    },
 ];
 

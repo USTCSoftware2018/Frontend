@@ -33,8 +33,6 @@ export class EditorFieldTypeComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    console.log(this.fld.value);
-    console.log(this.backField);
     this.changeEnv();
   }
 

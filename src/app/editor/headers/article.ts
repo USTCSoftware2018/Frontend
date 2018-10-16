@@ -36,7 +36,7 @@ export class ReportSubroutineHeader {
     list?: ReportListHeader[]; // 废弃
     remark?: string; // 废弃
     pic?: Array<ReportGraphHeader>; // 废弃
-    table?: string; // 废弃
+    table?: any[]; // 废弃
 
     constructor() {
         this.subType = subType.steps;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../../http.service';
 import {EditorStepHeader} from '../headers/steps';
-import {ReportHeader, ReportStepsHeader, ReportSubroutineHeader, ReportResultHeader} from '../headers/article';
+import {ReportHeader, ReportStepsHeader, ReportSubroutineHeader, ReportResultHeader, subType} from '../headers/article';
 import { mockStep } from '../mock/mock-steps';
 
 export enum RenderState {
@@ -62,10 +62,19 @@ export class RenderServiceService {
     }
     this.extraContent['s'] = [];
     for (const sub of this.report.subroutines) {
-      for (const step of sub.steps) {
-        this.extraContent['s'].push({'s': this.parseSentense(step), 'n': step.remark});
+      if (sub.subType === subType.steps) {
+        for (const step of sub.steps) {
+          this.extraContent['s'].push({'s': this.parseSentense(step), 'n': step.remark});
+        }
+      } else if (sub.subType === subType.table) {
+        this.extraContent['s'].push({'s': 'Table', 'n': '', 'a': sub.table});
+      } else if (sub.subType === subType.list) {
+        this.extraContent['s'].push({'s': 'List', 'n': '', 'a': sub.list});
+      } else if (sub.subType === subType.pictures) {
+        this.extraContent['s'].push({'s': 'Picture', 'n': '', 'a': sub.pic});
       }
     }
+    console.log(this.extraContent);
   }
 
   public parseSentense(step: ReportStepsHeader) {

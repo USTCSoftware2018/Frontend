@@ -68,7 +68,7 @@
     <div class="list-group list-group-flush" [sortablejs]="currentReport.subroutines" 
         [sortablejsOptions]="options" #subDom>
         <div  class="list-group-item subs_flag" *ngFor="let sub of currentReport.subroutines">
-            <app-subroutine [sub]="sub" [type]="'Steps'"></app-subroutine>
+            <app-subroutine [sub]="sub" [type]="sub.subType"></app-subroutine>
         </div>
     </div>
 
