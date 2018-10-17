@@ -15,16 +15,16 @@ export class FeedsComponent implements OnInit {
     private http: HttpService
   ) { }
 
-  ngOnInit(
-  ) {
+  ngOnInit( ) {
     this.get_feeds();
   }
   get_feeds() {
     const callback = (result: ApiResult) => {
       if (result.success) {
+        console.log(result.data.results);
         this.feeds = result.data.results;
       }
-    }
+    };
     this.http.get_all_my_feeds(callback);
   }
 

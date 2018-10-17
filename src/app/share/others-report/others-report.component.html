@@ -10,7 +10,7 @@
 
   <div nz-col nzSpan="20">
     <div class="title" nz-col nzSpan="4">
-      <a (click)="gotoReport()" >{{report?.title}}</a>
+      <a (click)="gotoReport(report.id)" >{{report?.title}}</a>
     </div>
     <div class="content" nz-col nzSpan="24">
       <pre>{{report?.abstract}}</pre>
