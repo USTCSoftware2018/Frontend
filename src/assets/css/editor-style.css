@@ -16,6 +16,7 @@
 .render_attr {
     font-size: 1.2em;
     color: black;
+    text-align:center;
 }
 
 .render_sub_key {
