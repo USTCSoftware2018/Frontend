@@ -12,7 +12,7 @@ export class DBsearchresultComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.img_src = '../../../assets/img/searchresult/icon/' + this.db.title.replace(' ', '_') + '.png';
+    this.img_src = '../../../assets/img/searchresult/icon/' + this.db.title.replace(/\s/g, '_') + '.png';
   }
 
 }

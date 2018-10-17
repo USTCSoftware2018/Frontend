@@ -23,7 +23,7 @@ export const RESULT = {
     {
       type: 'user',
       rank: 1,
-      data:[ user1, user2]
+      data: [ user1, user2]
     },
     {
       type: 'report',
