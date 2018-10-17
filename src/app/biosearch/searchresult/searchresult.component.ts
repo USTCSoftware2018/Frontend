@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ViewChild, OnInit, TemplateRef, ElementRef} from '@angular/core';
 import { USER } from '../../Interface/mock-user';
 import { Simuser, Report } from '../../Interface/userinfo';
-import { SearchResult, Data} from '../search-result';
-import {report1, user1, user2} from '../../Interface/mock-user';
+import { Data, Filter} from '../search-result';
 import {
   FormGroup,
   FormControl,
@@ -13,18 +12,29 @@ import {ApiResult} from '../../Interface/ApiResult';
 import { DB } from '../search-result';
 import { RESULT, MOCKDB } from '../mock-search';
 
-
+class UsingArrays {
+  'report': Report[];
+  'db': DB[];
+  'user': Simuser[];
+}
 @Component({
   selector: 'app-searchresult',
   templateUrl: './searchresult.component.html',
   styleUrls: ['./searchresult.component.less']
 })
 export class SearchresultComponent implements OnInit {
+  @ViewChild('usersTemplate') usersRef: TemplateRef<any>;
+  @ViewChild('reportsTemplate') reportsRef: TemplateRef<any>;
+  @ViewChild('dbsTemplate') dbsRef: TemplateRef<any>;
+  @ViewChild('blastTemplate') blastRef: TemplateRef<any>;
   searchForm: FormGroup;
   User = USER;
-  users: Simuser[] = [user1, user2];
-  reports: Report[] = [report1];
-  dbs: DB[] = MOCKDB;
+  arrays: UsingArrays;
+  filters: Filter[];
+  data: Data[];
+  order_keys: string[] = [];
+  order_templates:  (TemplateRef<any>|ElementRef)[] = [];
+  isOkLoading = false;
   filtertype2color = {
     'time': 'blue',
     'title': 'cyan',
@@ -40,7 +50,6 @@ export class SearchresultComponent implements OnInit {
     'like': 'like',
     'in': 'in',
   };
-  result: SearchResult = RESULT;
   suggestions = ['aaaaa', 'bbbbb', 'ccccc', 'ddddd', 'abcdefghi'];
   prefix: string[] = [];
   constructor(
@@ -49,14 +58,13 @@ export class SearchresultComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.users = this.User.followers;
-    this.reports = this.User.reports;
+    this.arrays = new UsingArrays();
     this.searchForm = new FormGroup({
       'search_info': new FormControl( null,
       ),
     });
     this.initPrefix();
-    console.log(this.users);
+    console.log(this.usersRef);
   }
   initPrefix = () => {
     for ( let ii  = 32; ii < 127; ii++) {
@@ -65,33 +73,53 @@ export class SearchresultComponent implements OnInit {
     }
     console.log(this.prefix);
   }
-  submitForm() {
+  submitForm = () => {
     const forminfo = this.searchForm.value;
-    const callback = (result: ApiResult) => {
-      this.result = result.data;
-    };
-    this.http.get_search_result(forminfo.search_info, callback);
+    this.http.get_search_result(forminfo.search_info, this.proccessResult);
+  }
+  proccessResult = (result: ApiResult) => {
+    this.isOkLoading = false;
+    this.clearData();
+    if (result.success) {
+      this.filters = result.data.filters;
+      this.data = result.data.data;
+      this.data = this.searchResultSort(this.data);
+      this.InitData(this.data);
+      console.log(this.data);
+      this.isOkLoading = true;
+    }
   }
   get search_info() { return this.searchForm.get('search_info'); }
   // 排序功能
-  searchResultSort(data: Data) {
-    const objSorted = Object.keys(data).sort(
+  searchResultSort = (data: Data[]) => {
+    const sorted = data.sort(
       function(a, b) {
-        return data[a].rank - data[b].rank;
+        return a.rank - b.rank;
       }
     );
-    return objSorted;
+    console.log(sorted);
+    return sorted;
   }
-  // private addComponent<T>(component: Type<any> , paramas: T) {
-  //   const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
-  //   this.vcRef.clear();
-  //   const dynamicComponent1 =  this.vcRef.createComponent(componentFactory);
-  //   (<any>dynamicComponent1.instance).data = paramas;
-  // }
-  // appendComponent() {
-  //   const sort_result = this.searchResultSort(this.result.filters);
-  //   console.log(sort_result);
-  //   // for ( const filter in sort_result ) {
-  //   // }
-  // }
+  // 填入
+  InitData = (data: Data[]) => {
+    for (const i of data) {
+        this.order_keys.push(i.type);
+        this.arrays[i.type] = i.data;
+        const template = this.type2Template(i.type);
+        this.order_templates.push(template);
+        console.log(this.order_templates, this.order_keys, this.arrays);
+    }
+  }
+  clearData = () => {
+    this.order_keys = [];
+    this.order_templates = [];
+  }
+  type2Template = (type: string) => {
+    switch (type) {
+      case 'user': return this.usersRef;
+      case 'report': return this.reportsRef;
+      case 'db': return this.dbsRef;
+      case 'blast': return this.blastRef;
+    }
+  }
 }

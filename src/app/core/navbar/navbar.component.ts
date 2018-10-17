@@ -43,14 +43,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
           }
         }
       }
-    )
+    );
     // 监听url变化， 一旦变化请求notification和feeds
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationStart)
-    ).subscribe(() => {
-      this.newNotification();
-      this.newFeeds();
-    });
+    if (this.userinfo.isLogin) {
+      this.router.events.pipe(
+        filter(event => event instanceof NavigationStart)
+      ).subscribe(() => {
+        this.newNotification();
+        this.newFeeds();
+      });
+    }
   }
   ngOnDestroy() {
     this.userinfo.userInfoChange.unsubscribe();
@@ -66,7 +68,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
           this.notification_msg = '';
         }
       }
-    }
+    };
     this.http.check_new_notifications(callback);
   }
   newFeeds() {

@@ -1,4 +1,4 @@
-import { Component, OnInit, ContentChild, TemplateRef, Input } from '@angular/core';
+import { Component, OnInit, ContentChild, TemplateRef, Input} from '@angular/core';
 
 @Component({
   selector: 'app-dynamic-sort',
@@ -6,8 +6,8 @@ import { Component, OnInit, ContentChild, TemplateRef, Input } from '@angular/co
   styleUrls: ['./dynamic-sort.component.less']
 })
 export class DynamicSortComponent implements OnInit {
-  @Input() title: string;
-  @Input() ResultsTempate: TemplateRef<any>[];
+  @Input() titles: string;
+  @Input() ResultsTempates: TemplateRef<any>[];
   @ContentChild('users') usersRef: TemplateRef<any>;
   @ContentChild('reports') reportsRef: TemplateRef<any>;
   @ContentChild('dbs') dbsRef: TemplateRef<any>;
