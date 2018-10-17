@@ -3,11 +3,11 @@ import {EditorStepHeader} from '../headers/steps';
 export let mockStep: EditorStepHeader[] = [
     {
         id: '1',
-        desc: 'Centifuge',
-        name: 'Centifuge',
+        desc: 'Centrifuge',
+        name: 'Centrifuge',
         ico: 'assets/img/editor/icons/centfuge.png',
         template: '- input Speed 0 rpm @mid - input Time 0 s @small - input Temp 25 °C @small -',
-        yield_method: '@Speed rpm centifuge for @Time s at @Temp degree.',
+        yield_method: '@Speed rpm centrifuge for @Time s at @Temp degree.',
     },
     {
         id: '2',
