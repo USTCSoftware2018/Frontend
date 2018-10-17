@@ -104,6 +104,12 @@ export class SearchresultComponent implements OnInit {
   InitData = (data: Data[]) => {
     for (const i of data) {
         this.order_keys.push(i.type);
+        if (i.type === 'db') {
+          this.arrays[i.type] = i.data.sort(
+            function (a, b) {
+              return b.count - a.count;
+            });
+        }
         this.arrays[i.type] = i.data;
         const template = this.type2Template(i.type);
         this.order_templates.push(template);
