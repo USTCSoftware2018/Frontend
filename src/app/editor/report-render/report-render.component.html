@@ -4,11 +4,13 @@
     <div class="render_header"></div>
     <h1 class="render_title">{{ renderService.report?.title }}</h1>
       <!-- Sub Title -->
-      <div nz-row>
+      <table style="width:100%">
+        <tr>
+            <td width="50%" class="render_attr">Recorder: {{renderService.report?.author}}</td>
+            <td width="50%" class="render_attr">Date: {{ renderService.report?.ndate | date:'longDate' }}</td>
+        </tr>
+      </table>
         <!-- <div nz-col [nzXXl]="6" [nzXs]="6" ></div> -->
-        <div nz-col [nzXl]="{span:6,offset:6}" [nzMd]="{span:7,offset:5}" [nzSm]="{span:8,offset:4}" class="render_attr">Recorder: {{renderService.report?.author}}</div>
-        <div nz-col nzSpan="12" class="render_attr">Date: {{ renderService.report?.ndate | date:'longDate' }}</div>
-      </div>
     
       <!-- Introduction -->
       <div class="render_sub_key">Introduction:</div>
