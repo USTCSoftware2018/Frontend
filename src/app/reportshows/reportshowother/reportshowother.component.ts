@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, AfterContentInit} from '@angular/core';
 import { Simuser, Report, ReportComment } from '../../Interface/userinfo';
 import { report1 } from '../../Interface/mock-user';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
@@ -14,7 +14,7 @@ import {NzMessageService} from 'ng-zorro-antd';
   templateUrl: './reportshowother.component.html',
   styleUrls: ['./reportshowother.component.less']
 })
-export class ReportshowotherComponent implements OnInit {
+export class ReportshowotherComponent implements OnInit, AfterContentInit {
   report_id: number;
   // report: Report = report1;
   report: Report;
@@ -41,13 +41,15 @@ export class ReportshowotherComponent implements OnInit {
     this.report = new Report();
     this.getReportId();
     this.get_report_by_id();
-    this.isLogin = this.userinfo.isLogin;
     this.getComments();
     this.commentForm = this.fb.group(
       {
         comment: [null, [Validators.required]],
       }
     );
+  }
+  ngAfterContentInit() {
+    this.isLogin = this.userinfo.isLogin;
   }
   getReportId = () => {
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
@@ -75,12 +77,20 @@ export class ReportshowotherComponent implements OnInit {
   }
   submitForm = () => {
     for (const i in this.commentForm.controls) {
-      this.commentForm.controls[i].markAsDirty();
-      this.commentForm.controls[i].updateValueAndValidity();
+      if (i in this.commentForm.controls) {
+        this.commentForm.controls[i].markAsDirty();
+        this.commentForm.controls[i].updateValueAndValidity();
+      }
     }
     const callback = (result: ApiResult) => {
       if (result.success) {
-        this.message.success('Successlly creat a comment');
+        this.message.success('Successlly post a comment');
+        const theurl = this.router.url;
+        this.router.navigateByUrl('/explore/reports').then(
+          () => {this.router.navigateByUrl(theurl);
+          });
+      } else {
+        this.message.error('Something Wrong');
       }
     };
     const commentFormValue = this.commentForm.value;

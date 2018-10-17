@@ -44,7 +44,7 @@
                   nzSize="large" nzShape="circle">
             <i class="anticon " [class.anticon-like-o] = "isliked" [class.anticon-like] = "!isliked"></i>
           </button>
-          <button (click)="showCollect()" nz-button [nzType]="isliked ? 'default' : 'primary'"
+          <button (click)="showCollect()" nz-button [nzType]="iscollected ? 'default' : 'primary'"
                   nzSize="large" nzShape="circle">
             <i class="anticon " [class.anticon-tag-o] = "iscollected" [class.anticon-tag] = "!iscollected"></i>
           </button>

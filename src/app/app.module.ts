@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgZorroAntdModule, NZ_I18N, en_US, zh_CN } from 'ng-zorro-antd';
+import { NgZorroAntdModule, NZ_I18N, en_US, zh_CN,  NZ_MESSAGE_CONFIG } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { NavbarComponent } from './core/navbar/navbar.component';
@@ -45,6 +45,7 @@ registerLocaleData(en);
     ShareModule,
   ],
   providers: [
+    { provide: NZ_MESSAGE_CONFIG, useValue: { nzDuration: 3000 }},
     { provide: NZ_I18N, useValue: en_US },
     RenderService,
   ],

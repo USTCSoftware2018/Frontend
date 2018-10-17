@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', component: IndexComponent,
   children: [
     { path: 'reports', component: PopularReportComponent},
-    { path: 'igemers', component: PopularIgemersComponent},
+    { path: 'users', component: PopularIgemersComponent},
     { path: '', redirectTo: '/explore/reports'}
   ]},
 ];

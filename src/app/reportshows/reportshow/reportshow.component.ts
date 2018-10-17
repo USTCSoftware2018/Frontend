@@ -75,12 +75,18 @@ export class ReportshowComponent implements OnInit {
   }
   submitForm = () => {
     for (const i in this.commentForm.controls) {
+      if (i in this.commentForm.controls) {
         this.commentForm.controls[i].markAsDirty();
         this.commentForm.controls[i].updateValueAndValidity();
+      }
     }
     const callback = (result: ApiResult) => {
       if (result.success) {
         this.message.success('Successlly creat a comment');
+        const theurl = this.router.url;
+        this.router.navigateByUrl('/explore/reports').then(
+          () => {this.router.navigateByUrl(theurl);
+          });
       }
     };
     const commentFormValue = this.commentForm.value;

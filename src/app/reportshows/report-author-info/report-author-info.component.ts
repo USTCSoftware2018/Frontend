@@ -208,8 +208,10 @@ export class ReportAuthorInfoComponent implements OnInit, OnChanges {
   }
   submitForm = () => {
     for (const i in this.collectForm.controls) {
-      this.collectForm.controls[ i ].markAsDirty();
-      this.collectForm.controls[ i ].updateValueAndValidity();
+      if (i in this.collectForm.controls) {
+        this.collectForm.controls[ i ].markAsDirty();
+        this.collectForm.controls[ i ].updateValueAndValidity();
+      }
     }
   }
   /*

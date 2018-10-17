@@ -17,7 +17,7 @@
   -->
   <div class="name-description">
     <div class="igemer-name-container">
-      <a class="igemer-name">{{igemer.username}}</a>
+      <a (click)="gotoIndex()" class="igemer-name">{{igemer.username}}</a>
     </div>
     <div class="igemer-description-container">
       <p class="igemer-description">{{igemer.description}}</p>
@@ -29,8 +29,8 @@
   <img class="igemer-avatar" src="{{igemer.avatar_url}}">
   <div class="cover-hover">
     <i (click)="toggleFollow()" class="follow-anticon anticon"
-       [class.anticon-eye] = "isFollow" [class.anticon-eye-o] = "!isFollow"
-    ></i>
+       [class.anticon-eye] = "isFollow" [class.anticon-eye-o] = "!isFollow">
+    </i>
     <!--
     <i (click)="gotoIndex()" class="more-anticon anticon anticon-ellipsis"></i>
     -->
