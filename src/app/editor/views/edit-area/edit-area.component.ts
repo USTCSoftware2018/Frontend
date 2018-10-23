@@ -78,6 +78,7 @@ export class EditAreaComponent implements OnInit {
 
   public changeIsPreview () {
     if (this.state === State.ready) {
+      this.editorReportService.saveReport();
       this.state = State.preview;
     } else if (this.state === State.preview) {
       this.state = State.ready;
