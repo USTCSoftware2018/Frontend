@@ -8,11 +8,11 @@
           <nz-form-item >
           <nz-form-control nzSpan="24">
             <nz-input-group>
-              <nz-mention #mentions [nzSuggestions]="suggestions" [nzPrefix]="prefix"
-                          [nzLoading]="mention_loading" [nzNotFoundContent]="'Type enter to search.'">
-                <input (keyup.enter)="submitForm()" nz-input class="search-content" nzMentionTrigger
-                       type="text" formControlName="search_info" placeholder="input search text">
-              </nz-mention>
+                <input (keyup.enter)="submitForm()" nz-input class="search-content" type="text" (ngModelChange)="onChange($event)"
+                       formControlName="search_info" placeholder="input search text" [nzAutocomplete]="auto">
+                <nz-autocomplete #auto>
+                  <nz-auto-option *ngFor="let option of options" [nzValue]="option">{{option}}</nz-auto-option>
+                </nz-autocomplete>
             </nz-input-group>
           </nz-form-control>
           </nz-form-item>

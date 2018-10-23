@@ -50,9 +50,8 @@ export class SearchresultComponent implements OnInit {
     'like': 'like',
     'in': 'in',
   };
-  suggestions: string[] = [];
-  mention_loading = true;
-  prefix: string[] = [];
+  keywords: string[] = [];
+  options: string[] = ['a'];
   constructor(
     private http: HttpService,
   ) {
@@ -64,28 +63,29 @@ export class SearchresultComponent implements OnInit {
       'search_info': new FormControl( null,
       ),
     });
-    this.initPrefix();
+    // this.initPrefix();
     this.initSuggestion();
-    console.log(this.usersRef);
+  }
+  onChange() {
+    // ToDO
   }
   initSuggestion() {
     const callback = (result: ApiResult) => {
-      this.mention_loading = false;
       if (result.success) {
-        this.suggestions = result.data.keywords;
+        this.keywords = result.data.keywords;
       } else {
-        this.suggestions = [];
+        this.keywords = [];
       }
     };
     this.http.get_keywords(callback);
   }
-  initPrefix = () => {
-    for ( let ii  = 32; ii < 127; ii++) {
-      const char = String.fromCharCode(ii);
-      this.prefix.push(char);
-    }
-    console.log(this.prefix);
-  }
+  // initPrefix = () => {
+  //   for ( let ii  = 32; ii < 127; ii++) {
+  //     const char = String.fromCharCode(ii);
+  //     this.prefix.push(char);
+  //   }
+  //   console.log(this.prefix);
+  // }
   submitForm = () => {
     const forminfo = this.searchForm.value;
     this.http.get_search_result(forminfo.search_info, this.proccessResult);
