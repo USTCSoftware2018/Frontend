@@ -60,6 +60,7 @@ export class SearchresultComponent implements OnInit {
   };
   keywords: string[] = [];
   options: string[];
+  visible: boolean;
   constructor(
     private http: HttpService,
   ) {
@@ -75,16 +76,24 @@ export class SearchresultComponent implements OnInit {
     this.initSuggestion();
   }
   onChange(value: string): void {
+    this.visible = !value;
     if (!value || value[value.length - 1] === ' ') {
       this.options = [];
     } else {
       const prefix = value.substr(0, value.lastIndexOf(' '));
-      const lookup = value.substr(value.lastIndexOf(' ') + 1, value.length);
+      const lookup = value.substr(value.lastIndexOf(' ') + 1, value.length).toLowerCase();
       this.options = [];
       if (lookup.length >= 2) {
         for (const keyword of this.keywords) {
-          if (keyword.indexOf(lookup) !== -1) {
+          if (keyword.toLowerCase().startsWith(lookup)) {
             this.options.push(prefix + ' ' + keyword);
+          }
+        }
+        for (const keyword of this.keywords) {
+          if (this.options.indexOf(prefix + ' ' + keyword) === -1) {
+            if (keyword.toLowerCase().indexOf(lookup) !== -1) {
+              this.options.push(prefix + ' ' + keyword);
+            }
           }
         }
       }

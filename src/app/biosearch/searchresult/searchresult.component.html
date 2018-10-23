@@ -9,7 +9,17 @@
           <nz-form-control nzSpan="24">
             <nz-input-group>
                 <input (keyup.enter)="submitForm()" nz-input class="search-content" type="text" (ngModelChange)="onChange($event)"
-                       formControlName="search_info" placeholder="Type here..." autofocus="autofocus" [nzAutocomplete]="auto">
+                       formControlName="search_info" placeholder="Type here..." autofocus="autofocus" [nzAutocomplete]="auto"
+                       nz-popover nzPlacement="bottom" [(nzVisible)]="visible"
+                       nzTitle="Search Tips" [nzContent]="searchTips">
+                <ng-template #searchTips>
+                    <p>You can type:</p>
+                    <p>users <b style="color:gold">from USTC</b></p>
+                    <p>reports <b style="color:grey">#Molecular</b></p>
+                    <p>reports <b style="color:blue">after last Friday morning</b></p>
+                    <p>reports <b style="color:purple"> by hustcw</b> <b style="color:grey"> #Molecular</b> </p>
+                    <p>reports <b style="color:blue">from 2018-10-10 to 2018-10-25</b>  <b style="color:purple"> by hustcw</b></p>
+                </ng-template>
                 <nz-autocomplete #auto>
                   <nz-auto-option *ngFor="let option of options" [nzValue]="option">{{option}}</nz-auto-option>
                 </nz-autocomplete>
