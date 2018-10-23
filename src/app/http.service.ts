@@ -371,7 +371,7 @@ export class HttpService {
     this.fire(`search/`, 'post', {'s': s}, callback);
   }
   get_keywords(callback: callbackFunc) {
-    this.fire(`keywords`, 'get', {}, callback);
+    this.fire(`keywords/`, 'get', {}, callback);
   }
 
 }
