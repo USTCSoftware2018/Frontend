@@ -1,11 +1,13 @@
-<div class="dbresultcard">
- <div class="dblogo">
-   <a [href]="db.url">
-   <img [src]="img_src" style="width:50px;height:50px;border-radius: 50%;">
-   </a>
- </div>
-  <div class="dbmessage">
-    <p style="font-weight:700;">{{db.title}}</p>
-    <p>There are {{db.count}} matches</p>
+<nz-card class="db-card" nzHoverable="true">
+  <a [href]="db.url" target="_blank">
+    <div class="dbresultcard">
+    <div class="dblogo">
+      <img [src]="img_src" style="width:50px;height:50px;border-radius: 50%;">
+    </div>
+    <div class="dbmessage">
+      <p style="font-weight:700;">{{db.title}}</p>
+      <p>There are {{db.count}} matches</p>
+    </div>
   </div>
-</div>
+  </a>
+</nz-card>
