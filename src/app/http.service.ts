@@ -370,6 +370,9 @@ export class HttpService {
     // const params = new HttpParams().set('s', s);
     this.fire(`search/`, 'post', {'s': s}, callback);
   }
+  get_keywords(callback: callbackFunc) {
+    this.fire(`keywords`, 'get', {}, callback);
+  }
 
 }
 

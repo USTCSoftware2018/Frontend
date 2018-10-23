@@ -50,7 +50,8 @@ export class SearchresultComponent implements OnInit {
     'like': 'like',
     'in': 'in',
   };
-  suggestions = ['aaaaa', 'bbbbb', 'ccccc', 'ddddd', 'abcdefghi'];
+  suggestions: string[] = [];
+  mention_loading = true;
   prefix: string[] = [];
   constructor(
     private http: HttpService,
@@ -64,7 +65,19 @@ export class SearchresultComponent implements OnInit {
       ),
     });
     this.initPrefix();
+    this.initSuggestion();
     console.log(this.usersRef);
+  }
+  initSuggestion() {
+    const callback = (result: ApiResult) => {
+      this.mention_loading = false;
+      if (result.success) {
+        this.suggestions = result.data.keywords;
+      } else {
+        this.suggestions = [];
+      }
+    };
+    this.http.get_keywords(callback);
   }
   initPrefix = () => {
     for ( let ii  = 32; ii < 127; ii++) {
