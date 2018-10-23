@@ -50,8 +50,17 @@ export class SearchresultComponent implements OnInit {
     'like': 'like',
     'in': 'in',
   };
-  suggestions = ['aaaaa', 'bbbbb', 'ccccc', 'ddddd', 'abcdefghi'];
-  prefix: string[] = [];
+  filtertype = {
+    'time': 'time',
+    'title': 'title',
+    'name': 'name',
+    'addr': '',
+    'user': 'user',
+    'label': 'label'
+  };
+  keywords: string[] = [];
+  options: string[];
+  visible: boolean;
   constructor(
     private http: HttpService,
   ) {
@@ -63,16 +72,50 @@ export class SearchresultComponent implements OnInit {
       'search_info': new FormControl( null,
       ),
     });
-    this.initPrefix();
-    console.log(this.usersRef);
+    // this.initPrefix();
+    this.initSuggestion();
   }
-  initPrefix = () => {
-    for ( let ii  = 32; ii < 127; ii++) {
-      const char = String.fromCharCode(ii);
-      this.prefix.push(char);
+  onChange(value: string): void {
+    this.visible = !value;
+    if (!value || value[value.length - 1] === ' ') {
+      this.options = [];
+    } else {
+      const prefix = value.substr(0, value.lastIndexOf(' '));
+      const lookup = value.substr(value.lastIndexOf(' ') + 1, value.length).toLowerCase();
+      this.options = [];
+      if (lookup.length >= 2) {
+        for (const keyword of this.keywords) {
+          if (keyword.toLowerCase().startsWith(lookup)) {
+            this.options.push(prefix + ' ' + keyword);
+          }
+        }
+        for (const keyword of this.keywords) {
+          if (this.options.indexOf(prefix + ' ' + keyword) === -1) {
+            if (keyword.toLowerCase().indexOf(lookup) !== -1) {
+              this.options.push(prefix + ' ' + keyword);
+            }
+          }
+        }
+      }
     }
-    console.log(this.prefix);
   }
+  initSuggestion() {
+    const callback = (result: ApiResult) => {
+      if (result.success) {
+        this.keywords = result.data.keywords;
+      } else {
+        this.keywords = [];
+      }
+    };
+    this.http.get_keywords(callback);
+  }
+  // initPrefix = () => {
+  //   for ( let ii  = 32; ii < 127; ii++) {
+  //     const char = String.fromCharCode(ii);
+  //     this.prefix.push(char);
+  //   }
+  //   console.log(this.prefix);
+  // }
   submitForm = () => {
     const forminfo = this.searchForm.value;
     this.http.get_search_result(forminfo.search_info, this.proccessResult);
