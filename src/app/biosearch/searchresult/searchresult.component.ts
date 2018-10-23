@@ -50,6 +50,14 @@ export class SearchresultComponent implements OnInit {
     'like': 'like',
     'in': 'in',
   };
+  filtertype = {
+    'time': 'time',
+    'title': 'title',
+    'name': 'name',
+    'addr': '',
+    'user': 'user',
+    'label': 'label'
+  };
   keywords: string[] = [];
   options: string[];
   constructor(
@@ -73,7 +81,7 @@ export class SearchresultComponent implements OnInit {
       const prefix = value.substr(0, value.lastIndexOf(' '));
       const lookup = value.substr(value.lastIndexOf(' ') + 1, value.length);
       this.options = [];
-      if (lookup.length >= 3) {
+      if (lookup.length >= 2) {
         for (const keyword of this.keywords) {
           if (keyword.indexOf(lookup) !== -1) {
             this.options.push(prefix + ' ' + keyword);

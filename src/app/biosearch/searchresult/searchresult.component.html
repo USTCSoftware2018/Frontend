@@ -9,7 +9,7 @@
           <nz-form-control nzSpan="24">
             <nz-input-group>
                 <input (keyup.enter)="submitForm()" nz-input class="search-content" type="text" (ngModelChange)="onChange($event)"
-                       formControlName="search_info" placeholder="input search text" [nzAutocomplete]="auto">
+                       formControlName="search_info" placeholder="Type here..." autofocus="autofocus" [nzAutocomplete]="auto">
                 <nz-autocomplete #auto>
                   <nz-auto-option *ngFor="let option of options" [nzValue]="option">{{option}}</nz-auto-option>
                 </nz-autocomplete>
@@ -20,7 +20,7 @@
         <div class="input-tags">
           <span class="tag-label">filters:&nbsp;&nbsp;&nbsp;</span>
             <nz-tag [nzColor]="filtertype2color[filter.type]" *ngFor="let filter of filters">
-              {{filter.type + ' ' + filterrel2verb[filter.rel] + ' ' + filter.value}}
+              {{filtertype[filter.type] + ' ' + filterrel2verb[filter.rel] + ' ' + filter.value}}
             </nz-tag>
         </div>
       </div>
