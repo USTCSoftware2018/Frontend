@@ -8,7 +8,7 @@
           <nz-form-item >
           <nz-form-control nzSpan="24">
             <nz-input-group>
-              <nz-mention #mentions [nzSuggestions]="suggestions" [nzPrefix]="prefix">
+              <nz-mention #mentions [nzSuggestions]="suggestions" [nzPrefix]="prefix" [nzNotFoundContent]="'Type space to search.'">
                 <input (keyup.enter)="submitForm()" nz-input class="search-content" nzMentionTrigger
                        type="text" formControlName="search_info" placeholder="input search text">
               </nz-mention>
