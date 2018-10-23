@@ -51,7 +51,7 @@ export class SearchresultComponent implements OnInit {
     'in': 'in',
   };
   keywords: string[] = [];
-  options: string[] = ['a'];
+  options: string[];
   constructor(
     private http: HttpService,
   ) {
@@ -66,8 +66,21 @@ export class SearchresultComponent implements OnInit {
     // this.initPrefix();
     this.initSuggestion();
   }
-  onChange() {
-    // ToDO
+  onChange(value: string): void {
+    if (!value || value[value.length - 1] === ' ') {
+      this.options = [];
+    } else {
+      const prefix = value.substr(0, value.lastIndexOf(' '));
+      const lookup = value.substr(value.lastIndexOf(' ') + 1, value.length);
+      this.options = [];
+      if (lookup.length >= 3) {
+        for (const keyword of this.keywords) {
+          if (keyword.indexOf(lookup) !== -1) {
+            this.options.push(prefix + ' ' + keyword);
+          }
+        }
+      }
+    }
   }
   initSuggestion() {
     const callback = (result: ApiResult) => {
