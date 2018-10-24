@@ -34,6 +34,7 @@ export class SearchresultComponent implements OnInit {
   data: Data[];
   order_keys: string[] = [];
   order_templates:  (TemplateRef<any>|ElementRef)[] = [];
+  order_visible: boolean[];
   isOkLoading = false;
   filtertype2color = {
     'time': 'blue',
@@ -154,6 +155,11 @@ export class SearchresultComponent implements OnInit {
             });
         }
         this.arrays[i.type] = i.data;
+        if (i.data.length > 0 && i.rank !== -1) {
+          this.order_visible.push(true);
+        } else {
+          this.order_visible.push(false);
+        }
         const template = this.type2Template(i.type);
         this.order_templates.push(template);
         console.log(this.order_templates, this.order_keys, this.arrays);
@@ -162,6 +168,7 @@ export class SearchresultComponent implements OnInit {
   clearData = () => {
     this.order_keys = [];
     this.order_templates = [];
+    this.order_visible = [];
   }
   type2Template = (type: string) => {
     switch (type) {

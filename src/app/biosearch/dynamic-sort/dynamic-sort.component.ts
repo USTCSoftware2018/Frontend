@@ -7,6 +7,7 @@ import { Component, OnInit, ContentChild, TemplateRef, Input} from '@angular/cor
 })
 export class DynamicSortComponent implements OnInit {
   @Input() titles: string;
+  @Input() visible: boolean[];
   @Input() ResultsTempates: TemplateRef<any>[];
   @ContentChild('users') usersRef: TemplateRef<any>;
   @ContentChild('reports') reportsRef: TemplateRef<any>;

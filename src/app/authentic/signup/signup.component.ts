@@ -62,11 +62,16 @@ export class SignupComponent implements OnInit {
   registeCallback = (result: ApiResult) => {
     console.log(result);
     if (result.success) {
-      this.message.success('Sign up sucessfully. Start to sign in now!');
+      this.message.success('Sign up sucessfully!');
       this.router.navigateByUrl('/explore');
       this.userinfo.setUserInfobyInfo(true, result.data);
     } else {
-      this.message.error(result.data.username + '.' + result.data.email);
+      if (result.data.username !== undefined) {
+        this.message.error(result.data.username);
+      }
+      if (result.data.username !== undefined) {
+        this.message.error(result.data.email);
+      }
     }
   }
   // form value

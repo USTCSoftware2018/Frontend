@@ -43,8 +43,8 @@
             <ng-template #AllTemplate>
                 <a>All</a>
             </ng-template>
-              <app-dynamic-sort *ngIf="order_keys.length > 0" [titles]="order_keys" [ResultsTempates]="order_templates" >
-              </app-dynamic-sort>
+            <app-dynamic-sort *ngIf="order_keys.length > 0" [titles]="order_keys" [ResultsTempates]="order_templates" [visible]="order_visible">
+            </app-dynamic-sort>
             <ng-template #usersTemplate>
               <app-followuser *ngFor="let user of arrays.user" [otheruser]="user" [bkcolor]="'#FFFFFF'" ></app-followuser>
             </ng-template>

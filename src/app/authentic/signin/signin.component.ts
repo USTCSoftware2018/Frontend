@@ -49,11 +49,11 @@ export class SigninComponent implements OnInit {
     console.log(result);
     console.log('login');
     if (result.success) {
-      this.message.success('Sign up sucessfully');
+      this.message.success('Sign in sucessfully');
       this.userinfo.setUserInfobyInfo(true, result.data);
       this.router.navigateByUrl('/explore');
     } else {
-      this.message.error('Fail to Sign up.' + result.data.detail);
+      this.message.error('Fail to Sign in.');
     }
   }
   get username() { return this.validateForm.get('username'); }
