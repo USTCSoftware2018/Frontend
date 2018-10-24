@@ -92,3 +92,14 @@ export class Notification {
   created: string;
   target: any;
 }
+export class BioBrick {
+  weight: number;
+  part_type: string;
+  status: string;
+  desc: string;
+  author: string;
+  part_name: string;
+  uses: number;
+  part_status: string;
+  sample_status: string;
+}

@@ -1,8 +1,9 @@
 import {Component, ViewChild, OnInit, TemplateRef, ElementRef} from '@angular/core';
 import { USER } from '../../Interface/mock-user';
-import { Simuser, Report } from '../../Interface/userinfo';
+import { Simuser, Report, BioBrick } from '../../Interface/userinfo';
 import { Data, Filter} from '../search-result';
 import {
+  FormBuilder,
   FormGroup,
   FormControl,
   Validators,
@@ -16,6 +17,7 @@ class UsingArrays {
   'report': Report[];
   'db': DB[];
   'user': Simuser[];
+  'brick': BioBrick[];
 }
 @Component({
   selector: 'app-searchresult',
@@ -27,7 +29,9 @@ export class SearchresultComponent implements OnInit {
   @ViewChild('reportsTemplate') reportsRef: TemplateRef<any>;
   @ViewChild('dbsTemplate') dbsRef: TemplateRef<any>;
   @ViewChild('blastTemplate') blastRef: TemplateRef<any>;
+  @ViewChild('bricksTemplate') bricksRef: TemplateRef<any>;
   searchForm: FormGroup;
+  blastForm: FormGroup;
   User = USER;
   arrays: UsingArrays;
   filters: Filter[];
@@ -36,6 +40,10 @@ export class SearchresultComponent implements OnInit {
   order_templates:  (TemplateRef<any>|ElementRef)[] = [];
   order_visible: boolean[];
   isOkLoading = false;
+  // blast input
+  blast_value: string;
+  blast_type: string;
+  @ViewChild('submitBlast') submitBlast: ElementRef;
   filtertype2color = {
     'time': 'blue',
     'title': 'cyan',
@@ -62,8 +70,10 @@ export class SearchresultComponent implements OnInit {
   keywords: string[] = [];
   options: string[];
   visible: boolean;
+  get search_info() { return this.searchForm.get('search_info'); }
   constructor(
     private http: HttpService,
+    private fb: FormBuilder
   ) {
   }
 
@@ -133,7 +143,6 @@ export class SearchresultComponent implements OnInit {
       this.isOkLoading = true;
     }
   }
-  get search_info() { return this.searchForm.get('search_info'); }
   // 排序功能
   searchResultSort = (data: Data[]) => {
     const sorted = data.sort(
@@ -176,6 +185,35 @@ export class SearchresultComponent implements OnInit {
       case 'report': return this.reportsRef;
       case 'db': return this.dbsRef;
       case 'blast': return this.blastRef;
+      case 'brick': return this.bricksRef;
     }
+  }
+  // blast form
+  submitBlastForm() {
+    // const elem = document.getElementById('submitBlast');
+    // elem.click();
+    // const evt = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
+    this.submitBlast.nativeElement.click();
+    console.log('blast');
+  }
+  goToblastn() {
+    this.blast_type = 'blastn';
+    this.blast_value = this.search_info.value;
+    this.submitBlastForm();
+  }
+  goToblastx() {
+    this.blast_type = 'blastx';
+    this.blast_value = this.search_info.value;
+    this.submitBlastForm();
+  }
+  goTotblastn() {
+    this.blast_type = 'tblastn';
+    this.blast_value = this.search_info.value;
+    this.submitBlastForm();
+  }
+  goTotblastp() {
+    this.blast_type = 'blastp';
+    this.blast_value = this.search_info.value;
+    this.submitBlastForm();
   }
 }

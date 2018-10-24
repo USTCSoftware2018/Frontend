@@ -60,26 +60,31 @@
               <div nz-row class="blast">
                 <div nz-col nzSpan="8">
                   <nz-card class="blast-long" [nzHoverable]="true">
-                    <p class="blast-title">Nucleotide BLAST</p>
-                    <p class="blast-info">nucleotide to nucleotide</p>
+                    <a (click)="goTotblastn()"><p class="blast-title">Nucleotide BLAST</p>
+                      <p class="blast-info">nucleotide to nucleotide</p></a>
                   </nz-card>
                 </div>
                 <div nz-col nzSpan="8">
-                  <nz-card class="blast-short" [nzHoverable]="true">
+                  <a (click)="goToblastx()"><nz-card class="blast-short" [nzHoverable]="true">
                     <p class="blast-title">blasx</p>
                     <p class="blast-info">translated nucleotide to protein</p>
-                  </nz-card>
-                  <nz-card class="blast-short" [nzHoverable]="true">
+                  </nz-card></a>
+                  <a (click)="goTotblastn()"><nz-card class="blast-short" [nzHoverable]="true">
                     <p class="blast-title">tblastn</p>
                     <p class="blast-info">protein to translated nucleotide</p>
-                  </nz-card>
+                  </nz-card></a>
                 </div>
                 <div nz-col nzSpan="8">
-                  <nz-card class="blast-long" [nzHoverable]="true">
+                  <a (click)="goTotblastp()"><nz-card class="blast-long" [nzHoverable]="true">
                     <p class="blast-title">Protein BLAST</p>
                     <p class="blast-info">protein to protein</p>
-                  </nz-card>
+                  </nz-card></a>
                 </div>
+              </div>
+            </ng-template>
+            <ng-template #bricksTemplate>
+              <div *ngFor="let brick of arrays.brick" class="content">
+                <app-bricks [biobrick]="brick"></app-bricks>
               </div>
             </ng-template>
           </nz-tab>
@@ -102,48 +107,6 @@
             </div>
           </nz-tab>
 
-          <!--<nz-tab nz-col nzSpan="4" [nzTitle]="ThesisTemplate">-->
-            <!--<ng-template #ThesisTemplate>-->
-              <!--<nz-dropdown>-->
-              <!--<a nz-dropdown>-->
-                <!--Thesis <i class="anticon anticon-down"></i>-->
-              <!--</a>-->
-              <!--<ul nz-menu nzSelectable>-->
-                <!--<li nz-menu-item>-->
-                  <!--<a>1st menu item</a>-->
-                <!--</li>-->
-                <!--<li nz-menu-item>-->
-                  <!--<a>2nd menu item</a>-->
-                <!--</li>-->
-                <!--<li nz-menu-item>-->
-                  <!--<a>3rd menu item</a>-->
-                <!--</li>-->
-              <!--</ul>-->
-            <!--</nz-dropdown>-->
-            <!--</ng-template>-->
-          <!--</nz-tab>-->
-
-          <!--<nz-tab nz-col nzSpan="4" [nzTitle]="ProteinTemplate">-->
-            <!--<ng-template #ProteinTemplate>-->
-                <!--<nz-dropdown>-->
-                  <!--<a nz-dropdown>-->
-                    <!--Proteins <i class="anticon anticon-down"></i>-->
-                  <!--</a>-->
-                  <!--<ul nz-menu nzSelectable>-->
-                    <!--<li nz-menu-item>-->
-                      <!--<a>1st menu item</a>-->
-                    <!--</li>-->
-                    <!--<li nz-menu-item>-->
-                      <!--<a>2nd menu item</a>-->
-                    <!--</li>-->
-                    <!--<li nz-menu-item>-->
-                      <!--<a>3rd menu item</a>-->
-                    <!--</li>-->
-                  <!--</ul>-->
-                <!--</nz-dropdown>-->
-            <!--</ng-template>-->
-          <!--</nz-tab>-->
-
           <nz-tab nz-col nzSpan="4" [nzTitle]="DatabaseTemplate">
             <ng-template #DatabaseTemplate>
                 <a>Database</a>
@@ -159,31 +122,100 @@
             </ng-template>
             <div nz-row class="blust">
               <div nz-col nzSpan="8">
-                <nz-card class="blast-long" [nzHoverable]="true">
+                <a (click)="goToblastn()"><nz-card class="blast-long" [nzHoverable]="true">
                   <p class="blast-title">Nucleotide BLAST</p>
                   <p class="blast-info">nucleotide to nucleotide</p>
-                </nz-card>
+                </nz-card></a>
               </div>
               <div nz-col nzSpan="8">
-                  <nz-card class="blast-short" [nzHoverable]="true">
+                <a (click)="goToblastx()"><nz-card class="blast-short" [nzHoverable]="true">
                     <p class="blast-title">blasx</p>
                     <p class="blast-info">translated nucleotide to protein</p>
-                  </nz-card>
-                  <nz-card class="blast-short" [nzHoverable]="true">
+                  </nz-card></a>
+                <a (click)="goTotblastn()"><nz-card class="blast-short" [nzHoverable]="true">
                     <p class="blast-title">tblastn</p>
                     <p class="blast-info">protein to translated nucleotide</p>
-                  </nz-card>
+                  </nz-card></a>
               </div>
               <div nz-col nzSpan="8">
-                <nz-card class="blast-long" [nzHoverable]="true">
+                <a (click)="goTotblastp()"><nz-card class="blast-long" [nzHoverable]="true">
                   <p class="blast-title">Protein BLAST</p>
                   <p class="blast-info">protein to protein</p>
-                </nz-card>
+                </nz-card></a>
               </div>
+            </div>
+          </nz-tab>
+
+          <nz-tab nz-col nzSpan="4" [nzTitle]="BiobrickTemplate" >
+            <ng-template #BiobrickTemplate>
+              <a>Biobricks</a>
+            </ng-template>
+            <div *ngFor="let brick of arrays.brick" class="content">
+              <app-bricks [biobrick]="brick"></app-bricks>
             </div>
           </nz-tab>
         </nz-tabset>
       </div>
    </div>
   </div>
+</div>
+<div class="hidden-blast">
+  <form [action]="'https://blast.ncbi.nlm.nih.gov/Blast.cgi'" method="POST" [formGroup]="blastForm" target="_blank">
+    <input type="text" name="db" value="nucleotide" />
+    <input type="text" name="GENETIC_CODE" value="1" />
+    <input type="text" name="stype" value="nucleotide" />
+    <input type="text" name="DBTYPE" value="gc" />
+    <input type="text" name="DATABASE" value="nr" />
+    <input type="text" name="NUM_ORG" value="1" />
+    <input type="text" name="BLAST_PROGRAMS" value="megaBlast" />
+    <input type="text" name="MAX_NUM_SEQ" value="100" />
+    <input type="text" name="SHORT_QUERY_ADJUST" value="on" />
+    <input type="text" name="EXPECT" value="10" />
+    <input type="text" name="WORD_SIZE" value="28" />
+    <input type="text" name="HSP_RANGE_MAX" value="0" />
+    <input type="text" name="MATRIX_NAME" value="PAM30" />
+    <input type="text" name="MATCH_SCORES" value="1,-2" />
+    <input type="text" name="GAPCOSTS" value="0 0" />
+    <input type="text" name="COMPOSITION_BASED_STATISTICS" value="0" />
+    <input type="text" name="FILTER" value="L" />
+    <input type="text" name="REPEATS" value="45518" />
+    <input type="text" name="FILTER" value="m" />
+    <input type="text" name="TEMPLATE_LENGTH" value="0" />
+    <input type="text" name="TEMPLATE_TYPE" value="0" />
+    <input type="text" name="SHOW_OVERVIEW" value="true" />
+    <input type="text" name="SHOW_LINKOUT" value="true" />
+    <input type="text" name="GET_SEQUENCE" value="true" />
+    <input type="text" name="FORMAT_OBJECT" value="Alignment" />
+    <input type="text" name="FORMAT_TYPE" value="HTML" />
+    <input type="text" name="ALIGNMENT_VIEW" value="Pairwise" />
+    <input type="text" name="MASK_CHAR" value="2" />
+    <input type="text" name="MASK_COLOR" value="1" />
+    <input type="text" name="DESCRIPTIONS" value="100" />
+    <input type="text" name="ALIGNMENTS" value="100" />
+    <input type="text" name="LINE_LENGTH" value="60" />
+    <input type="text" name="NEW_VIEW" value="false" />
+    <input type="text" name="OLD_VIEW" value="false" />
+    <input type="text" name="NCBI_GI" value="false" />
+    <input type="text" name="SHOW_CDS_FEATURE" value="false" />
+    <input type="text" name="NUM_OVERVIEW" value="100" />
+    <input type="text" name="FORMAT_NUM_ORG" value="1" />
+    <input type="text" name="CONFIG_DESCR" value="2,3,4,5,6,7,8" />
+    <input type="text" name="CLIENT" value="web" />
+    <input type="text" name="SERVICE" value="plain" />
+    <input type="text" name="CMD" value="request" />
+    <input type="text" name="PAGE" value="MegaBlast" />
+    <input type="text" name="MEGABLAST" value="on" />
+    <input type="text" name="DEFAULT_PROG" value="megaBlast" />
+    <input type="text" name="SELECTED_PROG_TYPE" value="megaBlast" />
+    <input type="text" name="SAVED_SEARCH" value="true" />
+    <input type="text" name="NUM_DIFFS" value="0" />
+    <input type="text" name="NUM_OPTS_DIFFS" value="0" />
+    <input type="text" name="UNIQ_DEFAULTS_NAME" value="A_SearchDefaults_1gF9ao_607_deHb36VEEib_GTXQl_sVrwi" />
+    <input type="text" name="PAGE_TYPE" value="BlastSearch" />
+    <input type="text" name="USER_DEFAULT_PROG_TYPE" value="megaBlast" />
+    <input type="text" name="USER_DEFAULT_MATCH_SCORES" value="0" />
+    <input type="text" name="QUERY" value="AGGAAGAGGAGCTCCTTTCGATCCAATTCAGGAGAGGAAGTGGTAGGATGCAGCTGCCGATTCATGGATACCTCTGGAGTGCATGGCAGCAATGCTGTAGGCCTGCACTTGCATGGGTTTGCATGACCCGGGAGATGAACCCACCATTGTCTTCCTCTATTGATTGGATTGAAGGGAGCTCCACATCTCT" />
+    <input type="text" name="PROGRAM" value="blastn" /> <!--blastn blastx tblastn blastp-->
+    <input #submitBlast type="submit" value="Submit" />
+  </form>
 </div>

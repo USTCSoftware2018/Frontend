@@ -18,6 +18,7 @@ import { IgemerCardComponent } from './igemer-card/igemer-card.component';
 import { PendingComponent } from './pending/pending.component';
 import { WrongPendingComponent } from './wrong-pending/wrong-pending.component';
 import { DBsearchresultComponent } from './dbsearchresult/dbsearchresult.component';
+import { BricksComponent } from './bricks/bricks.component';
 
 
 registerLocaleData(en);
@@ -43,7 +44,8 @@ registerLocaleData(en);
     IgemerCardComponent,
     PendingComponent,
     WrongPendingComponent,
-    DBsearchresultComponent
+    DBsearchresultComponent,
+    BricksComponent
   ],
   // 公用导出组件放在exports数组内
   providers: [
@@ -63,7 +65,8 @@ registerLocaleData(en);
     IgemerCardComponent,
     PendingComponent,
     WrongPendingComponent,
-    DBsearchresultComponent
+    DBsearchresultComponent,
+    BricksComponent
   ]
 })
 export class ShareModule { }
