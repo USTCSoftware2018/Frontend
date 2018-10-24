@@ -4,7 +4,9 @@
     <div class="report-sim-info">
       <a class="report-title">{{report.title}}</a>
       <span class="report-label">labels:&nbsp;&nbsp;&nbsp;</span>
-      <a class="report-label" *ngFor="let label of report.labels">{{label.name}}&nbsp;&nbsp;&nbsp;</a>
+      <a class="report-label" *ngFor="let label of report.labels" (click)="gotoReportLabel(label.id)">
+        {{label.name}}&nbsp;&nbsp;&nbsp;
+      </a>
       <div class="report-abstract">
         <p>{{report.abstract}}</p>
       </div>
@@ -19,7 +21,7 @@
       <div nz-col nzSm="12" nzXs="24" nzMd="12" nzLg="24" nzXl="24" nzXXl="24">
         <div class="author-info">
           <div>
-            <a class="author-name">{{user?.username}}</a>
+            <a class="author-name" (click)="gotoUserIndex()" >{{user?.username}}</a>
             <button *ngIf="isMyself" nz-button routerLink="/mypersonalcenter/userset" nzType="primary" nzSize="small">
               edit
             </button>
@@ -28,7 +30,7 @@
             </button>
           </div>
           <div>
-            <a><nz-avatar nzSize="large" [nzSrc]="user?.avatar_url"></nz-avatar></a>
+            <a (click)="gotoUserIndex()"><nz-avatar nzSize="large" [nzSrc]="user?.avatar_url"></nz-avatar></a>
           </div>
         </div>
       </div>

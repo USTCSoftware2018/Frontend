@@ -8,6 +8,7 @@ import {HttpService} from '../../http.service';
 import {ApiResult} from '../../Interface/ApiResult';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NzMessageService} from 'ng-zorro-antd';
+import {RouterjudgeService} from '../../share/routerjudge.service';
 
 @Component({
   selector: 'app-reportshowother',
@@ -33,7 +34,8 @@ export class ReportshowotherComponent implements OnInit, AfterContentInit {
     private dowload_report: EventService,
     private http: HttpService,
     private message: NzMessageService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private routerjudge: RouterjudgeService
   ) { }
 
   ngOnInit() {
@@ -99,5 +101,9 @@ export class ReportshowotherComponent implements OnInit, AfterContentInit {
   // 报告操作
   downloadReport = () => {
     this.dowload_report.downloadEvent.emit(0);
+  }
+  // 评论跳转
+  gotoIndex = (user_id: number) => {
+    this.routerjudge.gotoUserIndex(user_id);
   }
 }

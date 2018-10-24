@@ -40,7 +40,7 @@
 
           <div *ngIf="isLogin" nz-row nzType="flex" nzAlign="top" class="input-comment">
             <div nz-col nzSpan="3">
-              <a><nz-avatar nzSize="large" [nzSrc]="me?.avatar_url"></nz-avatar></a>
+              <a routerLink="/mypersonalcenter/index"><nz-avatar nzSize="large" [nzSrc]="me?.avatar_url"></nz-avatar></a>
             </div>
             <div nz-col nzSpan="21">
               <form nz-form [formGroup]="commentForm" (ngSubmit)="submitForm()" >
@@ -49,14 +49,6 @@
                     <nz-input-group >
                       <textarea rows="4" nz-input formControlName="comment"></textarea>
                     </nz-input-group>
-                    <nz-form-explain *ngIf="comment.dirty && (commentForm.errors || comment.pending)">
-                      <ng-container *ngIf="comment.hasError('required')">
-                        Please enter the group name!
-                      </ng-container>
-                      <ng-container *ngIf="comment.hasError('maxlength')">
-                        too long(no more than 20 letters)!
-                      </ng-container>
-                    </nz-form-explain>
                   </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
@@ -73,10 +65,12 @@
 
           <div nz-row *ngFor="let comment of report_comments" class="every-comment">
             <div nz-col nzSpan="3">
-              <a><nz-avatar nzSize="large" [nzSrc]="comment.user.avatar_url"></nz-avatar></a>
+              <a (click)="gotoIndex(comment.user.id)">
+                <nz-avatar nzSize="large" [nzSrc]="comment.user.avatar_url"></nz-avatar>
+              </a>
             </div>
             <div nz-col nzSpan="21">
-              <a class="comment-user">{{comment.user.username}}</a>
+              <a class="comment-user" (click)="gotoIndex(comment.user.id)">{{comment.user.username}}</a>
               <span class="comments-date">&nbsp;&nbsp;&nbsp;{{comment.time | date: 'longDate'}}</span>
               <p class="comment-content">{{comment.text}}</p>
             </div>

@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import { Router} from '@angular/router';
 import { Simuser, Report } from '../../Interface/userinfo';
 import {HttpService} from '../../http.service';
 import {ApiResult} from '../../Interface/ApiResult';
@@ -9,11 +10,6 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import {
-  forbiddenAlphaValidator,
-  forbiddenNumericValidator,
-  userAccountValidator
-} from '../../my-personal-center/user-set/user-account/forbidden-useraccount';
 
 @Component({
   selector: 'app-report-author-info',
@@ -43,25 +39,9 @@ export class ReportAuthorInfoComponent implements OnInit, OnChanges {
     private http: HttpService,
     private message: NzMessageService,
     private modalService: NzModalService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) { }
-/*
-  this.useraccount = new FormGroup({
-    oldpassword: new FormControl(),
-    newpassword: new FormControl('', [
-      forbiddenAlphaValidator(),
-      forbiddenNumericValidator(),
-      Validators.minLength(7),
-      Validators.maxLength(30),
-    ]),
-    confirmpassword: new FormControl('', [
-      forbiddenAlphaValidator(),
-      forbiddenNumericValidator(),
-      Validators.minLength(7),
-      Validators.maxLength(30),
-    ])
-  }, { validators: userAccountValidator });
-}*/
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log('change');
@@ -73,11 +53,6 @@ export class ReportAuthorInfoComponent implements OnInit, OnChanges {
       this.isliked = this.report.isliked;
       this.iscollected = this.report.iscollected;
       this.btncontent = this.isFollow ? 'unfollow' : 'follow';
-      /*
-      this.collectForm = this.fb.group({
-        collection: [ null, [ Validators.required, Validators.maxLength(20) ] ],
-      });
-      */
     }
   }
   ngOnInit() {
@@ -90,17 +65,9 @@ export class ReportAuthorInfoComponent implements OnInit, OnChanges {
       this.isliked = this.report.isliked;
       this.iscollected = this.report.iscollected;
       this.btncontent = this.isFollow ? 'unfollow' : 'follow';
-      /*
-      this.collectForm = this.fb.group({
-        collection: [ null, [ Validators.required, Validators.maxLength(20) ] ],
-      });
-      */
     }
-    this.collectForm = new FormGroup({
-      collection: new FormControl('', [
-        Validators.required,
-        Validators.maxLength(20)
-      ])
+    this.collectForm = this.fb.group({
+      collection: [ null, [ Validators.required, Validators.maxLength(20) ] ],
     });
   }
   // 回调函数定义
@@ -214,8 +181,18 @@ export class ReportAuthorInfoComponent implements OnInit, OnChanges {
       }
     }
   }
-  /*
-  get collection() {
-    return this.collectForm.get('collection');
-  }*/
+ // router 跳转
+  gotoJudge = (myurl: string, othersurl: string) => {
+    if (this.isMyself) {
+      this.router.navigateByUrl(myurl);
+    } else {
+      this.router.navigateByUrl(othersurl);
+    }
+  }
+  gotoUserIndex = () => {
+    this.gotoJudge('/mypersonalcenter/index', '/userprofile/' + this.user.id);
+  }
+  gotoReportLabel = (label_id: number) => {
+    this.gotoJudge('/mypersonalcenter/detailinfo/label/' + label_id, '/userprofile/' + this.user.id + '/label/' + label_id);
+  }
 }

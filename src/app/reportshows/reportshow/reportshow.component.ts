@@ -13,6 +13,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import {RouterjudgeService} from '../../share/routerjudge.service';
 
 @Component({
   selector: 'app-reportshow',
@@ -35,7 +36,8 @@ export class ReportshowComponent implements OnInit {
     private dowload_report: EventService,
     private http: HttpService,
     private message: NzMessageService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private routerjudge: RouterjudgeService
   ) { }
   ngOnInit() {
     this.report = new Report();
@@ -106,5 +108,9 @@ export class ReportshowComponent implements OnInit {
       }
     };
     this.http.delete_report(this.report_id, callback);
+  }
+  // 评论跳转
+  gotoIndex = (user_id: number) => {
+    this.routerjudge.gotoUserIndex(user_id);
   }
 }
