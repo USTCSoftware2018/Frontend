@@ -117,6 +117,15 @@
             </div>
           </nz-tab>
 
+          <nz-tab nz-col nzSpan="4" [nzTitle]="BiobrickTemplate" >
+            <ng-template #BiobrickTemplate>
+              <a>Biobricks</a>
+            </ng-template>
+            <div *ngFor="let brick of arrays.brick" class="content">
+              <app-bricks [biobrick]="brick"></app-bricks>
+            </div>
+          </nz-tab>
+
           <nz-tab nz-col nzSpan="4" [nzTitle]="BlastTemplate">
             <ng-template #BlastTemplate>
                 <a>BLAST</a>
@@ -146,22 +155,13 @@
               </div>
             </div>
           </nz-tab>
-
-          <nz-tab nz-col nzSpan="4" [nzTitle]="BiobrickTemplate" >
-            <ng-template #BiobrickTemplate>
-              <a>Biobricks</a>
-            </ng-template>
-            <div *ngFor="let brick of arrays.brick" class="content">
-              <app-bricks [biobrick]="brick"></app-bricks>
-            </div>
-          </nz-tab>
         </nz-tabset>
       </div>
    </div>
   </div>
 </div>
 <div class="hidden-blast">
-  <form [action]="'https://blast.ncbi.nlm.nih.gov/Blast.cgi'" method="POST" [formGroup]="blastForm" target="_blank">
+  <form [action]="'https://blast.ncbi.nlm.nih.gov/Blast.cgi'" method="POST" [formGroup] target="_blank">
     <input type="text" name="db" value="nucleotide" />
     <input type="text" name="GENETIC_CODE" value="1" />
     <input type="text" name="stype" value="nucleotide" />

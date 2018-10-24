@@ -83,7 +83,6 @@ export class SearchresultComponent implements OnInit {
       'search_info': new FormControl( null,
       ),
     });
-    // this.initPrefix();
     this.initSuggestion();
   }
   onChange(value: string): void {
@@ -190,11 +189,7 @@ export class SearchresultComponent implements OnInit {
   }
   // blast form
   submitBlastForm() {
-    // const elem = document.getElementById('submitBlast');
-    // elem.click();
-    // const evt = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
     this.submitBlast.nativeElement.click();
-    console.log('blast');
   }
   goToblastn() {
     this.blast_type = 'blastn';

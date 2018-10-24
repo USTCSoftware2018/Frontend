@@ -6,23 +6,23 @@
       <div nz-col nzSpan="24">
         <div nz-row>
           <div class="brick-name" nz-col nzSpan="16">
-            <a>{{biobrick.part_name}}</a>
+            <a [href]="'https://legacy.biohub.tech/forum/brick/' + biobrick.part_name +'/'">{{biobrick.part_name}}</a>
           </div>
           <div nz-col nzSpan="8">
 
           </div>
           <div nz-col nzSpan="24">
-            <nz-tag [nzColor]="'#2db7f5'">author: {{biobrick.author}}</nz-tag>
-            <nz-tag [nzColor]="'#2db7f5'">part-status: {{biobrick.part_status}}</nz-tag>
-            <nz-tag [nzColor]="'#2db7f5'">part-type: {{biobrick.part_type}}</nz-tag>
-            <nz-tag [nzColor]="'#87d068'">{{biobrick.status}}</nz-tag>
-            <nz-tag [nzColor]="'#87d068'">{{biobrick.sample_status}}</nz-tag>
+            <nz-tag *ngIf="biobrick.author!==''" [nzColor]="'#2db7f5'">author: {{biobrick.author}}</nz-tag>
+            <nz-tag *ngIf="biobrick.part_status!==''" [nzColor]="'#2db7f5'">part-status: {{biobrick.part_status}}</nz-tag>
+            <nz-tag *ngIf="biobrick.part_type!==''" [nzColor]="'#2db7f5'">part-type: {{biobrick.part_type}}</nz-tag>
+            <nz-tag *ngIf="biobrick.status!==''" [nzColor]="biobrick.status === 'Available'?'#87d068' : '#f50'">{{biobrick.status}}</nz-tag>
+            <nz-tag *ngIf="biobrick.sample_status!==''" [nzColor]="biobrick.sample_status === 'In stock'?'#87d068' : '#f50'">{{biobrick.sample_status}}</nz-tag>
           </div>
           <div nz-col class="brick-desc" nzSpan="24">
             <p>{{biobrick.desc}}</p>
           </div>
           <div class="uses" nz-col nzSpan="6">
-            <span>uses&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span>uses&nbsp;&nbsp;&nbsp;</span>
             <span>{{biobrick.uses}}</span>
           </div>
          </div>
