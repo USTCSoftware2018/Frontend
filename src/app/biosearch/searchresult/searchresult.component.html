@@ -55,7 +55,9 @@
             </ng-template>
             <ng-template #dbsTemplate>
               <div class="db-item">
-                <app-dbsearchresult *ngFor="let db of arrays.db" [db]="db"></app-dbsearchresult>
+                <div *ngFor="let db of arrays.db">
+                  <app-dbsearchresult *ngIf="db.count > 0" [db]="db"></app-dbsearchresult>
+                </div>
               </div>
             </ng-template>
             <ng-template #blastTemplate>
@@ -163,6 +165,7 @@
    </div>
   </div>
 </div>
+<!-- blast form -->
 <div class="hidden-blast">
   <form [action]="'https://blast.ncbi.nlm.nih.gov/Blast.cgi'" method="POST" [formGroup] target="_blank">
     <input type="text" name="db" value="nucleotide" />
