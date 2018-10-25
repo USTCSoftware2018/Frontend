@@ -18,6 +18,7 @@
                     <p>BBa_R0001</p>
                     <p>AGGAAGAGGAGCTCCT...</p>
                     <p>users <b style="color:gold">from USTC</b></p>
+                    <p>bricks <b style="color:purple"> by Jonathan</b></p>
                     <p>reports <b style="color:grey">#Molecular</b></p>
                     <p>reports <b style="color:blue">after last Friday morning</b></p>
                     <p>reports <b style="color:purple"> by hustcw</b> <b style="color:grey"> #Molecular</b> </p>
@@ -113,7 +114,9 @@
                 <a>Database</a>
             </ng-template>
             <div class="db-item">
-              <app-dbsearchresult *ngFor="let db of arrays.db" [db]="db"></app-dbsearchresult>
+              <div *ngFor="let db of arrays.db">
+                <app-dbsearchresult *ngIf="db.count > 0" [db]="db"></app-dbsearchresult>
+              </div>
             </div>
           </nz-tab>
 
